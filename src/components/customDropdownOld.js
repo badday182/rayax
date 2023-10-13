@@ -49,25 +49,25 @@ const CustomMenu = React.forwardRef(
 export default function CustomDropdown({ name }) {
   const [selectedOption, setSelectedOption] = useState(name);
 
+
+
   const handleSelect = (eventKey, event) => {
     event.preventDefault();
-    setSelectedOption(eventKey.target);
+    setSelectedOption(eventKey);
   };
 
   return (
     <Dropdown onSelect={handleSelect}>
-      <Dropdown.Toggle variant="success" id="dropdown-custom-components" className="m-1">
+      <Dropdown.Toggle id="dropdown-custom-components" className="m-1">
         {selectedOption}
       </Dropdown.Toggle>
-
-      <Dropdown.Menu as={CustomMenu} >
-        <Dropdown.Item eventKey="1">Red</Dropdown.Item>
-        <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
-        <Dropdown.Item eventKey="3" active>
-          Orange
-        </Dropdown.Item>
-        <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
+      <Dropdown.Menu as={CustomMenu} >  
+        <Dropdown.Item eventKey="Red">Red</Dropdown.Item>
+        <Dropdown.Item eventKey="Blue">Blue</Dropdown.Item>
+        <Dropdown.Item eventKey="Orange" active>Orange</Dropdown.Item>
+        <Dropdown.Item eventKey="Red-Orange">Red-Orange</Dropdown.Item>
       </Dropdown.Menu>
+
     </Dropdown>
   );
 }

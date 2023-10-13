@@ -1,9 +1,11 @@
+
 import React, { useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Form from 'react-bootstrap/Form';
 
-// The forwardRef is important!!
-// Dropdown needs access to the DOM node in order to position the Menu
+import { zones } from '../data/zones';
+// const zones = ['Череп', 'ППН','ШВХ','ГВХ','ПВХ','ОГК','ОЧП']
+
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
   <a
     href=""
@@ -18,11 +20,22 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
   </a>
 ));
 
-// forwardRef again here!
-// Dropdown needs access to the DOM of the Menu to measure it
 const CustomMenu = React.forwardRef(
   ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
     const [value, setValue] = useState('');
+
+    const zoneToItem = (zone) => {
+      const fixedZone = zone.replace('\$\'', "'");
+            return (
+        <Dropdown.Item key={fixedZone} eventKey={fixedZone}>
+          {fixedZone}
+        </Dropdown.Item>
+      );
+    };
+
+    const filteredZones = zones.filter((zone) =>
+      !value || zone.toLowerCase().startsWith(value.toLowerCase()),
+    );
 
     return (
       <div
@@ -39,32 +52,27 @@ const CustomMenu = React.forwardRef(
           value={value}
         />
         <ul className="list-unstyled">
-          {React.Children.toArray(children).filter(
-            (child) =>
-              !value || child.props.children.toLowerCase().startsWith(value),
-          )}
+          {filteredZones.map(zoneToItem)}
         </ul>
       </div>
     );
   },
 );
 
-export default function CustomDropdown({name}) {
-    return (
-      <Dropdown>
-        <Dropdown.Toggle id="dropdown-custom-components" className='m-1'>
-          {name}
-     
-        </Dropdown.Toggle>
-  
-        <Dropdown.Menu as={CustomMenu}>
-          <Dropdown.Item eventKey="1">Red</Dropdown.Item>
-          <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
-          <Dropdown.Item eventKey="3" active>
-            Orange
-          </Dropdown.Item>
-          <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-    );
-  }
+export default function CustomDropdown({ name }) {
+  const [selectedOption, setSelectedOption] = useState(name);
+
+  const handleSelect = (eventKey, event) => {
+    event.preventDefault();
+    setSelectedOption(eventKey);
+  };
+
+  return (
+    <Dropdown onSelect={handleSelect}>
+      <Dropdown.Toggle id="dropdown-custom-components" className="m-1">
+        {selectedOption}
+      </Dropdown.Toggle>
+      <Dropdown.Menu as={CustomMenu} zones={zones} />
+    </Dropdown>
+  );
+}
