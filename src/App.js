@@ -1,23 +1,22 @@
 import './App.css';
 import Button  from 'react-bootstrap/Button';
-// import CustomDropdown from '../src/components/customDropdown';
 import CustomDropdown from './components/customDropdown';
 import GridComplexExample from './components/complexLayouts'
+import { FormFloatingSelect } from './components/FloatingLabel';
+
 
 function App() {
-  
+  const zones = ['Череп', 'ППН','ШВХ','ГВХ','ПВХ','ОГК','ОЧП','Плечовий суглоб','Ключиця', 'Ребра', 'Ліктьовий суглоб','Променево-зап$\'ястковий суглоб','Кисть','Кісток тазу','Кульшовий суглоб','Колінний суглоб','Гомілково-стопний суглоб','Стопа','Передні відділи стопи']
 const view = ['Оглядова','Передня','Бічна','В 2-х проєкціях', 'Права бічна', 'Ліва бічна','Задній лардоз', 'Коса']
 const dose = ['',]
 
   return (
     
     <div>
-      {/* <p>№ Дослідження</p> */}
-      {/* <p>Дата</p> */}
-      {/* <p>П.І.Б</p> */}
-      {/* <p>Рік народження</p> */}
-      <GridComplexExample></GridComplexExample>
-      <CustomDropdown name="Зона дослідження"/>
+     
+      <FormFloatingSelect zones={zones}/>
+      <GridComplexExample />
+      {/* <CustomDropdown name="Зона дослідження"/> */}
       {/* <CustomDropdown name="Проекція"/>
       <CustomDropdown name="ЄЄД"/> */}
     </div>
