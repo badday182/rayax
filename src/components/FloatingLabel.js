@@ -1,24 +1,28 @@
+
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 
-export function FormFloatingSelect({ zones }) {
+export function FormFloatingSelect({ items, label, onZoneSelect }) {
   const itemGenerator = () => {
-    const fixedZone = (zone) => {
-      return zone.replace('\$\'', "'");
+    const fixedZone = (item) => {
+      return item.replace('\$\'', "'");
     };
 
-    return zones.map((zone) => (
-      <option key={fixedZone(zone)} value={fixedZone(zone)}>
-        {fixedZone(zone)}
+    return items.map((item) => (
+      <option key={fixedZone(item)} value={fixedZone(item)}>
+        {fixedZone(item)}
       </option>
     ));
   };
 
 //   const itemsToRender = itemGenerator();
-
-  return (
-    <FloatingLabel controlId="floatingSelect" label="Зона дослідження">
-      <Form.Select aria-label="Floating label select example">
+const handleZoneSelect = (event) => {
+  const selectedZone = event.target.value;
+  onZoneSelect(selectedZone); 
+}; 
+ return (
+    <FloatingLabel controlId="floatingSelect" label={label}>
+      <Form.Select aria-label="Floating label select example" onChange={handleZoneSelect}>
         {/* <option>Open this select menu</option>
         <option value="1">One</option>
         <option value="2">Two</option>
