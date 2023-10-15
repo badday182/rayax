@@ -1,9 +1,12 @@
 import "./App.css";
 import React, { useState } from "react";
 
-import Button from "react-bootstrap/Button";
-import GridComplexExample from "./components/complexLayouts";
+
+
+import PacientInfo from "./components/complexLayouts";
 import { FormFloatingSelect } from "./components/FloatingLabel";
+
+import { BlockButton } from "./components/blockButton";
 
 import { zones } from "./data/zones";
 import { zonesWithSides } from "./data/zonesWithSides";
@@ -11,6 +14,8 @@ import { sides } from "./data/sides";
 import { ogkViews } from "./data/ogkViews";
 import { plechKulshSuglobViews } from "./data/plechovuyKulshovuySuglobViews";
 import { normaNenorma } from "./data/normaNenorma";
+
+import { ImagineOptions } from "./components/ImagineOptions";
 
 function App() {
   const [selectedZone, setSelectedZone] = useState("ОГК");
@@ -24,8 +29,8 @@ function App() {
 
   return (
     <div>
-      <GridComplexExample />
-      <FormFloatingSelect
+      <PacientInfo />      
+      <FormFloatingSelect 
         items={zones}
         onZoneSelect={setSelectedZone}
         label="Зона дослідження"
@@ -57,6 +62,8 @@ function App() {
         onZoneSelect={setSelectednormaNenorma}
         label="Норма/Не норма"
       />
+      <BlockButton />
+      {/* <ImagineOptions /> */}
     </div>
   );
 }
