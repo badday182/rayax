@@ -15,9 +15,9 @@ import { ogkViews } from "./data/ogkViews";
 import { plechKulshSuglobViews } from "./data/plechovuyKulshovuySuglobViews";
 import { normaNenorma } from "./data/normaNenorma";
 
-import { ImagineOptions } from "./components/ImagineOptions";
+import  {ImagineOptions}  from "./components/ImagineOptions";
 
-function App() {
+const App = () => {
   const [selectedZone, setSelectedZone] = useState("ОГК");
   const [selectedSide, setSelectedSide] = useState("Справа");
   const [selectedOgkViews, setSelectedOgkViews] = useState("Оглядова");
@@ -27,8 +27,10 @@ function App() {
 
   const zoneWithSides = zonesWithSides.includes(selectedZone) ? true : false;
 
+
   return (
     <div>
+      <ImagineOptions />      
       <PacientInfo />      
       <FormFloatingSelect 
         items={zones}
@@ -63,7 +65,6 @@ function App() {
         label="Норма/Не норма"
       />
       <BlockButton />
-      {/* <ImagineOptions /> */}
     </div>
   );
 }
