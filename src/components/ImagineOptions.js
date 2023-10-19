@@ -10,7 +10,7 @@ import { ogkViews } from "../data/ogkViews";
 import { plechKulshSuglobViews } from "../data/plechovuyKulshovuySuglobViews";
 import { normaNenorma } from "../data/normaNenorma";
 
-export const ImagineOptions = ({onDelete}) => {
+export const ImagineOptions = ({onDelete, id}) => {
     const [selectedZone, setSelectedZone] = useState("ОГК");
     const [selectedSide, setSelectedSide] = useState("Справа");
     const [selectedOgkViews, setSelectedOgkViews] = useState("Оглядова");
@@ -55,7 +55,7 @@ export const ImagineOptions = ({onDelete}) => {
     onZoneSelect={setSelectednormaNenorma}
     label="Норма/Не норма"
   />
-  <DeleteButton onClick={onDelete}/>
+  <DeleteButton onClick={() => onDelete(id)} id={id}/>
 </div>
     )
     };

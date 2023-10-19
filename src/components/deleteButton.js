@@ -1,8 +1,8 @@
 import Button from 'react-bootstrap/Button';
-function DeleteButton() {
+function DeleteButton({onClick, id}) {
   return (
     <>
-      <Button variant="outline-danger">Delete</Button>{' '}
+      <Button variant="outline-danger" onClick={() => onClick(id)}>Delete</Button>{' '}
     </>
   );
 }
