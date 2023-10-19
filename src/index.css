@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.bg-custom {
+  background-color: rgba(252, 134, 23, 0.582);
+}
+.bg-imagineOptions {
+  background-color: rgba(68, 172, 90, 0.479);
+  
+}
+.addbutton {
+  background-color: rgba(182, 25, 122, 0.479);
+  
+}
+.conteinerWidht {
+  width: 30%;
+}
+
+.backgroundWhite {
+  background-color: rgb(255, 255, 255);
+
+}

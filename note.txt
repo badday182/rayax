@@ -62,31 +62,3 @@ dose
 
 
 
-import React, { useState } from "react";
-
-import PacientInfo from "./components/complexLayouts";
-
-import { BlockButton } from "./components/blockButton";
-
-
-import { ImagineOptions } from "./components/ImagineOptions";
-
-const App = () => {
-    const [imagineOptionsCount, setImagineOptionsCount] = useState(1);
-
-  const addImagineOptions = () => {
-    setImagineOptionsCount(imagineOptionsCount + 1);
-  };
-
-  return (
-    <div>
-      <PacientInfo />
-      {[...Array(imagineOptionsCount)].map((_, index) => (
-        <ImagineOptions key={index} />
-        ))}
-        <BlockButton onClick={addImagineOptions}/>
-    </div>
-  );
-};
-
-export default App;

@@ -20,7 +20,7 @@ const handleZoneSelect = (event) => {
   onZoneSelect(selectedZone); 
 }; 
  return (
-    <FloatingLabel controlId="floatingSelect" label={label}>
+    <FloatingLabel className="mb-2" controlId="floatingSelect" label={label}>
       <Form.Select aria-label="Floating label select example" onChange={handleZoneSelect}>
  
         {itemGenerator()}
