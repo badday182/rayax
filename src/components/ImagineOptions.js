@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { FormFloatingSelect } from "./FloatingLabel";
+import DeleteButton from "./deleteButton";
+
 
 import { zones } from "../data/zones";
 import { zonesWithSides } from "../data/zonesWithSides";
@@ -8,7 +10,7 @@ import { ogkViews } from "../data/ogkViews";
 import { plechKulshSuglobViews } from "../data/plechovuyKulshovuySuglobViews";
 import { normaNenorma } from "../data/normaNenorma";
 
-export const ImagineOptions = () => {
+export const ImagineOptions = ({onDelete}) => {
     const [selectedZone, setSelectedZone] = useState("ОГК");
     const [selectedSide, setSelectedSide] = useState("Справа");
     const [selectedOgkViews, setSelectedOgkViews] = useState("Оглядова");
@@ -53,6 +55,7 @@ export const ImagineOptions = () => {
     onZoneSelect={setSelectednormaNenorma}
     label="Норма/Не норма"
   />
+  <DeleteButton onClick={onDelete}/>
 </div>
     )
     };
