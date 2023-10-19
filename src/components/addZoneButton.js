@@ -1,11 +1,11 @@
 import Button from "react-bootstrap/Button";
-function DeleteButton({ title, variant, onClick, id }) {
+function AddZoneButton ({title, variant, onAddOptions}) {
   return (
     <>
       <Button
         className="backgroundWhite"
         variant={variant}
-        onClick={() => onClick(id)}
+        onClick={onAddOptions}
       >
         {title}
       </Button>{" "}
@@ -13,4 +13,4 @@ function DeleteButton({ title, variant, onClick, id }) {
   );
 }
 
-export default DeleteButton;
+export default AddZoneButton;

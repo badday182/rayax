@@ -29,5 +29,16 @@ code {
 
 .backgroundWhite {
   background-color: rgb(255, 255, 255);
+  
+}
+.zonesButtons > div:first-child {
+  margin-left: 0;
+}
+
+.zonesButtons > div:last-child {
+  margin-right: 0;
+}
+.pacientCard {
+  background-color: rgb(211, 242, 255);
 
 }

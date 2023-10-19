@@ -19,25 +19,27 @@ const App = () => {
   };
 
   const deleteImagineOptions = (id) => {
-    const updatedImagineOptions = imagineOptions.filter(
-      (option) => option.id !== id
-    );
-    setImagineOptions(updatedImagineOptions);
+    if (imagineOptions.length !== 1) {
+      const updatedImagineOptions = imagineOptions.filter(
+        (option) => option.id !== id
+      );
+      setImagineOptions(updatedImagineOptions);
+    }
   };
 
   return (
-    <div className="conteinerWidht">
+    <div className="m-3 mb-4 conteinerWidht rounded-3 border pacientCard">
       <PacientInfo />
-
       {imagineOptions.map((option) => (
         <ImagineOptions
           key={option.id}
           id={option.id}
           onDelete={(id) => deleteImagineOptions(id)}
+          onAddOptions={addImagineOptions}
         />
       ))}
 
-      <BlockButton className="mt-3" onClick={addImagineOptions} />
+      {/* <BlockButton className="mt-3" onClick={addImagineOptions} /> */}
     </div>
   );
 };
