@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
 import PacientInfo from "./components/complexLayouts";
 
 import { BlockButton } from "./components/addBlockButton";
@@ -10,22 +11,24 @@ import { BlockButton } from "./components/addBlockButton";
 import { ImagineOptions } from "./components/ImagineOptions";
 
 const App = () => {
-  const [imagineOptions, setImagineOptions] = useState([{ id: 0 }]);
+  // const [imagineOptions, setImagineOptions] = useState([{ id: 0 }]);
 
-  const addImagineOptions = () => {
-    const newId = uuidv4();
-    const newImagineOption = { id: newId };
-    setImagineOptions([...imagineOptions, newImagineOption]);
-  };
+  const imagineOptions = useSelector(state => state.creatingNewZones.zoneCounter)
 
-  const deleteImagineOptions = (id) => {
-    if (imagineOptions.length !== 1) {
-      const updatedImagineOptions = imagineOptions.filter(
-        (option) => option.id !== id
-      );
-      setImagineOptions(updatedImagineOptions);
-    }
-  };
+  // const addImagineOptions = () => {
+  //   const newId = uuidv4();
+  //   const newImagineOption = { id: newId };
+  //   setImagineOptions([...imagineOptions, newImagineOption]);
+  // };
+
+  // const deleteImagineOptions = (id) => {
+  //   if (imagineOptions.length !== 1) {
+  //     const updatedImagineOptions = imagineOptions.filter(
+  //       (option) => option.id !== id
+  //     );
+  //     setImagineOptions(updatedImagineOptions);
+  //   }
+  // };
 
   return (
     <div className="m-3 mb-4 conteinerWidht rounded-3 border pacientCard">
@@ -34,8 +37,8 @@ const App = () => {
         <ImagineOptions
           key={option.id}
           id={option.id}
-          onDelete={(id) => deleteImagineOptions(id)}
-          onAddOptions={addImagineOptions}
+          // onDelete={(id) => deleteImagineOptions(id)}
+          // onAddOptions={addImagineOptions}
         />
       ))}
 
