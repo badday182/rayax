@@ -30,7 +30,10 @@ const App = () => {
   //     setImagineOptions(updatedImagineOptions);
   //   }
   // };
-  console.log(zoneState)
+
+  // console.log(zoneState)
+
+
   return (
     <div className="m-3 mb-4 conteinerWidht rounded-3 border pacientCard">
       <PacientInfo />

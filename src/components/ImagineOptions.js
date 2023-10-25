@@ -70,7 +70,7 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
         <DeleteButton
           title="Delete"
           variant="outline-danger"
-          onClick={() => onDelete(id)}
+          // onClick={() => onDelete(id)}
           id={id}
         />
       </div>

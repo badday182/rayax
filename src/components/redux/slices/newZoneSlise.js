@@ -1,23 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    zoneCounter: [{ id: 0 }],
-}
+  zoneCounter: [{ id: 0 }],
+};
 
 export const newZoneSlise = createSlice({
-    name: 'newZone',
-    initialState,
-    reducers: {
-        // setImagineOptions: (state, action) => {
-        //     state.zoneCounter = action.payload
-        // }
-        setImagineOptions: (state, action) => {
-            // state.zoneCounter = [...state.zoneCounter, action];
-            state.zoneCounter.push(action.payload);
-          }
-    }
-})
+  name: "newZone",
+  initialState,
+  reducers: {
+    // setImagineOptions: (state, action) => {
+    //     state.zoneCounter = action.payload
+    // }
+    addImagineOptions: (state, action) => {
+      state.zoneCounter = [...state.zoneCounter, action.payload];
+      // state.zoneCounter.push(action.payload);
+    },
+    deleteImagineOptions: (state, action) => {
+      if (state.zoneCounter.length !== 1) {
+        state.zoneCounter = state.zoneCounter.filter(
+          (option) => option.id !== action.payload.id.id   );
+      }
 
-export const {setImagineOptions} = newZoneSlise.actions
+    // state.zoneCounter.map(
+    //           (option) => console.log(option.id, action.payload.id)  );
 
-export default newZoneSlise.reducer
+    // console.log(action.payload.id.id)
+    },
+  },
+});
+
+export const { addImagineOptions, deleteImagineOptions } = newZoneSlise.actions;
+
+export default newZoneSlise.reducer;

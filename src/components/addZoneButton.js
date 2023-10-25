@@ -1,11 +1,11 @@
 import Button from "react-bootstrap/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { setImagineOptions } from "./redux/slices/newZoneSlise";
+import { addImagineOptions } from "./redux/slices/newZoneSlise";
 
 function AddZoneButton ({title, variant, onAddOptions}) {
   const dispatch = useDispatch()
-  const state = useSelector((state) => state.creatingZones.zoneCounter);
+  // const state = useSelector((state) => state.creatingZones.zoneCounter);
 
 //   const handleAdd = () => {
 // dispatch({
@@ -28,7 +28,7 @@ function AddZoneButton ({title, variant, onAddOptions}) {
             id: uuidv4(),
           };
         
-          dispatch(setImagineOptions(addZone));
+          dispatch(addImagineOptions(addZone));
         }
         }      >
         {title}
