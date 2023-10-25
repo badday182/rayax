@@ -52,6 +52,17 @@ function PacientInfo() {
 return (
   <Form className="m-2 mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary">
     <Row className="mb-2">
+
+              <Form.Group as={Col} controlId="date">
+        <Form.Label>Дата</Form.Label>
+        <Form.Control
+            placeholder="Дата"
+            type="date"
+            defaultValue={selectedDate}
+            onChange={(date) => setSelectedDate(date)}
+          />
+        </Form.Group>
+
       <Form.Group as={Col} controlId="imagine">
         <Form.Label>№ дослідження</Form.Label>
         <Form.Control
@@ -62,15 +73,6 @@ return (
         />
       </Form.Group>
 
-        <Form.Group as={Col} controlId="date">
-        <Form.Label>Дата</Form.Label>
-        <Form.Control
-            placeholder="Дата"
-            type="date"
-            defaultValue={selectedDate}
-            onChange={(date) => setSelectedDate(date)}
-          />
-        </Form.Group>
       </Row>
       <Row className="mb-2">
         <Form.Group as={Col} controlId="pacientName">
