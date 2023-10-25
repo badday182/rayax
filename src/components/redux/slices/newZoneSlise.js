@@ -18,13 +18,13 @@ export const newZoneSlise = createSlice({
     deleteImagineOptions: (state, action) => {
       if (state.zoneCounter.length !== 1) {
         state.zoneCounter = state.zoneCounter.filter(
-          (option) => option.id !== action.payload.id.id   );
+          (option) => option.id !== action.payload.id   );
       }
 
     // state.zoneCounter.map(
     //           (option) => console.log(option.id, action.payload.id)  );
 
-    // console.log(action.payload.id.id)
+    // console.log(action.payload)
     },
   },
 });

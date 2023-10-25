@@ -24,11 +24,11 @@ function AddZoneButton ({title, variant, onAddOptions}) {
         onClick={
           // handleAdd
           () => {
-          const addZone = {
+          const newZoneid = {
             id: uuidv4(),
           };
         
-          dispatch(addImagineOptions(addZone));
+          dispatch(addImagineOptions(newZoneid));
         }
         }      >
         {title}
