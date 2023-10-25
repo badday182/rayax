@@ -64,7 +64,7 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
           <AddZoneButton
             title="Add zones"
             variant="outline-success"
-            onAddOptions={onAddOptions}
+            // onAddOptions={onAddOptions}
           />
         </div>
         <DeleteButton

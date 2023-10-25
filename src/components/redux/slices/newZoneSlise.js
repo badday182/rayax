@@ -8,9 +8,13 @@ export const newZoneSlise = createSlice({
     name: 'newZone',
     initialState,
     reducers: {
+        // setImagineOptions: (state, action) => {
+        //     state.zoneCounter = action.payload
+        // }
         setImagineOptions: (state, action) => {
-            state.zoneCounter = action.payload
-        }
+            // state.zoneCounter = [...state.zoneCounter, action];
+            state.zoneCounter.push(action.payload);
+          }
     }
 })
 
