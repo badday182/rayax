@@ -22,7 +22,6 @@ function ApplyPacientInfoButton() {
           // dispatch(editExamNumber('123'));
           // console.log(state)
           // editorRef.current.setContent(pacientInfo);
-
         }}
       >
         Apply

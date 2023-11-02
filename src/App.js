@@ -9,11 +9,14 @@ import { useDispatch } from "react-redux";
 import PacientInfo from "./components/pacientInfo";
 
 import { BlockButton } from "./components/addBlockButton";
+import Button from "react-bootstrap/Button";
 
 import { ImagineOptions } from "./components/ImagineOptions";
 
 import { Editor } from "@tinymce/tinymce-react";
 import { PacientInfoPattern } from "./patternsText/pacientInfoPattern";
+
+import { PacientCard } from "./components/PacientCard.js";
 
 const App = () => {
   const zoneState = useSelector((state) => state.creatingZones.zoneCounter);
@@ -25,18 +28,22 @@ const App = () => {
   // editorRef.current.setContent("<p>Hello world!</p>");
 
   // const pacientInfo = pacientInfoPattern().props.children
-  const pacientInfo = renderToString(PacientInfoPattern())
+  const pacientInfo = renderToString(PacientInfoPattern());
   // console.log(pacientInfo);
-  
+
   return (
     <div className=" m-auto conteinerWidht d-flex flex-row p-3">
-      <div className=" mb-4 me-4 rounded-3 border pacientCard">
-        <PacientInfo />
-        {zoneState.map((option) => (
-          <ImagineOptions key={option.id} id={option.id} />
-        ))}
-
-        {/* <BlockButton className="mt-3" onClick={addImagineOptions} /> */}
+      <div className=" me-3 p-3 rounded-3 border pacientStore">
+        <div className=" rounded-3 border p-3 pacientCard">
+          <PacientInfo />
+          {zoneState.map((option) => (
+            <ImagineOptions key={option.id} id={option.id} />
+          ))}
+          <Button variant="success" size="lg" className="w-100">
+            + Add new Pacient
+          </Button>
+        </div>
+          <PacientCard/>
       </div>
       <>
         <Editor

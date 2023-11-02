@@ -5,21 +5,31 @@ import Row from "react-bootstrap/Row";
 import ApplyPacientInfoButton from "./applyPacientInfoButton";
 import { useSelector, useDispatch } from "react-redux";
 
+import Button from 'react-bootstrap/Button'
+
 import {
   editExamNumber,
   editExamDate,
   editExamName,
   editExamBirthYear,
 } from "./redux/slices/pacientInfoSliseReducer";
-
 function PacientInfo() {
   const [acceptNotice, setAcceptNotice] = useState(null);
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   setAcceptNotice(
+  //     <div className="overlay"></div>
+  //   );
+  // }, []);
+  const handleApplyButtonClick = () => {
+    // Обновляем состояние компонента
     setAcceptNotice(
-      <div className="overlay"></div>
+      <div className="overlay">
+        {/* <h1>Інформація про пацієнта успішно збережена</h1> */}
+      </div>
     );
-  }, []);
+  };
+
 
   const dispatch = useDispatch();
 
@@ -86,7 +96,7 @@ function PacientInfo() {
     }
   };
   return (
-    <div className="m-2 mb-4 form-container">
+    <div className="form-container mb-4">
       {acceptNotice}
       <Form className="p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary">
         <Row className="mb-2">
@@ -131,9 +141,15 @@ function PacientInfo() {
           </Form.Group>
         </Row>
 
-        <ApplyPacientInfoButton />
+        {/* <ApplyPacientInfoButton /> */}
+        <Button
+        variant="success"
+        className="me-2"
+        onClick={handleApplyButtonClick}
+      >
+        Apply
+      </Button>{" "}
       </Form>
-      {/* <div className="overlay"></div> */}
     </div>
   );
 }

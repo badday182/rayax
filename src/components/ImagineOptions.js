@@ -24,7 +24,7 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
   const zoneWithSides = zonesWithSides.includes(selectedZone) ? true : false;
 
   return (
-    <div className="m-2 mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary">
+    <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary">
       <FormFloatingSelect
         items={zones}
         onZoneSelect={setSelectedZone}

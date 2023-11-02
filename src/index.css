@@ -39,8 +39,19 @@ code {
   margin-right: 0;
 }
 .pacientCard {
-  background-color: rgb(211, 242, 255);
+  background-color: rgb(118, 205, 241);
 
+}
+.pacientStore {
+  background-color: rgb(236, 236, 236);
+  /* background-color: rgb(211, 242, 255); */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.pacientStore > :not(:last-child) {
+  margin-bottom: 16px
 }
 
 .overlay {
