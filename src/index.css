@@ -42,3 +42,25 @@ code {
   background-color: rgb(211, 242, 255);
 
 }
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(78, 228, 48, 0.20); /* Полупрозрачный черный цвет */
+  pointer-events: auto; /* Это делает элемент активным для кликов */
+  z-index: 2; /* Поместите слой выше формы */
+  background-image: url('https://cdn1.iconfinder.com/data/icons/basic-ui-elements-coloricon/21/15-512.png'); /* Замените на путь к вашей картинке */
+  background-size: contain; /* Масштабирование изображения, чтобы оно занимало всю площадь */
+  background-position: center center;
+  background-repeat: no-repeat; /* Запрет повторения изображения */
+  border-radius: 8px; 
+  
+}
+
+.form-container {
+  position: relative; /* Чтобы сделать overlay относительно этого контейнера */
+  /* z-index: 1; */
+}
