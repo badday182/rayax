@@ -20,14 +20,19 @@ export const pacientInfoSliseReducer = createSlice({
         // console.log(action.payload)
         // console.log(action)
       },
-        editExamDate: (state, action) => {
+      editExamDate: (state, action) => {
         state.examDate = action.payload          
+        // console.log(action.payload)
       },
         editExamName: (state, action) => {
-        state.examName = action.payload          
+        state.examName = action.payload
+        // console.log(action.payload)
+          
       },
         editExamBirthYear: (state, action) => {
-        state.examBirthYear = action.payload          
+        state.examBirthYear = action.payload 
+        // console.log(action.payload)
+         
       },
     },
   });

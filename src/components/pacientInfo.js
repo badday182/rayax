@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import ApplyPacientInfoButton from "./applyPacientInfoButton";
 import { useSelector, useDispatch } from "react-redux";
+import { renderToString } from "react-dom/server";
 
 import Button from 'react-bootstrap/Button'
 
@@ -13,7 +14,17 @@ import {
   editExamName,
   editExamBirthYear,
 } from "./redux/slices/pacientInfoSliseReducer";
+
+import { PacientInfoPattern } from "../patternsText/pacientInfoPattern";
+
+import { addDocText } from "./redux/slices/documentSliseReducer";
+
+
+
+
 function PacientInfo() {
+  const textToDoc = renderToString(PacientInfoPattern());
+
   const [acceptNotice, setAcceptNotice] = useState(null);
 
   // useEffect(() => {
@@ -22,7 +33,17 @@ function PacientInfo() {
   //   );
   // }, []);
   const handleApplyButtonClick = () => {
-    // Обновляем состояние компонента
+    // const formattedDate = selectedDate.split("-").reverse().join(".");
+    
+    // dispatch(editExamDate(formattedDate));
+    // dispatch(editExamNumber(naprav));
+    // dispatch(editExamName(name));
+    // dispatch(editExamBirthYear(birthYear));
+    
+    // dispatch(addDocText({formattedDate, naprav, name, birthYear}));
+    dispatch(addDocText({textToDoc}));
+    
+
     setAcceptNotice(
       <div className="overlay">
         {/* <h1>Інформація про пацієнта успішно збережена</h1> */}
@@ -33,17 +54,19 @@ function PacientInfo() {
 
   const dispatch = useDispatch();
 
+  
   // Значение по умолчанию - сегодняшняя дата
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().slice(0, 10)
   );
 
-  //  Обработчик для поля "Дата", чтобы ограничить ввод числами, точкой и слешем
+  //  Обработчик для поля "Дата"
   const handleDateChange = (e) => {
     const inputValue = e.target.value;
     setSelectedDate(inputValue);
     const formattedDate = inputValue.split("-").reverse().join(".");
     dispatch(editExamDate(formattedDate));
+
     // console.log(inputValue);
     // const pattern = /^[0-9./]*$/;
 
@@ -54,6 +77,7 @@ function PacientInfo() {
     return selectedDate;
   };
 
+  const [naprav, setNaprav] = useState()
   // const napravState = useSelector((state) => state.pacientInfo.examNumber);
   const handleNapravChange = (e) => {
     // Регулярное выражение для разрешенных символов (цифры, точка, слеш)
@@ -63,11 +87,14 @@ function PacientInfo() {
     if (!pattern.test(inputValue)) {
       e.target.value = inputValue.slice(0, -1); // Удаляем последний недопустимый символ
       dispatch(editExamNumber(e.target.value));
+      setNaprav(e.target.value)
     } else {
       dispatch(editExamNumber(inputValue));
+      setNaprav(inputValue)
     }
   };
-
+  
+  const [name, setName] = useState()
   const handleNameChange = (e) => {
     const inputValue = e.target.value;
     // dispatch(editExamNumber('111'));
@@ -77,12 +104,16 @@ function PacientInfo() {
     if (!pattern.test(inputValue)) {
       e.target.value = inputValue.slice(0, -1); // Удаляем последний недопустимый символ
       dispatch(editExamName(e.target.value));
+      setName(e.target.value)
     } else {
       dispatch(editExamName(inputValue));
+      setName(inputValue)
     }
   };
 
   // Обработчик для поля "Рік народження", чтобы ограничить ввод 4 цифрами
+  
+  const [birthYear, setBirthYear] = useState()
   const handleBirthYearChange = (e) => {
     const inputValue = e.target.value;
     // Регулярное выражение для разрешенных символов (цифры, не более 4)
@@ -91,8 +122,10 @@ function PacientInfo() {
     if (!pattern.test(inputValue)) {
       e.target.value = inputValue.slice(0, 4); // Ограничиваем ввод до 4 цифр
       dispatch(editExamBirthYear(e.target.value));
+      setBirthYear(e.target.value)
     } else {
       dispatch(editExamBirthYear(inputValue));
+      setBirthYear(inputValue)
     }
   };
   return (

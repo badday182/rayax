@@ -9,13 +9,17 @@ export const documentSliseReducer = createSlice({
   initialState,
   reducers: {
     addDocText: (state, action) => {
+      // const { formattedDate, naprav, name, birthYear } = action.payload;
+      const { textToDoc } = action.payload;
+      // const { PacientInfoPattern } = action.payload;
       // state.documentText = [...state.documentText, action.payload];
-      state.documentText += action.payload
+
+      state.documentText += `${textToDoc}`
       
 
 
-      console.log(state.documentText)
-      // console.log(action.payload)
+      // console.log(state.documentText)
+      // console.log(action.payload.naprav)
     },
   },
 });

@@ -13,6 +13,13 @@ import { ogkViews } from "../data/ogkViews";
 import { plechKulshSuglobViews } from "../data/plechovuyKulshovuySuglobViews";
 import { normaNenorma } from "../data/normaNenorma";
 
+import Button from "react-bootstrap/Button";
+import { useSelector, useDispatch } from "react-redux";
+import { addDocText } from "./redux/slices/documentSliseReducer";
+
+import { renderToString } from "react-dom/server";
+import { ZoneInfoPattern } from "../patternsText/zoneInfoPattern";
+
 export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
   const [selectedZone, setSelectedZone] = useState("ОГК");
   const [selectedSide, setSelectedSide] = useState("Справа");
@@ -22,6 +29,15 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
   const [selectednormaNenorma, setSelectednormaNenorma] = useState("Норма");
 
   const zoneWithSides = zonesWithSides.includes(selectedZone) ? true : false;
+
+
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.creatingDocument.documentText);
+
+
+
+  const textToDoc = renderToString(ZoneInfoPattern());
+
 
   return (
     <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary">
@@ -59,16 +75,27 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
       />
       <div className="d-flex justify-content-between zonesButtons">
         <div>
-          <ApplyZonesButton />
-
+          {/* <ApplyZonesButton /> */}
+          <Button
+        variant="success"
+        className="me-2"
+        onClick={() => {
+          // dispatch(addDocText({zoneInfo}));
+          dispatch(addDocText({textToDoc}));
+          console.log(selectedZone);
+          // console.log('qwe')
+        }}
+      >
+        Apply
+      </Button>{" "}
           <AddZoneButton
-            title="Add zones"
+            title="Add zone"
             variant="outline-success"
             // onAddOptions={onAddOptions}
           />
         </div>
         <DeleteButton
-          title="Delete"
+          title="Remove Zone"
           variant="outline-danger"
           // onClick={() => onDelete(id)}
           id={id}

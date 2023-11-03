@@ -34,23 +34,29 @@ const App = () => {
   return (
     <div className=" m-auto conteinerWidht d-flex flex-row p-3">
       <div className=" me-3 p-3 rounded-3 border pacientStore">
-        <div className=" rounded-3 border p-3 pacientCard">
+        {/* <div className=" rounded-3 border p-3 pacientCard">
           <PacientInfo />
           {zoneState.map((option) => (
             <ImagineOptions key={option.id} id={option.id} />
           ))}
           <Button variant="success" size="lg" className="w-100">
-            + Add new Pacient
+            + Add new Patient
           </Button>
-        </div>
+        </div> */}
+
+        
           <PacientCard/>
+          <PacientCard/>
+
+
       </div>
       <>
         <Editor
           apiKey="62kbbg7407jjlea01hu71w9axyixiyxitsr8wtho4lnck72p"
           onInit={(evt, editor) => (editorRef.current = editor)}
           // initialValue=""
-          initialValue={pacientInfo}
+          // initialValue={pacientInfo}
+          initialValue={docTex}
           init={{
             height: 500,
             menubar: false,
