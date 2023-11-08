@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     zone: "OGK",
     proaction: "ogliadova",
-    side: "",
+    side: "side",
+    side: "side",
     
 };
 
@@ -14,17 +15,22 @@ export const zoneInfoSliseReducer = createSlice({
         editZone: (state, action) => {
         // state.documentText = [...state.documentText, action.payload];
 
-        state.examNumber = action.payload
+        state.zone = action.payload
           
         // console.log(action.payload)
         // console.log(action)
       },
       editProaction: (state, action) => {
-        state.examDate = action.payload          
+        state.proaction = action.payload          
         // console.log(action.payload)
       },
         editSide: (state, action) => {
-        state.examName = action.payload
+        state.side = action.payload
+        // console.log(action.payload)
+          
+      },
+        editSide: (state, action) => {
+        state.side = action.payload
         // console.log(action.payload)
           
       },

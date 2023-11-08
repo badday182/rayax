@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FormFloatingSelect } from "./FloatingLabel";
 import DeleteButton from "./deleteButton";
 import AddZoneButton from "./addZoneButton";
@@ -14,7 +14,8 @@ import { plechKulshSuglobViews } from "../data/plechovuyKulshovuySuglobViews";
 import { normaNenorma } from "../data/normaNenorma";
 
 import Button from "react-bootstrap/Button";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { editZone } from "./redux/slices/zoneInfoSliseReducer";
 import { addDocText } from "./redux/slices/documentSliseReducer";
 
 import { renderToString } from "react-dom/server";
@@ -30,18 +31,37 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
 
   const zoneWithSides = zonesWithSides.includes(selectedZone) ? true : false;
 
-
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.creatingDocument.documentText);
-
-
+  // const state = useSelector((state) => state.creatingDocument.documentText);
 
   const textToDoc = renderToString(ZoneInfoPattern());
 
+  const handleApplyZone = () => {
+    // dispatch(editZone(selectedZone));
+    
+    console.log(`Зона: ${selectedZone}`);
+    if (zoneWithSides) {
+      console.log(`Сторона: ${selectedSide}`)
+     
+      
+    }
+    if (selectedZone === "ОГК") {
+      console.log(`Проэкцiя: ${selectedOgkViews}`)
+      // dispatch(editZone(selectedZone));
+  }
+  if (selectedZone === "Кульшовий суглоб" ||
+  selectedZone === "Плечовий суглоб") {console.log(`Проэкцiя: ${selectedplechKulshSuglobViews}`)}
+  console.log(`Норма? ${selectednormaNenorma}`);
 
+
+
+
+  dispatch(addDocText({textToDoc}))
+  };
   return (
     <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary">
       <FormFloatingSelect
+        id="zone"
         items={zones}
         onZoneSelect={setSelectedZone}
         label="Зона дослідження"
@@ -77,17 +97,16 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
         <div>
           {/* <ApplyZonesButton /> */}
           <Button
-        variant="success"
-        className="me-2"
-        onClick={() => {
-          // dispatch(addDocText({zoneInfo}));
-          dispatch(addDocText({textToDoc}));
-          console.log(selectedZone);
-          // console.log('qwe')
-        }}
-      >
-        Apply
-      </Button>{" "}
+            variant="success"
+            className="me-2"
+            // onClick={() => {
+            //         dispatch(addDocText({textToDoc}));
+            //   console.log(selectedZone);
+            // }}
+            onClick={handleApplyZone}
+          >
+            Apply
+          </Button>{" "}
           <AddZoneButton
             title="Add zone"
             variant="outline-success"

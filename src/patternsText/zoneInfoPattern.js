@@ -23,7 +23,7 @@ export const ZoneInfoPattern = () => {
            <td>{pacientInfostateBirthYear} р.н.</td>
          </tr> */}
          <tr>
-           <td>R-графiя: {zone}, {proaction}</td>
+           <td>R-графiя: {zone}, {proaction}, {side}</td>
            <td>ЕЕД: ___ мЗв</td>
          </tr>
        </tbody>
