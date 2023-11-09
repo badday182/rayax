@@ -30,9 +30,11 @@ const App = () => {
   // const pacientInfo = pacientInfoPattern().props.children
   const pacientInfo = renderToString(PacientInfoPattern());
   // console.log(pacientInfo);
+  // document.querySelector('#')
+
 
   return (
-    <div className=" m-auto conteinerWidht d-flex flex-row p-3">
+    <div className=" m-auto conteinerWidht d-flex flex-row p-3 position-relative">
       <div className=" me-3 p-3 rounded-3 border pacientStore">
         {/* <div className=" rounded-3 border p-3 pacientCard">
           <PacientInfo />
@@ -44,11 +46,8 @@ const App = () => {
           </Button>
         </div> */}
 
-        
-          <PacientCard/>
-          <PacientCard/>
-
-
+        <PacientCard />
+        {/* <PacientCard/> */}
       </div>
       <>
         <Editor
@@ -58,7 +57,18 @@ const App = () => {
           // initialValue={pacientInfo}
           initialValue={docTex}
           init={{
-            height: 500,
+            height: 600,
+            setup: function (editor) {
+              editor.on("init", function () {
+                editor.getBody().scrollTo(0, editor.getBody().scrollHeight);
+              });
+              editor.on("change", function () {
+                editor.getBody().scrollTo(0, editor.getBody().scrollHeight);
+              });
+              editor.on("keyup", function () {
+                editor.getBody().scrollTo(0, editor.getBody().scrollHeight);
+              });
+            },
             menubar: false,
             plugins: [
               "advlist",

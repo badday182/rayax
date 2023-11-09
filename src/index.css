@@ -26,6 +26,11 @@ code {
 .conteinerWidht {
   width: 90%;
 }
+.conteinerWidht > div:last-child{
+  position: fixed;
+  right: 5%;
+  width: 47%;
+}
 
 .backgroundWhite {
   background-color: rgb(255, 255, 255);
@@ -74,4 +79,12 @@ code {
 .form-container {
   position: relative; /* Чтобы сделать overlay относительно этого контейнера */
   /* z-index: 1; */
+}
+
+.addOption > div:first-child{
+width: 75%;
+}
+
+.tox {
+  position: fixed;
 }

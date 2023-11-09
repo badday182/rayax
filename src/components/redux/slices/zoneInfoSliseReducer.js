@@ -5,7 +5,7 @@ const initialState = {
     zone: "ОГК",
     proaction: "Оглядова",
     side: "Справа",
-    
+    norma: ""
 };
 
 export const zoneInfoSliseReducer = createSlice({
@@ -27,10 +27,13 @@ export const zoneInfoSliseReducer = createSlice({
         editSide: (state, action) => {
         state.side = action.payload
       },
+        editNorma: (state, action) => {
+        state.norma = action.payload
+      },
     },
   });
   
-  export const { editZone,editProaction,editSide } = zoneInfoSliseReducer.actions;
+  export const { editZone,editProaction,editSide,editNorma } = zoneInfoSliseReducer.actions;
   
   export default zoneInfoSliseReducer.reducer;
   

@@ -8,29 +8,34 @@ import { sides } from "../data/sides";
 import { ogkViews } from "../data/ogkViews";
 import { plechKulshSuglobViews } from "../data/plechovuyKulshovuySuglobViews";
 import { normaNenorma } from "../data/normaNenorma";
-import {legenRysunok} from "../data/OGK_notNorma/legenRysunok"
-import {koreni} from "../data/OGK_notNorma/koreni" 
+import { legenRysunok } from "../data/OGK_notNorma/legenRysunok";
+import { koreni } from "../data/OGK_notNorma/koreni";
 
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
-import { editZone, editProaction, editSide } from "./redux/slices/zoneInfoSliseReducer";
+import {
+  editZone,
+  editProaction,
+  editSide,
+  editNorma,
+} from "./redux/slices/zoneInfoSliseReducer";
 import { addDocText } from "./redux/slices/documentSliseReducer";
 
 import { renderToString } from "react-dom/server";
 import { ZoneInfoPattern } from "../patternsText/zoneInfoPattern";
 
-
+import { Ogk } from "./Ogk";
 
 export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
   const [selectedZone, setSelectedZone] = useState("ОГК");
-  
+
   const [selectedSide, setSelectedSide] = useState("Справа");
   const [selectedOgkViews, setSelectedOgkViews] = useState("Оглядова");
   const [selectedplechKulshSuglobViews, setSelectedplechKulshSuglobViews] =
-  useState("Пряма");
+    useState("Пряма");
   const [selectednormaNenorma, setSelectednormaNenorma] = useState("Норма");
-  
-  // Вроде работает 
+
+  // Вроде работает
   // useEffect(()=>{
   //   dispatch(editZone("ОГК"));
   // }, [])
@@ -42,29 +47,42 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
 
   const textToDoc = renderToString(ZoneInfoPattern());
 
-const Ogk = () =>{
-return (
-  <FormFloatingSelect
-          items={ogkViews}
-          onZoneSelect={setSelectedOgkViews}
-          label="Проєкія"
-        />
-)
-}
+  // const Ogk = () =>{
+  // return (
+  //   <div>
+  //     <FormFloatingSelect
+  //             id="zone"
+  //             items={zones}
+  //             onZoneSelect={setSelectedZone}
+  //             label="Зона дослідження"
+  //           />
+  //     <FormFloatingSelect
+  //             items={ogkViews}
+  //             onZoneSelect={setSelectedOgkViews}
+  //             label="Проєкія"
+  //           />
+  //           <FormFloatingSelect
+  //         items={normaNenorma}
+  //         onZoneSelect={setSelectednormaNenorma}
+  //         label="Норма/Не норма"
+  //         />
+  //   </div>
+  // )
+  // }
 
   const handleApplyZone = () => {
     //Добавляем данные в текстовый редактор
-    dispatch(addDocText({textToDoc}))
+    dispatch(addDocText({ textToDoc }));
     // Обновляем данные редактор
     dispatch(editZone("ОГК"));
     dispatch(editProaction("Оглядова"));
     dispatch(editSide("Справа"));
-
   };
-
 
   return (
     <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary">
+      <Ogk />
+
       <FormFloatingSelect
         id="zone"
         items={zones}
@@ -88,40 +106,36 @@ return (
       {selectedZone === "Кульшовий суглоб" ||
       selectedZone === "Плечовий суглоб" ? (
         <FormFloatingSelect
-        items={plechKulshSuglobViews}
-        onZoneSelect={setSelectedplechKulshSuglobViews}
-        label="Проєкія"
+          items={plechKulshSuglobViews}
+          onZoneSelect={setSelectedplechKulshSuglobViews}
+          label="Проєкія"
         />
-        ) : null}
+      ) : null}
       <FormFloatingSelect
         items={normaNenorma}
         onZoneSelect={setSelectednormaNenorma}
         label="Норма/Не норма"
-        />
-        {/* не норма */}
-        {selectedZone === "ОГК" && selectednormaNenorma === "Не норма"? (
-          <div>
-            <FormFloatingSelect
-              items={legenRysunok}
-              onZoneSelect={setSelectedOgkViews}
-              label="Легеневий рисунок"
-            />
-            <FormFloatingSelect
-              items={koreni}
-              onZoneSelect={setSelectedOgkViews}
-              label="Корені"
-            />
-            </div>
-        ) : null}
-        <Ogk/>
+      />
+      {/* не норма */}
+      {selectedZone === "ОГК" && selectednormaNenorma === "Не норма" ? (
+        <div>
+          <FormFloatingSelect
+            items={legenRysunok}
+            onZoneSelect={setSelectedOgkViews}
+            label="Легеневий рисунок"
+          />
+          <FormFloatingSelect
+            items={koreni}
+            onZoneSelect={setSelectedOgkViews}
+            label="Корені"
+          />
+        </div>
+      ) : null}
+
       <div className="d-flex justify-content-between zonesButtons">
         <div>
           {/* <ApplyZonesButton /> */}
-          <Button
-            variant="success"
-            className="me-2"
-            onClick={handleApplyZone}
-          >
+          <Button variant="success" className="me-2" onClick={handleApplyZone}>
             Apply
           </Button>{" "}
           <AddZoneButton

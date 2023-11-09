@@ -7,6 +7,7 @@ import {
   editZone,
   editProaction,
   editSide,
+  editNorma,
 } from "./redux/slices/zoneInfoSliseReducer";
 
 import { zones } from "../data/zones";
@@ -16,7 +17,12 @@ import { sides } from "../data/sides";
 import { ogkViews } from "../data/ogkViews";
 import { plechKulshSuglobViews } from "../data/plechovuyKulshovuySuglobViews";
 
+import { ogkNormaNenorma } from "../data/OGK_notNorma/ogkNormaNenorma";
+
 export function FormFloatingSelect({ items, label, onZoneSelect }) {
+  // useEffect(()=>{
+   
+  // }, [])
   const dispatch = useDispatch();
 
   const itemGenerator = () => {
@@ -58,9 +64,16 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
     }
     if (plechKulshSuglobViews.includes(selectedZone)) {
       dispatch(editProaction(selectedZone));
-
-
+      // console.log(selectedZone);
     }
+    
+    // -----------ОГК ---------
+    if (ogkNormaNenorma.includes(selectedZone)) {
+      dispatch(editNorma(selectedZone));
+      // console.log(selectedZone);
+    }
+    
+
   };
   const floatingId = uuidv4();
   return (

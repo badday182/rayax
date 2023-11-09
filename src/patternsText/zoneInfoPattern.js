@@ -1,13 +1,24 @@
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import {ogkZagalnaNenorma} from "../data/OGK_notNorma/ogkZagalnaNenorma"
 
 export const ZoneInfoPattern = () => {
   const zone = useSelector((state) => state.zoneInfo.zone);
   const proaction = useSelector((state) => state.zoneInfo.proaction);
   const side = useSelector((state) => state.zoneInfo.side);
+  const norma = useSelector((state) => state.zoneInfo.norma);
+  
+  let report
+
+useEffect(()=>{
+  report = ''
+},[])
 
   let mSv = "";
   let radiography = ''
+ 
+  // let report = ''
 
   const zoneMappings = {
     ППН: "0,12",
@@ -54,6 +65,15 @@ export const ZoneInfoPattern = () => {
   }
 
 
+  if (zone === "ОГК" && norma === "") {
+    report = "Легені та серце без змін"  
+  }  
+  if (norma === "Легені та серце у межах вікових змін") {
+    report = norma    
+  }
+  if (norma === "Загальна ОГК не норма") {
+    report = ogkZagalnaNenorma    
+  }
   return (
     <div>
       <table
@@ -84,7 +104,7 @@ export const ZoneInfoPattern = () => {
           </tr>
         </tbody>
       </table>
-      <p>Norm?</p>
+      <p>{report}</p>
     </div>
   );
 };
