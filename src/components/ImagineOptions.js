@@ -2,10 +2,6 @@ import React, { useState, useEffect } from "react";
 import { FormFloatingSelect } from "./FloatingLabel";
 import DeleteButton from "./deleteButton";
 import AddZoneButton from "./addZoneButton";
-import ApplyZonesButton from "./applyZonesButton";
-
-import ImagineOptionsButton from "./addZoneButton";
-
 import { zones } from "../data/zones";
 import { zonesWithSides } from "../data/zonesWithSides";
 import { sides } from "../data/sides";
@@ -15,19 +11,27 @@ import { normaNenorma } from "../data/normaNenorma";
 
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
-import { editZone } from "./redux/slices/zoneInfoSliseReducer";
+import { editZone, editProaction, editSide } from "./redux/slices/zoneInfoSliseReducer";
 import { addDocText } from "./redux/slices/documentSliseReducer";
 
 import { renderToString } from "react-dom/server";
 import { ZoneInfoPattern } from "../patternsText/zoneInfoPattern";
 
+
+
 export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
   const [selectedZone, setSelectedZone] = useState("ОГК");
+  
   const [selectedSide, setSelectedSide] = useState("Справа");
   const [selectedOgkViews, setSelectedOgkViews] = useState("Оглядова");
   const [selectedplechKulshSuglobViews, setSelectedplechKulshSuglobViews] =
-    useState("Пряма");
+  useState("Пряма");
   const [selectednormaNenorma, setSelectednormaNenorma] = useState("Норма");
+  
+  // Вроде работает 
+  // useEffect(()=>{
+  //   dispatch(editZone("ОГК"));
+  // }, [])
 
   const zoneWithSides = zonesWithSides.includes(selectedZone) ? true : false;
 
@@ -37,26 +41,13 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
   const textToDoc = renderToString(ZoneInfoPattern());
 
   const handleApplyZone = () => {
-    // dispatch(editZone(selectedZone));
-    
-    console.log(`Зона: ${selectedZone}`);
-    if (zoneWithSides) {
-      // console.log(`Сторона: ${selectedSide}`)
-     
-      
-    }
-    if (selectedZone === "ОГК") {
-      // console.log(`Проэкцiя: ${selectedOgkViews}`)
-      // dispatch(editZone(selectedZone));
-  }
-  if (selectedZone === "Кульшовий суглоб" ||
-  selectedZone === "Плечовий суглоб") {console.log(`Проэкцiя: ${selectedplechKulshSuglobViews}`)}
-  // console.log(`Норма? ${selectednormaNenorma}`);
+    //Добавляем данные в текстовый редактор
+    dispatch(addDocText({textToDoc}))
+    // Обновляем данные редактор
+    dispatch(editZone("ОГК"));
+    dispatch(editProaction("Оглядова"));
+    dispatch(editSide("Справа"));
 
-
-
-
-  dispatch(addDocText({textToDoc}))
   };
   return (
     <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary">

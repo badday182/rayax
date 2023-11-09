@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    zone: "OGK",
-    proaction: "ogliadova",
-    side: "side",
-    mSv: '____'
+  // Для корректного обновления использовать useEffect с dispatch в ImagineOptions
+    zone: "ОГК",
+    proaction: "Оглядова",
+    side: "Справа",
     
 };
 
@@ -27,13 +27,10 @@ export const zoneInfoSliseReducer = createSlice({
         editSide: (state, action) => {
         state.side = action.payload
       },
-        editMSv: (state, action) => {
-        state.mSv = action.payload
-      },
     },
   });
   
-  export const { editZone,editProaction,editSide,editMSv } = zoneInfoSliseReducer.actions;
+  export const { editZone,editProaction,editSide } = zoneInfoSliseReducer.actions;
   
   export default zoneInfoSliseReducer.reducer;
   

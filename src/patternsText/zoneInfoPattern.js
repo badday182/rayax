@@ -5,7 +5,6 @@ export const ZoneInfoPattern = () => {
   const zone = useSelector((state) => state.zoneInfo.zone);
   const proaction = useSelector((state) => state.zoneInfo.proaction);
   const side = useSelector((state) => state.zoneInfo.side);
-  const mSv = useSelector((state) => state.zoneInfo.mSv);
 
   let mSv2 = "";
 
