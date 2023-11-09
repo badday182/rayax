@@ -41,17 +41,17 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
     
     console.log(`Зона: ${selectedZone}`);
     if (zoneWithSides) {
-      console.log(`Сторона: ${selectedSide}`)
+      // console.log(`Сторона: ${selectedSide}`)
      
       
     }
     if (selectedZone === "ОГК") {
-      console.log(`Проэкцiя: ${selectedOgkViews}`)
+      // console.log(`Проэкцiя: ${selectedOgkViews}`)
       // dispatch(editZone(selectedZone));
   }
   if (selectedZone === "Кульшовий суглоб" ||
   selectedZone === "Плечовий суглоб") {console.log(`Проэкцiя: ${selectedplechKulshSuglobViews}`)}
-  console.log(`Норма? ${selectednormaNenorma}`);
+  // console.log(`Норма? ${selectednormaNenorma}`);
 
 
 

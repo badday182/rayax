@@ -4,7 +4,7 @@ const initialState = {
     zone: "OGK",
     proaction: "ogliadova",
     side: "side",
-    side: "side",
+    mSv: '____'
     
 };
 
@@ -26,18 +26,14 @@ export const zoneInfoSliseReducer = createSlice({
       },
         editSide: (state, action) => {
         state.side = action.payload
-        // console.log(action.payload)
-          
       },
-        editSide: (state, action) => {
-        state.side = action.payload
-        // console.log(action.payload)
-          
+        editMSv: (state, action) => {
+        state.mSv = action.payload
       },
     },
   });
   
-  export const { editZone,editProaction,editSide } = zoneInfoSliseReducer.actions;
+  export const { editZone,editProaction,editSide,editMSv } = zoneInfoSliseReducer.actions;
   
   export default zoneInfoSliseReducer.reducer;
   
