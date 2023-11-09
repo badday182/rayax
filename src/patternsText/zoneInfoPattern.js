@@ -6,7 +6,8 @@ export const ZoneInfoPattern = () => {
   const proaction = useSelector((state) => state.zoneInfo.proaction);
   const side = useSelector((state) => state.zoneInfo.side);
 
-  let mSv2 = "";
+  let mSv = "";
+  let radiography = ''
 
   const zoneMappings = {
     ППН: "0,12",
@@ -28,25 +29,31 @@ export const ZoneInfoPattern = () => {
     Ребра: "0,5",
   };
 
-  // mSv2 = zoneMappings[zone] || "____";
-
   if (zone === "ОГК" && proaction === "Оглядова") {
-    mSv2 = "0,25";
-  } else if (zone === "ОГК" && (proaction === "Пряма + права бічна" || proaction === "Пряма + ліва бічна")) {
-    mSv2 = "0,5";
+    mSv = "0,25";
+    radiography = `${zone} ${proaction.toLowerCase()}`
+    
+  } else if (zone === "ОГК" && (proaction === "Пряма + права бічна")) {
+    mSv = "0,5";
+    radiography = `${zone} у прямій та правій бічній проекціях`
+    
+  } else if (zone === "ОГК" && proaction === "Пряма + ліва бічна") {
+    mSv = "0,5";
+    radiography = `${zone} у прямій та лівій бічній проекціях`
   } else
   if (zone === "Плечовий суглоб" && proaction === "В 2-х проєкціях") {
-    mSv2 = "0,6";
+    mSv = "0,6";
   } else if (zone === "Плечовий суглоб" && proaction === "Пряма") {
-    mSv2 = "0,3";
+    mSv = "0,3";
   } else if (zone === "Кульшовий суглоб" && proaction === "В 2-х проєкціях") {
-    mSv2 = "1,6";
+    mSv = "1,6";
   } else if (zone === "Кульшовий суглоб" && proaction === "Пряма") {
-    mSv2 = "0,8";
+    mSv = "0,8";
   } else {
-    mSv2 = zoneMappings[zone] || "____";
+    mSv = zoneMappings[zone] || "____";
   }
-  // console.log(zone, proaction, mSv2);
+
+
   return (
     <div>
       <table
@@ -66,7 +73,14 @@ export const ZoneInfoPattern = () => {
               R-графiя: {zone}, {proaction}, {side}
             </td>
             {/* <td>ЕЕД: {mSv} мЗв</td> */}
-            <td>ЕЕД: {mSv2} мЗв</td>
+            <td>ЕЕД: {mSv} мЗв</td>
+          </tr>
+          <tr>
+            <td>
+              R-графiя: {radiography}
+            </td>
+            {/* <td>ЕЕД: {mSv} мЗв</td> */}
+            <td>ЕЕД: {mSv} мЗв</td>
           </tr>
         </tbody>
       </table>

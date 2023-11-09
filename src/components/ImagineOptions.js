@@ -8,6 +8,8 @@ import { sides } from "../data/sides";
 import { ogkViews } from "../data/ogkViews";
 import { plechKulshSuglobViews } from "../data/plechovuyKulshovuySuglobViews";
 import { normaNenorma } from "../data/normaNenorma";
+import {legenRysunok} from "../data/OGK_notNorma/legenRysunok"
+import {koreni} from "../data/OGK_notNorma/koreni" 
 
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
@@ -40,6 +42,16 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
 
   const textToDoc = renderToString(ZoneInfoPattern());
 
+const Ogk = () =>{
+return (
+  <FormFloatingSelect
+          items={ogkViews}
+          onZoneSelect={setSelectedOgkViews}
+          label="Проєкія"
+        />
+)
+}
+
   const handleApplyZone = () => {
     //Добавляем данные в текстовый редактор
     dispatch(addDocText({textToDoc}))
@@ -49,6 +61,8 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
     dispatch(editSide("Справа"));
 
   };
+
+
   return (
     <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary">
       <FormFloatingSelect
@@ -74,26 +88,38 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
       {selectedZone === "Кульшовий суглоб" ||
       selectedZone === "Плечовий суглоб" ? (
         <FormFloatingSelect
-          items={plechKulshSuglobViews}
-          onZoneSelect={setSelectedplechKulshSuglobViews}
-          label="Проєкія"
+        items={plechKulshSuglobViews}
+        onZoneSelect={setSelectedplechKulshSuglobViews}
+        label="Проєкія"
         />
-      ) : null}
+        ) : null}
       <FormFloatingSelect
         items={normaNenorma}
         onZoneSelect={setSelectednormaNenorma}
         label="Норма/Не норма"
-      />
+        />
+        {/* не норма */}
+        {selectedZone === "ОГК" && selectednormaNenorma === "Не норма"? (
+          <div>
+            <FormFloatingSelect
+              items={legenRysunok}
+              onZoneSelect={setSelectedOgkViews}
+              label="Легеневий рисунок"
+            />
+            <FormFloatingSelect
+              items={koreni}
+              onZoneSelect={setSelectedOgkViews}
+              label="Корені"
+            />
+            </div>
+        ) : null}
+        <Ogk/>
       <div className="d-flex justify-content-between zonesButtons">
         <div>
           {/* <ApplyZonesButton /> */}
           <Button
             variant="success"
             className="me-2"
-            // onClick={() => {
-            //         dispatch(addDocText({textToDoc}));
-            //   console.log(selectedZone);
-            // }}
             onClick={handleApplyZone}
           >
             Apply
