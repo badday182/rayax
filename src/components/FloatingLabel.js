@@ -10,6 +10,8 @@ import {
   editNorma,
 } from "./redux/slices/zoneInfoSliseReducer";
 
+import { editLegenRusynok,edit0LegenRusynok } from "./redux/slices/ogkSliseReducer";
+
 import { zones } from "../data/zones";
 import { zonesWithOnly2Projection } from "../data/zonesWithOnly2Projection";
 import { zonesWithOnlyDirectProjection } from "../data/zonesWithOnlyDirectProjection";
@@ -18,8 +20,12 @@ import { ogkViews } from "../data/ogkViews";
 import { plechKulshSuglobViews } from "../data/plechovuyKulshovuySuglobViews";
 
 import { ogkNormaNenorma } from "../data/OGK_notNorma/ogkNormaNenorma";
+import { legenRysunok } from "../data/OGK_notNorma/legenRysunok";
+import {ogkNenormaItems} from "../data/OGK_notNorma/ogkNenormaItems"
 
 export function FormFloatingSelect({ items, label, onZoneSelect }) {
+      const firstItem = false
+
   // useEffect(()=>{
    
   // }, [])
@@ -68,17 +74,34 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
     }
     
     // -----------ОГК ---------
+    
+    // if (label === "Легеневий рисунок") {
+    //   firstItem = true
+    // }
     if (ogkNormaNenorma.includes(selectedZone)) {
       dispatch(editNorma(selectedZone));
+      // console.log(selectedZone);
+    }
+    if (legenRysunok.includes(selectedZone)) {
+      dispatch(editLegenRusynok(selectedZone));
       // console.log(selectedZone);
     }
     
 
   };
   const floatingId = uuidv4();
+
+  // ----------только после инициализации компонент диспатчит первый айтем из списка----
+  //   useEffect(()=>{
+  //     if (items[0] === "посиленний") {
+  //       dispatch(edit0LegenRusynok("посиленний"));
+  //     }
+  // }, [])
+
   return (
     <FloatingLabel className="mb-2" controlId={floatingId} label={label}>
       <Form.Select id={floatingId} onChange={handleZoneSelect}>
+        {ogkNenormaItems.includes(label) ? <option value="">--select an item--</option> : null}
         {itemGenerator()}
       </Form.Select>
     </FloatingLabel>

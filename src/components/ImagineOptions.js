@@ -81,7 +81,6 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
 
   return (
     <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary">
-      <Ogk />
 
       <FormFloatingSelect
         id="zone"
@@ -97,11 +96,13 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
         />
       ) : null}
       {selectedZone === "ОГК" ? (
-        <FormFloatingSelect
-          items={ogkViews}
-          onZoneSelect={setSelectedOgkViews}
-          label="Проєкія"
-        />
+                   <Ogk />
+
+        // <FormFloatingSelect
+        //   items={ogkViews}
+        //   onZoneSelect={setSelectedOgkViews}
+        //   label="Проєкія"
+        // />
       ) : null}
       {selectedZone === "Кульшовий суглоб" ||
       selectedZone === "Плечовий суглоб" ? (
@@ -111,26 +112,13 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
           label="Проєкія"
         />
       ) : null}
-      <FormFloatingSelect
+      {/* <FormFloatingSelect
         items={normaNenorma}
         onZoneSelect={setSelectednormaNenorma}
         label="Норма/Не норма"
-      />
-      {/* не норма */}
-      {selectedZone === "ОГК" && selectednormaNenorma === "Не норма" ? (
-        <div>
-          <FormFloatingSelect
-            items={legenRysunok}
-            onZoneSelect={setSelectedOgkViews}
-            label="Легеневий рисунок"
-          />
-          <FormFloatingSelect
-            items={koreni}
-            onZoneSelect={setSelectedOgkViews}
-            label="Корені"
-          />
-        </div>
-      ) : null}
+      /> */}
+
+
 
       <div className="d-flex justify-content-between zonesButtons">
         <div>

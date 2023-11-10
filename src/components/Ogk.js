@@ -6,10 +6,10 @@ import { ogkViews } from "../data/ogkViews";
 import { ogkNormaNenorma } from "../data/OGK_notNorma/ogkNormaNenorma";
 import { legenRysunok } from "../data/OGK_notNorma/legenRysunok";
 import { koreni } from "../data/OGK_notNorma/koreni";
-import {kupalaDiadragmy} from "../data/OGK_notNorma/kupalaDiadragmy"
-import {synusy} from "../data/OGK_notNorma/synusy"
-import {cor} from "../data/OGK_notNorma/cor"
-import {ogkZakliuchennia} from "../data/OGK_notNorma/ogkZakliuchennia"
+import { kupalaDiadragmy } from "../data/OGK_notNorma/kupalaDiadragmy";
+import { synusy } from "../data/OGK_notNorma/synusy";
+import { cor } from "../data/OGK_notNorma/cor";
+import { ogkZakliuchennia } from "../data/OGK_notNorma/ogkZakliuchennia";
 
 import Button from "react-bootstrap/Button";
 
@@ -17,17 +17,21 @@ export const Ogk = () => {
   const [selectedZone, setSelectedZone] = useState("ОГК");
 
   const [selectedOgkViews, setSelectedOgkViews] = useState("Оглядова");
-  useState("Пряма");
   const [selectednormaNenorma, setSelectednormaNenorma] = useState("Норма");
 
+  const [legenRysunokCounter, setlegenRysunokCounter] = useState([{}]);
+
+  const handleAddOption = () => {
+    setlegenRysunokCounter((prevCounter) => [...prevCounter, {}]);
+  };
   return (
-    <div>
-      <FormFloatingSelect
+    <div className="">
+      {/* <FormFloatingSelect
         id="zone"
         items={zones}
         onZoneSelect={setSelectedZone}
         label="Зона дослідження"
-      />
+      /> */}
       <FormFloatingSelect
         items={ogkViews}
         onZoneSelect={setSelectedOgkViews}
@@ -39,16 +43,23 @@ export const Ogk = () => {
         label="Норма/Не норма"
       />
       {selectedZone === "ОГК" && selectednormaNenorma === "Не норма" ? (
-        <div>
-          <div className="d-flex flex-row justify-content-between align-items-center addOption">
-            <FormFloatingSelect
-              items={legenRysunok}
-              onZoneSelect={setSelectedOgkViews}
-              label="Легеневий рисунок"
-            />
+        <div className="">
+          <div className="d-flex flex-row justify-content-between align-items-start addOption ">
+            <div className="">
+              <div>
+                {legenRysunokCounter.map((option) => (
+                  <FormFloatingSelect
+                    items={legenRysunok}
+                    onZoneSelect={setSelectedOgkViews}
+                    label="Легеневий рисунок"
+                  />
+                ))}
+              </div>
+            </div>
             <Button
               variant="primary"
-              className="d-flex flex-row mb-2 align-items-center"
+              className="d-flex flex-row ms-2 mt-2"
+              onClick={handleAddOption}
             >
               Add
             </Button>{" "}
@@ -61,7 +72,7 @@ export const Ogk = () => {
             />
             <Button
               variant="primary"
-              className="d-flex flex-row mb-2 align-items-center"
+              className="d-flex flex-row ms-2 mb-2 "
             >
               Add
             </Button>{" "}
@@ -74,7 +85,7 @@ export const Ogk = () => {
             />
             <Button
               variant="primary"
-              className="d-flex flex-row mb-2 align-items-center"
+              className="d-flex flex-row ms-2 mb-2 "
             >
               Add
             </Button>{" "}
@@ -87,7 +98,7 @@ export const Ogk = () => {
             />
             <Button
               variant="primary"
-              className="d-flex flex-row mb-2 align-items-center"
+              className="d-flex flex-row ms-2 mb-2"
             >
               Add
             </Button>{" "}
@@ -100,7 +111,7 @@ export const Ogk = () => {
             />
             <Button
               variant="primary"
-              className="d-flex flex-row mb-2 align-items-center"
+              className="d-flex flex-row ms-2 mb-2"
             >
               Add
             </Button>{" "}
@@ -113,7 +124,7 @@ export const Ogk = () => {
             />
             <Button
               variant="primary"
-              className="d-flex flex-row mb-2 align-items-center"
+              className="d-flex flex-row ms-2 mb-2 "
             >
               Add
             </Button>{" "}

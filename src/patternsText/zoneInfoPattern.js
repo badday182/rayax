@@ -9,6 +9,9 @@ export const ZoneInfoPattern = () => {
   const side = useSelector((state) => state.zoneInfo.side);
   const norma = useSelector((state) => state.zoneInfo.norma);
   
+// -----------ОГК-selectors---------------
+const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynok)
+
   let report
 
 useEffect(()=>{
@@ -18,7 +21,6 @@ useEffect(()=>{
   let mSv = "";
   let radiography = ''
  
-  // let report = ''
 
   const zoneMappings = {
     ППН: "0,12",
@@ -64,16 +66,23 @@ useEffect(()=>{
     mSv = zoneMappings[zone] || "____";
   }
 
-
-  if (zone === "ОГК" && norma === "") {
-    report = "Легені та серце без змін"  
-  }  
-  if (norma === "Легені та серце у межах вікових змін") {
-    report = norma    
-  }
+// --------------------ОГК-start---------------
+if (zone === "ОГК" && norma === "") {
+  report = "Легені та серце без змін"  
+}  
+if (norma === "Легені та серце у межах вікових змін") {
+  report = norma    
+}
   if (norma === "Загальна ОГК не норма") {
     report = ogkZagalnaNenorma    
   }
+  if (norma === "Не норма") {
+    report = legenRusynok    
+  }
+  
+  
+  // --------------------ОГК-end---------------
+
   return (
     <div>
       <table
