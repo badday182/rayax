@@ -1,26 +1,36 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import {ogkZagalnaNenorma} from "../data/OGK_notNorma/ogkZagalnaNenorma"
+import { ogkZagalnaNenorma } from "../data/OGK_notNorma/ogkZagalnaNenorma";
+import { zonesWithSides } from "../data/zonesWithSides";
 
 export const ZoneInfoPattern = () => {
   const zone = useSelector((state) => state.zoneInfo.zone);
   const proaction = useSelector((state) => state.zoneInfo.proaction);
   const side = useSelector((state) => state.zoneInfo.side);
   const norma = useSelector((state) => state.zoneInfo.norma);
-  
-// -----------ОГК-selectors---------------
-const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynok)
 
-  let report
+  // -----------ОГК-selectors---------------
+  // const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynok)
+  const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynokText);
+  const koreni = useSelector((state) => state.ogkInfo.koreniText);
+  const synusy = useSelector((state) => state.ogkInfo.synusyText);
+  const kupalaDiadragmy = useSelector(
+    (state) => state.ogkInfo.kupalaDiadragmyText
+  );
+  const cor = useSelector((state) => state.ogkInfo.corText);
+  const ogkZakliuchennia = useSelector(
+    (state) => state.ogkInfo.ogkZakliuchenniaText
+  );
 
-useEffect(()=>{
-  report = ''
-},[])
+  let report;
+
+  useEffect(() => {
+    report = "";
+  }, []);
 
   let mSv = "";
-  let radiography = ''
- 
+  let radiography = "";
 
   const zoneMappings = {
     ППН: "0,12",
@@ -44,17 +54,14 @@ useEffect(()=>{
 
   if (zone === "ОГК" && proaction === "Оглядова") {
     mSv = "0,25";
-    radiography = `${zone} ${proaction.toLowerCase()}`
-    
-  } else if (zone === "ОГК" && (proaction === "Пряма + права бічна")) {
+    radiography = `${zone} ${proaction.toLowerCase()}`;
+  } else if (zone === "ОГК" && proaction === "Пряма + права бічна") {
     mSv = "0,5";
-    radiography = `${zone} у прямій та правій бічній проекціях`
-    
+    radiography = `${zone} у прямій та правій бічній проекціях`;
   } else if (zone === "ОГК" && proaction === "Пряма + ліва бічна") {
     mSv = "0,5";
-    radiography = `${zone} у прямій та лівій бічній проекціях`
-  } else
-  if (zone === "Плечовий суглоб" && proaction === "В 2-х проєкціях") {
+    radiography = `${zone} у прямій та лівій бічній проекціях`;
+  } else if (zone === "Плечовий суглоб" && proaction === "В 2-х проєкціях") {
     mSv = "0,6";
   } else if (zone === "Плечовий суглоб" && proaction === "Пряма") {
     mSv = "0,3";
@@ -66,28 +73,36 @@ useEffect(()=>{
     mSv = zoneMappings[zone] || "____";
   }
 
-// --------------------ОГК-start---------------
-if (zone === "ОГК" && norma === "") {
-  report = "Легені та серце без змін"  
-}  
-if (norma === "Легені та серце у межах вікових змін") {
-  report = norma    
-}
+  // --------------------ОГК-start---------------
+  if (zone === "ОГК" && norma === "") {
+    report = "Легені та серце без змін";
+  }
+  if (norma === "Легені та серце у межах вікових змін") {
+    report = norma;
+  }
   if (norma === "Загальна ОГК не норма") {
-    report = ogkZagalnaNenorma    
+    report = ogkZagalnaNenorma;
   }
+  // if (norma === "Не норма") {
+  //   report = `Легеневий рисунок ${legenRusynok}. Корені ${koreni}. Синуси ${synusy}. Купала діафрагми ${kupalaDiadragmy}. Cor - ${cor}.<br />Заключення: ${ogkZakliuchennia}.`;
+  // }
   if (norma === "Не норма") {
-    report = legenRusynok    
+    report = (
+      <div>
+        Легеневий рисунок {legenRusynok}. Корені {koreni}. Синуси {synusy}.
+        Купала діафрагми {kupalaDiadragmy}. Cor - {cor}. <br />
+        Заключення: {ogkZakliuchennia}
+      </div>
+    );
   }
-  
-  
+
   // --------------------ОГК-end---------------
 
   return (
     <div>
       <table
         id={uuidv4()}
-        //   style="border-collapse: collapse; width: 100%; border-color:transparent"
+        // style="border-collapse: collapse; width: 100%; border-color:transparent"
         //   border="1"
       >
         <tbody>
@@ -97,23 +112,22 @@ if (norma === "Легені та серце у межах вікових змі�
            <td>ПIБ: {pacientInfostateName}</td>
            <td>{pacientInfostateBirthYear} р.н.</td>
          </tr> */}
-          <tr>
+          {/* <tr>
             <td>
               R-графiя: {zone}, {proaction}, {side}
             </td>
-            {/* <td>ЕЕД: {mSv} мЗв</td> */}
             <td>ЕЕД: {mSv} мЗв</td>
-          </tr>
+          </tr> */}
           <tr>
-            <td>
-              R-графiя: {radiography}
-            </td>
-            {/* <td>ЕЕД: {mSv} мЗв</td> */}
+            <td>R-графiя: {radiography}</td>
             <td>ЕЕД: {mSv} мЗв</td>
           </tr>
         </tbody>
       </table>
-      <p>{report}</p>
+        <br />
+      {/* <p>{report}</p> */}
+      {report}
+        <br />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import { v4 as uuidv4 } from "uuid";
@@ -10,7 +10,14 @@ import {
   editNorma,
 } from "./redux/slices/zoneInfoSliseReducer";
 
-import { editLegenRusynok,edit0LegenRusynok } from "./redux/slices/ogkSliseReducer";
+import {
+  editLegenRusynokArray,
+  editKoreniArray,
+  editSynusyArray,
+  editKupalaDiadragmyArray,
+  editCorArray,
+  editOgkZakliuchennia
+} from "./redux/slices/ogkSliseReducer";
 
 import { zones } from "../data/zones";
 import { zonesWithOnly2Projection } from "../data/zonesWithOnly2Projection";
@@ -21,15 +28,22 @@ import { plechKulshSuglobViews } from "../data/plechovuyKulshovuySuglobViews";
 
 import { ogkNormaNenorma } from "../data/OGK_notNorma/ogkNormaNenorma";
 import { legenRysunok } from "../data/OGK_notNorma/legenRysunok";
-import {ogkNenormaItems} from "../data/OGK_notNorma/ogkNenormaItems"
+import { koreni } from "../data/OGK_notNorma/koreni";
+import { synusy } from "../data/OGK_notNorma/synusy";
+import { kupalaDiadragmy } from "../data/OGK_notNorma/kupalaDiadragmy";
+import { cor } from "../data/OGK_notNorma/cor";
+import { ogkZakliuchennia } from "../data/OGK_notNorma/ogkZakliuchennia";
+
+import { ogkNenormaItems } from "../data/OGK_notNorma/ogkNenormaItems";
 
 export function FormFloatingSelect({ items, label, onZoneSelect }) {
-      const firstItem = false
-
-  // useEffect(()=>{
-   
-  // }, [])
+  const [floatingId, setFloatingId] = useState(uuidv4());
   const dispatch = useDispatch();
+
+  // const floatingId = uuidv4();
+  useEffect(() => {
+    setFloatingId(uuidv4());
+  }, []);
 
   const itemGenerator = () => {
     const fixedZone = (item) => {
@@ -37,7 +51,8 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
     };
 
     return items.map((item) => (
-      <option key={fixedZone(item)} value={fixedZone(item)}>
+      // <option key={fixedZone(item)} value={fixedZone(item)}>
+      <option key={`${fixedZone(item)}-${floatingId}`} value={fixedZone(item)}>
         {fixedZone(item)}
       </option>
     ));
@@ -59,7 +74,10 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
     if (selectedZone === "Ребра") {
       dispatch(editProaction("Коса"));
     }
-    if (selectedZone === "Плечовий суглоб" || selectedZone === "Кульшовий суглоб") {
+    if (
+      selectedZone === "Плечовий суглоб" ||
+      selectedZone === "Кульшовий суглоб"
+    ) {
       dispatch(editProaction("Пряма"));
     }
     if (ogkViews.includes(selectedZone)) {
@@ -72,9 +90,9 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
       dispatch(editProaction(selectedZone));
       // console.log(selectedZone);
     }
-    
+
     // -----------ОГК ---------
-    
+
     // if (label === "Легеневий рисунок") {
     //   firstItem = true
     // }
@@ -83,13 +101,26 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
       // console.log(selectedZone);
     }
     if (legenRysunok.includes(selectedZone)) {
-      dispatch(editLegenRusynok(selectedZone));
-      // console.log(selectedZone);
+      // dispatch(editLegenRusynokId({ floatingId }));
+      dispatch(editLegenRusynokArray({ floatingId, selectedZone }));
+      // console.log(`selectedZone: ${selectedZone}, id: ${floatingId}`);
     }
-    
-
+    if (koreni.includes(selectedZone)) {
+      dispatch(editKoreniArray({ floatingId, selectedZone }));
+    }
+    if (synusy.includes(selectedZone)) {
+      dispatch(editSynusyArray({ floatingId, selectedZone }));
+    }
+    if (kupalaDiadragmy.includes(selectedZone)) {
+      dispatch(editKupalaDiadragmyArray({ floatingId, selectedZone }));
+    }
+    if (cor.includes(selectedZone)) {
+      dispatch(editCorArray({ floatingId, selectedZone }));
+    }
+    if (ogkZakliuchennia.includes(selectedZone)) {
+      dispatch(editOgkZakliuchennia({ floatingId, selectedZone }));
+    }
   };
-  const floatingId = uuidv4();
 
   // ----------только после инициализации компонент диспатчит первый айтем из списка----
   //   useEffect(()=>{
@@ -101,7 +132,9 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
   return (
     <FloatingLabel className="mb-2" controlId={floatingId} label={label}>
       <Form.Select id={floatingId} onChange={handleZoneSelect}>
-        {ogkNenormaItems.includes(label) ? <option value="">--select an item--</option> : null}
+        {ogkNenormaItems.includes(label) ? (
+          <option value="">--select an item--</option>
+        ) : null}
         {itemGenerator()}
       </Form.Select>
     </FloatingLabel>

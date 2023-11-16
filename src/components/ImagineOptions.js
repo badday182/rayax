@@ -7,10 +7,6 @@ import { zonesWithSides } from "../data/zonesWithSides";
 import { sides } from "../data/sides";
 import { ogkViews } from "../data/ogkViews";
 import { plechKulshSuglobViews } from "../data/plechovuyKulshovuySuglobViews";
-import { normaNenorma } from "../data/normaNenorma";
-import { legenRysunok } from "../data/OGK_notNorma/legenRysunok";
-import { koreni } from "../data/OGK_notNorma/koreni";
-
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
 import {
@@ -19,6 +15,15 @@ import {
   editSide,
   editNorma,
 } from "./redux/slices/zoneInfoSliseReducer";
+import {
+  resetLegenRusynokArray,
+  resetKoreniArray,
+  resetSynusyArray,
+  resetKupalaDiadragmyArray,
+  resetCorArray,
+  resetOgkZakliuchennia,
+} from "./redux/slices/ogkSliseReducer";
+
 import { addDocText } from "./redux/slices/documentSliseReducer";
 
 import { renderToString } from "react-dom/server";
@@ -26,7 +31,7 @@ import { ZoneInfoPattern } from "../patternsText/zoneInfoPattern";
 
 import { Ogk } from "./Ogk";
 
-export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
+export const ImagineOptions = ({ id }) => {
   const [selectedZone, setSelectedZone] = useState("ОГК");
 
   const [selectedSide, setSelectedSide] = useState("Справа");
@@ -73,15 +78,20 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
   const handleApplyZone = () => {
     //Добавляем данные в текстовый редактор
     dispatch(addDocText({ textToDoc }));
-    // Обновляем данные редактор
+    // Сбрасываем данные в стейтах
     dispatch(editZone("ОГК"));
     dispatch(editProaction("Оглядова"));
     dispatch(editSide("Справа"));
+    dispatch(resetLegenRusynokArray());
+    dispatch(resetKoreniArray());
+    dispatch(resetSynusyArray());
+    dispatch(resetKupalaDiadragmyArray());
+    dispatch(resetCorArray());
+    dispatch(resetOgkZakliuchennia());
   };
 
   return (
     <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary">
-
       <FormFloatingSelect
         id="zone"
         items={zones}
@@ -96,14 +106,13 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
         />
       ) : null}
       {selectedZone === "ОГК" ? (
-                   <Ogk />
-
-        // <FormFloatingSelect
-        //   items={ogkViews}
-        //   onZoneSelect={setSelectedOgkViews}
-        //   label="Проєкія"
-        // />
-      ) : null}
+        <Ogk />
+      ) : // <FormFloatingSelect
+      //   items={ogkViews}
+      //   onZoneSelect={setSelectedOgkViews}
+      //   label="Проєкія"
+      // />
+      null}
       {selectedZone === "Кульшовий суглоб" ||
       selectedZone === "Плечовий суглоб" ? (
         <FormFloatingSelect
@@ -117,8 +126,6 @@ export const ImagineOptions = ({ onDelete, id, onAddOptions }) => {
         onZoneSelect={setSelectednormaNenorma}
         label="Норма/Не норма"
       /> */}
-
-
 
       <div className="d-flex justify-content-between zonesButtons">
         <div>
