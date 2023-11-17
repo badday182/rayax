@@ -16,7 +16,7 @@ import {
   editSynusyArray,
   editKupalaDiadragmyArray,
   editCorArray,
-  editOgkZakliuchennia
+  editOgkZakliuchenniaArray
 } from "./redux/slices/ogkSliseReducer";
 
 import { zones } from "../data/zones";
@@ -91,7 +91,7 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
       // console.log(selectedZone);
     }
 
-    // -----------ОГК ---------
+    // -----------ОГК start---------
 
     // if (label === "Легеневий рисунок") {
     //   firstItem = true
@@ -118,9 +118,11 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
       dispatch(editCorArray({ floatingId, selectedZone }));
     }
     if (ogkZakliuchennia.includes(selectedZone)) {
-      dispatch(editOgkZakliuchennia({ floatingId, selectedZone }));
+      dispatch(editOgkZakliuchenniaArray({ floatingId, selectedZone }));
     }
   };
+    // -----------ОГК end---------
+
 
   // ----------только после инициализации компонент диспатчит первый айтем из списка----
   //   useEffect(()=>{

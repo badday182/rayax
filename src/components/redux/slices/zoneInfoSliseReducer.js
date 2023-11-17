@@ -20,20 +20,32 @@ export const zoneInfoSliseReducer = createSlice({
         // console.log(action.payload)
         // console.log(action)
       },
+        resetZone: (state) => {
+        state.zone = "ОГК"          
+      },
       editProaction: (state, action) => {
         state.proaction = action.payload          
         // console.log(action.payload)
       },
+      resetProaction: (state) => {
+        state.proaction = "Оглядова"          
+      },
         editSide: (state, action) => {
         state.side = action.payload
+      },
+      resetSide: (state) => {
+        state.side = "Справа"
       },
         editNorma: (state, action) => {
         state.norma = action.payload
       },
+      resetNorma: (state) => {
+        state.norma = ""
+      },
     },
   });
   
-  export const { editZone,editProaction,editSide,editNorma } = zoneInfoSliseReducer.actions;
+  export const { editZone,editProaction,editSide,editNorma,resetZone,resetNorma,resetSide,resetProaction } = zoneInfoSliseReducer.actions;
   
   export default zoneInfoSliseReducer.reducer;
   

@@ -2,17 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   // Для корректного обновления использовать useEffect с dispatch в ImagineOptions
-  legenRusynokText: '',
+  legenRusynokText: "",
   legenRusynokArray: [],
-  koreniText: '',
+  koreniText: "",
   koreniArray: [],
-  synusyText: '',
+  synusyText: "",
   synusyArray: [],
-  kupalaDiadragmyText: '',
+  kupalaDiadragmyText: "",
   kupalaDiadragmyArray: [],
-  corText: '',
+  corText: "",
   corArray: [],
-  ogkZakliuchenniaText: '',
+  ogkZakliuchenniaText: "",
   ogkZakliuchenniaArray: [],
 };
 
@@ -22,7 +22,7 @@ export const ogkSliseReducer = createSlice({
   reducers: {
     editLegenRusynokArray: (state, action) => {
       // state.documentText = [...state.documentText, action.payload];
-      const {floatingId,selectedZone} = action.payload;
+      const { floatingId, selectedZone } = action.payload;
 
       // if (state.legenRusynokArray === "") {
       //   // state.legenRusynokArray = action.payload;
@@ -37,33 +37,34 @@ export const ogkSliseReducer = createSlice({
       // Проверяем, есть ли в legenRusynokArray подмассив с первым элементом равным floatingId
       const index0 = state.legenRusynokArray.findIndex(
         (item) => item[0] === floatingId
-        );
+      );
       // Проверяем, есть ли в legenRusynokArray подмассив со вторым элементом равным selectedZone
       // const index1 = state.legenRusynokArray.findIndex(
       //   (item) => item[1] === selectedZone
       //   );
-        // console.log(index);
+      // console.log(index);
 
       // Если есть, подмассив с первым элементом равным floatingId то изменяем значение второго элемента подмассива на selectedZone
       if (index0 !== -1) {
         state.legenRusynokArray[index0][1] = selectedZone;
       } else {
-        
-    //     if (index1 === 0) {
-    //   console.log(selectedZone);
+        //     if (index1 === 0) {
+        //   console.log(selectedZone);
 
-    // }
-    state.legenRusynokArray.push([floatingId, selectedZone]);
+        // }
+        state.legenRusynokArray.push([floatingId, selectedZone]);
         // Если нет, то добавляем новый подмассив с парой [floatingId, selectedZone]
-      };
-      
-              state.legenRusynokText = state.legenRusynokArray.map((item) => item[1]).join(", ");
+      }
+
+      state.legenRusynokText = state.legenRusynokArray
+        .map((item) => item[1])
+        .join(", ");
 
       // state.legenRusynokArray.push([floatingId, selectedZone]);
       // state.legenRusynokArray.push([floatingId + 2, selectedZone + 2]);
       // state.legenRusynokArray.push({ floatingId, selectedZone });
       // state.legenRusynokArray = [...state.legenRusynokArray, [floatingId, selectedZone]];
-      
+
       // console.log(state.legenRusynokArray);
       // console.log(selectedZone);
       // console.log(state.legenRusynokArray);
@@ -73,91 +74,136 @@ export const ogkSliseReducer = createSlice({
       // console.log(state.legenRusynokArray[1][1]);
     },
     resetLegenRusynokArray: (state) => {
-      state.legenRusynokArray = []
+      state.legenRusynokArray = [];
+      // state.legenRusynokText = ''
     },
     editKoreniArray: (state, action) => {
-      const {floatingId,selectedZone} = action.payload;
+      const { floatingId, selectedZone } = action.payload;
       const index0 = state.koreniArray.findIndex(
         (item) => item[0] === floatingId
-        );
+      );
       if (index0 !== -1) {
         state.koreniArray[index0][1] = selectedZone;
       } else {
-    state.koreniArray.push([floatingId, selectedZone]);
-      };   
+        state.koreniArray.push([floatingId, selectedZone]);
+      }
       state.koreniText = state.koreniArray.map((item) => item[1]).join(", ");
-      },
+    },
     resetKoreniArray: (state) => {
-      state.koreniArray = []
+      state.koreniArray = [];
     },
     editSynusyArray: (state, action) => {
-      const {floatingId,selectedZone} = action.payload;
+      const { floatingId, selectedZone } = action.payload;
       const index0 = state.synusyArray.findIndex(
         (item) => item[0] === floatingId
-        );
+      );
       if (index0 !== -1) {
         state.synusyArray[index0][1] = selectedZone;
       } else {
-    state.synusyArray.push([floatingId, selectedZone]);
-      };   
+        state.synusyArray.push([floatingId, selectedZone]);
+      }
       state.synusyText = state.synusyArray.map((item) => item[1]).join(", ");
-      },
+    },
     resetSynusyArray: (state) => {
-      state.synusyArray = []
+      state.synusyArray = [];
     },
     editKupalaDiadragmyArray: (state, action) => {
-      const {floatingId,selectedZone} = action.payload;
+      const { floatingId, selectedZone } = action.payload;
       const index0 = state.kupalaDiadragmyArray.findIndex(
         (item) => item[0] === floatingId
-        );
+      );
       if (index0 !== -1) {
         state.kupalaDiadragmyArray[index0][1] = selectedZone;
       } else {
-    state.kupalaDiadragmyArray.push([floatingId, selectedZone]);
-      };   
-      state.kupalaDiadragmyText = state.kupalaDiadragmyArray.map((item) => item[1]).join(", ");
-      },
+        state.kupalaDiadragmyArray.push([floatingId, selectedZone]);
+      }
+      state.kupalaDiadragmyText = state.kupalaDiadragmyArray
+        .map((item) => item[1])
+        .join(", ");
+    },
     resetKupalaDiadragmyArray: (state) => {
-      state.kupalaDiadragmyArray = []
+      state.kupalaDiadragmyArray = [];
     },
     editCorArray: (state, action) => {
-      const {floatingId,selectedZone} = action.payload;
-      const index0 = state.corArray.findIndex(
-        (item) => item[0] === floatingId
-        );
+      const { floatingId, selectedZone } = action.payload;
+      const index0 = state.corArray.findIndex((item) => item[0] === floatingId);
       if (index0 !== -1) {
         state.corArray[index0][1] = selectedZone;
       } else {
-    state.corArray.push([floatingId, selectedZone]);
-      };   
+        state.corArray.push([floatingId, selectedZone]);
+      }
       state.corText = state.corArray.map((item) => item[1]).join(", ");
       if (state.corText.includes(", ;")) {
         // Заменяем ", ;" на ";"
         state.corText = state.corText.replace(", ;", ";");
       }
-      },
-    resetCorArray: (state) => {
-      state.corArray = []
+      // Если в state.corText есть текст "; склероз дуги аорти" и он не в конце строки
+      const searchText = "; склероз дуги аорти";
+      if (
+        state.corText.includes(searchText) &&
+        !state.corText.endsWith(searchText)
+      ) {
+        // Убираем текст из текущего положения
+        state.corText = state.corText.replace(searchText, "");
+        // Добавляем в конец
+        state.corText = state.corText + searchText;
+      }
+      // Удаляем ", " в начале строки, если есть
+      if (state.corText.startsWith(", ")) {
+        state.corText = state.corText.slice(2);
+      }
     },
-    editOgkZakliuchennia: (state, action) => {
-      const {floatingId,selectedZone} = action.payload;
+    resetCorArray: (state) => {
+      state.corArray = [];
+    },
+    editOgkZakliuchenniaArray: (state, action) => {
+      const { floatingId, selectedZone } = action.payload;
       const index0 = state.ogkZakliuchenniaArray.findIndex(
         (item) => item[0] === floatingId
-        );
+      );
       if (index0 !== -1) {
         state.ogkZakliuchenniaArray[index0][1] = selectedZone;
       } else {
-    state.ogkZakliuchenniaArray.push([floatingId, selectedZone]);
-      };   
-      state.ogkZakliuchenniaText = state.ogkZakliuchenniaArray.map((item) => item[1]).join(". ");
-      },
-    resetOgkZakliuchennia: (state) => {
-      state.ogkZakliuchenniaArray = []
+        state.ogkZakliuchenniaArray.push([floatingId, selectedZone]);
+      }
+      state.ogkZakliuchenniaText = state.ogkZakliuchenniaArray
+        .map((item) => item[1])
+        .join(". ");
     },
-
+    resetOgkZakliuchenniaArray: (state) => {
+      state.ogkZakliuchenniaArray = [];
+    },
+    resetogkSliseReducer: (state) => {
+      state.legenRusynokText = "";
+      state.legenRusynokArray = [];
+      state.koreniText = "";
+      state.koreniArray = [];
+      state.synusyText = "";
+      state.synusyArray = [];
+      state.kupalaDiadragmyText = "";
+      state.kupalaDiadragmyArray = [];
+      state.corText = "";
+      state.corArray = [];
+      state.ogkZakliuchenniaText = "";
+      state.ogkZakliuchenniaArray = [];
+    },
   },
 });
 
-export const { editLegenRusynokArray, resetLegenRusynokArray, editKoreniArray, resetKoreniArray, editSynusyArray, resetSynusyArray, editKupalaDiadragmyArray, resetKupalaDiadragmyArray, editCorArray, resetCorArray, editOgkZakliuchennia, resetOgkZakliuchennia  } = ogkSliseReducer.actions;
+export const {
+  editLegenRusynokArray,
+  resetLegenRusynokArray,
+  editKoreniArray,
+  resetKoreniArray,
+  editSynusyArray,
+  resetSynusyArray,
+  editKupalaDiadragmyArray,
+  resetKupalaDiadragmyArray,
+  editCorArray,
+  resetCorArray,
+  editOgkZakliuchenniaArray,
+  resetOgkZakliuchenniaArray,
+  resetogkSliseReducer,
+} = ogkSliseReducer.actions;
 
 export default ogkSliseReducer.reducer;

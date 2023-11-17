@@ -10,6 +10,9 @@ export const ZoneInfoPattern = () => {
   const side = useSelector((state) => state.zoneInfo.side);
   const norma = useSelector((state) => state.zoneInfo.norma);
 
+  // const resetZoneInfoPattern = useSelector(
+  //   (state) => state.resetZoneInfoPattern.reseter  );
+
   // -----------ОГК-selectors---------------
   // const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynok)
   const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynokText);
@@ -23,14 +26,19 @@ export const ZoneInfoPattern = () => {
     (state) => state.ogkInfo.ogkZakliuchenniaText
   );
 
-  let report;
-
-  useEffect(() => {
-    report = "";
-  }, []);
-
+  // let report;
+  // let mSv;
+  // let radiography;
+  let report = "";
   let mSv = "";
   let radiography = "";
+
+  // useEffect(() => {
+  //   report = "";
+  //   mSv = "";
+  //   radiography = "";
+  // }, []);
+  // }, [resetZoneInfoPattern]);
 
   const zoneMappings = {
     ППН: "0,12",
@@ -91,7 +99,7 @@ export const ZoneInfoPattern = () => {
       <div>
         Легеневий рисунок {legenRusynok}. Корені {koreni}. Синуси {synusy}.
         Купала діафрагми {kupalaDiadragmy}. Cor - {cor}. <br />
-        Заключення: {ogkZakliuchennia}
+        Заключення: {ogkZakliuchennia}.
       </div>
     );
   }
@@ -106,28 +114,16 @@ export const ZoneInfoPattern = () => {
         //   border="1"
       >
         <tbody>
-          {/* <tr>
-           <td>Дата: {pacientInfostateDate}</td>
-           <td>№: {pacientInfostateNumberExam}</td>
-           <td>ПIБ: {pacientInfostateName}</td>
-           <td>{pacientInfostateBirthYear} р.н.</td>
-         </tr> */}
-          {/* <tr>
-            <td>
-              R-графiя: {zone}, {proaction}, {side}
-            </td>
-            <td>ЕЕД: {mSv} мЗв</td>
-          </tr> */}
           <tr>
             <td>R-графiя: {radiography}</td>
             <td>ЕЕД: {mSv} мЗв</td>
           </tr>
         </tbody>
       </table>
-        <br />
+      <br />
       {/* <p>{report}</p> */}
       {report}
-        <br />
+      <br />
     </div>
   );
 };

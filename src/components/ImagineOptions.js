@@ -21,8 +21,11 @@ import {
   resetSynusyArray,
   resetKupalaDiadragmyArray,
   resetCorArray,
-  resetOgkZakliuchennia,
+  resetOgkZakliuchenniaArray,
+  resetogkSliseReducer,
 } from "./redux/slices/ogkSliseReducer";
+
+import { resetZone, resetSide, resetProaction, resetNorma } from "./redux/slices/zoneInfoSliseReducer";
 
 import { addDocText } from "./redux/slices/documentSliseReducer";
 
@@ -78,17 +81,33 @@ export const ImagineOptions = ({ id }) => {
   const handleApplyZone = () => {
     //Добавляем данные в текстовый редактор
     dispatch(addDocText({ textToDoc }));
-    // Сбрасываем данные в стейтах
-    dispatch(editZone("ОГК"));
-    dispatch(editProaction("Оглядова"));
-    dispatch(editSide("Справа"));
-    dispatch(resetLegenRusynokArray());
-    dispatch(resetKoreniArray());
-    dispatch(resetSynusyArray());
-    dispatch(resetKupalaDiadragmyArray());
-    dispatch(resetCorArray());
-    dispatch(resetOgkZakliuchennia());
-  };
+    // Сбрасываем данные в стейтах    
+
+      dispatch(editZone("ОГК"));
+      dispatch(editProaction("Оглядова"));
+      dispatch(editSide("Справа"));
+
+
+      dispatch(resetogkSliseReducer());
+      
+      // dispatch(resetLegenRusynokArray());
+      // dispatch(resetKoreniArray());
+      // dispatch(resetSynusyArray());
+      // dispatch(resetKupalaDiadragmyArray());
+      // dispatch(resetCorArray());
+      // dispatch(resetOgkZakliuchenniaArray());
+      // dispatch(resetZone());
+      // dispatch(resetProaction());
+      // dispatch(resetSide());
+      // dispatch(resetNorma());    
+      
+      // dispatch(resetLegenRusynokText());
+      // dispatch(resetKoreniText());
+      // dispatch(resetSynusyArray());
+      // dispatch(resetKupalaDiadragmyText());
+      // dispatch(resetCorText());
+      // dispatch(resetOgkZakliuchennia());
+    };
 
   return (
     <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary">
