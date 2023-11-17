@@ -16,8 +16,9 @@ import {
   editSynusyArray,
   editKupalaDiadragmyArray,
   editCorArray,
-  editOgkZakliuchenniaArray
+  editOgkZakliuchenniaArray,
 } from "./redux/slices/ogkSliseReducer";
+import {editCherepNormaNenorma} from "./redux/slices/cherepSliseReducer"
 
 import { zones } from "../data/zones";
 import { zonesWithOnly2Projection } from "../data/zonesWithOnly2Projection";
@@ -33,6 +34,8 @@ import { synusy } from "../data/OGK_notNorma/synusy";
 import { kupalaDiadragmy } from "../data/OGK_notNorma/kupalaDiadragmy";
 import { cor } from "../data/OGK_notNorma/cor";
 import { ogkZakliuchennia } from "../data/OGK_notNorma/ogkZakliuchennia";
+
+import { cherepViews } from "../data/Cherep/cherepViews";
 
 import { ogkNenormaItems } from "../data/OGK_notNorma/ogkNenormaItems";
 
@@ -120,9 +123,13 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
     if (ogkZakliuchennia.includes(selectedZone)) {
       dispatch(editOgkZakliuchenniaArray({ floatingId, selectedZone }));
     }
-  };
     // -----------ОГК end---------
-
+    // -----------Череп start---------
+    if (cherepViews.includes(selectedZone)) {
+      dispatch(editCherepNormaNenorma({ selectedZone }));
+    }
+    // -----------Череп end---------
+  };
 
   // ----------только после инициализации компонент диспатчит первый айтем из списка----
   //   useEffect(()=>{

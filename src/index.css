@@ -48,6 +48,7 @@ code {
 
 }
 .pacientStore {
+  max-width: 500px;
   background-color: rgb(236, 236, 236);
   /* background-color: rgb(211, 242, 255); */
   display: flex;

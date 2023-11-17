@@ -52,7 +52,8 @@ export const Ogk = () => {
     <div className="">
       <FormFloatingSelect items={ogkViews} onZoneSelect={setSelectedOgkViews} label="Проєкія" />
       <FormFloatingSelect items={ogkNormaNenorma} onZoneSelect={setSelectednormaNenorma} label="Норма/Не норма" />
-      {selectedZone === "ОГК" && selectednormaNenorma === "Не норма" ? (
+      {/* {selectedZone === "ОГК" && selectednormaNenorma === "Не норма" ? ( */}
+      {selectednormaNenorma === "Не норма" ? (
         <div className=" ">
           <AddOptionBlock
             items={legenRysunok}

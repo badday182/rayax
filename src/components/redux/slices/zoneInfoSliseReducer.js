@@ -42,10 +42,16 @@ export const zoneInfoSliseReducer = createSlice({
       resetNorma: (state) => {
         state.norma = ""
       },
+      resetZoneInfoSliseReducer: (state) => {
+        state.zone = "ОГК" 
+        state.proaction = "Оглядова"
+        state.side = "Справа"
+        state.norma = ""
+      },
     },
   });
   
-  export const { editZone,editProaction,editSide,editNorma,resetZone,resetNorma,resetSide,resetProaction } = zoneInfoSliseReducer.actions;
+  export const { editZone,editProaction,editSide,editNorma,resetZone,resetNorma,resetSide,resetProaction, resetZoneInfoSliseReducer } = zoneInfoSliseReducer.actions;
   
   export default zoneInfoSliseReducer.reducer;
   

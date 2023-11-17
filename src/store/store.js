@@ -4,7 +4,7 @@ import documentSliseReducer from "../components/redux/slices/documentSliseReduce
 import pacientInfoSliseReducer from "../components/redux/slices/pacientInfoSliseReducer";
 import zoneInfoSliseReducer from "../components/redux/slices/zoneInfoSliseReducer";
 import ogkSliseReducer from "../components/redux/slices/ogkSliseReducer";
-import resetZoneInfoPatternReducer from "../components/redux/slices/resetZoneInfoPatternReducer";
+import cherepSliseReducer from "../components/redux/slices/cherepSliseReducer";
 
 const store = configureStore({
     reducer: {
@@ -13,7 +13,7 @@ const store = configureStore({
         pacientInfo: pacientInfoSliseReducer,
         zoneInfo: zoneInfoSliseReducer,
         ogkInfo: ogkSliseReducer,
-        resetZoneInfoPattern: resetZoneInfoPatternReducer,
+        cherepInfo: cherepSliseReducer,
     }
 })
 

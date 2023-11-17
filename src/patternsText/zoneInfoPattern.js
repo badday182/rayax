@@ -3,6 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { ogkZagalnaNenorma } from "../data/OGK_notNorma/ogkZagalnaNenorma";
 import { zonesWithSides } from "../data/zonesWithSides";
+import { zonesWithOnly2Projection } from "../data/zonesWithOnly2Projection";
+import { zonesWithOnlyDirectProjection } from "../data/zonesWithOnlyDirectProjection";
+
+import { cherepViews } from "../data/Cherep/cherepViews";
 
 export const ZoneInfoPattern = () => {
   const zone = useSelector((state) => state.zoneInfo.zone);
@@ -13,7 +17,7 @@ export const ZoneInfoPattern = () => {
   // const resetZoneInfoPattern = useSelector(
   //   (state) => state.resetZoneInfoPattern.reseter  );
 
-  // -----------ОГК-selectors---------------
+  // -----------ОГК-selectors-start--------------
   // const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynok)
   const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynokText);
   const koreni = useSelector((state) => state.ogkInfo.koreniText);
@@ -25,6 +29,12 @@ export const ZoneInfoPattern = () => {
   const ogkZakliuchennia = useSelector(
     (state) => state.ogkInfo.ogkZakliuchenniaText
   );
+  // -----------ОГК-selectors-end--------------
+
+  // -----------Череп-selectors-start--------------
+  const cherepNormaNenorma = useSelector((state) => state.cherepInfo.cherepNormaNenorma);
+
+  // -----------Череп-selectors-end--------------
 
   // let report;
   // let mSv;
@@ -59,7 +69,7 @@ export const ZoneInfoPattern = () => {
     "Кісток тазу": "0,9",
     Ребра: "0,5",
   };
-
+  // --------------------set-mSv-start---------------
   if (zone === "ОГК" && proaction === "Оглядова") {
     mSv = "0,25";
     radiography = `${zone} ${proaction.toLowerCase()}`;
@@ -80,9 +90,24 @@ export const ZoneInfoPattern = () => {
   } else {
     mSv = zoneMappings[zone] || "____";
   }
+  // --------------------set-mSv-end---------------
+
+  // --------------------set-R-графiя-start---------------
+  if (
+    zonesWithOnly2Projection.includes(zone) &&
+    proaction === "В 2-х проєкціях"
+  ) {
+    radiography = `${zone} в 2-х проєкціях`;
+  } else if (
+    zonesWithOnlyDirectProjection.includes(zone) &&
+    proaction === "Пряма"
+  ) {
+    radiography = `${zone} в прямій проєкції`;
+  }
+  // --------------------set-R-графiя-end---------------
 
   // --------------------ОГК-start---------------
-  if (zone === "ОГК" && norma === "") {
+  else if (zone === "ОГК" && norma === "") {
     report = "Легені та серце без змін";
   }
   if (norma === "Легені та серце у межах вікових змін") {
@@ -105,6 +130,26 @@ export const ZoneInfoPattern = () => {
   }
 
   // --------------------ОГК-end---------------
+  // --------------------Череп-start---------------
+  // if (zone === "Череп" && cherepNormaNenorma === "") {
+  //   report = "Грубих кістково-травматичних змін не визначаються";
+  // }
+  if (zone === "Череп"){
+    if (cherepNormaNenorma === "")
+    {report = `${cherepViews[0]}.`} else 
+    {report = cherepNormaNenorma}
+    // if (cherepNormaNenorma === cherepViews[1])
+    // {report = `${cherepViews[1]}.`} 
+    // if (cherepNormaNenorma === cherepViews[2])
+    // {report = `${cherepViews[2]}.`} 
+    // if (cherepNormaNenorma === cherepViews[3])
+    // {report = `${cherepViews[3]}.`} 
+    // if (cherepNormaNenorma === cherepViews[4])
+    // {report = `${cherepViews[4]}.`} 
+    // if (cherepNormaNenorma === cherepViews[5])
+    // {report = `${cherepViews[5]}.`} 
+     }
+  // --------------------Череп-end---------------
 
   return (
     <div>
