@@ -19,6 +19,7 @@ import {
   editOgkZakliuchenniaArray,
 } from "./redux/slices/ogkSliseReducer";
 import { editCherepNormaNenormaArray } from "./redux/slices/cherepSliseReducer";
+import { editPpnNormaNenormaArray } from "./redux/slices/ppnSliseReducer";
 
 import { zones } from "../data/zones";
 import { zonesWithOnly2Projection } from "../data/zonesWithOnly2Projection";
@@ -38,6 +39,7 @@ import { ogkZakliuchennia } from "../data/OGK_notNorma/ogkZakliuchennia";
 import { cherepViews } from "../data/Cherep/cherepViews";
 
 import { ogkNenormaItems } from "../data/OGK_notNorma/ogkNenormaItems";
+import { ppnViews } from "../data/PPN/ppnViews";
 
 export function FormFloatingSelect({ items, label, onZoneSelect }) {
   const [floatingId, setFloatingId] = useState(uuidv4());
@@ -125,11 +127,21 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
       dispatch(editOgkZakliuchenniaArray({ floatingId, selectedZone }));
     }
     // -----------ОГК end---------
+
     // -----------Череп start---------
     if (cherepViews.includes(selectedZone)) {
       dispatch(editCherepNormaNenormaArray({ floatingId, selectedZone }));
     }
     // -----------Череп end---------
+    
+    // -----------ППН start---------
+    if (ppnViews.includes(selectedZone)) {
+      dispatch(editPpnNormaNenormaArray({ floatingId, selectedZone }));
+            // console.log(`selectedZone: ${selectedZone}, id: ${floatingId}`);
+
+    }
+    // -----------ППН end---------
+
   };
 
   // ----------только после инициализации компонент диспатчит первый айтем из списка----
@@ -144,12 +156,16 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
       <Form.Select id={floatingId} onChange={handleZoneSelect}>
         {/* ---------------если выбрано что-то из ненормы ОГК-------------- */}
         {ogkNenormaItems.includes(label) ? (
-          <option value="">--select an item--</option>
+          <option value="">--select an option--</option>
         ) : null}
 
         {/* --если выбран Череп (все пришедшие айтемы = айтемам черепа)--- */}
         {items === cherepViews ? (
-          <option value="">--select an item--</option>
+          <option value="">--select an option--</option>
+        ) : null}
+        {/* --если выбран ППН (все пришедшие айтемы = айтемам черепа)--- */}
+        {items === ppnViews ? (
+          <option value="">--select an option--</option>
         ) : null}
 
         {itemGenerator()}
