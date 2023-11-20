@@ -107,22 +107,15 @@ export const ImagineOptions = ({ id }) => {
           label="Сторона"
         />
       ) : null}
-      {selectedZone === "ОГК" ? (
-        <Ogk />
-      ) : // <FormFloatingSelect
+      {selectedZone === "ОГК" ? ( <Ogk /> ) : 
+      // <FormFloatingSelect
       //   items={ogkViews}
       //   onZoneSelect={setSelectedOgkViews}
       //   label="Проєкія"
       // />
       null}
-      {selectedZone === "Череп" ? (
-        <Cherep />
-      ) : // <FormFloatingSelect
-      //   items={ogkViews}
-      //   onZoneSelect={setSelectedOgkViews}
-      //   label="Проєкія"
-      // />
-      null}
+      {selectedZone === "Череп" ? (<Cherep />) : null}
+      
       {selectedZone === "Кульшовий суглоб" ||
       selectedZone === "Плечовий суглоб" ? (
         <FormFloatingSelect

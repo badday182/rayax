@@ -18,7 +18,7 @@ import {
   editCorArray,
   editOgkZakliuchenniaArray,
 } from "./redux/slices/ogkSliseReducer";
-import {editCherepNormaNenorma} from "./redux/slices/cherepSliseReducer"
+import { editCherepNormaNenormaArray } from "./redux/slices/cherepSliseReducer";
 
 import { zones } from "../data/zones";
 import { zonesWithOnly2Projection } from "../data/zonesWithOnly2Projection";
@@ -63,6 +63,7 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
 
   const handleZoneSelect = (event) => {
     const selectedZone = event.target.value;
+    // console.log(selectedZone);
     onZoneSelect(selectedZone);
     if (zones.includes(selectedZone)) {
       // console.log(selectedZone);
@@ -126,7 +127,7 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
     // -----------ОГК end---------
     // -----------Череп start---------
     if (cherepViews.includes(selectedZone)) {
-      dispatch(editCherepNormaNenorma({ selectedZone }));
+      dispatch(editCherepNormaNenormaArray({ floatingId, selectedZone }));
     }
     // -----------Череп end---------
   };
@@ -141,9 +142,16 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
   return (
     <FloatingLabel className="mb-2" controlId={floatingId} label={label}>
       <Form.Select id={floatingId} onChange={handleZoneSelect}>
+        {/* ---------------если выбрано что-то из ненормы ОГК-------------- */}
         {ogkNenormaItems.includes(label) ? (
           <option value="">--select an item--</option>
         ) : null}
+
+        {/* --если выбран Череп (все пришедшие айтемы = айтемам черепа)--- */}
+        {items === cherepViews ? (
+          <option value="">--select an item--</option>
+        ) : null}
+
         {itemGenerator()}
       </Form.Select>
     </FloatingLabel>

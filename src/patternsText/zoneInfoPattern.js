@@ -32,7 +32,7 @@ export const ZoneInfoPattern = () => {
   // -----------ОГК-selectors-end--------------
 
   // -----------Череп-selectors-start--------------
-  const cherepNormaNenorma = useSelector((state) => state.cherepInfo.cherepNormaNenorma);
+  const cherepNormaNenorma = useSelector((state) => state.cherepInfo.cherepNormaNenormaText);
 
   // -----------Череп-selectors-end--------------
 
@@ -137,7 +137,7 @@ export const ZoneInfoPattern = () => {
   if (zone === "Череп"){
     if (cherepNormaNenorma === "")
     {report = `${cherepViews[0]}.`} else 
-    {report = cherepNormaNenorma}
+    {report = `${cherepNormaNenorma}.`}
     // if (cherepNormaNenorma === cherepViews[1])
     // {report = `${cherepViews[1]}.`} 
     // if (cherepNormaNenorma === cherepViews[2])
