@@ -28,7 +28,8 @@ export const cherepSliseReducer = createSlice({
 
     },
     resetCherepSliseReducer: (state) => {
-            state.cherepNormaNenormaText = ""         
+            state.cherepNormaNenormaText = ""
+            state.cherepNormaNenormaArray = []      
     },
    
     

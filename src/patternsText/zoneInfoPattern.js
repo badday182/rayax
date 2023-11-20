@@ -7,6 +7,8 @@ import { zonesWithOnly2Projection } from "../data/zonesWithOnly2Projection";
 import { zonesWithOnlyDirectProjection } from "../data/zonesWithOnlyDirectProjection";
 
 import { cherepViews } from "../data/Cherep/cherepViews";
+import { ppnViews } from "../data/PPN/ppnViews";
+
 
 export const ZoneInfoPattern = () => {
   const zone = useSelector((state) => state.zoneInfo.zone);
@@ -35,6 +37,11 @@ export const ZoneInfoPattern = () => {
   const cherepNormaNenorma = useSelector((state) => state.cherepInfo.cherepNormaNenormaText);
 
   // -----------Череп-selectors-end--------------
+
+  // -----------ППН-selectors-start--------------
+  const ppnNormaNenorma = useSelector((state) => state.ppnInfo.ppnNormaNenormaText);
+
+  // -----------ППН-selectors-end--------------
 
   // let report;
   // let mSv;
@@ -119,7 +126,7 @@ export const ZoneInfoPattern = () => {
   // if (norma === "Не норма") {
   //   report = `Легеневий рисунок ${legenRusynok}. Корені ${koreni}. Синуси ${synusy}. Купала діафрагми ${kupalaDiadragmy}. Cor - ${cor}.<br />Заключення: ${ogkZakliuchennia}.`;
   // }
-  if (norma === "Не норма") {
+  if (zone === "ОГК" && norma === "Не норма") {
     report = (
       <div>
         Легеневий рисунок {legenRusynok}. Корені {koreni}. Синуси {synusy}.
@@ -148,8 +155,17 @@ export const ZoneInfoPattern = () => {
     // {report = `${cherepViews[4]}.`} 
     // if (cherepNormaNenorma === cherepViews[5])
     // {report = `${cherepViews[5]}.`} 
-     }
+  }
   // --------------------Череп-end---------------
+
+    // --------------------ППН-start---------------
+  if (zone === "ППН"){
+    radiography = 'ППН'
+    if (ppnNormaNenorma === "")
+    {report = `${ppnViews[0]}.`} else 
+    {report = `${ppnNormaNenorma}.`}
+  }
+  // --------------------ППН-end---------------
 
   return (
     <div>
