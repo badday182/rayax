@@ -8,7 +8,9 @@ import { zonesWithOnlyDirectProjection } from "../data/zonesWithOnlyDirectProjec
 
 import { cherepViews } from "../data/Cherep/cherepViews";
 import { ppnViews } from "../data/PPN/ppnViews";
-
+import { shvhNormaNenorma } from "../data/SHVH/shvhNormaNenorma";
+import {zahalnaNenormaShvh} from "../data/SHVH/SHNH_notNorma/zahalnaNenormaShvh"
+import {shvhNenormaItems} from '../data//SHVH/shvhNenormaItems'
 
 export const ZoneInfoPattern = () => {
   const zone = useSelector((state) => state.zoneInfo.zone);
@@ -39,9 +41,23 @@ export const ZoneInfoPattern = () => {
   // -----------Череп-selectors-end--------------
 
   // -----------ППН-selectors-start--------------
-  const ppnNormaNenorma = useSelector((state) => state.ppnInfo.ppnNormaNenormaText);
+  const ppnNormaNenorma = useSelector((state) => state.universalSlice.semicolonUniversalText_1);
 
   // -----------ППН-selectors-end--------------
+
+    // -----------ШВХ-selectors-start--------------
+  // const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynok)
+  const fiziologLordoz = useSelector((state) => state.universalSlice.commaUniversalText_1);
+  const seredynnaVis = useSelector((state) => state.universalSlice.commaUniversalText_2);
+  const vysotaTilHrebtsiv = useSelector((state) => state.universalSlice.svhVysotaTilHrebtsivText);
+  const mizhkhrebtseviPromizhky = useSelector(
+    (state) => state.universalSlice.commaUniversalText_4
+  );
+  const zamykaiuchiPlastynkyTilKhrebtsiv = useSelector((state) => state.universalSlice.commaUniversalText_5);
+  const fasetkoviUnkovertSuhlShchelyny = useSelector(
+    (state) => state.universalSlice.commaUniversalText_6
+  );
+  // -----------ШВХ-selectors-end--------------
 
   // let report;
   // let mSv;
@@ -137,6 +153,7 @@ export const ZoneInfoPattern = () => {
   }
 
   // --------------------ОГК-end---------------
+
   // --------------------Череп-start---------------
   // if (zone === "Череп" && cherepNormaNenorma === "") {
   //   report = "Грубих кістково-травматичних змін не визначаються";
@@ -167,6 +184,25 @@ export const ZoneInfoPattern = () => {
   }
   // --------------------ППН-end---------------
 
+    // --------------------ШВХ-start---------------
+    if (zone === "ШВХ") {
+      if (norma === ''){
+        report = shvhNormaNenorma[0]; //Груб кістк-травм змін не визначаються
+      }
+      if (norma === shvhNormaNenorma[2]) {// "Загальна не норма ШВХ"
+        report = zahalnaNenormaShvh;
+      }
+      if (norma === shvhNormaNenorma[1]) { //"Не норма"
+        report = (
+          <div>           
+{shvhNenormaItems[0]} {fiziologLordoz}. {shvhNenormaItems[1]} {seredynnaVis}. {shvhNenormaItems[2]} {vysotaTilHrebtsiv}. {shvhNenormaItems[3]} {mizhkhrebtseviPromizhky}. {shvhNenormaItems[4]} {zamykaiuchiPlastynkyTilKhrebtsiv}. {shvhNenormaItems[5]} {fasetkoviUnkovertSuhlShchelyny}.
+          </div>
+        );
+      }
+    }
+  
+    // --------------------ШВХ-end---------------
+  
   return (
     <div>
       <table
@@ -184,6 +220,7 @@ export const ZoneInfoPattern = () => {
       <br />
       {/* <p>{report}</p> */}
       {report}
+      <br />
       <br />
     </div>
   );

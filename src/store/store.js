@@ -6,6 +6,7 @@ import zoneInfoSliseReducer from "../components/redux/slices/zoneInfoSliseReduce
 import ogkSliseReducer from "../components/redux/slices/ogkSliseReducer";
 import cherepSliseReducer from "../components/redux/slices/cherepSliseReducer";
 import ppnSliseReducer from "../components/redux/slices/ppnSliseReducer"
+import universalSliceReducer from "../components/redux/slices/universalSliceReducer";
 
 const store = configureStore({
     reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
         ogkInfo: ogkSliseReducer,
         cherepInfo: cherepSliseReducer,
         ppnInfo: ppnSliseReducer,
+        universalSlice: universalSliceReducer,
     }
 })
 

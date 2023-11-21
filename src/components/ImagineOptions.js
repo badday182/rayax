@@ -28,6 +28,7 @@ import {
 
 import { resetCherepSliseReducer } from "./redux/slices/cherepSliseReducer";
 import { resetPpnSliseReducer } from "./redux/slices/ppnSliseReducer";
+import { resetUniversalSliceReducer } from "./redux/slices/universalSliceReducer";
 import { resetZone, resetSide, resetProaction, resetNorma } from "./redux/slices/zoneInfoSliseReducer";
 
 import { addDocText } from "./redux/slices/documentSliseReducer";
@@ -38,6 +39,7 @@ import { ZoneInfoPattern } from "../patternsText/zoneInfoPattern";
 import { Ogk } from "./Ogk";
 import { Cherep } from "./Cherep";
 import { Ppn } from "./Ppn";
+import { Shvh } from "./Shvh";
 
 export const ImagineOptions = ({ id }) => {
   const [selectedZone, setSelectedZone] = useState("ОГК");
@@ -92,6 +94,7 @@ export const ImagineOptions = ({ id }) => {
     
     dispatch(resetCherepSliseReducer());    
     dispatch(resetPpnSliseReducer());    
+    dispatch(resetUniversalSliceReducer());    
     };
 
   return (
@@ -118,6 +121,7 @@ export const ImagineOptions = ({ id }) => {
       null}
       {selectedZone === "Череп" ? (<Cherep />) : null}
       {selectedZone === "ППН" ? (<Ppn />) : null}
+      {selectedZone === "ШВХ" ? ( <Shvh /> ) : null}
 
       {selectedZone === "Кульшовий суглоб" ||
       selectedZone === "Плечовий суглоб" ? (

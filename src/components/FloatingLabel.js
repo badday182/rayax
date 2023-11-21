@@ -18,8 +18,20 @@ import {
   editCorArray,
   editOgkZakliuchenniaArray,
 } from "./redux/slices/ogkSliseReducer";
+
+import {
+  editCommaUniversalArray_1,
+  editCommaUniversalArray_2,
+  editCommaUniversalArray_3,
+  editCommaUniversalArray_4,
+  editCommaUniversalArray_5,
+  editCommaUniversalArray_6,
+  editSvhVysotaTilHrebtsivArray,
+} from "./redux/slices/universalSliceReducer";
+
 import { editCherepNormaNenormaArray } from "./redux/slices/cherepSliseReducer";
 import { editPpnNormaNenormaArray } from "./redux/slices/ppnSliseReducer";
+import { editSemicolonUniversalArray_1 } from "./redux/slices/universalSliceReducer";
 
 import { zones } from "../data/zones";
 import { zonesWithOnly2Projection } from "../data/zonesWithOnly2Projection";
@@ -41,6 +53,14 @@ import { cherepViews } from "../data/Cherep/cherepViews";
 import { ogkNenormaItems } from "../data/OGK_notNorma/ogkNenormaItems";
 import { ppnViews } from "../data/PPN/ppnViews";
 
+import { fiziologLordoz } from "../data/SHVH/SHNH_notNorma/fiziologLordoz";
+import { shvhNenormaItems } from "../data/SHVH/shvhNenormaItems";
+import { shvhNormaNenorma } from "../data/SHVH/shvhNormaNenorma";
+import { seredynnaVis } from "../data/SHVH/SHNH_notNorma/seredynnaVis";
+import { vysotaTilHrebtsiv } from "../data/SHVH/SHNH_notNorma/vysotaTilHrebtsiv";
+import { mizhkhrebtseviPromizhky } from "../data/SHVH/SHNH_notNorma/mizhkhrebtseviPromizhky";
+import { zamykaiuchiPlastynkyTilKhrebtsiv } from "../data/SHVH/SHNH_notNorma/zamykaiuchiPlastynkyTilKhrebtsiv";
+import { fasetkoviUnkovertSuhlShchelyny } from "../data/SHVH/SHNH_notNorma/fasetkoviUnkovertSuhlShchelyny";
 export function FormFloatingSelect({ items, label, onZoneSelect }) {
   const [floatingId, setFloatingId] = useState(uuidv4());
   const dispatch = useDispatch();
@@ -65,8 +85,8 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
 
   const handleZoneSelect = (event) => {
     const selectedZone = event.target.value;
-    // console.log(selectedZone);
     onZoneSelect(selectedZone);
+    // console.log(selectedZone);
     if (zones.includes(selectedZone)) {
       // console.log(selectedZone);
       dispatch(editZone(selectedZone));
@@ -133,15 +153,45 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
       dispatch(editCherepNormaNenormaArray({ floatingId, selectedZone }));
     }
     // -----------Череп end---------
-    
+
     // -----------ППН start---------
     if (ppnViews.includes(selectedZone)) {
-      dispatch(editPpnNormaNenormaArray({ floatingId, selectedZone }));
-            // console.log(`selectedZone: ${selectedZone}, id: ${floatingId}`);
-
+      // dispatch(editPpnNormaNenormaArray({ floatingId, selectedZone }));
+      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
+      // console.log(`selectedZone: ${selectedZone}, id: ${floatingId}`);
     }
     // -----------ППН end---------
 
+    // -----------ШВХ start---------
+
+    // if (label === "Легеневий рисунок") {
+    //   firstItem = true
+    // }
+    if (shvhNormaNenorma.includes(selectedZone)) {
+      dispatch(editNorma(selectedZone));
+      // console.log(selectedZone);
+    }
+    if (fiziologLordoz.includes(selectedZone)) {
+      // dispatch(editLegenRusynokId({ floatingId }));
+      dispatch(editCommaUniversalArray_1({ floatingId, selectedZone }));
+      // console.log(`selectedZone: ${selectedZone}, id: ${floatingId}`);
+    }
+    if (seredynnaVis.includes(selectedZone)) {
+      dispatch(editCommaUniversalArray_2({ floatingId, selectedZone }));
+    }
+    if (vysotaTilHrebtsiv.includes(selectedZone)) {
+      dispatch(editSvhVysotaTilHrebtsivArray({ floatingId, selectedZone }));
+    }
+    if (mizhkhrebtseviPromizhky.includes(selectedZone)) {
+      dispatch(editCommaUniversalArray_4({ floatingId, selectedZone }));
+    }
+    if (zamykaiuchiPlastynkyTilKhrebtsiv.includes(selectedZone)) {
+      dispatch(editCommaUniversalArray_5({ floatingId, selectedZone }));
+    }
+    if (fasetkoviUnkovertSuhlShchelyny.includes(selectedZone)) {
+      dispatch(editCommaUniversalArray_6({ floatingId, selectedZone }));
+    }
+    // -----------ШВХ end---------
   };
 
   // ----------только после инициализации компонент диспатчит первый айтем из списка----
@@ -159,12 +209,13 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
           <option value="">--select an option--</option>
         ) : null}
 
-        {/* --если выбран Череп (все пришедшие айтемы = айтемам черепа)--- */}
-        {items === cherepViews ? (
+        {/* --если выбран Череп или ППН (все пришедшие айтемы = айтемам черепа/ппн)--- */}
+        {items === cherepViews || items === ppnViews ? (
           <option value="">--select an option--</option>
         ) : null}
-        {/* --если выбран ППН (все пришедшие айтемы = айтемам черепа)--- */}
-        {items === ppnViews ? (
+        {/* --если выбрано что-то из ненормы ШВХ --- */}
+        {/* ---------------если выбрано что-то из ненормы ОГК-------------- */}
+        {shvhNenormaItems.includes(label) ? (
           <option value="">--select an option--</option>
         ) : null}
 
