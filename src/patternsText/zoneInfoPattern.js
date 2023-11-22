@@ -9,8 +9,11 @@ import { zonesWithOnlyDirectProjection } from "../data/zonesWithOnlyDirectProjec
 import { cherepViews } from "../data/Cherep/cherepViews";
 import { ppnViews } from "../data/PPN/ppnViews";
 import { shvhNormaNenorma } from "../data/SHVH/shvhNormaNenorma";
-import {zahalnaNenormaShvh} from "../data/SHVH/SHNH_notNorma/zahalnaNenormaShvh"
-import {shvhNenormaItems} from '../data//SHVH/shvhNenormaItems'
+import { zahalnaNenormaShvh } from "../data/SHVH/SHNH_notNorma/zahalnaNenormaShvh";
+import { shvhNenormaItems } from "../data//SHVH/shvhNenormaItems";
+import { gvhNormaNenorma } from "../data/GVH/gvhNormaNenorma";
+import { gvhNenormaItems } from "../data/GVH/gvhNenormaItems";
+import {zahalnaNenormaGvh} from '../data/GVH/GVH_notNorma/zahalnaNenormaGvh'
 
 export const ZoneInfoPattern = () => {
   const zone = useSelector((state) => state.zoneInfo.zone);
@@ -36,28 +39,69 @@ export const ZoneInfoPattern = () => {
   // -----------ОГК-selectors-end--------------
 
   // -----------Череп-selectors-start--------------
-  const cherepNormaNenorma = useSelector((state) => state.cherepInfo.cherepNormaNenormaText);
+  const cherepNormaNenorma = useSelector(
+    (state) => state.cherepInfo.cherepNormaNenormaText
+  );
 
   // -----------Череп-selectors-end--------------
 
   // -----------ППН-selectors-start--------------
-  const ppnNormaNenorma = useSelector((state) => state.universalSlice.semicolonUniversalText_1);
+  const ppnNormaNenorma = useSelector(
+    (state) => state.universalSlice.semicolonUniversalText_1
+  );
 
   // -----------ППН-selectors-end--------------
 
-    // -----------ШВХ-selectors-start--------------
+  // -----------ШВХ-selectors-start--------------
   // const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynok)
-  const fiziologLordoz = useSelector((state) => state.universalSlice.commaUniversalText_1);
-  const seredynnaVis = useSelector((state) => state.universalSlice.commaUniversalText_2);
-  const vysotaTilHrebtsiv = useSelector((state) => state.universalSlice.svhVysotaTilHrebtsivText);
+  const fiziologLordoz = useSelector(
+    (state) => state.universalSlice.commaUniversalText_1
+  );
+  const seredynnaVis = useSelector(
+    (state) => state.universalSlice.commaUniversalText_2
+  );
+  const vysotaTilHrebtsiv = useSelector(
+    (state) => state.universalSlice.svhVysotaTilHrebtsivText
+  );
   const mizhkhrebtseviPromizhky = useSelector(
     (state) => state.universalSlice.commaUniversalText_4
   );
-  const zamykaiuchiPlastynkyTilKhrebtsiv = useSelector((state) => state.universalSlice.commaUniversalText_5);
+  const zamykaiuchiPlastynkyTilKhrebtsiv = useSelector(
+    (state) => state.universalSlice.commaUniversalText_5
+  );
   const fasetkoviUnkovertSuhlShchelyny = useSelector(
     (state) => state.universalSlice.commaUniversalText_6
   );
+  const zakliuchenniaShvh = useSelector(
+    (state) => state.universalSlice.semicolonUniversalText_1
+  );
   // -----------ШВХ-selectors-end--------------
+
+  // -----------ГВХ-selectors-start--------------
+  // const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynok)
+  const fiziologKifos = useSelector(
+    (state) => state.universalSlice.commaUniversalText_1
+  );
+  // const seredynnaVis = useSelector(
+  //   (state) => state.universalSlice.commaUniversalText_2
+  // );
+  // const vysotaTilHrebtsiv = useSelector(
+  //   (state) => state.universalSlice.svhVysotaTilHrebtsivText
+  // );
+  // const mizhkhrebtseviPromizhky = useSelector(
+  //   (state) => state.universalSlice.commaUniversalText_4
+  // );
+  // const zamykaiuchiPlastynkyTilKhrebtsiv = useSelector(
+  //   (state) => state.universalSlice.commaUniversalText_5
+  // );
+  // const fasetkoviUnkovertSuhlShchelyny = useSelector(
+  //   (state) => state.universalSlice.commaUniversalText_6
+  // );
+  const zakliuchenniaGvh = useSelector(
+    (state) => state.universalSlice.semicolonUniversalText_1
+  );
+  // -----------ГВХ-selectors-end--------------
+
 
   // let report;
   // let mSv;
@@ -158,50 +202,85 @@ export const ZoneInfoPattern = () => {
   // if (zone === "Череп" && cherepNormaNenorma === "") {
   //   report = "Грубих кістково-травматичних змін не визначаються";
   // }
-  if (zone === "Череп"){
-    if (cherepNormaNenorma === "")
-    {report = `${cherepViews[0]}.`} else 
-    {report = `${cherepNormaNenorma}.`}
+  if (zone === "Череп") {
+    if (cherepNormaNenorma === "") {
+      report = `${cherepViews[0]}.`;
+    } else {
+      report = `${cherepNormaNenorma}.`;
+    }
     // if (cherepNormaNenorma === cherepViews[1])
-    // {report = `${cherepViews[1]}.`} 
+    // {report = `${cherepViews[1]}.`}
     // if (cherepNormaNenorma === cherepViews[2])
-    // {report = `${cherepViews[2]}.`} 
+    // {report = `${cherepViews[2]}.`}
     // if (cherepNormaNenorma === cherepViews[3])
-    // {report = `${cherepViews[3]}.`} 
+    // {report = `${cherepViews[3]}.`}
     // if (cherepNormaNenorma === cherepViews[4])
-    // {report = `${cherepViews[4]}.`} 
+    // {report = `${cherepViews[4]}.`}
     // if (cherepNormaNenorma === cherepViews[5])
-    // {report = `${cherepViews[5]}.`} 
+    // {report = `${cherepViews[5]}.`}
   }
   // --------------------Череп-end---------------
 
-    // --------------------ППН-start---------------
-  if (zone === "ППН"){
-    radiography = 'ППН'
-    if (ppnNormaNenorma === "")
-    {report = `${ppnViews[0]}.`} else 
-    {report = `${ppnNormaNenorma}.`}
+  // --------------------ППН-start---------------
+  if (zone === "ППН") {
+    radiography = "ППН";
+    if (ppnNormaNenorma === "") {
+      report = `${ppnViews[0]}.`;
+    } else {
+      report = `${ppnNormaNenorma}.`;
+    }
   }
   // --------------------ППН-end---------------
 
-    // --------------------ШВХ-start---------------
-    if (zone === "ШВХ") {
-      if (norma === ''){
-        report = shvhNormaNenorma[0]; //Груб кістк-травм змін не визначаються
+  // --------------------ШВХ-start---------------
+  if (zone === "ШВХ") {
+    if (norma === "") {
+      report = shvhNormaNenorma[0]; //Груб кістк-травм змін не визначаються
+    }
+    if (norma === shvhNormaNenorma[2]) {
+      // "Загальна не норма ШВХ"
+      report = zahalnaNenormaShvh;
+    }
+    if (norma === shvhNormaNenorma[1]) {
+      //"Не норма"
+      report = (
+        <div>
+          {shvhNenormaItems[0]} {fiziologLordoz}. {shvhNenormaItems[1]}{" "}
+          {seredynnaVis}. {shvhNenormaItems[2]} {vysotaTilHrebtsiv}.{" "}
+          {shvhNenormaItems[3]} {mizhkhrebtseviPromizhky}. {shvhNenormaItems[4]}{" "}
+          {zamykaiuchiPlastynkyTilKhrebtsiv}. {shvhNenormaItems[5]}{" "}
+          {fasetkoviUnkovertSuhlShchelyny}.<br/>{shvhNenormaItems[6]}{" "}
+          {zakliuchenniaShvh}.
+        </div>
+      );
+    }
+  }
+  // --------------------ШВХ-end---------------
+
+    // --------------------ГВХ-start---------------
+    if (zone === "ГВХ") {
+      if (norma === "") {
+        report = gvhNormaNenorma[0]; //Груб кістк-травм змін не визначаються
       }
-      if (norma === shvhNormaNenorma[2]) {// "Загальна не норма ШВХ"
-        report = zahalnaNenormaShvh;
+      if (norma === gvhNormaNenorma[2]) {
+        // "Загальна не норма ГВХ"
+        report = zahalnaNenormaGvh;
       }
-      if (norma === shvhNormaNenorma[1]) { //"Не норма"
+      if (norma === gvhNormaNenorma[1]) {
+        //"Не норма"
         report = (
-          <div>           
-{shvhNenormaItems[0]} {fiziologLordoz}. {shvhNenormaItems[1]} {seredynnaVis}. {shvhNenormaItems[2]} {vysotaTilHrebtsiv}. {shvhNenormaItems[3]} {mizhkhrebtseviPromizhky}. {shvhNenormaItems[4]} {zamykaiuchiPlastynkyTilKhrebtsiv}. {shvhNenormaItems[5]} {fasetkoviUnkovertSuhlShchelyny}.
+          <div>
+            {gvhNenormaItems[0]} {fiziologKifos}. {gvhNenormaItems[1]}{" "}
+            {seredynnaVis}. {gvhNenormaItems[2]} {vysotaTilHrebtsiv}.{" "}
+            {gvhNenormaItems[3]} {mizhkhrebtseviPromizhky}. {gvhNenormaItems[4]}{" "}
+            {zamykaiuchiPlastynkyTilKhrebtsiv}. {gvhNenormaItems[5]}{" "}
+            {fasetkoviUnkovertSuhlShchelyny}.<br/>{gvhNenormaItems[6]}{" "}
+            {zakliuchenniaGvh}.
           </div>
         );
       }
     }
-  
-    // --------------------ШВХ-end---------------
+    // --------------------ГВХ-end---------------
   
   return (
     <div>

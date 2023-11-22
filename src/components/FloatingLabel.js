@@ -26,12 +26,12 @@ import {
   editCommaUniversalArray_4,
   editCommaUniversalArray_5,
   editCommaUniversalArray_6,
+  editSemicolonUniversalArray_1,
   editSvhVysotaTilHrebtsivArray,
 } from "./redux/slices/universalSliceReducer";
 
 import { editCherepNormaNenormaArray } from "./redux/slices/cherepSliseReducer";
 import { editPpnNormaNenormaArray } from "./redux/slices/ppnSliseReducer";
-import { editSemicolonUniversalArray_1 } from "./redux/slices/universalSliceReducer";
 
 import { zones } from "../data/zones";
 import { zonesWithOnly2Projection } from "../data/zonesWithOnly2Projection";
@@ -61,6 +61,12 @@ import { vysotaTilHrebtsiv } from "../data/SHVH/SHNH_notNorma/vysotaTilHrebtsiv"
 import { mizhkhrebtseviPromizhky } from "../data/SHVH/SHNH_notNorma/mizhkhrebtseviPromizhky";
 import { zamykaiuchiPlastynkyTilKhrebtsiv } from "../data/SHVH/SHNH_notNorma/zamykaiuchiPlastynkyTilKhrebtsiv";
 import { fasetkoviUnkovertSuhlShchelyny } from "../data/SHVH/SHNH_notNorma/fasetkoviUnkovertSuhlShchelyny";
+import { zakliuchenniaShvh } from "../data/SHVH/SHNH_notNorma/zakliuchenniaShvh";
+
+import { gvhNormaNenorma } from "../data/GVH/gvhNormaNenorma";
+import { fiziologKifos } from "../data/GVH/GVH_notNorma/fiziologKifos";
+import { zakliuchenniaGvh } from "../data/GVH/GVH_notNorma/zakliuchenniaGvh";
+import { gvhNenormaItems } from "../data/GVH/gvhNenormaItems";
 export function FormFloatingSelect({ items, label, onZoneSelect }) {
   const [floatingId, setFloatingId] = useState(uuidv4());
   const dispatch = useDispatch();
@@ -164,10 +170,7 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
 
     // -----------ШВХ start---------
 
-    // if (label === "Легеневий рисунок") {
-    //   firstItem = true
-    // }
-    if (shvhNormaNenorma.includes(selectedZone)) {
+    if (gvhNormaNenorma.includes(selectedZone)) {
       dispatch(editNorma(selectedZone));
       // console.log(selectedZone);
     }
@@ -191,7 +194,40 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
     if (fasetkoviUnkovertSuhlShchelyny.includes(selectedZone)) {
       dispatch(editCommaUniversalArray_6({ floatingId, selectedZone }));
     }
+    if (zakliuchenniaShvh.includes(selectedZone)) {
+      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
+    }
     // -----------ШВХ end---------
+
+        // -----------ГВХ start--------
+    if (shvhNormaNenorma.includes(selectedZone)) {
+      dispatch(editNorma(selectedZone));
+      // console.log(selectedZone);
+    }
+    if (fiziologKifos.includes(selectedZone)) {
+      // dispatch(editLegenRusynokId({ floatingId }));
+      dispatch(editCommaUniversalArray_1({ floatingId, selectedZone }));
+      // console.log(`selectedZone: ${selectedZone}, id: ${floatingId}`);
+    }
+    if (seredynnaVis.includes(selectedZone)) {
+      dispatch(editCommaUniversalArray_2({ floatingId, selectedZone }));
+    }
+    if (vysotaTilHrebtsiv.includes(selectedZone)) {
+      dispatch(editSvhVysotaTilHrebtsivArray({ floatingId, selectedZone }));
+    }
+    if (mizhkhrebtseviPromizhky.includes(selectedZone)) {
+      dispatch(editCommaUniversalArray_4({ floatingId, selectedZone }));
+    }
+    if (zamykaiuchiPlastynkyTilKhrebtsiv.includes(selectedZone)) {
+      dispatch(editCommaUniversalArray_5({ floatingId, selectedZone }));
+    }
+    if (fasetkoviUnkovertSuhlShchelyny.includes(selectedZone)) {
+      dispatch(editCommaUniversalArray_6({ floatingId, selectedZone }));
+    }
+    if (zakliuchenniaGvh.includes(selectedZone)) {
+      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
+    }
+    // -----------ГВХ end---------
   };
 
   // ----------только после инициализации компонент диспатчит первый айтем из списка----
@@ -215,7 +251,7 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
         ) : null}
         {/* --если выбрано что-то из ненормы ШВХ --- */}
         {/* ---------------если выбрано что-то из ненормы ОГК-------------- */}
-        {shvhNenormaItems.includes(label) ? (
+        {shvhNenormaItems.includes(label) || gvhNenormaItems.includes(label)? (
           <option value="">--select an option--</option>
         ) : null}
 

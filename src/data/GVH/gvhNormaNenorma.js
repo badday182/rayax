@@ -1,5 +1,5 @@
-export const shvhNormaNenorma = [
+export const gvhNormaNenorma = [
   "Грубих кістково-травматичних змін не визначається",
   "Не норма",
-  "Загальна не норма ШВХ",
+  "Загальна не норма ГВХ",
 ];
