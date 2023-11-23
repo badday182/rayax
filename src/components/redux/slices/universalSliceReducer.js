@@ -15,21 +15,13 @@ const initialState = {
   commaUniversalText_6: "",
   commaUniversalArray_6: [],
 
-  svhVysotaTilHrebtsivText:[],
+  svhVysotaTilHrebtsivText:'',
   svhVysotaTilHrebtsivArray:[],
 
   semicolonUniversalText_1: "",
   semicolonUniversalArray_1: [],
-  // koreniText: "",
-  // koreniArray: [],
-  // synusyText: "",
-  // synusyArray: [],
-  // kupalaDiadragmyText: "",
-  // kupalaDiadragmyArray: [],
-  // corText: "",
-  // corArray: [],
-  // ogkZakliuchenniaText: "",
-  // ogkZakliuchenniaArray: [],
+
+ 
 };
 
 export const universalSliceReducer = createSlice({
@@ -164,7 +156,6 @@ export const universalSliceReducer = createSlice({
     }
     },
 
-
     editSemicolonUniversalArray_1: (state, action) => {
       // state.documentText = [...state.documentText, action.payload];
       const { floatingId, selectedZone } = action.payload;
@@ -186,102 +177,9 @@ export const universalSliceReducer = createSlice({
         .join("; ");
 console.log('state.semicolonUniversalText_1', state.semicolonUniversalText_1);
     },
-    editKoreniArray: (state, action) => {
-      const { floatingId, selectedZone } = action.payload;
-      const index0 = state.koreniArray.findIndex(
-        (item) => item[0] === floatingId
-      );
-      if (index0 !== -1) {
-        state.koreniArray[index0][1] = selectedZone;
-      } else {
-        state.koreniArray.push([floatingId, selectedZone]);
-      }
-      state.koreniText = state.koreniArray.map((item) => item[1]).join(", ");
-    },
-    resetKoreniArray: (state) => {
-      state.koreniArray = [];
-    },
-    editSynusyArray: (state, action) => {
-      const { floatingId, selectedZone } = action.payload;
-      const index0 = state.synusyArray.findIndex(
-        (item) => item[0] === floatingId
-      );
-      if (index0 !== -1) {
-        state.synusyArray[index0][1] = selectedZone;
-      } else {
-        state.synusyArray.push([floatingId, selectedZone]);
-      }
-      state.synusyText = state.synusyArray.map((item) => item[1]).join(", ");
-    },
-    resetSynusyArray: (state) => {
-      state.synusyArray = [];
-    },
-    editKupalaDiadragmyArray: (state, action) => {
-      const { floatingId, selectedZone } = action.payload;
-      const index0 = state.kupalaDiadragmyArray.findIndex(
-        (item) => item[0] === floatingId
-      );
-      if (index0 !== -1) {
-        state.kupalaDiadragmyArray[index0][1] = selectedZone;
-      } else {
-        state.kupalaDiadragmyArray.push([floatingId, selectedZone]);
-      }
-      state.kupalaDiadragmyText = state.kupalaDiadragmyArray
-        .map((item) => item[1])
-        .join(", ");
-    },
-    resetKupalaDiadragmyArray: (state) => {
-      state.kupalaDiadragmyArray = [];
-    },
-    editCorArray: (state, action) => {
-      const { floatingId, selectedZone } = action.payload;
-      const index0 = state.corArray.findIndex((item) => item[0] === floatingId);
-      if (index0 !== -1) {
-        state.corArray[index0][1] = selectedZone;
-      } else {
-        state.corArray.push([floatingId, selectedZone]);
-      }
-      state.corText = state.corArray.map((item) => item[1]).join(", ");
-      if (state.corText.includes(", ;")) {
-        // Заменяем ", ;" на ";"
-        state.corText = state.corText.replace(", ;", ";");
-      }
-      // Если в state.corText есть текст "; склероз дуги аорти" и он не в конце строки
-      const searchText = "; склероз дуги аорти";
-      if (
-        state.corText.includes(searchText) &&
-        !state.corText.endsWith(searchText)
-      ) {
-        // Убираем текст из текущего положения
-        state.corText = state.corText.replace(searchText, "");
-        // Добавляем в конец
-        state.corText = state.corText + searchText;
-      }
-      // Удаляем ", " в начале строки, если есть
-      if (state.corText.startsWith(", ")) {
-        state.corText = state.corText.slice(2);
-      }
-    },
-    resetCorArray: (state) => {
-      state.corArray = [];
-    },
-    editOgkZakliuchenniaArray: (state, action) => {
-      const { floatingId, selectedZone } = action.payload;
-      const index0 = state.ogkZakliuchenniaArray.findIndex(
-        (item) => item[0] === floatingId
-      );
-      if (index0 !== -1) {
-        state.ogkZakliuchenniaArray[index0][1] = selectedZone;
-      } else {
-        state.ogkZakliuchenniaArray.push([floatingId, selectedZone]);
-      }
-      state.ogkZakliuchenniaText = state.ogkZakliuchenniaArray
-        .map((item) => item[1])
-        .join(". ");
-    },
-    resetOgkZakliuchenniaArray: (state) => {
-      state.ogkZakliuchenniaArray = [];
-    },
+    
+   
+    
     resetUniversalSliceReducer: (state) => {
 
       state.commaUniversalText_1 = "";
@@ -297,21 +195,11 @@ console.log('state.semicolonUniversalText_1', state.semicolonUniversalText_1);
       state.commaUniversalText_6 = "";
       state.commaUniversalArray_6 = [];
 
-      state.svhVysotaTilHrebtsivText = [];
-      state.svhVysotaTilHrebtsivArray = "";
+      state.svhVysotaTilHrebtsivText = "";
+      state.svhVysotaTilHrebtsivArray = [];
 
       state.semicolonUniversalText_1 = "";
       state.semicolonUniversalArray_1 = [];
-      // state.koreniText = "";
-      // state.koreniArray = [];
-      // state.synusyText = "";
-      // state.synusyArray = [];
-      // state.kupalaDiadragmyText = "";
-      // state.kupalaDiadragmyArray = [];
-      // state.corText = "";
-      // state.corArray = [];
-      // state.ogkZakliuchenniaText = "";
-      // state.ogkZakliuchenniaArray = [];
     },
   },
 });
@@ -327,17 +215,6 @@ export const {
   editSemicolonUniversalArray_1,
 
   editSvhVysotaTilHrebtsivArray,
-  // resetLegenRusynokArray,
-  // editKoreniArray,
-  // resetKoreniArray,
-  // editSynusyArray,
-  // resetSynusyArray,
-  // editKupalaDiadragmyArray,
-  // resetKupalaDiadragmyArray,
-  // editCorArray,
-  // resetCorArray,
-  // editOgkZakliuchenniaArray,
-  // resetOgkZakliuchenniaArray,
   resetUniversalSliceReducer,
 } = universalSliceReducer.actions;
 

@@ -41,6 +41,7 @@ import { Cherep } from "./Cherep";
 import { Ppn } from "./Ppn";
 import { Shvh } from "./Shvh";
 import { Gvh } from "./Gvh";
+import { Pvh } from "./Pvh";
 
 export const ImagineOptions = ({ id }) => {
   const [selectedZone, setSelectedZone] = useState("ОГК");
@@ -124,6 +125,7 @@ export const ImagineOptions = ({ id }) => {
       {selectedZone === "ППН" ? (<Ppn />) : null}
       {selectedZone === "ШВХ" ? ( <Shvh /> ) : null}
       {selectedZone === "ГВХ" ? ( <Gvh /> ) : null}
+      {selectedZone === "ПВХ" ? ( <Pvh/> ) : null}
 
       {selectedZone === "Кульшовий суглоб" ||
       selectedZone === "Плечовий суглоб" ? (

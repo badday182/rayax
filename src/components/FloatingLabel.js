@@ -31,7 +31,6 @@ import {
 } from "./redux/slices/universalSliceReducer";
 
 import { editCherepNormaNenormaArray } from "./redux/slices/cherepSliseReducer";
-import { editPpnNormaNenormaArray } from "./redux/slices/ppnSliseReducer";
 
 import { zones } from "../data/zones";
 import { zonesWithOnly2Projection } from "../data/zonesWithOnly2Projection";
@@ -67,6 +66,9 @@ import { gvhNormaNenorma } from "../data/GVH/gvhNormaNenorma";
 import { fiziologKifos } from "../data/GVH/GVH_notNorma/fiziologKifos";
 import { zakliuchenniaGvh } from "../data/GVH/GVH_notNorma/zakliuchenniaGvh";
 import { gvhNenormaItems } from "../data/GVH/gvhNenormaItems";
+import { vysotaTilHrebtsivGvh } from "../data/GVH/GVH_notNorma/vysotaTilHrebtsiv";
+import { pvhNormaNenorma } from "../data/PVH/pvhNormaNenorma";
+import { zakliuchenniaPvh } from "../data/PVH/PVH_notNorma/zakliuchenniaPvh";
 export function FormFloatingSelect({ items, label, onZoneSelect }) {
   const [floatingId, setFloatingId] = useState(uuidv4());
   const dispatch = useDispatch();
@@ -199,7 +201,7 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
     }
     // -----------ШВХ end---------
 
-        // -----------ГВХ start--------
+    // -----------ГВХ start--------
     if (shvhNormaNenorma.includes(selectedZone)) {
       dispatch(editNorma(selectedZone));
       // console.log(selectedZone);
@@ -209,25 +211,26 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
       dispatch(editCommaUniversalArray_1({ floatingId, selectedZone }));
       // console.log(`selectedZone: ${selectedZone}, id: ${floatingId}`);
     }
-    if (seredynnaVis.includes(selectedZone)) {
-      dispatch(editCommaUniversalArray_2({ floatingId, selectedZone }));
-    }
-    if (vysotaTilHrebtsiv.includes(selectedZone)) {
-      dispatch(editSvhVysotaTilHrebtsivArray({ floatingId, selectedZone }));
-    }
-    if (mizhkhrebtseviPromizhky.includes(selectedZone)) {
-      dispatch(editCommaUniversalArray_4({ floatingId, selectedZone }));
-    }
-    if (zamykaiuchiPlastynkyTilKhrebtsiv.includes(selectedZone)) {
-      dispatch(editCommaUniversalArray_5({ floatingId, selectedZone }));
-    }
-    if (fasetkoviUnkovertSuhlShchelyny.includes(selectedZone)) {
-      dispatch(editCommaUniversalArray_6({ floatingId, selectedZone }));
-    }
+
+    //seredynnaVis vysotaTilHrebtsivGvh mizhkhrebtseviPromizhky zamykaiuchiPlastynkyTilKhrebtsiv fasetkoviUnkovertSuhlShchelyny используются из ШВХ ))
+
     if (zakliuchenniaGvh.includes(selectedZone)) {
       dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
     }
     // -----------ГВХ end---------
+
+    // -----------ПВХ start--------
+    if (pvhNormaNenorma.includes(selectedZone)) {
+      dispatch(editNorma(selectedZone));
+      // console.log(selectedZone);
+    }
+
+    //seredynnaVis vysotaTilHrebtsivGvh mizhkhrebtseviPromizhky zamykaiuchiPlastynkyTilKhrebtsiv fasetkoviUnkovertSuhlShchelyny используются из ШВХ ))
+
+    if (zakliuchenniaPvh.includes(selectedZone)) {
+      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
+    }
+    // -----------ПВХ end---------
   };
 
   // ----------только после инициализации компонент диспатчит первый айтем из списка----
@@ -251,7 +254,7 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
         ) : null}
         {/* --если выбрано что-то из ненормы ШВХ --- */}
         {/* ---------------если выбрано что-то из ненормы ОГК-------------- */}
-        {shvhNenormaItems.includes(label) || gvhNenormaItems.includes(label)? (
+        {shvhNenormaItems.includes(label) || gvhNenormaItems.includes(label) ? (
           <option value="">--select an option--</option>
         ) : null}
 

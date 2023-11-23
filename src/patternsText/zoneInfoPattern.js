@@ -14,6 +14,10 @@ import { shvhNenormaItems } from "../data//SHVH/shvhNenormaItems";
 import { gvhNormaNenorma } from "../data/GVH/gvhNormaNenorma";
 import { gvhNenormaItems } from "../data/GVH/gvhNenormaItems";
 import {zahalnaNenormaGvh} from '../data/GVH/GVH_notNorma/zahalnaNenormaGvh'
+import { pvhNormaNenorma } from "../data/PVH/pvhNormaNenorma";
+
+import { zahalnaNenormaPvh } from "../data/PVH/PVH_notNorma/zahalnaNenormaPvh";
+import { pvhNenormaItems } from "../data/PVH/pvhNenormaItems";
 
 export const ZoneInfoPattern = () => {
   const zone = useSelector((state) => state.zoneInfo.zone);
@@ -72,12 +76,15 @@ export const ZoneInfoPattern = () => {
   const fasetkoviUnkovertSuhlShchelyny = useSelector(
     (state) => state.universalSlice.commaUniversalText_6
   );
-  const zakliuchenniaShvh = useSelector(
+  // const zakliuchenniaShvh = useSelector(
+  //   (state) => state.universalSlice.semicolonUniversalText_1
+  // );
+  const zakliuchennia = useSelector(
     (state) => state.universalSlice.semicolonUniversalText_1
   );
   // -----------ШВХ-selectors-end--------------
 
-  // -----------ГВХ-selectors-start--------------
+  // -----------ГВХ-selectors-start-----из общих универсальных селекторов
   // const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynok)
   const fiziologKifos = useSelector(
     (state) => state.universalSlice.commaUniversalText_1
@@ -97,10 +104,35 @@ export const ZoneInfoPattern = () => {
   // const fasetkoviUnkovertSuhlShchelyny = useSelector(
   //   (state) => state.universalSlice.commaUniversalText_6
   // );
-  const zakliuchenniaGvh = useSelector(
-    (state) => state.universalSlice.semicolonUniversalText_1
-  );
+  // const zakliuchenniaGvh = useSelector(
+  //   (state) => state.universalSlice.semicolonUniversalText_1
+  // );
   // -----------ГВХ-selectors-end--------------
+
+  // -----------ПВХ-selectors-start----из общих универсальных селекторов
+  // const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynok)
+  // const fiziologKifos = useSelector(
+  //   (state) => state.universalSlice.commaUniversalText_1
+  // );
+  // const seredynnaVis = useSelector(
+  //   (state) => state.universalSlice.commaUniversalText_2
+  // );
+  // const vysotaTilHrebtsiv = useSelector(
+  //   (state) => state.universalSlice.svhVysotaTilHrebtsivText
+  // );
+  // const mizhkhrebtseviPromizhky = useSelector(
+  //   (state) => state.universalSlice.commaUniversalText_4
+  // );
+  // const zamykaiuchiPlastynkyTilKhrebtsiv = useSelector(
+  //   (state) => state.universalSlice.commaUniversalText_5
+  // );
+  // const fasetkoviUnkovertSuhlShchelyny = useSelector(
+  //   (state) => state.universalSlice.commaUniversalText_6
+  // );
+  // const zakliuchenniaPvh = useSelector(
+  //   (state) => state.universalSlice.semicolonUniversalText_1
+  // );
+  // -----------ПВХ-selectors-end--------------
 
 
   // let report;
@@ -250,7 +282,7 @@ export const ZoneInfoPattern = () => {
           {shvhNenormaItems[3]} {mizhkhrebtseviPromizhky}. {shvhNenormaItems[4]}{" "}
           {zamykaiuchiPlastynkyTilKhrebtsiv}. {shvhNenormaItems[5]}{" "}
           {fasetkoviUnkovertSuhlShchelyny}.<br/>{shvhNenormaItems[6]}{" "}
-          {zakliuchenniaShvh}.
+          {zakliuchennia}.
         </div>
       );
     }
@@ -275,12 +307,36 @@ export const ZoneInfoPattern = () => {
             {gvhNenormaItems[3]} {mizhkhrebtseviPromizhky}. {gvhNenormaItems[4]}{" "}
             {zamykaiuchiPlastynkyTilKhrebtsiv}. {gvhNenormaItems[5]}{" "}
             {fasetkoviUnkovertSuhlShchelyny}.<br/>{gvhNenormaItems[6]}{" "}
-            {zakliuchenniaGvh}.
+            {zakliuchennia}.
           </div>
         );
       }
     }
     // --------------------ГВХ-end---------------
+    // --------------------ПВХ-start---------------
+    if (zone === "ПВХ") {
+      if (norma === "") {
+        report = pvhNormaNenorma[0]; //Груб кістк-травм змін не визначаються
+      }
+      if (norma === pvhNormaNenorma[2]) {
+        // "Загальна не норма ПВХ"
+        report = zahalnaNenormaPvh;
+      }
+      if (norma === pvhNormaNenorma[1]) {
+        //"Не норма"
+        report = (
+          <div>
+            {pvhNenormaItems[0]} {fiziologLordoz}. {pvhNenormaItems[1]}{" "}
+            {seredynnaVis}. {pvhNenormaItems[2]} {vysotaTilHrebtsiv}.{" "}
+            {pvhNenormaItems[3]} {mizhkhrebtseviPromizhky}. {pvhNenormaItems[4]}{" "}
+            {zamykaiuchiPlastynkyTilKhrebtsiv}. {pvhNenormaItems[5]}{" "}
+            {fasetkoviUnkovertSuhlShchelyny}.<br/>{pvhNenormaItems[6]}{" "}
+            {zakliuchennia}.
+          </div>
+        );
+      }
+    }
+    // --------------------ПВХ-end---------------
   
   return (
     <div>

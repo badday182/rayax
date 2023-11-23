@@ -1,4 +1,4 @@
-export const shvhNenormaItems = [
+export const pvhNenormaItems = [
     "Фізіологічний лордоз",
     "Серединна вісь",
     "Висота тіл хрепців",
@@ -7,3 +7,4 @@ export const shvhNenormaItems = [
     "Фасеткові та унковертебральні суглобові щілини",
     "Заключення:",
 ]
+

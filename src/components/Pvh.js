@@ -1,26 +1,25 @@
 import React, { useState } from "react";
 import { FormFloatingSelect } from "./FloatingLabel";
 import { v4 as uuidv4 } from "uuid";
-import {gvhNormaNenorma} from "../data/GVH/gvhNormaNenorma";
 
-import { fiziologKifos } from "../data/GVH/GVH_notNorma/fiziologKifos";
-import { seredynnaVis } from "../data/GVH/GVH_notNorma/seredynnaVis";
-import { vysotaTilHrebtsivGvh } from "../data/GVH/GVH_notNorma/vysotaTilHrebtsiv";
-import { mizhkhrebtseviPromizhky } from "../data/GVH/GVH_notNorma/mizhkhrebtseviPromizhky";
-import { zamykaiuchiPlastynkyTilKhrebtsiv } from "../data/GVH/GVH_notNorma/zamykaiuchiPlastynkyTilKhrebtsiv";
-import { fasetkoviUnkovertSuhlShchelyny } from "../data/GVH/GVH_notNorma/fasetkoviUnkovertSuhlShchelyny";
+import { fiziologLordoz } from "../data/PVH/PVH_notNorma/fiziologLordoz";
+import { seredynnaVis } from "../data/PVH/PVH_notNorma/seredynnaVis";
+import { vysotaTilHrebtsivGvh } from "../data/PVH/PVH_notNorma/vysotaTilHrebtsiv";
+import { mizhkhrebtseviPromizhky } from "../data/PVH/PVH_notNorma/mizhkhrebtseviPromizhky";
+import { zamykaiuchiPlastynkyTilKhrebtsiv } from "../data/PVH/PVH_notNorma/zamykaiuchiPlastynkyTilKhrebtsiv";
+import { fasetkoviUnkovertSuhlShchelyny } from "../data/PVH/PVH_notNorma/fasetkoviUnkovertSuhlShchelyny";
 
 import { AddOptionBlock } from "./AddOptionBlock";
-import { gvhNenormaItems } from "../data/GVH/gvhNenormaItems";
-import { zakliuchenniaGvh } from "../data/GVH/GVH_notNorma/zakliuchenniaGvh";
-
-export const Gvh = () => {
-  const [selectedGvhViews, setSelectedGvhViews] = useState("");
+import { pvhNormaNenorma } from "../data/PVH/pvhNormaNenorma";
+import { pvhNenormaItems } from "../data/PVH/pvhNenormaItems";
+import { zakliuchenniaPvh } from "../data/PVH/PVH_notNorma/zakliuchenniaPvh";
+export const Pvh = () => {
+  const [selectedPvhViews, setSelectedPvhViews] = useState("");
   const [selectednormaNenorma, setSelectednormaNenorma] = useState(
-    gvhNormaNenorma[0]
+    pvhNormaNenorma[0]
   );
 
-  const [fiziologKifosCounter, setfiziologKifosCounter] = useState([
+  const [fiziologLordozCounter, setfiziologLordozCounter] = useState([
     { id: uuidv4() },
   ]);
   const [seredynnaVisCounter, setSeredynnaVisCounter] = useState([
@@ -39,7 +38,7 @@ export const Gvh = () => {
     fasetkoviUnkovertSuhlShchelynyCounter,
     setFasetkoviUnkovertSuhlShchelynyCounter,
   ] = useState([{ id: uuidv4() }]);
-  const [zakliuchenniaGvhCounter, setZakliuchenniaGvhCounter] = useState([
+  const [zakliuchenniaPvhCounter, setZakliuchenniaPvhCounter] = useState([
     { id: uuidv4() },
   ]);
 
@@ -50,29 +49,29 @@ export const Gvh = () => {
   return (
     <div className="">
       <FormFloatingSelect
-        items={gvhNormaNenorma}
+        items={pvhNormaNenorma}
         onZoneSelect={setSelectednormaNenorma}
         label="Норма/Не норма"
       />
       {selectednormaNenorma === "Не норма" ? (
         <div className=" ">
           <AddOptionBlock
-            items={fiziologKifos}
-            onZoneSelect={setSelectedGvhViews}
-            label={gvhNenormaItems[0]}
-            counter={fiziologKifosCounter}
+            items={fiziologLordoz}
+            onZoneSelect={setSelectedPvhViews}
+            label={pvhNenormaItems[0]}
+            counter={fiziologLordozCounter}
             onAddClick={() =>
               handleAddOption(
-                setfiziologKifosCounter,
-                fiziologKifosCounter,
-                setfiziologKifosCounter
+                setfiziologLordozCounter,
+                fiziologLordozCounter,
+                setfiziologLordozCounter
               )
             }
           />
           <AddOptionBlock
             items={seredynnaVis}
-            onZoneSelect={setSelectedGvhViews}
-            label={gvhNenormaItems[1]}
+            onZoneSelect={setSelectedPvhViews}
+            label={pvhNenormaItems[1]}
             counter={seredynnaVisCounter}
             onAddClick={() =>
               handleAddOption(
@@ -84,9 +83,9 @@ export const Gvh = () => {
           />
           <AddOptionBlock
             items={vysotaTilHrebtsivGvh}
-            onZoneSelect={setSelectedGvhViews}
+            onZoneSelect={setSelectedPvhViews}
             // label="Висота тіл хрепців"
-            label={gvhNenormaItems[2]}
+            label={pvhNenormaItems[2]}
             counter={vysotaTilHrebtsivCounter}
             onAddClick={() =>
               handleAddOption(
@@ -98,9 +97,9 @@ export const Gvh = () => {
           />
           <AddOptionBlock
             items={mizhkhrebtseviPromizhky}
-            onZoneSelect={setSelectedGvhViews}
+            onZoneSelect={setSelectedPvhViews}
             // label="Міжхребцеві проміжки"
-            label={gvhNenormaItems[3]}
+            label={pvhNenormaItems[3]}
             counter={mizhkhrebtseviPromizhkyCounter}
             onAddClick={() =>
               handleAddOption(
@@ -112,9 +111,9 @@ export const Gvh = () => {
           />
           <AddOptionBlock
             items={zamykaiuchiPlastynkyTilKhrebtsiv}
-            onZoneSelect={setSelectedGvhViews}
+            onZoneSelect={setSelectedPvhViews}
             // label="Замикаючі пластинки тіл хребців"
-            label={gvhNenormaItems[4]}
+            label={pvhNenormaItems[4]}
             counter={zamykaiuchiPlastynkyTilKhrebtsivCounter}
             onAddClick={() =>
               handleAddOption(
@@ -126,9 +125,9 @@ export const Gvh = () => {
           />
           <AddOptionBlock
             items={fasetkoviUnkovertSuhlShchelyny}
-            onZoneSelect={setSelectedGvhViews}
+            onZoneSelect={setSelectedPvhViews}
             // label="Фасеткові та унковертебральні суглобові щелини"
-            label={gvhNenormaItems[5]}
+            label={pvhNenormaItems[5]}
             counter={fasetkoviUnkovertSuhlShchelynyCounter}
             onAddClick={() =>
               handleAddOption(
@@ -139,15 +138,15 @@ export const Gvh = () => {
             }
           />
           <AddOptionBlock
-            items={zakliuchenniaGvh}
-            onZoneSelect={setSelectedGvhViews}
-            label={gvhNenormaItems[6]} // Заключення:
-            counter={zakliuchenniaGvhCounter}
+            items={zakliuchenniaPvh}
+            onZoneSelect={setSelectedPvhViews}
+            label={pvhNenormaItems[6]} // Заключення:
+            counter={zakliuchenniaPvhCounter}
             onAddClick={() =>
               handleAddOption(
-                setZakliuchenniaGvhCounter,
-                zakliuchenniaGvhCounter,
-                setZakliuchenniaGvhCounter
+                setZakliuchenniaPvhCounter,
+                zakliuchenniaPvhCounter,
+                setZakliuchenniaPvhCounter
               )
             }
           />
