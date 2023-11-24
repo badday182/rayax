@@ -175,7 +175,7 @@ export const universalSliceReducer = createSlice({
       state.semicolonUniversalText_1 = state.semicolonUniversalArray_1
         .map((item) => item[1])
         .join("; ");
-console.log('state.semicolonUniversalText_1', state.semicolonUniversalText_1);
+// console.log('state.semicolonUniversalText_1', state.semicolonUniversalText_1);
     },
     
    

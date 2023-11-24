@@ -14,7 +14,7 @@ import {
   editProaction,
   editSide,
   editNorma,
-  resetZoneInfoSliseReducer
+  resetZoneInfoSliseReducer,
 } from "./redux/slices/zoneInfoSliseReducer";
 import {
   resetLegenRusynokArray,
@@ -29,7 +29,12 @@ import {
 import { resetCherepSliseReducer } from "./redux/slices/cherepSliseReducer";
 import { resetPpnSliseReducer } from "./redux/slices/ppnSliseReducer";
 import { resetUniversalSliceReducer } from "./redux/slices/universalSliceReducer";
-import { resetZone, resetSide, resetProaction, resetNorma } from "./redux/slices/zoneInfoSliseReducer";
+import {
+  resetZone,
+  resetSide,
+  resetProaction,
+  resetNorma,
+} from "./redux/slices/zoneInfoSliseReducer";
 
 import { addDocText } from "./redux/slices/documentSliseReducer";
 
@@ -42,6 +47,14 @@ import { Ppn } from "./Ppn";
 import { Shvh } from "./Shvh";
 import { Gvh } from "./Gvh";
 import { Pvh } from "./Pvh";
+import { Ochp } from "./Ochp";
+import { PlechovyiSuhlob } from "./PlechovyiSuhlob";
+import { Kliuchytsia } from "./Kliuchytsia";
+import { Rebra } from "./Rebra";
+import { LiktovyiSuhlob } from "./LiktovyiSuhlob";
+import { PromenevoZapIastkovyiSuhlob } from "./PromenevoZapIastkovyiSuhlob";
+import { Kyst } from "./Kyst";
+import { KistokTazu } from "./KistokTazu";
 
 export const ImagineOptions = ({ id }) => {
   const [selectedZone, setSelectedZone] = useState("ОГК");
@@ -90,14 +103,14 @@ export const ImagineOptions = ({ id }) => {
   const handleApplyZone = () => {
     //Добавляем данные в текстовый редактор
     dispatch(addDocText({ textToDoc }));
-    // Сбрасываем данные в редюсерах    
+    // Сбрасываем данные в редюсерах
     dispatch(resetZoneInfoSliseReducer());
-    dispatch(resetogkSliseReducer());    
-    
-    dispatch(resetCherepSliseReducer());    
-    dispatch(resetPpnSliseReducer());    
-    dispatch(resetUniversalSliceReducer());    
-    };
+    dispatch(resetogkSliseReducer());
+
+    dispatch(resetCherepSliseReducer());
+    dispatch(resetPpnSliseReducer());
+    dispatch(resetUniversalSliceReducer());
+  };
 
   return (
     <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary">
@@ -114,18 +127,29 @@ export const ImagineOptions = ({ id }) => {
           label="Сторона"
         />
       ) : null}
-      {selectedZone === "ОГК" ? ( <Ogk /> ) : 
-      // <FormFloatingSelect
+      {selectedZone === "ОГК" ? (
+        <Ogk />
+      ) : // <FormFloatingSelect
       //   items={ogkViews}
       //   onZoneSelect={setSelectedOgkViews}
       //   label="Проєкія"
       // />
       null}
-      {selectedZone === "Череп" ? (<Cherep />) : null}
-      {selectedZone === "ППН" ? (<Ppn />) : null}
-      {selectedZone === "ШВХ" ? ( <Shvh /> ) : null}
-      {selectedZone === "ГВХ" ? ( <Gvh /> ) : null}
-      {selectedZone === "ПВХ" ? ( <Pvh/> ) : null}
+      {selectedZone === "Череп" ? <Cherep /> : null}
+      {selectedZone === "ППН" ? <Ppn /> : null}
+      {selectedZone === "ШВХ" ? <Shvh /> : null}
+      {selectedZone === "ГВХ" ? <Gvh /> : null}
+      {selectedZone === "ПВХ" ? <Pvh /> : null}
+      {selectedZone === "ОЧП" ? <Ochp /> : null}
+      {selectedZone === "Плечовий суглоб" ? <PlechovyiSuhlob /> : null}
+      {selectedZone === "Ключиця" ? <Kliuchytsia /> : null}
+      {selectedZone === "Ребра" ? <Rebra /> : null}
+      {selectedZone === "Ліктьовий суглоб" ? <LiktovyiSuhlob /> : null}
+      {selectedZone === "Променево-зап'ястковий суглоб" ? (
+        <PromenevoZapIastkovyiSuhlob />
+      ) : null}
+      {selectedZone === "Кисть" ? <Kyst /> : null}
+      {selectedZone === "Кісток тазу" ? <KistokTazu/> : null}
 
       {selectedZone === "Кульшовий суглоб" ||
       selectedZone === "Плечовий суглоб" ? (

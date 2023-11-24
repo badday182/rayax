@@ -53,6 +53,7 @@ const App = () => {
         <Editor
           apiKey="62kbbg7407jjlea01hu71w9axyixiyxitsr8wtho4lnck72p"
           onInit={(evt, editor) => (editorRef.current = editor)}
+          
           // initialValue=""
           // initialValue={pacientInfo}
           initialValue={docTex}
@@ -97,7 +98,9 @@ const App = () => {
               "alignright alignjustify | bullist numlist outdent indent | " +
               "removeformat | help",
             content_style:
-              "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+              "body { font-family:Helvetica,Arial,sans-serif; font-size:14px;}",
+              // content_css: "/src/tineContent.css",
+
           }}
         />
         {/* <button onClick={log}>Log editor content</button> */}

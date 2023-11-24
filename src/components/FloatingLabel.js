@@ -69,6 +69,14 @@ import { gvhNenormaItems } from "../data/GVH/gvhNenormaItems";
 import { vysotaTilHrebtsivGvh } from "../data/GVH/GVH_notNorma/vysotaTilHrebtsiv";
 import { pvhNormaNenorma } from "../data/PVH/pvhNormaNenorma";
 import { zakliuchenniaPvh } from "../data/PVH/PVH_notNorma/zakliuchenniaPvh";
+import { ochpViews } from "../data/OCHP/ochpViews";
+import { plechovyiSuhlobViews } from "../data/PLECHOVYISUHLOB/plechovyiSuhlobViews";
+import { kliuchytsiaViews } from "../data/KLIUCHYTSIA/kliuchytsiaViews";
+import { rebraViews } from "../data/REBRA/rebraViews";
+import { liktovyiSuhlobViews } from "../data/LIKTOVYISUHLOB/liktovyiSuhlobViews";
+import { promenevoZapIastkovyiSuhlobViews } from "../data/PROMENZAPIaSTKSUHLOB/promenevoZapIastkovyiSuhlobViews";
+import { kystViews } from "../data/KYST/kystViews";
+import { kistokTazuViews } from "../data/KISTOKTAZU/kistokTazuViews";
 export function FormFloatingSelect({ items, label, onZoneSelect }) {
   const [floatingId, setFloatingId] = useState(uuidv4());
   const dispatch = useDispatch();
@@ -158,7 +166,7 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
 
     // -----------Череп start---------
     if (cherepViews.includes(selectedZone)) {
-      dispatch(editCherepNormaNenormaArray({ floatingId, selectedZone }));
+      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
     }
     // -----------Череп end---------
 
@@ -231,6 +239,48 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
       dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
     }
     // -----------ПВХ end---------
+
+    // -----------ОЧП start--------
+    if (ochpViews.includes(selectedZone)) {
+      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
+    }
+    // -----------ОЧП end---------
+
+    // -----------плечовийСуглоб start--------
+    if (plechovyiSuhlobViews.includes(selectedZone)) {
+      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
+    }
+    // -----------плечовийСуглоб end---------
+
+    // -----------Ключиця start--------
+    if (kliuchytsiaViews.includes(selectedZone)) {
+      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
+    }
+    // -----------Ключиця end---------
+    // -----------Ребра start--------
+    if (rebraViews.includes(selectedZone)) {
+      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
+    }
+    // -----------Ліктьовий суглоб end---------
+    if (liktovyiSuhlobViews.includes(selectedZone)) {
+      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
+    }
+    // -----------Ліктьовий суглоб end---------
+    // -----------Променево-зап'ястковий суглоб end---------
+    if (promenevoZapIastkovyiSuhlobViews.includes(selectedZone)) {
+      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
+    }
+    // -----------Променево-зап'ястковий суглоб end---------
+    // -----------Кисть end---------
+    if (kystViews.includes(selectedZone)) {
+      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
+    }
+    // -----------Кисть end---------
+    // -----------Кісток тазу end---------
+    if (kistokTazuViews.includes(selectedZone)) {
+      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
+    }
+    // -----------Кісток тазу end---------
   };
 
   // ----------только после инициализации компонент диспатчит первый айтем из списка----
@@ -249,9 +299,9 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
         ) : null}
 
         {/* --если выбран Череп или ППН (все пришедшие айтемы = айтемам черепа/ппн)--- */}
-        {items === cherepViews || items === ppnViews ? (
+        {/* {items === ppnViews  ? (
           <option value="">--select an option--</option>
-        ) : null}
+        ) : null} */}
         {/* --если выбрано что-то из ненормы ШВХ --- */}
         {/* ---------------если выбрано что-то из ненормы ОГК-------------- */}
         {shvhNenormaItems.includes(label) || gvhNenormaItems.includes(label) ? (
