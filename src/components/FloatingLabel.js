@@ -77,6 +77,11 @@ import { liktovyiSuhlobViews } from "../data/LIKTOVYISUHLOB/liktovyiSuhlobViews"
 import { promenevoZapIastkovyiSuhlobViews } from "../data/PROMENZAPIaSTKSUHLOB/promenevoZapIastkovyiSuhlobViews";
 import { kystViews } from "../data/KYST/kystViews";
 import { kistokTazuViews } from "../data/KISTOKTAZU/kistokTazuViews";
+import { kulshovyiSuhlobViews } from "../data/KULShOVYISUHLOB/kulshovyiSuhlobViews";
+import { kolinnyiSuhlobViews } from "../data/KOLINNYISUHLOB/kolinnyiSuhlobViews";
+import { homilkovoStopnyiSuhlobViews } from "../data/HOMILKOVOSTOPNYISUHLOB/homilkovoStopnyiSuhlobViews";
+import { stopaViews } from "../data/STOPA/stopaViews";
+import { peredniViddilyStopyViews } from "../data/PEREDNIVIDDILYSTOPY/peredniViddilyStopyViews";
 export function FormFloatingSelect({ items, label, onZoneSelect }) {
   const [floatingId, setFloatingId] = useState(uuidv4());
   const dispatch = useDispatch();
@@ -281,6 +286,22 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
       dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
     }
     // -----------Кісток тазу end---------
+    // -----------Кульшовий суглоб тазу end---------
+    if (kulshovyiSuhlobViews.includes(selectedZone)) {
+      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
+    }
+    // -----------Кульшовий суглоб тазу end---------
+    // -----------Колінний суглоб  end---------
+    if (kolinnyiSuhlobViews.includes(selectedZone)) {
+      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
+    }
+    // -----------Колінний суглоб end---------
+
+    // -----------Гомілково-стопний суглоб end---------
+    if (homilkovoStopnyiSuhlobViews.includes(selectedZone) || stopaViews.includes(selectedZone) || peredniViddilyStopyViews.includes(selectedZone))  {
+      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
+    }
+    // -----------Гомілково-стопний суглоб end---------
   };
 
   // ----------только после инициализации компонент диспатчит первый айтем из списка----

@@ -26,6 +26,10 @@ import { liktovyiSuhlobViews } from "../data/LIKTOVYISUHLOB/liktovyiSuhlobViews"
 import { promenevoZapIastkovyiSuhlobViews } from "../data/PROMENZAPIaSTKSUHLOB/promenevoZapIastkovyiSuhlobViews";
 import { kystViews } from "../data/KYST/kystViews";
 import { kistokTazuViews } from "../data/KISTOKTAZU/kistokTazuViews";
+import { kulshovyiSuhlobViews } from "../data/KULShOVYISUHLOB/kulshovyiSuhlobViews";
+import { kolinnyiSuhlobViews } from "../data/KOLINNYISUHLOB/kolinnyiSuhlobViews";
+import { homilkovoStopnyiSuhlobViews } from "../data/HOMILKOVOSTOPNYISUHLOB/homilkovoStopnyiSuhlobViews";
+import { stopaViews } from "../data/STOPA/stopaViews";
 
 export const ZoneInfoPattern = () => {
   const zone = useSelector((state) => state.zoneInfo.zone);
@@ -97,49 +101,6 @@ export const ZoneInfoPattern = () => {
   const fiziologKifos = useSelector(
     (state) => state.universalSlice.commaUniversalText_1
   );
-  // const seredynnaVis = useSelector(
-  //   (state) => state.universalSlice.commaUniversalText_2
-  // );
-  // const vysotaTilHrebtsiv = useSelector(
-  //   (state) => state.universalSlice.svhVysotaTilHrebtsivText
-  // );
-  // const mizhkhrebtseviPromizhky = useSelector(
-  //   (state) => state.universalSlice.commaUniversalText_4
-  // );
-  // const zamykaiuchiPlastynkyTilKhrebtsiv = useSelector(
-  //   (state) => state.universalSlice.commaUniversalText_5
-  // );
-  // const fasetkoviUnkovertSuhlShchelyny = useSelector(
-  //   (state) => state.universalSlice.commaUniversalText_6
-  // );
-  // const zakliuchenniaGvh = useSelector(
-  //   (state) => state.universalSlice.semicolonUniversalText_1
-  // );
-  // -----------ГВХ-selectors-end--------------
-
-  // -----------ПВХ-selectors-start----из общих универсальных селекторов
-  // const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynok)
-  // const fiziologKifos = useSelector(
-  //   (state) => state.universalSlice.commaUniversalText_1
-  // );
-  // const seredynnaVis = useSelector(
-  //   (state) => state.universalSlice.commaUniversalText_2
-  // );
-  // const vysotaTilHrebtsiv = useSelector(
-  //   (state) => state.universalSlice.svhVysotaTilHrebtsivText
-  // );
-  // const mizhkhrebtseviPromizhky = useSelector(
-  //   (state) => state.universalSlice.commaUniversalText_4
-  // );
-  // const zamykaiuchiPlastynkyTilKhrebtsiv = useSelector(
-  //   (state) => state.universalSlice.commaUniversalText_5
-  // );
-  // const fasetkoviUnkovertSuhlShchelyny = useSelector(
-  //   (state) => state.universalSlice.commaUniversalText_6
-  // );
-  // const zakliuchenniaPvh = useSelector(
-  //   (state) => state.universalSlice.semicolonUniversalText_1
-  // );
   // -----------ПВХ-selectors-end--------------
 
   // let report;
@@ -422,12 +383,72 @@ export const ZoneInfoPattern = () => {
     } else {
       report = (
         <>
-        Суглобові щілини кульшових суглобів нерівномірно звужені. Замикаючі пластинки вертлюгових западин склерозовані, із субхондральними кістами та крайовими остеофітами. Головки стегнових кісток сплощені.<br/>Заключення: R-ознаки двобічного коксартрозу.
+          Суглобові щілини кульшових суглобів нерівномірно звужені. Замикаючі
+          пластинки вертлюгових западин склерозовані, із субхондральними кістами
+          та крайовими остеофітами. Головки стегнових кісток сплощені.
+          <br />
+          Заключення: R-ознаки двобічного коксартрозу.
         </>
-        );
+      );
     }
   }
   // --------------------Кісток тазу-end---------------
+  // --------------------Кульшовий суглоб-start---------------
+  if (zone === "Кульшовий суглоб") {
+    if (zakliuchennia === "") {
+      report = `${kulshovyiSuhlobViews[0]}.`;
+    } else {
+      report = `${zakliuchennia}.`;
+    }
+  }
+  // --------------------Кульшовий суглоб-end---------------
+  // --------------------Колінний суглоб-start---------------
+  if (zone === "Колінний суглоб") {
+    if (zakliuchennia === "") {
+      report = `${kolinnyiSuhlobViews[0]}.`;
+    } else {
+      zakliuchennia === "Загальна не норма"
+        ? (report = (
+            <>
+              Суглобові щілини нерівномірно звужені. Замикаючі пластинки
+              сулерозовані, із крайовими остеофітами та субхондральрими кістами.
+              Міжвиросткові підвищення та полюса надколінка загострені.
+              <br />
+              Заключення: R-ознаки гонартрозу.
+            </>
+          ))
+        : (report = `${zakliuchennia}.`);
+    }
+  }
+  // --------------------Колінний суглоб-end---------------
+  // --------------------Гомілково-стопний суглоб-start---------------
+  if (zone === "Гомілково-стопний суглоб") {
+    if (zakliuchennia === "") {
+      report = `${homilkovoStopnyiSuhlobViews[0]}.`;
+    } else {
+      report = `${zakliuchennia}.`;
+    }
+  }
+  // --------------------Гомілково-стопний суглоб-end---------------
+  // --------------------Стопа-start---------------
+  if (zone === "Стопа") {
+    if (zakliuchennia === "") {
+      report = `${stopaViews[0]}.`;
+    } else {
+      report = `${zakliuchennia}.`;
+    }
+  }
+  // --------------------Стопа-end---------------
+  // --------------------Передні відділи стопи-start---------------
+  if (zone === "Передні відділи стопи") {
+    if (zakliuchennia === "") {
+      report = `${stopaViews[0]}.`;
+    } else {
+      report = `${zakliuchennia}.`;
+    }
+  }
+  // --------------------Передні відділи стопи-end---------------
+
   return (
     <div>
       <table

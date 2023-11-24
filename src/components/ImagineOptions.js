@@ -55,6 +55,11 @@ import { LiktovyiSuhlob } from "./LiktovyiSuhlob";
 import { PromenevoZapIastkovyiSuhlob } from "./PromenevoZapIastkovyiSuhlob";
 import { Kyst } from "./Kyst";
 import { KistokTazu } from "./KistokTazu";
+import { KulshovyiSuhlob } from "./KulshovyiSuhlob";
+import { KolinnyiSuhlob } from "./KolinnyiSuhlob";
+import { HomilkovoStopnyiSuhlob } from "./HomilkovoStopnyiSuhlob";
+import { Stopa } from "./Stopa";
+import { PeredniViddilyStopy } from "./PeredniViddilyStopy";
 
 export const ImagineOptions = ({ id }) => {
   const [selectedZone, setSelectedZone] = useState("ОГК");
@@ -150,6 +155,11 @@ export const ImagineOptions = ({ id }) => {
       ) : null}
       {selectedZone === "Кисть" ? <Kyst /> : null}
       {selectedZone === "Кісток тазу" ? <KistokTazu/> : null}
+      {selectedZone === "Кульшовий суглоб" ? <KulshovyiSuhlob/> : null}
+      {selectedZone === "Колінний суглоб" ? <KolinnyiSuhlob/> : null}
+      {selectedZone === "Гомілково-стопний суглоб" ? <HomilkovoStopnyiSuhlob/> : null}
+      {selectedZone === "Стопа" ? <Stopa/> : null}
+      {selectedZone === "Передні відділи стопи" ? <PeredniViddilyStopy/> : null}
 
       {selectedZone === "Кульшовий суглоб" ||
       selectedZone === "Плечовий суглоб" ? (
