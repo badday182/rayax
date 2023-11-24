@@ -452,14 +452,15 @@ export const ZoneInfoPattern = () => {
   return (
     <div>
       <table
+        width="100%"
+        border-collapse="collapse"
+        border="2px solid white"
         id={uuidv4()}
-        // style="border-collapse: collapse; width: 100%; border-color:transparent"
-        //   border="1"
       >
-        <tbody>
-          <tr>
-            <td>R-графiя: {radiography}</td>
-            <td>ЕЕД: {mSv} мЗв</td>
+        <tbody border="2px solid white">
+          <tr border="2px solid white">
+            <td border="2px solid white" >R-графiя: {radiography}</td>
+            <td border="2px solid white" align="right">ЕЕД: {mSv} мЗв</td>
           </tr>
         </tbody>
       </table>
@@ -468,6 +469,10 @@ export const ZoneInfoPattern = () => {
       {report}
       <br />
       <br />
+      {/* <div display="flex" flex-direction="row" justify-content="space-between" >
+        <div>R-графiя: {radiography}</div>
+        <div>ЕЕД: {mSv} мЗв</div>
+      </div> */}
     </div>
   );
 };

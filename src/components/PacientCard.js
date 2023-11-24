@@ -29,6 +29,9 @@ export const PacientCard = () => {
           ❌ Remove Patient
         </Button>
       </div>
+    
     </div>
+
+    
   );
 };

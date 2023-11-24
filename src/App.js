@@ -32,7 +32,6 @@ const App = () => {
   // console.log(pacientInfo);
   // document.querySelector('#')
 
-
   return (
     <div className=" m-auto conteinerWidht d-flex flex-row p-3 position-relative">
       <div className=" me-3 p-3 rounded-3 border pacientStore">
@@ -53,12 +52,16 @@ const App = () => {
         <Editor
           apiKey="62kbbg7407jjlea01hu71w9axyixiyxitsr8wtho4lnck72p"
           onInit={(evt, editor) => (editorRef.current = editor)}
-          
           // initialValue=""
           // initialValue={pacientInfo}
+
           initialValue={docTex}
           init={{
             height: 600,
+            content_css: "/src/tineContent.css",
+        
+        
+
             setup: function (editor) {
               editor.on("init", function () {
                 editor.getBody().scrollTo(0, editor.getBody().scrollHeight);
@@ -98,8 +101,7 @@ const App = () => {
               "alignright alignjustify | bullist numlist outdent indent | " +
               "removeformat | help",
             content_style:
-              "body { font-family:Helvetica,Arial,sans-serif; font-size:14px;}",
-              // content_css: "/src/tineContent.css",
+              "body { font-family: Helvetica, Arial, sans-serif; font-size: 14px; padding: 1rem;} table { width: 100%; border-collapse: collapse; border: 2px solid white; border-color: white; } tbody, th, tr, td { border: 2px solid white; border-color: white; border-style: solid; } td {padding: 0.4rem;}",
 
           }}
         />
