@@ -19,7 +19,10 @@ import { PacientInfoPattern } from "./patternsText/pacientInfoPattern";
 import { PacientCard } from "./components/PacientCard.js";
 
 const App = () => {
-  const zoneState = useSelector((state) => state.creatingZones.zoneCounter);
+  const patientState = useSelector(
+    (state) => state.creatingPatient.patientCounter
+  );
+
   const docTex = useSelector((state) => state.creatingDocument.documentText);
 
   const editorRef = useRef();
@@ -33,20 +36,13 @@ const App = () => {
   // document.querySelector('#')
 
   return (
-    <div className=" m-auto conteinerWidht d-flex flex-row p-3 position-relative">
-      <div className=" me-3 p-3 rounded-3 border pacientStore">
-        {/* <div className=" rounded-3 border p-3 pacientCard">
-          <PacientInfo />
-          {zoneState.map((option) => (
-            <ImagineOptions key={option.id} id={option.id} />
-          ))}
-          <Button variant="success" size="lg" className="w-100">
-            + Add new Patient
-          </Button>
-        </div> */}
-
-        <PacientCard />
-        {/* <PacientCard/> */}
+    <div className=" m-auto conteinerWidht d-flex flex-row p-3 position-relative ">
+      {/* <div className=" me-3 p-3 rounded-3 border pacientStore"> */}
+      <div className="pacientBlock">
+        {patientState.map((option) => (
+          <PacientCard key={option.id} id={option.id} />
+        ))}
+        {/* <PacientCard /> */}
       </div>
       <>
         <Editor
@@ -59,8 +55,6 @@ const App = () => {
           init={{
             height: 600,
             content_css: "/src/tineContent.css",
-        
-        
 
             setup: function (editor) {
               editor.on("init", function () {
@@ -77,6 +71,7 @@ const App = () => {
             plugins: [
               "advlist",
               "autolink",
+              "autosave",
               "lists",
               "link",
               "image",
@@ -95,14 +90,12 @@ const App = () => {
               "wordcount",
             ],
             toolbar:
-              "print" +
+              "print | restoredraft" +
               " undo redo | blocks | " +
-              "bold italic forecolor | alignleft aligncenter " +
-              "alignright alignjustify | bullist numlist outdent indent | " +
-              "removeformat | help",
+              "bold italic forecolor | " +
+              " | help",
             content_style:
-              "body { font-family: Helvetica, Arial, sans-serif; font-size: 14px; padding: 1rem;} table { width: 100%; border-collapse: collapse; border: 2px solid white; border-color: white; } tbody, th, tr, td { border: 2px solid white; border-color: white; border-style: solid; } td {padding: 0.4rem;}",
-
+              "body { font-family: Helvetica, Arial, sans-serif; font-size: 14px; padding: 1rem;} table { width: 100%; border-collapse: collapse; border: 2px solid white; border-color: white; } tbody, th, tr, td { border: 2px solid white; border-color: white; border-style: solid; } td {padding: 0.4rem;} h1,h2,h3,h4,h5,h6 {margin: 5px 5px;} ",
           }}
         />
         {/* <button onClick={log}>Log editor content</button> */}

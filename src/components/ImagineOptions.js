@@ -82,28 +82,7 @@ export const ImagineOptions = ({ id }) => {
 
   const textToDoc = renderToString(ZoneInfoPattern());
 
-  // const Ogk = () =>{
-  // return (
-  //   <div>
-  //     <FormFloatingSelect
-  //             id="zone"
-  //             items={zones}
-  //             onZoneSelect={setSelectedZone}
-  //             label="Зона дослідження"
-  //           />
-  //     <FormFloatingSelect
-  //             items={ogkViews}
-  //             onZoneSelect={setSelectedOgkViews}
-  //             label="Проєкія"
-  //           />
-  //           <FormFloatingSelect
-  //         items={normaNenorma}
-  //         onZoneSelect={setSelectednormaNenorma}
-  //         label="Норма/Не норма"
-  //         />
-  //   </div>
-  // )
-  // }
+  const [acceptNotice, setAcceptNotice] = useState(null);
 
   const handleApplyZone = () => {
     //Добавляем данные в текстовый редактор
@@ -115,65 +94,70 @@ export const ImagineOptions = ({ id }) => {
     dispatch(resetCherepSliseReducer());
     dispatch(resetPpnSliseReducer());
     dispatch(resetUniversalSliceReducer());
+
+    setAcceptNotice(<div className="overlay"></div>);
   };
 
   return (
-    <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary">
-      <FormFloatingSelect
-        id="zone"
-        items={zones}
-        onZoneSelect={setSelectedZone}
-        label="Зона дослідження"
-      />
-      {zoneWithSides ? (
-        <FormFloatingSelect
-          items={sides}
-          onZoneSelect={setSelectedSide}
-          label="Сторона"
-        />
-      ) : null}
-      {selectedZone === "ОГК" ? (
-        <Ogk />
-      ) : // <FormFloatingSelect
-      //   items={ogkViews}
-      //   onZoneSelect={setSelectedOgkViews}
-      //   label="Проєкія"
-      // />
-      null}
-      {selectedZone === "Череп" ? <Cherep /> : null}
-      {selectedZone === "ППН" ? <Ppn /> : null}
-      {selectedZone === "ШВХ" ? <Shvh /> : null}
-      {selectedZone === "ГВХ" ? <Gvh /> : null}
-      {selectedZone === "ПВХ" ? <Pvh /> : null}
-      {selectedZone === "ОЧП" ? <Ochp /> : null}
-      {selectedZone === "Плечовий суглоб" ? <PlechovyiSuhlob /> : null}
-      {selectedZone === "Ключиця" ? <Kliuchytsia /> : null}
-      {selectedZone === "Ребра" ? <Rebra /> : null}
-      {selectedZone === "Ліктьовий суглоб" ? <LiktovyiSuhlob /> : null}
-      {selectedZone === "Променево-зап'ястковий суглоб" ? (
-        <PromenevoZapIastkovyiSuhlob />
-      ) : null}
-      {selectedZone === "Кисть" ? <Kyst /> : null}
-      {selectedZone === "Кісток тазу" ? <KistokTazu/> : null}
-      {selectedZone === "Кульшовий суглоб" ? <KulshovyiSuhlob/> : null}
-      {selectedZone === "Колінний суглоб" ? <KolinnyiSuhlob/> : null}
-      {selectedZone === "Гомілково-стопний суглоб" ? <HomilkovoStopnyiSuhlob/> : null}
-      {selectedZone === "Стопа" ? <Stopa/> : null}
-      {selectedZone === "Передні відділи стопи" ? <PeredniViddilyStopy/> : null}
+    <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary ">
+      <div className="imagineOptions">
+        {acceptNotice}
 
-      {selectedZone === "Кульшовий суглоб" ||
-      selectedZone === "Плечовий суглоб" ? (
         <FormFloatingSelect
-          items={plechKulshSuglobViews}
-          onZoneSelect={setSelectedplechKulshSuglobViews}
-          label="Проєкія"
+          id="zone"
+          items={zones}
+          onZoneSelect={setSelectedZone}
+          label="Зона дослідження"
         />
-      ) : null}
-      {/* <FormFloatingSelect
-        items={normaNenorma}
-        onZoneSelect={setSelectednormaNenorma}
-        label="Норма/Не норма"
-      /> */}
+        {zoneWithSides ? (
+          <FormFloatingSelect
+            items={sides}
+            onZoneSelect={setSelectedSide}
+            label="Сторона"
+          />
+        ) : null}
+        {selectedZone === "ОГК" ? (
+          <Ogk />
+        ) : // <FormFloatingSelect
+        //   items={ogkViews}
+        //   onZoneSelect={setSelectedOgkViews}
+        //   label="Проєкія"
+        // />
+        null}
+        {selectedZone === "Череп" ? <Cherep /> : null}
+        {selectedZone === "ППН" ? <Ppn /> : null}
+        {selectedZone === "ШВХ" ? <Shvh /> : null}
+        {selectedZone === "ГВХ" ? <Gvh /> : null}
+        {selectedZone === "ПВХ" ? <Pvh /> : null}
+        {selectedZone === "ОЧП" ? <Ochp /> : null}
+        {selectedZone === "Плечовий суглоб" ? <PlechovyiSuhlob /> : null}
+        {selectedZone === "Ключиця" ? <Kliuchytsia /> : null}
+        {selectedZone === "Ребра" ? <Rebra /> : null}
+        {selectedZone === "Ліктьовий суглоб" ? <LiktovyiSuhlob /> : null}
+        {selectedZone === "Променево-зап'ястковий суглоб" ? (
+          <PromenevoZapIastkovyiSuhlob />
+        ) : null}
+        {selectedZone === "Кисть" ? <Kyst /> : null}
+        {selectedZone === "Кісток тазу" ? <KistokTazu /> : null}
+        {selectedZone === "Кульшовий суглоб" ? <KulshovyiSuhlob /> : null}
+        {selectedZone === "Колінний суглоб" ? <KolinnyiSuhlob /> : null}
+        {selectedZone === "Гомілково-стопний суглоб" ? (
+          <HomilkovoStopnyiSuhlob />
+        ) : null}
+        {selectedZone === "Стопа" ? <Stopa /> : null}
+        {selectedZone === "Передні відділи стопи" ? (
+          <PeredniViddilyStopy />
+        ) : null}
+
+        {selectedZone === "Кульшовий суглоб" ||
+        selectedZone === "Плечовий суглоб" ? (
+          <FormFloatingSelect
+            items={plechKulshSuglobViews}
+            onZoneSelect={setSelectedplechKulshSuglobViews}
+            label="Проєкія"
+          />
+        ) : null}
+      </div>
 
       <div className="d-flex justify-content-between zonesButtons">
         <div>

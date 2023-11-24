@@ -43,9 +43,11 @@ code {
 .zonesButtons > div:last-child {
   margin-right: 0;
 }
+.pacientBlock {
+  width: 550px;
+}
 .pacientCard {
   background-color: rgb(118, 205, 241);
-
 }
 .pacientStore {
   max-width: 600px;
@@ -59,7 +61,10 @@ code {
 .pacientStore > :not(:last-child) {
   margin-bottom: 16px
 }
+.imagineOptions{
+  position: relative;
 
+}
 .overlay {
   position: absolute;
   top: 0;
@@ -68,7 +73,7 @@ code {
   height: 100%;
   background: rgba(78, 228, 48, 0.20); /* Полупрозрачный черный цвет */
   pointer-events: auto; /* Это делает элемент активным для кликов */
-  z-index: 2; /* Поместите слой выше формы */
+  z-index: 10; /* Поместите слой выше формы */
   background-image: url('https://cdn1.iconfinder.com/data/icons/basic-ui-elements-coloricon/21/15-512.png'); /* Замените на путь к вашей картинке */
   background-size: contain; /* Масштабирование изображения, чтобы оно занимало всю площадь */
   background-position: center center;

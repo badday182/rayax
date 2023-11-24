@@ -11,8 +11,11 @@ import { ImagineOptions } from "./ImagineOptions";
 
 import { Editor } from "@tinymce/tinymce-react";
 import { PacientInfoPattern } from "../patternsText/pacientInfoPattern";
-
-export const PacientCard = () => {
+import { addPatient, resetPatient } from "./redux/slices/newPatientSliseReducer";
+import { deletePatient } from "./redux/slices/newPatientSliseReducer";
+import { resetImagineOptions } from "./redux/slices/newZoneSlise";
+export const PacientCard = ({ id }) => {
+  const dispatch = useDispatch();
   const zoneState = useSelector((state) => state.creatingZones.zoneCounter);
 
   return (
@@ -22,16 +25,30 @@ export const PacientCard = () => {
         <ImagineOptions key={option.id} id={option.id} />
       ))}
       <div className="d-flex justify-content-between zonesButtons">
-        <Button variant="success" className="">
-          ➕ Add new Patient
+        <Button
+          variant="success"
+          className="w-100"
+          onClick={() => {
+            const newPatient = {
+              id: uuidv4(),
+            };
+            dispatch(resetPatient());
+            dispatch(resetImagineOptions());
+            // dispatch(addPatient(newPatient));
+          }}
+        >
+          🚹 New Patient
         </Button>
-        <Button variant="outline-danger" className="backgroundWhite">
+        {/* <Button
+          variant="outline-danger"
+          className="backgroundWhite"
+          onClick={() => {
+            dispatch(deletePatient({ id }));
+          }}
+        >
           ❌ Remove Patient
-        </Button>
+        </Button> */}
       </div>
-    
     </div>
-
-    
   );
 };

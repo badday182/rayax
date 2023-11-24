@@ -17,26 +17,47 @@ export const PacientInfoPattern = () => {
   );
 
   return (
-    <table
+    <div>
+      <table
       width="100%"
       border-collapse="collapse"
-      border="2px solid white"
-      id={uuidv4()}
-      //   style="border-collapse: collapse; width: 100%; border-color:transparent"
-      //   border="1"
-    >
-      <tbody>
-        <tr>
-          <td border="2px solid white">Дата: {pacientInfostateDate}</td>
-          <td border="2px solid white">№: {pacientInfostateNumberExam}</td>
-          <td border="2px solid white">ПIБ: {pacientInfostateName}</td>
-          <td border="2px solid white" align="right">{pacientInfostateBirthYear} р.н.</td>
-        </tr>
-        {/* <tr>
+      border="2px solid white">
+        <tbody>
+          <tr>
+            <td width="70%">
+              <h5>РЕНТГЕНОДІАГНОСТИЧНЕ ВІДДІЛЕННЯ</h5>
+              <h3>РЕЗУЛЬТАТИ R-ДОСЛІДЖЕННЯ</h3>
+            </td>
+            <td align="right">
+              вул. Віталія Шума, 4, м.Чорноморськ Одеська область, 68004 код
+              ЄДРПОУ 01982212
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table
+        width="100%"
+        border-collapse="collapse"
+        border="2px solid white"
+        id={uuidv4()}
+        //   style="border-collapse: collapse; width: 100%; border-color:transparent"
+        //   border="1"
+      >
+        <tbody>
+          <tr higth="20px">
+            <td >№: {pacientInfostateNumberExam}</td>
+            <td >Дата: {pacientInfostateDate}</td>
+            <td >ПIБ: {pacientInfostateName}</td>
+            <td align="right">
+              {pacientInfostateBirthYear} р.н.
+            </td>
+          </tr>
+          {/* <tr>
           <td>R-графiя:</td>
           <td>ЕЕД:</td>
         </tr> */}
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   );
 };

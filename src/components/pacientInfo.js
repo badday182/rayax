@@ -33,16 +33,8 @@ function PacientInfo() {
   //   );
   // }, []);
   const handleApplyButtonClick = () => {
-    // const formattedDate = selectedDate.split("-").reverse().join(".");
-    
-    // dispatch(editExamDate(formattedDate));
-    // dispatch(editExamNumber(naprav));
-    // dispatch(editExamName(name));
-    // dispatch(editExamBirthYear(birthYear));
-    
-    // dispatch(addDocText({formattedDate, naprav, name, birthYear}));
-    dispatch(addDocText({textToDoc}));
-    
+ 
+    dispatch(addDocText({textToDoc}));    
 
     setAcceptNotice(
       <div className="overlay">

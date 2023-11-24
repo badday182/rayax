@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
   zoneCounter: [{ id: 0 }],
@@ -21,14 +22,14 @@ export const newZoneSlise = createSlice({
           (option) => option.id !== action.payload.id   );
       }
 
-    // state.zoneCounter.map(
-    //           (option) => console.log(option.id, action.payload.id)  );
-
-    // console.log(action.payload)
+    },
+    resetImagineOptions: (state) => {
+      state.zoneCounter = [{ id: uuidv4() }];
+      // state.zoneCounter.push(action.payload);
     },
   },
 });
 
-export const { addImagineOptions, deleteImagineOptions } = newZoneSlise.actions;
+export const { addImagineOptions, deleteImagineOptions, resetImagineOptions } = newZoneSlise.actions;
 
 export default newZoneSlise.reducer;

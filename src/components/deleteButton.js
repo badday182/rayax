@@ -15,8 +15,6 @@ function DeleteButton({ title, variant, onClick, id }) {
         // onClick={() => onClick(id)}
         onClick={
           () => {
-            
-          // console.log(deleteZoneId.id)
             dispatch(deleteImagineOptions({id}));
           }
         }

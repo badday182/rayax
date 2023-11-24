@@ -457,10 +457,10 @@ export const ZoneInfoPattern = () => {
         border="2px solid white"
         id={uuidv4()}
       >
-        <tbody border="2px solid white">
-          <tr border="2px solid white">
-            <td border="2px solid white" >R-графiя: {radiography}</td>
-            <td border="2px solid white" align="right">ЕЕД: {mSv} мЗв</td>
+        <tbody >
+          <tr >
+            <td >R-графiя: {radiography}</td>
+            <td  align="right">ЕЕД: {mSv} мЗв</td>
           </tr>
         </tbody>
       </table>

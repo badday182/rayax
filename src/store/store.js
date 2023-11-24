@@ -7,10 +7,12 @@ import ogkSliseReducer from "../components/redux/slices/ogkSliseReducer";
 import cherepSliseReducer from "../components/redux/slices/cherepSliseReducer";
 import ppnSliseReducer from "../components/redux/slices/ppnSliseReducer"
 import universalSliceReducer from "../components/redux/slices/universalSliceReducer";
+import newPatientSliseReducer from "../components/redux/slices/newPatientSliseReducer";
 
 const store = configureStore({
     reducer: {
         creatingZones: newZoneSliseReducer,
+        creatingPatient: newPatientSliseReducer,
         creatingDocument: documentSliseReducer,
         pacientInfo: pacientInfoSliseReducer,
         zoneInfo: zoneInfoSliseReducer,
