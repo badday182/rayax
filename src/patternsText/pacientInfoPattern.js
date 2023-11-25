@@ -24,14 +24,15 @@ export const PacientInfoPattern = () => {
       border="2px solid white">
         <tbody>
           <tr>
-            <td width="70%">
+            {/* <td width="70%"> */}
+            <td>
               <h5>РЕНТГЕНОДІАГНОСТИЧНЕ ВІДДІЛЕННЯ</h5>
               <h3>РЕЗУЛЬТАТИ R-ДОСЛІДЖЕННЯ</h3>
             </td>
-            <td align="right">
+            {/* <td align="right">
               вул. Віталія Шума, 4, м.Чорноморськ Одеська область, 68004 код
               ЄДРПОУ 01982212
-            </td>
+            </td> */}
           </tr>
         </tbody>
       </table>
