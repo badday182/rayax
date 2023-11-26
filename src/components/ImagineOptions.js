@@ -69,7 +69,7 @@ export const ImagineOptions = ({ id, editorContent }) => {
   const [selectedplechKulshSuglobViews, setSelectedplechKulshSuglobViews] =
     useState("Пряма");
   const [selectednormaNenorma, setSelectednormaNenorma] = useState("Норма");
-
+  const [buttonDisabled, setButtonDisabled] = useState(false); 
   // Вроде работает
   // useEffect(()=>{
   //   dispatch(editZone("ОГК"));
@@ -99,6 +99,7 @@ export const ImagineOptions = ({ id, editorContent }) => {
     dispatch(resetUniversalSliceReducer());
 
     setAcceptNotice(<div className="overlay"></div>);
+    setButtonDisabled(true); // Устанавливаем disabled в true после нажатия кнопки
   };
 
   return (
@@ -165,7 +166,7 @@ export const ImagineOptions = ({ id, editorContent }) => {
       <div className="d-flex justify-content-between zonesButtons">
         <div>
           {/* <ApplyZonesButton /> */}
-          <Button variant="success" className="me-2" onClick={handleApplyZone}>
+          <Button variant="success" className="me-2" onClick={handleApplyZone}  disabled={buttonDisabled}>
             Apply
           </Button>{" "}
           <AddZoneButton
