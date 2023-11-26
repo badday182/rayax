@@ -13,7 +13,7 @@ import Button from "react-bootstrap/Button";
 
 import { ImagineOptions } from "./components/ImagineOptions";
 
-import { Editor } from "@tinymce/tinymce-react";
+import { Editor, tinymce } from "@tinymce/tinymce-react";
 import { PacientInfoPattern } from "./patternsText/pacientInfoPattern";
 
 import { PacientCard } from "./components/PacientCard.js";
@@ -64,6 +64,7 @@ const App = () => {
 
           initialValue={docTex}
           init={{
+            selector: "#myTextarea",
             height: 600,
             content_css: "/src/tineContent.css",
 
