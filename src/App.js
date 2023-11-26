@@ -104,7 +104,7 @@ const App = () => {
               "body { font-family: Helvetica, Arial, sans-serif; font-size: 14px; padding: 1rem;} table { width: 100%; border-collapse: collapse; border: 2px solid white; border-color: white; } tbody, th, tr, td { border: 2px solid white; border-color: white; border-style: solid; } td {padding: 0.4rem;} h1,h2,h3,h4,h5,h6 {margin: 5px 5px;} ",
           }}
         />
-        {/* <button onClick={logEditorContent}>Log editor content</button> */}
+        <button onClick={logEditorContent}>Log editor content</button>
         {/* <button
           onClick={() => {
             // editorRef.current.setContent(pacientInfo);
