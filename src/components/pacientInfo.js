@@ -13,6 +13,7 @@ import {
   editExamDate,
   editExamName,
   editExamBirthYear,
+  resetPacientInfoSliseReducer,
 } from "./redux/slices/pacientInfoSliseReducer";
 
 import { PacientInfoPattern } from "../patternsText/pacientInfoPattern";
@@ -22,7 +23,8 @@ import { addDocText } from "./redux/slices/documentSliseReducer";
 
 
 
-function PacientInfo() {
+// function PacientInfo() {
+const PacientInfo = ({editorContent}) => {
   const textToDoc = renderToString(PacientInfoPattern());
 
   const [acceptNotice, setAcceptNotice] = useState(null);
@@ -33,14 +35,15 @@ function PacientInfo() {
   //   );
   // }, []);
   const handleApplyButtonClick = () => {
- 
+    editorContent()
     dispatch(addDocText({textToDoc}));    
-
+    
     setAcceptNotice(
       <div className="overlay">
         {/* <h1>Інформація про пацієнта успішно збережена</h1> */}
       </div>
     );
+    dispatch(resetPacientInfoSliseReducer())
   };
 
 

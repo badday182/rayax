@@ -17,8 +17,11 @@ import { Editor } from "@tinymce/tinymce-react";
 import { PacientInfoPattern } from "./patternsText/pacientInfoPattern";
 
 import { PacientCard } from "./components/PacientCard.js";
+import { addTextFromEditor } from "./components/redux/slices/documentSliseReducer.js";
 
 const App = () => {
+  const dispatch = useDispatch();
+
   const patientState = useSelector(
     (state) => state.creatingPatient.patientCounter
   );
@@ -34,15 +37,23 @@ const App = () => {
   const pacientInfo = renderToString(PacientInfoPattern());
   // console.log(pacientInfo);
   // document.querySelector('#')
-
+  // EditorContent = editorRef.current.getContent()
+  const editorContent = () => {
+    // const text = renderToString(editorRef.current.getContent());
+    const content = editorRef.current.getContent();
+    // console.log({text});
+    // console.log(text);
+    dispatch(addTextFromEditor(content));
+  };
+  // let editorContent =  editorRef.current.getContent()
   return (
     <div className=" m-auto conteinerWidht d-flex flex-row p-3 position-relative ">
       {/* <div className=" me-3 p-3 rounded-3 border pacientStore"> */}
       <div className="pacientBlock">
         {patientState.map((option) => (
-          <PacientCard key={option.id} id={option.id} />
+          <PacientCard editorContent={editorContent} key={option.id} id={option.id} />
         ))}
-        {/* <PacientCard /> */}
+        {/* <PacientCard editorContent={editorContent} /> */}
       </div>
       <>
         <Editor
@@ -98,15 +109,15 @@ const App = () => {
               "body { font-family: Helvetica, Arial, sans-serif; font-size: 14px; padding: 1rem;} table { width: 100%; border-collapse: collapse; border: 2px solid white; border-color: white; } tbody, th, tr, td { border: 2px solid white; border-color: white; border-style: solid; } td {padding: 0.4rem;} h1,h2,h3,h4,h5,h6 {margin: 5px 5px;} ",
           }}
         />
-        {/* <button onClick={log}>Log editor content</button> */}
         {/* <button
           onClick={() => {
             // editorRef.current.setContent(pacientInfo);
           }}
-        >
+          >
           Log editor content
         </button> */}
       </>
+      {/* <button onClick={editorContent}>Log editor content</button> */}
     </div>
   );
 };

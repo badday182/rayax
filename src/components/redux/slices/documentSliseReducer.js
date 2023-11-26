@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  textFromEditor: null,
   documentText: '',
 };
 
@@ -15,15 +16,26 @@ export const documentSliseReducer = createSlice({
       // state.documentText = [...state.documentText, action.payload];
 
       state.documentText += `${textToDoc}`
+
+      // state.documentText = state.textFromEditor + textToDoc
       
 
 
-      // console.log(state.documentText)
       // console.log(action.payload.naprav)
+    },
+    addTextFromEditor: (state, action) => {
+      // const { textFromEditor } = action.payload;
+      // state.textFromEditor += textFromEditor
+      // console.log(state.textFromEditor)
+      // console.log(action.payload)
+
+      // state.documentText = state.documentText + action.payload
+      state.documentText = action.payload
+
     },
   },
 });
 
-export const { addDocText } = documentSliseReducer.actions;
+export const { addDocText, addTextFromEditor } = documentSliseReducer.actions;
 
 export default documentSliseReducer.reducer;

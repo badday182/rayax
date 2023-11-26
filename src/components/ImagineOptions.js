@@ -61,7 +61,7 @@ import { HomilkovoStopnyiSuhlob } from "./HomilkovoStopnyiSuhlob";
 import { Stopa } from "./Stopa";
 import { PeredniViddilyStopy } from "./PeredniViddilyStopy";
 
-export const ImagineOptions = ({ id }) => {
+export const ImagineOptions = ({ id, editorContent }) => {
   const [selectedZone, setSelectedZone] = useState("ОГК");
 
   const [selectedSide, setSelectedSide] = useState("Справа");
@@ -85,7 +85,10 @@ export const ImagineOptions = ({ id }) => {
   const [acceptNotice, setAcceptNotice] = useState(null);
 
   const handleApplyZone = () => {
+    editorContent()
     //Добавляем данные в текстовый редактор
+    // console.log('textToDoc',textToDoc);
+    // console.log('{textToDoc}',{textToDoc});
     dispatch(addDocText({ textToDoc }));
     // Сбрасываем данные в редюсерах
     dispatch(resetZoneInfoSliseReducer());
