@@ -13,7 +13,7 @@ import Button from "react-bootstrap/Button";
 
 import { ImagineOptions } from "./components/ImagineOptions";
 
-import { Editor } from "@tinymce/tinymce-react";
+import { Editor, tinymce } from "@tinymce/tinymce-react";
 import { PacientInfoPattern } from "./patternsText/pacientInfoPattern";
 
 import { PacientCard } from "./components/PacientCard.js";
@@ -34,7 +34,12 @@ const App = () => {
   const pacientInfo = renderToString(PacientInfoPattern());
   // console.log(pacientInfo);
   // document.querySelector('#')
-
+  const logEditorContent = () => {
+    // const editorContent = tinymce.activeEditor.getContent();
+    // console.log(editorContent);
+      console.log(editorRef.current.getContent());
+    
+  };
   return (
     <div className=" m-auto conteinerWidht d-flex flex-row p-3 position-relative ">
       {/* <div className=" me-3 p-3 rounded-3 border pacientStore"> */}
@@ -53,6 +58,7 @@ const App = () => {
 
           initialValue={docTex}
           init={{
+            selector: "#myTextarea",
             height: 600,
             content_css: "/src/tineContent.css",
 
@@ -98,7 +104,7 @@ const App = () => {
               "body { font-family: Helvetica, Arial, sans-serif; font-size: 14px; padding: 1rem;} table { width: 100%; border-collapse: collapse; border: 2px solid white; border-color: white; } tbody, th, tr, td { border: 2px solid white; border-color: white; border-style: solid; } td {padding: 0.4rem;} h1,h2,h3,h4,h5,h6 {margin: 5px 5px;} ",
           }}
         />
-        {/* <button onClick={log}>Log editor content</button> */}
+        {/* <button onClick={logEditorContent}>Log editor content</button> */}
         {/* <button
           onClick={() => {
             // editorRef.current.setContent(pacientInfo);

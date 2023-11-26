@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  textFromEditor:'',
   documentText: '',
 };
 
@@ -21,6 +22,7 @@ export const documentSliseReducer = createSlice({
       // console.log(state.documentText)
       // console.log(action.payload.naprav)
     },
+    
   },
 });
 
