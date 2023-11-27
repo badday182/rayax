@@ -469,6 +469,7 @@ export const ZoneInfoPattern = () => {
       {report}
       <br />
       <br />
+      <br />
       {/* <div display="flex" flex-direction="row" justify-content="space-between" >
         <div>R-графiя: {radiography}</div>
         <div>ЕЕД: {mSv} мЗв</div>

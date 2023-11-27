@@ -83,11 +83,11 @@ const App = () => {
             plugins: [
               "advlist",
               "autolink",
-              "autosave",
               "lists",
               "link",
               "image",
               "charmap",
+              'pagebreak',
               "preview",
               "anchor",
               "searchreplace",
@@ -102,7 +102,7 @@ const App = () => {
               "wordcount",
             ],
             toolbar:
-              "print | restoredraft" +
+              "print | pagebreak | " +
               " undo redo | blocks | " +
               "bold italic forecolor | " +
               " | help",

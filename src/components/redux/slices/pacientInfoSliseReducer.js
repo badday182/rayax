@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { initialExamNumber } from "../../../data/initialExamNumber";
 
 const initialState = {
-  examNumber: "_________________",
+  examNumber: initialExamNumber,
   examDate: new Date()
     .toISOString()
     .slice(0, 10)
@@ -18,8 +19,11 @@ export const pacientInfoSliseReducer = createSlice({
   reducers: {
     editExamNumber: (state, action) => {
       // state.documentText = [...state.documentText, action.payload];
-
-      state.examNumber = action.payload;
+      state.examNumber = action.payload
+// if (state.examNumber === initialExamNumber) {
+//   state.examNumber = action.payload} else {
+//     state.examNumber = +state.examNumber + 1
+//   }
 
       // console.log(action.payload)
       // console.log(action)
@@ -37,7 +41,7 @@ export const pacientInfoSliseReducer = createSlice({
       // console.log(action.payload)
     },
     resetPacientInfoSliseReducer: (state) => {
-      state.examNumber = "_________________";
+      // state.examNumber = initialExamNumber;
       state.examDate = new Date()
         .toISOString()
         .slice(0, 10)
