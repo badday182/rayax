@@ -167,7 +167,7 @@ export const ImagineOptions = ({ id, editorContent }) => {
         <div>
           {/* <ApplyZonesButton /> */}
           <Button variant="success" className="me-2" onClick={handleApplyZone}  disabled={buttonDisabled}>
-            Apply
+          Add into Editor ✅📄
           </Button>{" "}
           <AddZoneButton
             title="Add zone"

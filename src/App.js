@@ -1,7 +1,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { renderToString } from "react-dom/server";
 import { v4 as uuidv4 } from "uuid";
 import { useSelector } from "react-redux/es/hooks/useSelector";
@@ -45,13 +45,31 @@ const App = () => {
     // console.log(text);
     dispatch(addTextFromEditor(content));
   };
+  const scrollToBottom = () => {
+    // if (editorRef.current) {
+    //   const editorBody = editorRef.current.getBody();
+    //   editorBody.scrollTo(0, editorBody.scrollHeight);
+    // }
+    const editorContainer = document.querySelector(".mce-content-body ");
+    if (editorContainer) {
+      editorContainer.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+  };
   // let editorContent =  editorRef.current.getContent()
+  useEffect(() => {
+    // Прокрутка вниз при инициализации
+    scrollToBottom();
+  }, []);
   return (
     <div className=" m-auto conteinerWidht d-flex flex-row p-3 position-relative ">
       {/* <div className=" me-3 p-3 rounded-3 border pacientStore"> */}
       <div className="pacientBlock">
         {patientState.map((option) => (
-          <PacientCard editorContent={editorContent} key={option.id} id={option.id} />
+          <PacientCard
+            editorContent={editorContent}
+            key={option.id}
+            id={option.id}
+          />
         ))}
         {/* <PacientCard editorContent={editorContent} /> */}
       </div>
@@ -65,7 +83,7 @@ const App = () => {
           initialValue={docTex}
           init={{
             selector: "#myTextarea",
-            height: 600,
+            // height: 600,
             content_css: "/src/tineContent.css",
 
             setup: function (editor) {
@@ -87,7 +105,7 @@ const App = () => {
               "link",
               "image",
               "charmap",
-              'pagebreak',
+              "pagebreak",
               "preview",
               "anchor",
               "searchreplace",
@@ -110,13 +128,7 @@ const App = () => {
               "body { font-family: Helvetica, Arial, sans-serif; font-size: 14px; padding: 1rem;} table { width: 100%; border-collapse: collapse; border: 2px solid white; border-color: white; } tbody, th, tr, td { border: 2px solid white; border-color: white; border-style: solid; } td {padding: 0.4rem;} h1,h2,h3,h4,h5,h6 {margin: 5px 5px;} ",
           }}
         />
-        {/* <button
-          onClick={() => {
-            // editorRef.current.setContent(pacientInfo);
-          }}
-          >
-          Log editor content
-        </button> */}
+        {/* <button onClick={() => {}}>skroll</button> */}
       </>
       {/* <button onClick={editorContent}>Log editor content</button> */}
     </div>

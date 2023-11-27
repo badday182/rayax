@@ -52,7 +52,7 @@ const PacientInfo = ({ editorContent }) => {
     }
    
   };
-
+ 
   const dispatch = useDispatch();
 
   // Значение по умолчанию - сегодняшняя дата
@@ -74,7 +74,7 @@ const PacientInfo = ({ editorContent }) => {
   const examState = useSelector((state) => state.pacientInfo.examNumber);
   if (examState !== initialExamNumber){
     initialExamDefaultValue = +examState
-  }
+      }
 
   const [naprav, setNaprav] = useState(null);
   // const napravState = useSelector((state) => state.pacientInfo.examNumber);
@@ -185,7 +185,7 @@ const PacientInfo = ({ editorContent }) => {
         onClick={handleApplyButtonClick}
         disabled={buttonDisabled}
       >
-        Apply
+        Add into Editor ✅📄
       </Button>{" "}
     </div>
   );

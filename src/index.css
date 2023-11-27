@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
@@ -46,10 +47,12 @@ code {
 .pacientBlock {
   width: 550px;
 }
+
 .pacientCard {
-  background-color: rgb(118, 205, 241);
+  background-color: #a4ddff;
+  box-shadow: 0 10px 16px -4px rgba(0,0,0,0.6);
 }
-.pacientStore {
+  .pacientStore {
   max-width: 600px;
   background-color: rgb(236, 236, 236);
   /* background-color: rgb(211, 242, 255); */
