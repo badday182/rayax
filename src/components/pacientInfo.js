@@ -22,7 +22,7 @@ import { addDocText } from "./redux/slices/documentSliseReducer";
 import { initialExamNumber } from "../data/initialExamNumber";
 
 // function PacientInfo() {
-const PacientInfo = ({ editorContent }) => {
+const PacientInfo = ({ editorContent } ) => {
   const textToDoc = renderToString(PacientInfoPattern());
 
   const [acceptNotice, setAcceptNotice] = useState(null);
@@ -34,7 +34,7 @@ const PacientInfo = ({ editorContent }) => {
   // }, []);
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
-  const handleApplyButtonClick = () => {
+  const handleApplyPatientButtonClick = () => {
     editorContent();
     dispatch(addDocText({ textToDoc }));
 
@@ -96,10 +96,9 @@ const PacientInfo = ({ editorContent }) => {
   const [name, setName] = useState();
   const handleNameChange = (e) => {
     const inputValue = e.target.value;
-    // dispatch(editExamNumber('111'));
+    
     // Регулярное выражение для разрешенных символов (украинские буквы и символы)
-    const pattern = /^[а-яА-ЯЇЇіі'\s,\.]+$/u;
-
+    const pattern = /^[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ'\s,\.]+$/u;
     if (!pattern.test(inputValue)) {
       e.target.value = inputValue.slice(0, -1); // Удаляем последний недопустимый символ
       dispatch(editExamName(e.target.value));
@@ -182,7 +181,7 @@ const PacientInfo = ({ editorContent }) => {
       <Button
         variant="success"
         className="me-2"
-        onClick={handleApplyButtonClick}
+        onClick={handleApplyPatientButtonClick}
         disabled={buttonDisabled}
       >
         Add into Editor ✅📄

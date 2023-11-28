@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { initialExamNumber } from "../../../data/initialExamNumber";
+import { initialPatientName } from "../../../data/initialPatientName";
+import { initialPatientBirthYear } from "../../../data/initialPatientBirthYear";
 
 const initialState = {
   examNumber: initialExamNumber,
@@ -9,8 +11,8 @@ const initialState = {
     .split("-")
     .reverse()
     .join("."),
-  examName: "_____________________",
-  examBirthYear: "______",
+  examName: initialPatientName,
+  examBirthYear: initialPatientBirthYear,
 };
 
 export const pacientInfoSliseReducer = createSlice({

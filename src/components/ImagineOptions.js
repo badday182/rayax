@@ -8,7 +8,7 @@ import { sides } from "../data/sides";
 import { ogkViews } from "../data/ogkViews";
 import { plechKulshSuglobViews } from "../data/plechovuyKulshovuySuglobViews";
 import Button from "react-bootstrap/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   editZone,
   editProaction,
@@ -36,7 +36,7 @@ import {
   resetNorma,
 } from "./redux/slices/zoneInfoSliseReducer";
 
-import { addDocText } from "./redux/slices/documentSliseReducer";
+import { addDocText,doubleAddPatientAndZoneDocText } from "./redux/slices/documentSliseReducer";
 
 import { renderToString } from "react-dom/server";
 import { ZoneInfoPattern } from "../patternsText/zoneInfoPattern";
@@ -60,6 +60,11 @@ import { KolinnyiSuhlob } from "./KolinnyiSuhlob";
 import { HomilkovoStopnyiSuhlob } from "./HomilkovoStopnyiSuhlob";
 import { Stopa } from "./Stopa";
 import { PeredniViddilyStopy } from "./PeredniViddilyStopy";
+import { PacientInfoPattern } from "../patternsText/pacientInfoPattern";
+import { editExamNumber, resetPacientInfoSliseReducer } from "./redux/slices/pacientInfoSliseReducer";
+import { initialPatientName } from "../data/initialPatientName";
+import { initialPatientBirthYear } from "../data/initialPatientBirthYear";
+import { initialExamNumber } from "../data/initialExamNumber";
 
 export const ImagineOptions = ({ id, editorContent }) => {
   const [selectedZone, setSelectedZone] = useState("ОГК");
@@ -80,17 +85,44 @@ export const ImagineOptions = ({ id, editorContent }) => {
   const dispatch = useDispatch();
   // const state = useSelector((state) => state.creatingDocument.documentText);
 
+  const textToDocPacientInfo = renderToString(PacientInfoPattern());
   const textToDoc = renderToString(ZoneInfoPattern());
+  const existPatientName = useSelector((state) => state.pacientInfo.examName);
+  const existPatientBirthYear = useSelector((state) => state.pacientInfo.examBirthYear);
+
+  const isPatientInfoExist = existPatientName !== initialPatientName & existPatientBirthYear !== initialPatientBirthYear
+  const examState = useSelector((state) => state.pacientInfo.examNumber);
+
+
 
   const [acceptNotice, setAcceptNotice] = useState(null);
 
   const handleApplyZone = () => {
     editorContent()
     //Добавляем данные в текстовый редактор
-    // console.log('textToDoc',textToDoc);
-    // console.log('{textToDoc}',{textToDoc});
+    
+    // dispatch(addDocText({ textToDocPacientInfo }));
+    // dispatch(addDocText({ textToDoc }));
+
+    //дублируем функционал из PacientInfo + добавляем зону в эдитор
+    if (isPatientInfoExist !== 0){
+      dispatch(doubleAddPatientAndZoneDocText({ textToDocPacientInfo, textToDoc}));
+      dispatch(resetPacientInfoSliseReducer());
+      if (examState !== initialExamNumber){
+        dispatch(editExamNumber(+examState + 1));
+      }
+    } else {
     dispatch(addDocText({ textToDoc }));
+
+    }
+
+
+    // dispatch(doubleAddPatientAndZoneDocText({ textToDocPacientInfo, textToDoc}));
+  //  console.log('isPatientInfoExist', isPatientInfoExist);
+
+
     // Сбрасываем данные в редюсерах
+    dispatch(resetPacientInfoSliseReducer());
     dispatch(resetZoneInfoSliseReducer());
     dispatch(resetogkSliseReducer());
 

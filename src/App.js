@@ -6,7 +6,7 @@ import { renderToString } from "react-dom/server";
 import { v4 as uuidv4 } from "uuid";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
-import PacientInfo from "./components/pacientInfo";
+import PacientInfo from "./components/PacientInfo.js";
 
 import { BlockButton } from "./components/addBlockButton";
 import Button from "react-bootstrap/Button";
@@ -63,6 +63,35 @@ const App = () => {
   return (
     <div className=" m-auto conteinerWidht d-flex flex-row p-3 position-relative ">
       {/* <div className=" me-3 p-3 rounded-3 border pacientStore"> */}
+
+      {/* <div id="supportBanner" class="banner">
+    <div class="content">
+      <p>Поддержи разработчика</p>
+      <img src="privatbank_logo.png" alt="ПриватБанк лого">
+      <img src="monobank_logo.png" alt="Монобанк лого">
+      <img src="telegram_logo.png" alt="Телеграм лого">
+    </div>
+    <button id="closeBanner">&times;</button>
+  </div> */}
+      {/* <div id="supportBanner" className="banner rounded-3">
+        <div className="content">
+          <button id="closeBanner">&times;</button>
+          <p>Підтримай розробника</p>
+          <img
+            src="https://new-thepage.fra1.digitaloceanspaces.com/live/media/86774/conversions/privatbank-r0-square_medium.jpg?v=1603812987"
+            alt="ПриватБанк лого"
+          />
+          <img
+            src="https://is3-ssl.mzstatic.com/image/thumb/Purple116/v4/12/68/33/126833ce-8663-7d73-0e4b-303233bbc698/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg"
+            alt="Монобанк лого"
+          />
+          <img
+            src="https://i0.wp.com/www.uooptkk.ru/wp-content/uploads/2022/07/telegram-logo.png?fit=900%2C764"
+            alt="Телеграм лого"
+          />
+        </div>
+      </div> */}
+
       <div className="pacientBlock">
         {patientState.map((option) => (
           <PacientCard
@@ -116,14 +145,12 @@ const App = () => {
               "media",
               "table",
               "code",
-              "help",
-              "wordcount",
+              // "help",
             ],
             toolbar:
               "print | pagebreak | " +
               " undo redo | blocks | " +
-              "bold italic forecolor | " +
-              " | help",
+              "bold italic forecolor | ",
             content_style:
               "body { font-family: Helvetica, Arial, sans-serif; font-size: 14px; padding: 1rem;} table { width: 100%; border-collapse: collapse; border: 2px solid white; border-color: white; } tbody, th, tr, td { border: 2px solid white; border-color: white; border-style: solid; } td {padding: 0.4rem;} h1,h2,h3,h4,h5,h6 {margin: 5px 5px;} ",
           }}
