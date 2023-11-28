@@ -5,7 +5,8 @@ const initialState = {
     zone: "ОГК",
     proaction: "Оглядова",
     side: "Справа",
-    norma: ""
+    norma: "",
+    applyPatienInfo: false,
 };
 
 export const zoneInfoSliseReducer = createSlice({
@@ -48,10 +49,26 @@ export const zoneInfoSliseReducer = createSlice({
         state.side = "Справа"
         state.norma = ""
       },
+      applyPatientInfoBlock: (state, action) => {
+        // state.documentText = [...state.documentText, action.payload];
+
+        state.applyPatienInfo = action.payload
+          
+        console.log(state.applyPatienInfo)
+        // console.log(action)
+      },
+      resetApplyPatientInfoBlock: (state) => {
+        // state.documentText = [...state.documentText, action.payload];
+
+        state.applyPatienInfo = false
+          
+        
+        // console.log(action)
+      },
     },
   });
   
-  export const { editZone,editProaction,editSide,editNorma,resetZone,resetNorma,resetSide,resetProaction, resetZoneInfoSliseReducer } = zoneInfoSliseReducer.actions;
+  export const { editZone,editProaction,editSide,editNorma,resetZone,resetNorma,resetSide,resetProaction, resetZoneInfoSliseReducer, applyPatientInfoBlock, resetApplyPatientInfoBlock } = zoneInfoSliseReducer.actions;
   
   export default zoneInfoSliseReducer.reducer;
   

@@ -18,11 +18,14 @@ import {
 import { deletePatient } from "./redux/slices/newPatientSliseReducer";
 import { resetImagineOptions } from "./redux/slices/newZoneSlise";
 import { addTextFromEditor } from "./redux/slices/documentSliseReducer";
+import { resetApplyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
 
 
 export const PacientCard = ({ id, editorContent }) => {
   const dispatch = useDispatch();
   const zoneState = useSelector((state) => state.creatingZones.zoneCounter);
+
+  // const imagineOptionsRef = useRef();
   return (
     <div className=" rounded-3 border p-3 pacientCard">
       <PacientInfo
@@ -48,6 +51,7 @@ export const PacientCard = ({ id, editorContent }) => {
             // dispatch(addTextFromEditor(editorContent()));
             dispatch(resetPatient());
             dispatch(resetImagineOptions());
+            dispatch(resetApplyPatientInfoBlock());
             // dispatch(addPatient(newPatient));
           }}
         >

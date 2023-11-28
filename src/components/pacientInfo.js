@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -20,19 +20,32 @@ import { PacientInfoPattern } from "../patternsText/pacientInfoPattern";
 
 import { addDocText } from "./redux/slices/documentSliseReducer";
 import { initialExamNumber } from "../data/initialExamNumber";
+import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
 
 // function PacientInfo() {
 const PacientInfo = ({ editorContent } ) => {
   const textToDoc = renderToString(PacientInfoPattern());
 
   const [acceptNotice, setAcceptNotice] = useState(null);
+  // const [acceptNotice2, setAcceptNotice2] = useState(null);
 
   // useEffect(() => {
-  //   setAcceptNotice(
-  //     <div className="overlay"></div>
-  //   );
+  //   dispatch(applyPatientInfoBlock(false));
+
   // }, []);
+
   const [buttonDisabled, setButtonDisabled] = useState(false);
+
+  const applyPatienInfo = useSelector((state) => state.zoneInfo.applyPatienInfo);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (applyPatienInfo) {
+      setAcceptNotice(
+        <div className="overlay">
+        </div>
+      );
+    } 
+  }, [applyPatienInfo]);
 
   const handleApplyPatientButtonClick = () => {
     editorContent();
@@ -53,7 +66,7 @@ const PacientInfo = ({ editorContent } ) => {
    
   };
  
-  const dispatch = useDispatch();
+  
 
   // Значение по умолчанию - сегодняшняя дата
   const [selectedDate, setSelectedDate] = useState(

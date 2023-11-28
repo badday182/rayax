@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { FormFloatingSelect } from "./FloatingLabel";
 import DeleteButton from "./deleteButton";
 import AddZoneButton from "./addZoneButton";
@@ -15,6 +15,7 @@ import {
   editSide,
   editNorma,
   resetZoneInfoSliseReducer,
+  applyPatientInfoBlock,
 } from "./redux/slices/zoneInfoSliseReducer";
 import {
   resetLegenRusynokArray,
@@ -93,9 +94,9 @@ export const ImagineOptions = ({ id, editorContent }) => {
   const isPatientInfoExist = existPatientName !== initialPatientName & existPatientBirthYear !== initialPatientBirthYear
   const examState = useSelector((state) => state.pacientInfo.examNumber);
 
-
-
   const [acceptNotice, setAcceptNotice] = useState(null);
+
+  const ref = useRef();
 
   const handleApplyZone = () => {
     editorContent()
@@ -108,10 +109,13 @@ export const ImagineOptions = ({ id, editorContent }) => {
     if (isPatientInfoExist !== 0){
       dispatch(doubleAddPatientAndZoneDocText({ textToDocPacientInfo, textToDoc}));
       dispatch(resetPacientInfoSliseReducer());
+      dispatch(applyPatientInfoBlock(true));
+
       if (examState !== initialExamNumber){
         dispatch(editExamNumber(+examState + 1));
       }
     } else {
+   
     dispatch(addDocText({ textToDoc }));
 
     }
