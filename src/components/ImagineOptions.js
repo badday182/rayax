@@ -177,7 +177,7 @@ export const ImagineOptions = ({ id, editorContent }) => {
         {selectedZone === "Кісток тазу" ? <KistokTazu /> : null}
         {selectedZone === "Кульшовий суглоб" ? <KulshovyiSuhlob /> : null}
         {selectedZone === "Колінний суглоб" ? <KolinnyiSuhlob /> : null}
-        {selectedZone === "Гомілково-стопний суглоб" ? (
+        {selectedZone === "Гомілковостопний суглоб" ? (
           <HomilkovoStopnyiSuhlob />
         ) : null}
         {selectedZone === "Стопа" ? <Stopa /> : null}

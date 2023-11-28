@@ -85,7 +85,7 @@ export const Gvh = () => {
           <AddOptionBlock
             items={vysotaTilHrebtsivGvh}
             onZoneSelect={setSelectedGvhViews}
-            // label="Висота тіл хрепців"
+            // label="Висота тіл хребців"
             label={gvhNenormaItems[2]}
             counter={vysotaTilHrebtsivCounter}
             onAddClick={() =>
@@ -127,7 +127,7 @@ export const Gvh = () => {
           <AddOptionBlock
             items={fasetkoviUnkovertSuhlShchelyny}
             onZoneSelect={setSelectedGvhViews}
-            // label="Фасеткові та унковертебральні суглобові щелини"
+            // label="Фасеткові та унковертебральні суглобові щілини"
             label={gvhNenormaItems[5]}
             counter={fasetkoviUnkovertSuhlShchelynyCounter}
             onAddClick={() =>

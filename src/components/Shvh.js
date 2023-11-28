@@ -87,7 +87,7 @@ export const Shvh = () => {
           <AddOptionBlock
             items={vysotaTilHrebtsiv}
             onZoneSelect={setSelectedShvhViews}
-            // label="Висота тіл хрепців"
+            // label="Висота тіл хребців"
             label={shvhNenormaItems[2]}
             counter={vysotaTilHrebtsivCounter}
             onAddClick={() =>
@@ -129,7 +129,7 @@ export const Shvh = () => {
           <AddOptionBlock
             items={fasetkoviUnkovertSuhlShchelyny}
             onZoneSelect={setSelectedShvhViews}
-            // label="Фасеткові та унковертебральні суглобові щелини"
+            // label="Фасеткові та унковертебральні суглобові щілини"
             label={shvhNenormaItems[5]}
             counter={fasetkoviUnkovertSuhlShchelynyCounter}
             onAddClick={() =>

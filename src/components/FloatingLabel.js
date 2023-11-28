@@ -297,17 +297,17 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
     }
     // -----------Колінний суглоб end---------
 
-    // -----------Гомілково-стопний суглоб end---------
+    // -----------Гомілковостопний суглоб end---------
     if (homilkovoStopnyiSuhlobViews.includes(selectedZone) || stopaViews.includes(selectedZone) || peredniViddilyStopyViews.includes(selectedZone))  {
       dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
     }
-    // -----------Гомілково-стопний суглоб end---------
+    // -----------Гомілковостопний суглоб end---------
   };
 
   // ----------только после инициализации компонент диспатчит первый айтем из списка----
   //   useEffect(()=>{
-  //     if (items[0] === "посиленний") {
-  //       dispatch(edit0LegenRusynok("посиленний"));
+  //     if (items[0] === "посилений") {
+  //       dispatch(edit0LegenRusynok("посилений"));
   //     }
   // }, [])
 

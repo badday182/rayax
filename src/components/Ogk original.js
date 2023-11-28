@@ -147,7 +147,7 @@ export const Ogk = () => {
             </Button>{" "}
           </div>
           {/* ------------Синуси-end--------- */}
-          {/* ------------Купала діафрагми-start--------- */}
+          {/* ------------купола діафрагми-start--------- */}
           <div className="itemZones addOption ">
             <div className="">
               <div>
@@ -156,7 +156,7 @@ export const Ogk = () => {
                     key={option.id}
                     items={kupalaDiadragmy}
                     onZoneSelect={setSelectedOgkViews}
-                    label="Купала діафрагми"
+                    label="купола діафрагми"
                   />
                 ))}
               </div>
@@ -169,7 +169,7 @@ export const Ogk = () => {
               Add
             </Button>{" "}
           </div>
-          {/* ------------Купала діафрагми-end--------- */}
+          {/* ------------купола діафрагми-end--------- */}
           {/* ------------Cor-start--------- */}
           <div className="itemZones addOption ">
             <div className="">

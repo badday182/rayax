@@ -150,9 +150,9 @@ export const universalSliceReducer = createSlice({
       .map((item) => item[1])
       .join(", ");
   
-    // Добавляем проверку и удаляем запятую перед 'в передньому/задньому вдділі С'
-    if (state.svhVysotaTilHrebtsivText.includes(', в передньому/задньому вдділі С')) {
-      state.svhVysotaTilHrebtsivText = state.svhVysotaTilHrebtsivText.replace(', в передньому/задньому вдділі С', ' в передньому/задньому вдділі С');
+    // Добавляем проверку и удаляем запятую перед 'в передньому/задньому відділі С'
+    if (state.svhVysotaTilHrebtsivText.includes(', в передньому/задньому відділі С')) {
+      state.svhVysotaTilHrebtsivText = state.svhVysotaTilHrebtsivText.replace(', в передньому/задньому відділі С', ' в передньому/задньому відділі С');
     }
     },
 

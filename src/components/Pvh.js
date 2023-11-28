@@ -84,7 +84,7 @@ export const Pvh = () => {
           <AddOptionBlock
             items={vysotaTilHrebtsivGvh}
             onZoneSelect={setSelectedPvhViews}
-            // label="Висота тіл хрепців"
+            // label="Висота тіл хребців"
             label={pvhNenormaItems[2]}
             counter={vysotaTilHrebtsivCounter}
             onAddClick={() =>
@@ -126,7 +126,7 @@ export const Pvh = () => {
           <AddOptionBlock
             items={fasetkoviUnkovertSuhlShchelyny}
             onZoneSelect={setSelectedPvhViews}
-            // label="Фасеткові та унковертебральні суглобові щелини"
+            // label="Фасеткові та унковертебральні суглобові щілини"
             label={pvhNenormaItems[5]}
             counter={fasetkoviUnkovertSuhlShchelynyCounter}
             onAddClick={() =>
