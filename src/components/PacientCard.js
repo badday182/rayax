@@ -3,7 +3,7 @@ import { renderToString } from "react-dom/server";
 import { v4 as uuidv4 } from "uuid";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
-import {PacientInfo} from "./PacientInfo"
+import PatientInfo from "./PacientInfo"
 import Button from "react-bootstrap/Button";
 
 import { ImagineOptions } from "./ImagineOptions";
@@ -27,7 +27,7 @@ export const PacientCard = ({ id, editorContent }) => {
   // const imagineOptionsRef = useRef();
   return (
     <div className=" rounded-3 border p-3 pacientCard">
-      <PacientInfo
+      <PatientInfo
         editorContent={editorContent}
       />
       {zoneState.map((option) => (
