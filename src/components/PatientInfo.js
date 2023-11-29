@@ -23,7 +23,7 @@ import { initialExamNumber } from "../data/initialExamNumber";
 import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
 
 // function PacientInfo() {
- const PacientInfo = ({ editorContent } ) => {
+ const PatientInfo = ({ editorContent } ) => {
   const textToDoc = renderToString(PacientInfoPattern());
 
   const [acceptNotice, setAcceptNotice] = useState(null);
@@ -203,4 +203,4 @@ import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
   );
 };
 
-export default PacientInfo;
+export default PatientInfo;

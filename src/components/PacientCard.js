@@ -3,7 +3,7 @@ import { renderToString } from "react-dom/server";
 import { v4 as uuidv4 } from "uuid";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
-import PatientInfo from "./PacientInfo"
+import PatientInfo from "./PatientInfo"
 import Button from "react-bootstrap/Button";
 
 import { ImagineOptions } from "./ImagineOptions";
