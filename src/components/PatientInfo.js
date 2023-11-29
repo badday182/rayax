@@ -140,7 +140,8 @@ import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
     }
   };
   return (
-    <div className="p-3 form-container mb-4 bg-light bg-gradient rounded-3 text-dark border border-secondary">
+    // <div className="p-3 form-container mb-4 bg-light bg-gradient rounded-3 text-dark border border-secondary">
+    <div className="p-3 form-container mb-4 rounded-3 text-dark border border-light-subtle bg-glass">
         {acceptNotice}
       <div>
         <Form className=" mb-3   ">

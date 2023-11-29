@@ -38,9 +38,9 @@ export const PacientCard = ({ id, editorContent }) => {
         />
       ))}
       <div className="d-flex justify-content-between zonesButtons">
-        <Button
-          variant="success"
-          className="w-100"
+        <Button 
+          // variant="success"
+          className="w-100 p-2 glass-button"
           onClick={() => {
             // console.log(editorContent());
             editorContent();

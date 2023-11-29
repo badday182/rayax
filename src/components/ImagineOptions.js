@@ -138,7 +138,8 @@ export const ImagineOptions = ({ id, editorContent }) => {
   };
 
   return (
-    <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary ">
+    // <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary ">
+    <div className="mb-4 p-3 rounded-3 text-dark border border-light-subtle bg-glass">
       <div className="imagineOptions">
         {acceptNotice}
 
