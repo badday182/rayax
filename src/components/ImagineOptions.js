@@ -96,7 +96,6 @@ export const ImagineOptions = ({ id, editorContent }) => {
 
   const [acceptNotice, setAcceptNotice] = useState(null);
 
-  const ref = useRef();
 
   const handleApplyZone = () => {
     editorContent()
