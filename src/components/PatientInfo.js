@@ -148,7 +148,7 @@ import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
           <Row className="mb-2">
             <Form.Group as={Col} controlId="date">
               <Form.Label>Дата дослідження</Form.Label>
-              <Form.Control
+              <Form.Control className="numeric"
                 // placeholder="Дата дослідження"
                 type="date"
                 defaultValue={selectedDate}
@@ -159,7 +159,7 @@ import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
 
             <Form.Group as={Col} controlId="imagine">
               <Form.Label>№ дослідження</Form.Label>
-              <Form.Control
+              <Form.Control className="numeric"
               // {initialExamDefaultValue != '' ? {}}
                 // placeholder="№ дослідження"
                 placeholder={initialExamDefaultValue}
@@ -181,7 +181,7 @@ import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
 
             <Form.Group as={Col} controlId="birthYear">
               <Form.Label>Рік народження</Form.Label>
-              <Form.Control
+              <Form.Control className="numeric"
                 placeholder="Рік народження"
                 type="number"
                 onChange={handleBirthYearChange}

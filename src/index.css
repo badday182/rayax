@@ -1,12 +1,18 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-weight: 500;
+  font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.numeric {
+  font-weight: 500;
+  font-family: "Montserrat";
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -59,11 +65,10 @@ code {
     rgba(164, 221, 255, 1) 0%,
     rgb(139, 211, 253) 100%
     ); */
-    /* background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 700 700" width="700" height="700" opacity="1"><defs><filter id="nnnoise-filter" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="linearRGB"><feTurbulence type="fractalNoise" baseFrequency="0.092" numOctaves="4" seed="15" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%" result="turbulence"></feTurbulence><feSpecularLighting surfaceScale="13" specularConstant="0.9" specularExponent="20" lighting-color="%23%23F08200" x="0%" y="0%" width="100%" height="100%" in="turbulence" result="specularLighting"><feDistantLight azimuth="3" elevation="93"></feDistantLight></feSpecularLighting><feColorMatrix type="saturate" values="0" x="0%" y="0%" width="100%" height="100%" in="specularLighting" result="colormatrix"></feColorMatrix></filter></defs><rect width="700" height="700" fill="%231ae2ec00"></rect><rect width="700" height="700" fill="%23%23F08200" filter="url(%23nnnoise-filter)"></rect></svg>'); */
+  /* background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 700 700" width="700" height="700" opacity="1"><defs><filter id="nnnoise-filter" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="linearRGB"><feTurbulence type="fractalNoise" baseFrequency="0.092" numOctaves="4" seed="15" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%" result="turbulence"></feTurbulence><feSpecularLighting surfaceScale="13" specularConstant="0.9" specularExponent="20" lighting-color="%23%23F08200" x="0%" y="0%" width="100%" height="100%" in="turbulence" result="specularLighting"><feDistantLight azimuth="3" elevation="93"></feDistantLight></feSpecularLighting><feColorMatrix type="saturate" values="0" x="0%" y="0%" width="100%" height="100%" in="specularLighting" result="colormatrix"></feColorMatrix></filter></defs><rect width="700" height="700" fill="%231ae2ec00"></rect><rect width="700" height="700" fill="%23%23F08200" filter="url(%23nnnoise-filter)"></rect></svg>'); */
 
-    backdrop-filter: blur(0.7px); 
-    box-shadow: 0 10px 16px -4px rgba(0,0,0,0.6);
-
+  backdrop-filter: blur(0.7px);
+  box-shadow: 0 10px 16px -4px rgba(0, 0, 0, 0.6);
 }
 
 .pacientStore {
@@ -104,7 +109,7 @@ code {
 }
 .bg-glass {
   background-color: rgb(178 214 247 / 18%);
-  backdrop-filter: blur(0.7px); 
+  backdrop-filter: blur(0.7px);
 
   /* z-index: 1; */
 }
@@ -125,6 +130,7 @@ code {
   cursor: pointer;
 } */
 .glass-button {
+  font-weight: 500;
   /* display: inline-block; */
   /* padding: 24px 32px; */
   border: 0;
@@ -133,30 +139,30 @@ code {
   background-color: rgb(255 255 255 / 0%);
   border: 1px solid rgb(245 245 245 / 64%);
   /* backdrop-filter: blur(30px); */
-  color: rgb(0 0 0);  
+  color: rgb(237 237 237);
+
   font-size: 16px;
   /* letter-spacing: 2px; */
   cursor: pointer;
   /* text-transform: uppercase; */
-  backdrop-filter: blur(0.7px); 
+  backdrop-filter: blur(0.7px);
   /* transition: 0.3s ease; */
-  
 }
 .glass-button:hover {
   background-color: rgb(186 223 243 / 47%);
-    /* border: 1px solid rgb(91 91 239 / 48%); */
-  color: rgb(0 0 0);  
+  /* border: 1px solid rgb(91 91 239 / 48%); */
+  color: rgb(255 255 255);
   border: 1px solid rgb(245 245 245 / 64%);
-
 }
 .glass-button:active {
-  background-color: rgb(121 196 237 / 47%);}
+  background-color: rgb(121 196 237 / 47%);
+}
 .glass-button:first-child:active {
   background-color: rgb(186 223 243 / 47%);
-color: rgb(0 0 0);  
-border: 1px solid rgb(245 245 245 / 64%);}
+  color: rgb(255 255 255);
+  border: 1px solid rgb(245 245 245 / 64%);
+}
 /* -------------------------------------------------------- */
-
 
 .addOption > div:first-child {
   width: 100%;
