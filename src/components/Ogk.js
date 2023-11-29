@@ -79,7 +79,7 @@ export const Ogk = () => {
           <AddOptionBlock
             items={kupalaDiadragmy}
             onZoneSelect={setSelectedOgkViews}
-            label="купола діафрагми"
+            label="Купола діафрагми"
             counter={kupalaDiadragmyCounter}
             onAddClick={() => handleAddOption(setKupalaDiadragmyCounter, kupalaDiadragmyCounter, setKupalaDiadragmyCounter)}
           />

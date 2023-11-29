@@ -156,7 +156,7 @@ export const Ogk = () => {
                     key={option.id}
                     items={kupalaDiadragmy}
                     onZoneSelect={setSelectedOgkViews}
-                    label="купола діафрагми"
+                    label="Купола діафрагми"
                   />
                 ))}
               </div>

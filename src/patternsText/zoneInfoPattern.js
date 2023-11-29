@@ -204,7 +204,7 @@ export const ZoneInfoPattern = () => {
     report = (
       <div>
         Легеневий рисунок {legenRusynok}. Корені {koreni}. Синуси {synusy}.
-        купола діафрагми {kupalaDiadragmy}. Cor - {cor}. <br />
+        Купола діафрагми {kupalaDiadragmy}. Cor - {cor}. <br />
         Заключення: {ogkZakliuchennia}.
       </div>
     );
