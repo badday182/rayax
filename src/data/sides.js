@@ -1,1 +1,1 @@
-export const sides = ['Справа', 'Зліва']
+export const sides = ['Справа', 'Зліва', 'Справа та зліва']
