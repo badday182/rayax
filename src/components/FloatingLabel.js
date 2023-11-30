@@ -85,13 +85,26 @@ import { stopaViews } from "../data/STOPA/stopaViews";
 import { peredniViddilyStopyViews } from "../data/PEREDNIVIDDILYSTOPY/peredniViddilyStopyViews";
 
 export function FormFloatingSelect({ items, label, onZoneSelect }) {
+  const viewsToEditSemicolUnivArray_1 = [
+    cherepViews,
+    ppnViews,
+    ochpViews,
+    plechovyiSuhlobViews,
+    kliuchytsiaViews,
+    rebraViews,
+    liktovyiSuhlobViews,
+    promenevoZapIastkovyiSuhlobViews,
+    kystViews,
+    kistokTazuViews,
+    kulshovyiSuhlobViews,
+    kolinnyiSuhlobViews,
+    homilkovoStopnyiSuhlobViews,
+    stopaViews,
+    peredniViddilyStopyViews
+  ];
   const [floatingId] = useState(uuidv4());
   const dispatch = useDispatch();
 
-  // const floatingId = uuidv4();
-  // useEffect(() => {
-  //   setFloatingId(uuidv4());
-  // }, []);
 
   const itemGenerator = () => {
     const fixedZone = (item) => {
@@ -108,12 +121,23 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
 
  
 useEffect(() => {
-   // Имитация выбора по умолчанию сразу dispatch текст из селекта
-    if (cherepViews[0] === items[0]) {
-      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone: items[0] }));
-      console.log('floatingId', floatingId);
-      console.log('items[0]', items[0]);
-    }
+   // Имитация выбора по умолчанию - сразу dispatch текст c id из селекта
+
+    // if (cherepViews[0] === items[0]) {
+    //   dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone: items[0] }));
+    //   // console.log('floatingId', floatingId);
+    //   // console.log('items[0]', items[0]);
+    // }
+    // if (ppnViews[0] === items[0]) {
+    //   dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone: items[0] }));
+    // }
+
+    // Создаем массив из всех первых элементов
+    const firstElements = viewsToEditSemicolUnivArray_1.map(viewsArray => viewsArray[0]);
+//dispatch текст c id из селекта
+if (firstElements.includes(items[0])) {
+  dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone: items[0] }));
+}
   }, []);
   const handleZoneSelect = (event) => {
     const selectedZone = event.target.value;
@@ -183,8 +207,7 @@ useEffect(() => {
     // -----------Череп start---------
     if (cherepViews.includes(selectedZone)) {
       dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
-      console.log('floatingId', floatingId);
-      console.log('selectedZone', selectedZone);
+      
 
     }
     // -----------Череп end---------
@@ -318,12 +341,7 @@ useEffect(() => {
     // -----------Гомілковостопний суглоб end---------
   };
 
-  // ----------только после инициализации компонент диспатчит первый айтем из списка----
-  //   useEffect(()=>{
-  //     if (items[0] === "посилений") {
-  //       dispatch(edit0LegenRusynok("посилений"));
-  //     }
-  // }, [])
+
 
   return (
     <FloatingLabel className="mb-2" controlId={floatingId} label={label}>

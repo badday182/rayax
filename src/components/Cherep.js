@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -10,18 +9,10 @@ import { editSemicolonUniversalArray_1 } from "./redux/slices/universalSliceRedu
 
 
 export const Cherep = () => {
-  const dispatch = useDispatch();
 
   const [selectedCherepViews, setSelectedCherepViews] = useState(cherepViews[0]);
   const [cherepCounter, setCherepCounter] = useState([{ id: uuidv4() }]);
 
-  // useEffect(() => {
-  //   // Проверка на первый рендер
-  //   if (cherepCounter.length === 1) {
-  //     // Выполнить dispatch с нужными значениями
-  //     dispatch(editSemicolonUniversalArray_1({ floatingId: cherepCounter[0].id, selectedZone: cherepViews[0] }));
-  //   }
-  // }, []);
 
   // const handleAddOption = (setter, counter, setCounter) => {
   const handleAddOption = (setter, counter) => {
