@@ -81,15 +81,17 @@ import { kulshovyiSuhlobViews } from "../data/KULShOVYISUHLOB/kulshovyiSuhlobVie
 import { kolinnyiSuhlobViews } from "../data/KOLINNYISUHLOB/kolinnyiSuhlobViews";
 import { homilkovoStopnyiSuhlobViews } from "../data/HOMILKOVOSTOPNYISUHLOB/homilkovoStopnyiSuhlobViews";
 import { stopaViews } from "../data/STOPA/stopaViews";
+
 import { peredniViddilyStopyViews } from "../data/PEREDNIVIDDILYSTOPY/peredniViddilyStopyViews";
+
 export function FormFloatingSelect({ items, label, onZoneSelect }) {
-  const [floatingId, setFloatingId] = useState(uuidv4());
+  const [floatingId] = useState(uuidv4());
   const dispatch = useDispatch();
 
   // const floatingId = uuidv4();
-  useEffect(() => {
-    setFloatingId(uuidv4());
-  }, []);
+  // useEffect(() => {
+  //   setFloatingId(uuidv4());
+  // }, []);
 
   const itemGenerator = () => {
     const fixedZone = (item) => {
@@ -104,6 +106,15 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
     ));
   };
 
+ 
+useEffect(() => {
+   // Имитация выбора по умолчанию сразу dispatch текст из селекта
+    if (cherepViews[0] === items[0]) {
+      dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone: items[0] }));
+      console.log('floatingId', floatingId);
+      console.log('items[0]', items[0]);
+    }
+  }, []);
   const handleZoneSelect = (event) => {
     const selectedZone = event.target.value;
     onZoneSelect(selectedZone);
@@ -172,6 +183,9 @@ export function FormFloatingSelect({ items, label, onZoneSelect }) {
     // -----------Череп start---------
     if (cherepViews.includes(selectedZone)) {
       dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
+      console.log('floatingId', floatingId);
+      console.log('selectedZone', selectedZone);
+
     }
     // -----------Череп end---------
 
