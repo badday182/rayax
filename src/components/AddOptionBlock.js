@@ -2,12 +2,16 @@ import { useEffect } from "react";
 import { FormFloatingSelect } from "./FloatingLabel";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { cherepViews} from "../data/Cherep/cherepViews";
+import { cherepViews } from "../data/Cherep/cherepViews";
 import { editSemicolonUniversalArray_1 } from "./redux/slices/universalSliceReducer";
 
-
-
-export const AddOptionBlock = ({ items, onZoneSelect, label, counter, onAddClick }) => {
+export const AddOptionBlock = ({
+  items,
+  onZoneSelect,
+  label,
+  counter,
+  onAddClick,
+}) => {
   const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -16,21 +20,26 @@ export const AddOptionBlock = ({ items, onZoneSelect, label, counter, onAddClick
   //   }
   // }, []);
 
-    return (
-      <div className="itemZones addOption">
-        <div>
-          {counter.map((option) => (
+  return (
+    <div className="b1">
+      <div className="mb-2">
+        {counter.map((option) => (
+          <div className="itemZones addOption">
             <FormFloatingSelect
               key={option.id}
               items={items}
               onZoneSelect={onZoneSelect}
               label={label}
             />
-          ))}
-        </div>
-        <Button variant="primary" className="zoneAddButton" onClick={onAddClick}>
-          Add
-        </Button>{" "}
+            <button type="button" class="btn btn-outline-danger mb-2 zoneAddButton">
+              ✖
+            </button>
+          </div>
+        ))}
       </div>
-    );
-  };
+      <Button variant="btn btn-primary w-75 mb-1" className="" onClick={onAddClick}>
+        Додати {label.toLowerCase()}
+      </Button>{" "}
+    </div>
+  );
+};

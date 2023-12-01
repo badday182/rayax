@@ -206,13 +206,13 @@ export const ImagineOptions = ({ id, editorContent }) => {
           Add into Editor ✅📄
           </Button>{" "}
           <AddZoneButton
-            title="Add zone"
+            title="Add Protocol"
             variant="outline-success"
             // onAddOptions={onAddOptions}
           />
         </div>
         <DeleteButton
-          title="Remove Zone"
+          title="Remove Protocol"
           variant="outline-danger"
           // onClick={() => onDelete(id)}
           id={id}
