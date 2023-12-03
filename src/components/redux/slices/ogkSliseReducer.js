@@ -75,7 +75,7 @@ export const ogkSliseReducer = createSlice({
     },
     deleteIdLegenRusynokArray: (state, action) => {
       const { floatingId } = action.payload;
-
+// console.log('state.legenRusynokArray', state.legenRusynokArray);
       // Фильтруем массив, оставляя только те подмассивы, у которых первый элемент не равен floatingId
       state.legenRusynokArray = state.legenRusynokArray.filter(
         (item) => item[0] !== floatingId

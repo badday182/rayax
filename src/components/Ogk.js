@@ -75,7 +75,7 @@ export const Ogk = () => {
 // }
 const handleDeleteOption = (deleteId, resetCounter) => {
  // Проверяем длину массива, выполняем удаление только если длина не равна 1
- console.log('handleDeleteOption deleteId', resetCounter[0]);
+ console.log('handleDeleteOption deleteId', deleteId);
  if (resetCounter[0].length !== 1) {
   // Фильтруем массив, оставляя только те элементы, у которых id не равен deleteId
   const updatedCounter = resetCounter[0].filter((item) => item.id !== deleteId);
@@ -85,7 +85,7 @@ const handleDeleteOption = (deleteId, resetCounter) => {
 // -----------ОГК start---------
 
     
-      dispatch(deleteIdLegenRusynokArray({ floatingId: resetCounter[0] }));
+      dispatch(deleteIdLegenRusynokArray({ floatingId: deleteId }));
      
       // dispatch(editKoreniArray({ floatingId, selectedZone }));
   
