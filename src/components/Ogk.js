@@ -1,4 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  deleteIdLegenRusynokArray,
+
+  editLegenRusynokArray,
+  editKoreniArray,
+  editSynusyArray,
+  editKupalaDiadragmyArray,
+  editCorArray,
+  editOgkZakliuchenniaArray,
+} from "./redux/slices/ogkSliseReducer";
+
 import { FormFloatingSelect } from "./FloatingLabel";
 import { v4 as uuidv4 } from "uuid";
 import { ogkViews } from "../data/ogkViews";
@@ -48,6 +60,8 @@ export const Ogk = () => {
     setter([...counter, { id: uuidv4() }]);
   };
   
+  const dispatch = useDispatch();
+
 // const handleDeleteOption = (deleteId) => {
 //   // Фильтруем массив, оставляя только те элементы, у которых id не равен deleteId
 //   const updatedLegenRysunokCounter = legenRysunokCounter.filter((item) => item.id !== deleteId);
@@ -60,11 +74,32 @@ export const Ogk = () => {
 
 // }
 const handleDeleteOption = (deleteId, resetCounter) => {
+ // Проверяем длину массива, выполняем удаление только если длина не равна 1
+ console.log('handleDeleteOption deleteId', resetCounter[0]);
+ if (resetCounter[0].length !== 1) {
   // Фильтруем массив, оставляя только те элементы, у которых id не равен deleteId
   const updatedCounter = resetCounter[0].filter((item) => item.id !== deleteId);
 
   // Устанавливаем обновленное значение состояния
   resetCounter[1](updatedCounter);
+// -----------ОГК start---------
+
+    
+      dispatch(deleteIdLegenRusynokArray({ floatingId: resetCounter[0] }));
+     
+      // dispatch(editKoreniArray({ floatingId, selectedZone }));
+  
+      // dispatch(editSynusyArray({ floatingId, selectedZone }));
+   
+      // dispatch(editKupalaDiadragmyArray({ floatingId, selectedZone }));
+   
+      // dispatch(editCorArray({ floatingId, selectedZone }));
+  
+      // dispatch(editOgkZakliuchenniaArray({ floatingId, selectedZone }));
+  
+    // -----------ОГК end---------
+
+}
 }
   return (
     <div className="">

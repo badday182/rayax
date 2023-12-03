@@ -73,6 +73,19 @@ export const ogkSliseReducer = createSlice({
       // console.log(state.legenRusynokArray[1][0]);
       // console.log(state.legenRusynokArray[1][1]);
     },
+    deleteIdLegenRusynokArray: (state, action) => {
+      const { floatingId } = action.payload;
+
+      // Фильтруем массив, оставляя только те подмассивы, у которых первый элемент не равен floatingId
+      state.legenRusynokArray = state.legenRusynokArray.filter(
+        (item) => item[0] !== floatingId
+      );
+
+      // Обновляем legenRusynokText
+      state.legenRusynokText = state.legenRusynokArray
+        .map((item) => item[1])
+        .join(", ");
+    },
     resetLegenRusynokArray: (state) => {
       state.legenRusynokArray = [];
       // state.legenRusynokText = ''
@@ -192,6 +205,7 @@ export const ogkSliseReducer = createSlice({
 
 export const {
   editLegenRusynokArray,
+  deleteIdLegenRusynokArray,
   resetLegenRusynokArray,
   editKoreniArray,
   resetKoreniArray,
