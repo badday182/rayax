@@ -11,6 +11,7 @@ export const AddOptionBlock = ({
   label,
   counter,
   onAddClick,
+  onDeleteClick,
 }) => {
   const dispatch = useDispatch();
 
@@ -24,14 +25,14 @@ export const AddOptionBlock = ({
     <div className="b1">
       <div className="mb-2">
         {counter.map((option) => (
-          <div className="itemZones addOption">
+          <div key={option.id} className="itemZones addOption">
             <FormFloatingSelect
               key={option.id}
               items={items}
               onZoneSelect={onZoneSelect}
               label={label}
             />
-            <button type="button" class="btn btn-outline-danger mb-2 zoneAddButton">
+            <button type="button" className="btn btn-outline-danger mb-2 zoneAddButton" onClick={() => onDeleteClick(option.id)}>
               ✖
             </button>
           </div>

@@ -47,7 +47,25 @@ export const Ogk = () => {
   const handleAddOption = (setter, counter, setCounter) => {
     setter([...counter, { id: uuidv4() }]);
   };
+  
+// const handleDeleteOption = (deleteId) => {
+//   // Фильтруем массив, оставляя только те элементы, у которых id не равен deleteId
+//   const updatedLegenRysunokCounter = legenRysunokCounter.filter((item) => item.id !== deleteId);
+  
+//   // Устанавливаем обновленное значение состояния
+//   setlegenRysunokCounter(updatedLegenRysunokCounter);
 
+//   const updatedKoreniCounter = koreniCounter.filter((item) => item.id !== deleteId);
+//   setKoreniCounter(updatedKoreniCounter);
+
+// }
+const handleDeleteOption = (deleteId, resetCounter) => {
+  // Фильтруем массив, оставляя только те элементы, у которых id не равен deleteId
+  const updatedCounter = resetCounter[0].filter((item) => item.id !== deleteId);
+
+  // Устанавливаем обновленное значение состояния
+  resetCounter[1](updatedCounter);
+}
   return (
     <div className="">
       <FormFloatingSelect items={ogkViews} onZoneSelect={setSelectedOgkViews} label="Проєкія" />
@@ -61,6 +79,8 @@ export const Ogk = () => {
             label="Легеневий рисунок"
             counter={legenRysunokCounter}
             onAddClick={() => handleAddOption(setlegenRysunokCounter, legenRysunokCounter, setlegenRysunokCounter)}
+            // onDeleteClick={(deleteId) => handleDeleteOption(deleteId)}
+            onDeleteClick={(deleteId) => handleDeleteOption(deleteId, [legenRysunokCounter, setlegenRysunokCounter])}
           />
           <AddOptionBlock
             items={koreni}
@@ -68,6 +88,7 @@ export const Ogk = () => {
             label="Корені"
             counter={koreniCounter}
             onAddClick={() => handleAddOption(setKoreniCounter, koreniCounter, setKoreniCounter)}
+            onDeleteClick={(deleteId) => handleDeleteOption(deleteId, [koreniCounter, setKoreniCounter])}
           />
           <AddOptionBlock
             items={synusy}
@@ -75,6 +96,7 @@ export const Ogk = () => {
             label="Синуси"
             counter={synusyCounter}
             onAddClick={() => handleAddOption(setSynusyCounter, synusyCounter, setSynusyCounter)}
+            onDeleteClick={(deleteId) => handleDeleteOption(deleteId, [synusyCounter, setSynusyCounter])}
           />
           <AddOptionBlock
             items={kupalaDiadragmy}
@@ -82,6 +104,7 @@ export const Ogk = () => {
             label="Купола діафрагми"
             counter={kupalaDiadragmyCounter}
             onAddClick={() => handleAddOption(setKupalaDiadragmyCounter, kupalaDiadragmyCounter, setKupalaDiadragmyCounter)}
+            onDeleteClick={(deleteId) => handleDeleteOption(deleteId, [kupalaDiadragmyCounter, setKupalaDiadragmyCounter])}
           />
           <AddOptionBlock
             items={cor}
@@ -89,6 +112,7 @@ export const Ogk = () => {
             label="Cor-"
             counter={corCounter}
             onAddClick={() => handleAddOption(setCorCounter, corCounter, setCorCounter)}
+            onDeleteClick={(deleteId) => handleDeleteOption(deleteId, [corCounter, setCorCounter])}
           />
           <AddOptionBlock
             items={ogkZakliuchennia}
@@ -96,6 +120,7 @@ export const Ogk = () => {
             label="Заключення"
             counter={ogkZakliuchenniaCounter}
             onAddClick={() => handleAddOption(setOgkZakliuchenniaCounter, ogkZakliuchenniaCounter, setOgkZakliuchenniaCounter)}
+            onDeleteClick={(deleteId) => handleDeleteOption(deleteId, [ogkZakliuchenniaCounter, setOgkZakliuchenniaCounter])}
           />
         </div>
       ) : null}
