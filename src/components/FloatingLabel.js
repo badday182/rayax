@@ -83,26 +83,10 @@ import { homilkovoStopnyiSuhlobViews } from "../data/HOMILKOVOSTOPNYISUHLOB/homi
 import { stopaViews } from "../data/STOPA/stopaViews";
 
 import { peredniViddilyStopyViews } from "../data/PEREDNIVIDDILYSTOPY/peredniViddilyStopyViews";
+import { viewsToEditSemicolUnivArray_1 } from "../data/viewsToEditSemicolUnivArray_1";
 
-export function FormFloatingSelect({ items, label, onZoneSelect }) {
-  const viewsToEditSemicolUnivArray_1 = [
-    cherepViews,
-    ppnViews,
-    ochpViews,
-    plechovyiSuhlobViews,
-    kliuchytsiaViews,
-    rebraViews,
-    liktovyiSuhlobViews,
-    promenevoZapIastkovyiSuhlobViews,
-    kystViews,
-    kistokTazuViews,
-    kulshovyiSuhlobViews,
-    kolinnyiSuhlobViews,
-    homilkovoStopnyiSuhlobViews,
-    stopaViews,
-    peredniViddilyStopyViews
-  ];
-  const [floatingId] = useState(uuidv4());
+export function FormFloatingSelect({ id, items, label, onZoneSelect }) {
+  const [floatingId] = useState(id);
   const dispatch = useDispatch();
 
 
@@ -132,7 +116,7 @@ useEffect(() => {
     //   dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone: items[0] }));
     // }
 
-    // Создаем массив из всех первых элементов
+    // Создаем массив из всех первых элементов списков, которые перечисляются через ";"
     const firstElements = viewsToEditSemicolUnivArray_1.map(viewsArray => viewsArray[0]);
 //dispatch текст c id из селекта
 if (firstElements.includes(items[0])) {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   deleteIdLegenRusynokArray,
-
+  deleteIdKoreniArray,
   editLegenRusynokArray,
   editKoreniArray,
   editSynusyArray,
@@ -75,7 +75,7 @@ export const Ogk = () => {
 // }
 const handleDeleteOption = (deleteId, resetCounter) => {
  // Проверяем длину массива, выполняем удаление только если длина не равна 1
- console.log('handleDeleteOption deleteId', deleteId);
+//  console.log('handleDeleteOption deleteId', deleteId);
  if (resetCounter[0].length !== 1) {
   // Фильтруем массив, оставляя только те элементы, у которых id не равен deleteId
   const updatedCounter = resetCounter[0].filter((item) => item.id !== deleteId);
@@ -87,7 +87,7 @@ const handleDeleteOption = (deleteId, resetCounter) => {
     
       dispatch(deleteIdLegenRusynokArray({ floatingId: deleteId }));
      
-      // dispatch(editKoreniArray({ floatingId, selectedZone }));
+      dispatch(deleteIdKoreniArray({ floatingId: deleteId }));
   
       // dispatch(editSynusyArray({ floatingId, selectedZone }));
    

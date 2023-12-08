@@ -23,11 +23,12 @@ export const AddOptionBlock = ({
 
   return (
     <div className="b1">
-      <div className="mb-2">
+      <div className="mb-2 w-100">
         {counter.map((option) => (
           <div key={option.id} className="itemZones addOption">
             <FormFloatingSelect
               key={option.id}
+              id={option.id}
               items={items}
               onZoneSelect={onZoneSelect}
               label={label}

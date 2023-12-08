@@ -94,14 +94,26 @@ export const ogkSliseReducer = createSlice({
       const { floatingId, selectedZone } = action.payload;
       const index0 = state.koreniArray.findIndex(
         (item) => item[0] === floatingId
-      );
-      if (index0 !== -1) {
-        state.koreniArray[index0][1] = selectedZone;
-      } else {
-        state.koreniArray.push([floatingId, selectedZone]);
-      }
-      state.koreniText = state.koreniArray.map((item) => item[1]).join(", ");
-    },
+        );
+        if (index0 !== -1) {
+          state.koreniArray[index0][1] = selectedZone;
+        } else {
+          state.koreniArray.push([floatingId, selectedZone]);
+        }
+        state.koreniText = state.koreniArray.map((item) => item[1]).join(", ");
+      },
+      deleteIdKoreniArray: (state, action) => {
+        const { floatingId } = action.payload;
+        // Фильтруем массив, оставляя только те подмассивы, у которых первый элемент не равен floatingId
+        state.koreniArray = state.koreniArray.filter(
+          (item) => item[0] !== floatingId
+        );
+  
+        // Обновляем legenRusynokText
+        state.koreniText = state.koreniArray
+          .map((item) => item[1])
+          .join(", ");
+      },
     resetKoreniArray: (state) => {
       state.koreniArray = [];
     },
@@ -208,6 +220,7 @@ export const {
   deleteIdLegenRusynokArray,
   resetLegenRusynokArray,
   editKoreniArray,
+  deleteIdKoreniArray,
   resetKoreniArray,
   editSynusyArray,
   resetSynusyArray,
