@@ -177,7 +177,18 @@ export const universalSliceReducer = createSlice({
         .join("; ");
 // console.log('state.semicolonUniversalText_1', state.semicolonUniversalText_1);
     },
-    
+    deleteIdSemicolonUniversalArray_1: (state, action) => {
+      const { floatingId } = action.payload;
+      // Фильтруем массив, оставляя только те подмассивы, у которых первый элемент не равен floatingId
+      state.semicolonUniversalArray_1 = state.semicolonUniversalArray_1.filter(
+        (item) => item[0] !== floatingId
+      );
+
+      // Обновляем legenRusynokText
+      state.semicolonUniversalText_1 = state.semicolonUniversalArray_1
+        .map((item) => item[1])
+        .join("; ");
+    },
    
     
     resetUniversalSliceReducer: (state) => {
@@ -213,7 +224,7 @@ export const {
   editCommaUniversalArray_6,
 
   editSemicolonUniversalArray_1,
-
+  deleteIdSemicolonUniversalArray_1,
   editSvhVysotaTilHrebtsivArray,
   resetUniversalSliceReducer,
 } = universalSliceReducer.actions;

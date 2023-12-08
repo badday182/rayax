@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 import { v4 as uuidv4 } from "uuid";
 
 import { FormFloatingSelect } from "./FloatingLabel";
 import { cherepViews } from "../data/Cherep/cherepViews";
 import { AddOptionBlock } from "./AddOptionBlock";
-import { editSemicolonUniversalArray_1 } from "./redux/slices/universalSliceReducer";
+import { deleteIdSemicolonUniversalArray_1, editSemicolonUniversalArray_1 } from "./redux/slices/universalSliceReducer";
 
 
 export const Cherep = () => {
@@ -18,7 +19,32 @@ export const Cherep = () => {
   const handleAddOption = (setter, counter) => {
     setter([...counter, { id: uuidv4() }]);
   };
-
+  const dispatch = useDispatch();
+  const handleDeleteOption = (deleteId, resetCounter) => {
+    // Проверяем длину массива, выполняем удаление только если длина не равна 1
+   //  console.log('handleDeleteOption deleteId', deleteId);
+    if (resetCounter[0].length !== 1) {
+     // Фильтруем массив, оставляя только те элементы, у которых id не равен deleteId
+     const updatedCounter = resetCounter[0].filter((item) => item.id !== deleteId);
+   
+     // Устанавливаем обновленное значение состояния
+     resetCounter[1](updatedCounter);
+     // Удаление айтема из редюсера
+   // -----------ОГК start---------
+   
+       
+         dispatch(deleteIdSemicolonUniversalArray_1({ floatingId: deleteId }));     
+        //  dispatch(deleteIdKoreniArray({ floatingId: deleteId }));
+        //  dispatch(deleteIdSynusyArray({ floatingId: deleteId }));
+        //  dispatch(deleteIdKupalaDiadragmyArray({ floatingId: deleteId }));
+        //  dispatch(deleteIdCorArray({ floatingId: deleteId }));
+        //  dispatch(deleteIdOgkZakliuchenniaArray({ floatingId: deleteId }));
+     
+         
+       // -----------ОГК end---------
+   
+   }
+   }
 
 
   return (
@@ -36,6 +62,7 @@ export const Cherep = () => {
             counter={cherepCounter}
             // onAddClick={() => handleAddOption(setCherepCounter, cherepCounter, setCherepCounter)}
             onAddClick={() => handleAddOption(setCherepCounter, cherepCounter)}
+            onDeleteClick={(deleteId) => handleDeleteOption(deleteId, [cherepCounter, setCherepCounter])}
           />
     </div>
   );

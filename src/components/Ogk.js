@@ -85,8 +85,7 @@ const handleDeleteOption = (deleteId, resetCounter) => {
 // -----------ОГК start---------
 
     
-      dispatch(deleteIdLegenRusynokArray({ floatingId: deleteId }));
-     
+      dispatch(deleteIdLegenRusynokArray({ floatingId: deleteId }));     
       dispatch(deleteIdKoreniArray({ floatingId: deleteId }));
       dispatch(deleteIdSynusyArray({ floatingId: deleteId }));
       dispatch(deleteIdKupalaDiadragmyArray({ floatingId: deleteId }));
