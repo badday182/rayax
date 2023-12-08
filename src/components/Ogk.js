@@ -3,12 +3,11 @@ import { useDispatch } from "react-redux";
 import {
   deleteIdLegenRusynokArray,
   deleteIdKoreniArray,
-  editLegenRusynokArray,
-  editKoreniArray,
-  editSynusyArray,
-  editKupalaDiadragmyArray,
-  editCorArray,
-  editOgkZakliuchenniaArray,
+  deleteIdSynusyArray,
+  deleteIdKupalaDiadragmyArray,
+  deleteIdCorArray,
+  deleteIdOgkZakliuchenniaArray,
+  
 } from "./redux/slices/ogkSliseReducer";
 
 import { FormFloatingSelect } from "./FloatingLabel";
@@ -82,21 +81,19 @@ const handleDeleteOption = (deleteId, resetCounter) => {
 
   // Устанавливаем обновленное значение состояния
   resetCounter[1](updatedCounter);
+  // Удаление айтема из редюсера
 // -----------ОГК start---------
 
     
       dispatch(deleteIdLegenRusynokArray({ floatingId: deleteId }));
      
       dispatch(deleteIdKoreniArray({ floatingId: deleteId }));
+      dispatch(deleteIdSynusyArray({ floatingId: deleteId }));
+      dispatch(deleteIdKupalaDiadragmyArray({ floatingId: deleteId }));
+      dispatch(deleteIdCorArray({ floatingId: deleteId }));
+      dispatch(deleteIdOgkZakliuchenniaArray({ floatingId: deleteId }));
   
-      // dispatch(editSynusyArray({ floatingId, selectedZone }));
-   
-      // dispatch(editKupalaDiadragmyArray({ floatingId, selectedZone }));
-   
-      // dispatch(editCorArray({ floatingId, selectedZone }));
-  
-      // dispatch(editOgkZakliuchenniaArray({ floatingId, selectedZone }));
-  
+      
     // -----------ОГК end---------
 
 }
