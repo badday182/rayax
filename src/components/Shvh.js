@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
 import { FormFloatingSelect } from "./FloatingLabel";
 import { v4 as uuidv4 } from "uuid";
 import { shvhNormaNenorma } from "../data/SHVH/shvhNormaNenorma";
@@ -48,7 +50,8 @@ export const Shvh = () => {
   const handleAddOption = (setter, counter, setCounter) => {
     setter([...counter, { id: uuidv4() }]);
   };
-
+  const dispatch = useDispatch();
+  
   return (
     <div className="">
       <FormFloatingSelect

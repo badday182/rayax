@@ -29,21 +29,9 @@ export const Cherep = () => {
    
      // Устанавливаем обновленное значение состояния
      resetCounter[1](updatedCounter);
-     // Удаление айтема из редюсера
-   // -----------ОГК start---------
-   
-       
-         dispatch(deleteIdSemicolonUniversalArray_1({ floatingId: deleteId }));     
-        //  dispatch(deleteIdKoreniArray({ floatingId: deleteId }));
-        //  dispatch(deleteIdSynusyArray({ floatingId: deleteId }));
-        //  dispatch(deleteIdKupalaDiadragmyArray({ floatingId: deleteId }));
-        //  dispatch(deleteIdCorArray({ floatingId: deleteId }));
-        //  dispatch(deleteIdOgkZakliuchenniaArray({ floatingId: deleteId }));
-     
-         
-       // -----------ОГК end---------
-   
-   }
+     // Удаление айтема из редюсера       
+         dispatch(deleteIdSemicolonUniversalArray_1({ floatingId: deleteId }));   
+      }
    }
 
 
