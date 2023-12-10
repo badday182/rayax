@@ -205,11 +205,11 @@ if (firstElements.includes(items[0])) {
     // -----------ППН end---------
 
     // -----------ШВХ start---------
-
-    if (gvhNormaNenorma.includes(selectedZone)) {
+    if (shvhNormaNenorma.includes(selectedZone)) {
       dispatch(editNorma(selectedZone));
       // console.log(selectedZone);
     }
+   
     if (fiziologLordoz.includes(selectedZone)) {
       // dispatch(editLegenRusynokId({ floatingId }));
       dispatch(editCommaUniversalArray_1({ floatingId, selectedZone }));
@@ -236,7 +236,7 @@ if (firstElements.includes(items[0])) {
     // -----------ШВХ end---------
 
     // -----------ГВХ start--------
-    if (shvhNormaNenorma.includes(selectedZone)) {
+    if (gvhNormaNenorma.includes(selectedZone)) {
       dispatch(editNorma(selectedZone));
       // console.log(selectedZone);
     }

@@ -49,6 +49,18 @@ export const universalSliceReducer = createSlice({
         .join(", ");
 // console.log('state.commaUniversalText_1',state.commaUniversalText_1);
     },
+    deleteIdCommaUniversalArray_1: (state, action) => {
+      const { floatingId } = action.payload;
+      // Фильтруем массив, оставляя только те подмассивы, у которых первый элемент не равен floatingId
+      state.commaUniversalArray_1 = state.commaUniversalArray_1.filter(
+        (item) => item[0] !== floatingId
+      );
+
+      // Обновляем legenRusynokText
+      state.commaUniversalText_1 = state.commaUniversalArray_1
+        .map((item) => item[1])
+        .join(", ");
+    },
     editCommaUniversalArray_2: (state, action) => {
       // state.documentText = [...state.documentText, action.payload];
       const { floatingId, selectedZone } = action.payload;
@@ -70,6 +82,18 @@ export const universalSliceReducer = createSlice({
         .join(", ");
 // console.log('state.commaUniversalText_1',state.commaUniversalText_1);
     },
+    deleteIdCommaUniversalArray_2: (state, action) => {
+      const { floatingId } = action.payload;
+      // Фильтруем массив, оставляя только те подмассивы, у которых первый элемент не равен floatingId
+      state.commaUniversalArray_2 = state.commaUniversalArray_2.filter(
+        (item) => item[0] !== floatingId
+      );
+
+      // Обновляем legenRusynokText
+      state.commaUniversalText_2 = state.commaUniversalArray_2
+        .map((item) => item[1])
+        .join(", ");
+    },
     editCommaUniversalArray_3: (state, action) => {
       const { floatingId, selectedZone } = action.payload;
 
@@ -82,6 +106,18 @@ export const universalSliceReducer = createSlice({
         state.commaUniversalArray_3.push([floatingId, selectedZone]);
       }
 
+      state.commaUniversalText_3 = state.commaUniversalArray_3
+        .map((item) => item[1])
+        .join(", ");
+    },
+    deleteIdCommaUniversalArray_3: (state, action) => {
+      const { floatingId } = action.payload;
+      // Фильтруем массив, оставляя только те подмассивы, у которых первый элемент не равен floatingId
+      state.commaUniversalArray_3 = state.commaUniversalArray_3.filter(
+        (item) => item[0] !== floatingId
+      );
+
+      // Обновляем legenRusynokText
       state.commaUniversalText_3 = state.commaUniversalArray_3
         .map((item) => item[1])
         .join(", ");
@@ -102,6 +138,18 @@ export const universalSliceReducer = createSlice({
         .map((item) => item[1])
         .join(", ");
     },
+    deleteIdCommaUniversalArray_4: (state, action) => {
+      const { floatingId } = action.payload;
+      // Фильтруем массив, оставляя только те подмассивы, у которых первый элемент не равен floatingId
+      state.commaUniversalArray_4 = state.commaUniversalArray_4.filter(
+        (item) => item[0] !== floatingId
+      );
+
+      // Обновляем legenRusynokText
+      state.commaUniversalText_4 = state.commaUniversalArray_4
+        .map((item) => item[1])
+        .join(", ");
+    },
     editCommaUniversalArray_5: (state, action) => {
       const { floatingId, selectedZone } = action.payload;
 
@@ -118,6 +166,18 @@ export const universalSliceReducer = createSlice({
         .map((item) => item[1])
         .join(", ");
     },
+    deleteIdCommaUniversalArray_5: (state, action) => {
+      const { floatingId } = action.payload;
+      // Фильтруем массив, оставляя только те подмассивы, у которых первый элемент не равен floatingId
+      state.commaUniversalArray_5 = state.commaUniversalArray_5.filter(
+        (item) => item[0] !== floatingId
+      );
+
+      // Обновляем legenRusynokText
+      state.commaUniversalText_5 = state.commaUniversalArray_5
+        .map((item) => item[1])
+        .join(", ");
+    },
     editCommaUniversalArray_6: (state, action) => {
       const { floatingId, selectedZone } = action.payload;
 
@@ -130,6 +190,18 @@ export const universalSliceReducer = createSlice({
         state.commaUniversalArray_6.push([floatingId, selectedZone]);
       }
 
+      state.commaUniversalText_6 = state.commaUniversalArray_6
+        .map((item) => item[1])
+        .join(", ");
+    },
+    deleteIdCommaUniversalArray_6: (state, action) => {
+      const { floatingId } = action.payload;
+      // Фильтруем массив, оставляя только те подмассивы, у которых первый элемент не равен floatingId
+      state.commaUniversalArray_6 = state.commaUniversalArray_6.filter(
+        (item) => item[0] !== floatingId
+      );
+
+      // Обновляем legenRusynokText
       state.commaUniversalText_6 = state.commaUniversalArray_6
         .map((item) => item[1])
         .join(", ");
@@ -155,7 +227,22 @@ export const universalSliceReducer = createSlice({
       state.svhVysotaTilHrebtsivText = state.svhVysotaTilHrebtsivText.replace(', в передньому/задньому відділі С', ' в передньому/задньому відділі С');
     }
     },
+    deleteIdSvhVysotaTilHrebtsivArray: (state, action) => {
+      const { floatingId } = action.payload;
+      // Фильтруем массив, оставляя только те подмассивы, у которых первый элемент не равен floatingId
+      state.svhVysotaTilHrebtsivArray = state.svhVysotaTilHrebtsivArray.filter(
+        (item) => item[0] !== floatingId
+      );
 
+      // Обновляем legenRusynokText
+      state.svhVysotaTilHrebtsivText = state.svhVysotaTilHrebtsivArray
+        .map((item) => item[1])
+        .join(", ");
+        // Добавляем проверку и удаляем запятую перед 'в передньому/задньому відділі С'
+    if (state.svhVysotaTilHrebtsivText.includes(', в передньому/задньому відділі С')) {
+      state.svhVysotaTilHrebtsivText = state.svhVysotaTilHrebtsivText.replace(', в передньому/задньому відділі С', ' в передньому/задньому відділі С');
+    }
+    },
     editSemicolonUniversalArray_1: (state, action) => {
       // state.documentText = [...state.documentText, action.payload];
       const { floatingId, selectedZone } = action.payload;
@@ -217,15 +304,22 @@ export const universalSliceReducer = createSlice({
 
 export const {
   editCommaUniversalArray_1,
+  deleteIdCommaUniversalArray_1,
   editCommaUniversalArray_2,
+  deleteIdCommaUniversalArray_2,
   editCommaUniversalArray_3,
+  deleteIdCommaUniversalArray_3,
   editCommaUniversalArray_4,
+  deleteIdCommaUniversalArray_4,
   editCommaUniversalArray_5,
+  deleteIdCommaUniversalArray_5,
   editCommaUniversalArray_6,
+  deleteIdCommaUniversalArray_6,
 
   editSemicolonUniversalArray_1,
   deleteIdSemicolonUniversalArray_1,
   editSvhVysotaTilHrebtsivArray,
+  deleteIdSvhVysotaTilHrebtsivArray,
   resetUniversalSliceReducer,
 } = universalSliceReducer.actions;
 
