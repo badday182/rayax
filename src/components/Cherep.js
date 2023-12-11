@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 
 import { v4 as uuidv4 } from "uuid";
 
 import { FormFloatingSelect } from "./FloatingLabel";
 import { cherepViews } from "../data/Cherep/cherepViews";
 import { AddOptionBlock } from "./AddOptionBlock";
-import { deleteIdSemicolonUniversalArray_1, editSemicolonUniversalArray_1 } from "./redux/slices/universalSliceReducer";
 
+import { useDispatch } from "react-redux";
+import { deleteIdSemicolonUniversalArray_1 } from "./redux/slices/universalSliceReducer";
 
 export const Cherep = () => {
 

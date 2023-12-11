@@ -378,7 +378,7 @@ export const ZoneInfoPattern = () => {
   // --------------------Кисть-end---------------
   // --------------------Кісток тазу-start---------------
   if (zone === "Кісток тазу") {
-    if (zakliuchennia === "") {
+    if (zakliuchennia === kistokTazuViews[0]) {
       report = `${kistokTazuViews[0]}.`;
     } else {
       report = (
@@ -390,6 +390,7 @@ export const ZoneInfoPattern = () => {
           Заключення: R-ознаки двобічного коксартрозу.
         </>
       );
+
     }
   }
   // --------------------Кісток тазу-end---------------

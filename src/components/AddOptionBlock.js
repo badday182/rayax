@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { FormFloatingSelect } from "./FloatingLabel";
 import { Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
 import { cherepViews } from "../data/Cherep/cherepViews";
 import { editSemicolonUniversalArray_1 } from "./redux/slices/universalSliceReducer";
 
@@ -13,7 +12,6 @@ export const AddOptionBlock = ({
   onAddClick,
   onDeleteClick,
 }) => {
-  const dispatch = useDispatch();
 
   // useEffect(() => {
   //   if (cherepViews.includes(items[0])) {

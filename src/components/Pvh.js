@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { fiziologLordoz } from "../data/PVH/PVH_notNorma/fiziologLordoz";
 import { seredynnaVis } from "../data/PVH/PVH_notNorma/seredynnaVis";
-import { vysotaTilHrebtsivGvh } from "../data/PVH/PVH_notNorma/vysotaTilHrebtsiv";
+import { vysotaTilHrebtsivPvh } from "../data/PVH/PVH_notNorma/vysotaTilHrebtsiv";
 import { mizhkhrebtseviPromizhky } from "../data/PVH/PVH_notNorma/mizhkhrebtseviPromizhky";
 import { zamykaiuchiPlastynkyTilKhrebtsiv } from "../data/PVH/PVH_notNorma/zamykaiuchiPlastynkyTilKhrebtsiv";
 import { fasetkoviUnkovertSuhlShchelyny } from "../data/PVH/PVH_notNorma/fasetkoviUnkovertSuhlShchelyny";
@@ -13,6 +13,18 @@ import { AddOptionBlock } from "./AddOptionBlock";
 import { pvhNormaNenorma } from "../data/PVH/pvhNormaNenorma";
 import { pvhNenormaItems } from "../data/PVH/pvhNenormaItems";
 import { zakliuchenniaPvh } from "../data/PVH/PVH_notNorma/zakliuchenniaPvh";
+import { useDispatch } from "react-redux";
+import {
+  deleteIdSemicolonUniversalArray_1,
+  deleteIdCommaUniversalArray_1,
+  deleteIdCommaUniversalArray_2,
+  deleteIdCommaUniversalArray_4,
+  deleteIdCommaUniversalArray_5,
+  deleteIdCommaUniversalArray_6,
+  deleteIdSvhVysotaTilHrebtsivArray,
+} from "./redux/slices/universalSliceReducer";
+
+
 export const Pvh = () => {
   const [selectedPvhViews, setSelectedPvhViews] = useState("");
   const [selectednormaNenorma, setSelectednormaNenorma] = useState(
@@ -45,7 +57,28 @@ export const Pvh = () => {
   const handleAddOption = (setter, counter, setCounter) => {
     setter([...counter, { id: uuidv4() }]);
   };
+  const dispatch = useDispatch();
+  const handleDeleteOption = (deleteId, resetCounter) => {
+    // Проверяем длину массива, выполняем удаление только если длина не равна 1
+    //  console.log('handleDeleteOption deleteId', deleteId);
+    if (resetCounter[0].length !== 1) {
+      // Фильтруем массив, оставляя только те элементы, у которых id не равен deleteId
+      const updatedCounter = resetCounter[0].filter(
+        (item) => item.id !== deleteId
+      );
 
+      // Устанавливаем обновленное значение состояния
+      resetCounter[1](updatedCounter);
+      // Удаление айтема из редюсера
+      dispatch(deleteIdCommaUniversalArray_1({ floatingId: deleteId }));
+      dispatch(deleteIdCommaUniversalArray_2({ floatingId: deleteId }));
+      dispatch(deleteIdCommaUniversalArray_4({ floatingId: deleteId }));
+      dispatch(deleteIdCommaUniversalArray_5({ floatingId: deleteId }));
+      dispatch(deleteIdCommaUniversalArray_6({ floatingId: deleteId }));
+      dispatch(deleteIdSvhVysotaTilHrebtsivArray({ floatingId: deleteId }));
+      dispatch(deleteIdSemicolonUniversalArray_1({ floatingId: deleteId }));
+    }
+  };
   return (
     <div className="">
       <FormFloatingSelect
@@ -67,6 +100,12 @@ export const Pvh = () => {
                 setfiziologLordozCounter
               )
             }
+            onDeleteClick={(deleteId) =>
+              handleDeleteOption(deleteId, [
+                fiziologLordozCounter,
+                setfiziologLordozCounter,
+              ])
+            }
           />
           <AddOptionBlock
             items={seredynnaVis}
@@ -80,9 +119,15 @@ export const Pvh = () => {
                 setSeredynnaVisCounter
               )
             }
+            onDeleteClick={(deleteId) =>
+              handleDeleteOption(deleteId, [
+                seredynnaVisCounter,
+                setSeredynnaVisCounter,
+              ])
+            }
           />
           <AddOptionBlock
-            items={vysotaTilHrebtsivGvh}
+            items={vysotaTilHrebtsivPvh}
             onZoneSelect={setSelectedPvhViews}
             // label="Висота тіл хребців"
             label={pvhNenormaItems[2]}
@@ -93,6 +138,12 @@ export const Pvh = () => {
                 vysotaTilHrebtsivCounter,
                 setVysotaTilHrebtsivCounter
               )
+            }
+            onDeleteClick={(deleteId) =>
+              handleDeleteOption(deleteId, [
+                vysotaTilHrebtsivCounter,
+                setVysotaTilHrebtsivCounter,
+              ])
             }
           />
           <AddOptionBlock
@@ -108,6 +159,12 @@ export const Pvh = () => {
                 setMizhkhrebtseviPromizhkyCounter
               )
             }
+            onDeleteClick={(deleteId) =>
+              handleDeleteOption(deleteId, [
+                mizhkhrebtseviPromizhkyCounter,
+                setMizhkhrebtseviPromizhkyCounter,
+              ])
+            }
           />
           <AddOptionBlock
             items={zamykaiuchiPlastynkyTilKhrebtsiv}
@@ -121,6 +178,12 @@ export const Pvh = () => {
                 zamykaiuchiPlastynkyTilKhrebtsivCounter,
                 setZamykaiuchiPlastynkyTilKhrebtsivCounter
               )
+            }
+            onDeleteClick={(deleteId) =>
+              handleDeleteOption(deleteId, [
+                zamykaiuchiPlastynkyTilKhrebtsivCounter,
+                setZamykaiuchiPlastynkyTilKhrebtsivCounter,
+              ])
             }
           />
           <AddOptionBlock
@@ -136,6 +199,12 @@ export const Pvh = () => {
                 setFasetkoviUnkovertSuhlShchelynyCounter
               )
             }
+            onDeleteClick={(deleteId) =>
+              handleDeleteOption(deleteId, [
+                fasetkoviUnkovertSuhlShchelynyCounter,
+                setFasetkoviUnkovertSuhlShchelynyCounter,
+              ])
+            }
           />
           <AddOptionBlock
             items={zakliuchenniaPvh}
@@ -148,6 +217,12 @@ export const Pvh = () => {
                 zakliuchenniaPvhCounter,
                 setZakliuchenniaPvhCounter
               )
+            }
+            onDeleteClick={(deleteId) =>
+              handleDeleteOption(deleteId, [
+                zakliuchenniaPvhCounter,
+                setZakliuchenniaPvhCounter,
+              ])
             }
           />
         </div>
