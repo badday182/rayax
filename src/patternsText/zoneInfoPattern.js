@@ -465,10 +465,10 @@ export const ZoneInfoPattern = () => {
           </tr>
         </tbody>
       </table>
-      <br />
+      {/* <br /> */}
       {/* <p>{report}</p> */}
       {report}
-      <br />
+      {/* <br /> */}
       <br />
       <br />
       {/* <div display="flex" flex-direction="row" justify-content="space-between" >

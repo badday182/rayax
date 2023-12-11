@@ -18,24 +18,19 @@ export const PacientInfoPattern = () => {
 
   return (
     <div>
-      <table
-      width="100%"
-      border-collapse="collapse"
-      border="2px solid white">
+      {/* <table width="100%" border-collapse="collapse" border="2px solid white">
         <tbody>
           <tr>
-            {/* <td width="70%"> */}
             <td>
-              <h5>РЕНТГЕНОДІАГНОСТИЧНЕ ВІДДІЛЕННЯ</h5>
-              <h3>РЕЗУЛЬТАТИ R-ДОСЛІДЖЕННЯ</h3>
+              <p>РЕНТГЕНОДІАГНОСТИЧНЕ ВІДДІЛЕННЯ</p>
+              <b>РЕЗУЛЬТАТИ R-ДОСЛІДЖЕННЯ</b>
             </td>
-            {/* <td align="right">
-              вул. Віталія Шума, 4, м.Чорноморськ Одеська область, 68004 код
-              ЄДРПОУ 01982212
-            </td> */}
           </tr>
         </tbody>
-      </table>
+      </table> */}       
+              РЕНТГЕНОДІАГНОСТИЧНЕ ВІДДІЛЕННЯ
+              <br/>
+              <b>РЕЗУЛЬТАТИ R-ДОСЛІДЖЕННЯ</b>          
       <table
         width="100%"
         border-collapse="collapse"
@@ -46,12 +41,10 @@ export const PacientInfoPattern = () => {
       >
         <tbody>
           <tr higth="20px">
-            <td >№: {pacientInfostateNumberExam}</td>
-            <td >Дата: {pacientInfostateDate}</td>
-            <td >ПIБ: {pacientInfostateName}</td>
-            <td align="right">
-              {pacientInfostateBirthYear} р.н.
-            </td>
+            <td>№: {pacientInfostateNumberExam}</td>
+            <td>Дата: {pacientInfostateDate}</td>
+            <td>ПIБ: {pacientInfostateName}</td>
+            <td align="right">{pacientInfostateBirthYear} р.н.</td>
           </tr>
           {/* <tr>
           <td>R-графiя:</td>
