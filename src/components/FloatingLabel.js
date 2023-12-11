@@ -28,6 +28,7 @@ import {
   editCommaUniversalArray_6,
   editSemicolonUniversalArray_1,
   editSvhVysotaTilHrebtsivArray,
+  resetUniversalSliceReducer,
 } from "./redux/slices/universalSliceReducer";
 
 import { editCherepNormaNenormaArray } from "./redux/slices/cherepSliseReducer";
@@ -122,11 +123,16 @@ useEffect(() => {
 if (firstElements.includes(items[0])) {
   dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone: items[0] }));
 }
-  }, []);
-  const handleZoneSelect = (event) => {
-    const selectedZone = event.target.value;
-    onZoneSelect(selectedZone);
-    // console.log(selectedZone);
+}, []);
+const handleZoneSelect = (event) => {
+  const selectedZone = event.target.value;
+  onZoneSelect(selectedZone);
+  
+  //Нужно сбросить SemicolonUniversalArray_1 для Того чтобы убрать значение по умолчанию пр
+  if (selectedZone === "Не норма") {
+    dispatch(resetUniversalSliceReducer());
+  }
+  
     if (zones.includes(selectedZone)) {
       // console.log(selectedZone);
       dispatch(editZone(selectedZone));
