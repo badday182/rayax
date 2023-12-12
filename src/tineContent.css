@@ -77,3 +77,6 @@ td {
   border: 2px solid white;
   border-color: white;
 }
+b {
+  letter-spacing: 0.45px;
+}

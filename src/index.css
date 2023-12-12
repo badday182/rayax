@@ -27,13 +27,34 @@ code {
 .addbutton {
   background-color: rgba(182, 25, 122, 0.479);
 }
-.conteinerWidht {
+/* .conteinerWidht {
   width: 90%;
+} */
+.conteinerWidht {
+  min-height: 100vh;
+  background-image: url('./svg/nnnoise.svg');
 }
-.conteinerWidht > div:last-child {
+/* .conteinerWidht::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./svg/nnnoise.svg');
+  
+} */
+/* .conteinerWidht > div:last-child {
   position: fixed;
   right: 5%;
   width: 47%;
+} */
+.containerWidth > * {
+  margin-bottom: 20px;
+}
+.conteinerWidht > div:last-child {
+  /* max-width: 600px; */
+  min-width: 500px;
 }
 
 .backgroundWhite {
@@ -46,8 +67,12 @@ code {
 .zonesButtons > div:last-child {
   margin-right: 0;
 }
-.pacientBlock {
+/* .pacientBlock {
   width: 550px;
+} */
+.pacientBlock {
+  max-width: 550px;
+  min-width: 500px;
 }
 
 /* .pacientCard {
@@ -178,9 +203,9 @@ code {
   width: 100%;
 }
 
-.tox {
+/* .tox {
   position: fixed;
-}
+} */
 .itemZones {
   /* padding: 0.5rem 0.5rem; */
   /* margin-bottom: 1rem; */
@@ -228,6 +253,7 @@ code {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background-image: url('./svg/nnnoise.svg');
 }
 
 .content p {

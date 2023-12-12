@@ -60,7 +60,8 @@ const App = () => {
     scrollToBottom();
   }, []);
   return (
-    <div className=" m-auto conteinerWidht d-flex flex-row p-3 position-relative ">
+    // <div className=" m-auto conteinerWidht d-flex flex-row p-3 position-relative ">
+    <div className=" m-auto conteinerWidht d-flex justify-content-evenly flex-wrap p-3 ">
       {/* <div className=" me-3 p-3 rounded-3 border pacientStore"> */}
 
       {/* <div id="supportBanner" class="banner">
@@ -91,7 +92,7 @@ const App = () => {
         </div>
       </div> */}
 
-      <div className="pacientBlock">
+      <div className="pacientBlock mb-4">
         {patientState.map((option) => (
           <PacientCard
             editorContent={editorContent}
@@ -112,6 +113,7 @@ const App = () => {
           init={{
             selector: "#myTextarea",
             // height: 600,
+            width: 700,
             content_css: "/src/tineContent.css",
 
             setup: function (editor) {
@@ -151,7 +153,7 @@ const App = () => {
               " undo redo | blocks | " +
               "bold italic forecolor | ",
             content_style:
-              "body { font-family: Helvetica, Arial, sans-serif; font-size: 14px; padding: 1rem;} table { width: 100%; border-collapse: collapse; border: 2px solid white; border-color: white; } tbody, th, tr, td { border: 2px solid white; border-color: white; border-style: solid; } td {padding: 0.4rem;} h1,h2,h3,h4,h5,h6 {margin: 5px 5px;} ",
+              "body { font-family: Helvetica, Arial, sans-serif; font-size: 14px; padding: 1rem;}  table { width: 100%; border-collapse: collapse; border: 2px solid white; border-color: white; } tbody, th, tr, td { border: 2px solid white; border-color: white; border-style: solid; } td {padding: 0.4rem;} h1,h2,h3,h4,h5,h6 {margin: 5px 5px;} ",
           }}
         />
         {/* <button onClick={() => {}}>skroll</button> */}
