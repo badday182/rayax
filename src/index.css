@@ -236,35 +236,44 @@ code {
 }
 
 .banner {
-  width: 70px;
+  width: 90px;
   position: absolute;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  top: 10px;
+  top: 14px;
   left: 10px;
-  background-color: #3498db;
+  /* background-color: #3498db87; */
   color: #fff;
   padding: 10px;
+  padding-top: 0px;
+  border: 1px solid rgb(245 245 245 / 64%);
+  backdrop-filter: blur(0.7px);
+  /* background-color: rgb(178 214 247 / 18%); */
+  background-color: rgba(22, 101, 129, 0.11);
+  z-index: 20;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  background-image: url('./svg/nnnoise.svg');
+  align-items: center;
+  /* background-image: url('./svg/nnnoise.svg'); */
+  
 }
 
 .content p {
   margin: 0;
-  font-size: 14px;
+  font-size: 12px;
+  text-align: center;
 }
 
 .content img {
   width: 50px;
   height: auto;
   margin-top: 5px;
+  border-radius: 25px;
 }
 
 button {
@@ -277,4 +286,15 @@ button {
 
 button:focus {
   outline: none;
+}
+
+#closeBanner {
+  align-self: flex-end;
+
+}
+#closeBanner:hover {
+  color: rgb(255, 51, 0);
+}
+.hidden {
+  display: none;
 }

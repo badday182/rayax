@@ -28,7 +28,7 @@ const App = () => {
   const docTex = useSelector((state) => state.creatingDocument.documentText);
 
   const editorRef = useRef();
-
+  const [isBannerVisible, setIsBannerVisible] = useState(true);
   // tinymce.activeEditor.setContent("<p>Hello world!</p>");
   // editorRef.current.setContent("<p>Hello world!</p>");
 
@@ -59,38 +59,35 @@ const App = () => {
     // Прокрутка вниз при инициализации
     scrollToBottom();
   }, []);
+  const closeBanner = () => {
+    setIsBannerVisible(false);
+  };
   return (
     // <div className=" m-auto conteinerWidht d-flex flex-row p-3 position-relative ">
     <div className=" m-auto conteinerWidht d-flex justify-content-evenly flex-wrap p-3 ">
       {/* <div className=" me-3 p-3 rounded-3 border pacientStore"> */}
 
-      {/* <div id="supportBanner" class="banner">
-    <div class="content">
-      <p>Поддержи разработчика</p>
-      <img src="privatbank_logo.png" alt="ПриватБанк лого">
-      <img src="monobank_logo.png" alt="Монобанк лого">
-      <img src="telegram_logo.png" alt="Телеграм лого">
-    </div>
-    <button id="closeBanner">&times;</button>
-  </div> */}
-      {/* <div id="supportBanner" className="banner rounded-3">
+      <div className={`banner rounded-3 ${isBannerVisible ? "" : "hidden"}`}>
         <div className="content">
-          <button id="closeBanner">&times;</button>
-          <p>Підтримай розробника</p>
+          <button id="closeBanner" onClick={closeBanner}>
+            &times;
+          </button>{" "}
+          <p>На каву ₴ розробнику</p>
           <img
-            src="https://new-thepage.fra1.digitaloceanspaces.com/live/media/86774/conversions/privatbank-r0-square_medium.jpg?v=1603812987"
+            src="https://d2z9uwnt8eubh7.cloudfront.net/media/default/0001/19/ac94eecabd0d3d915ab3ba18b6c4de6f22ad7dfe.png"
             alt="ПриватБанк лого"
           />
           <img
-            src="https://is3-ssl.mzstatic.com/image/thumb/Purple116/v4/12/68/33/126833ce-8663-7d73-0e4b-303233bbc698/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg"
+            src="https://asset.brandfetch.io/id-CBRc8NA/idEsOSs4jS.jpeg?updated=1674203441813"
             alt="Монобанк лого"
           />
+          <p>------</p>
           <img
-            src="https://i0.wp.com/www.uooptkk.ru/wp-content/uploads/2022/07/telegram-logo.png?fit=900%2C764"
+            src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"
             alt="Телеграм лого"
           />
         </div>
-      </div> */}
+      </div>
 
       <div className="pacientBlock mb-4">
         {patientState.map((option) => (
@@ -100,7 +97,6 @@ const App = () => {
             id={option.id}
           />
         ))}
-        {/* <PacientCard editorContent={editorContent} /> */}
       </div>
       <>
         <Editor
