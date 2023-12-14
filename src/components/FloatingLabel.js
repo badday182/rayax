@@ -85,13 +85,12 @@ import { homilkovoStopnyiSuhlobViews } from "../data/HOMILKOVOSTOPNYISUHLOB/homi
 import { stopaViews } from "../data/STOPA/stopaViews";
 
 import { peredniViddilyStopyViews } from "../data/PEREDNIVIDDILYSTOPY/peredniViddilyStopyViews";
-import { viewsToEditSemicolUnivArray_1 } from "../data/viewsToEditSemicolUnivArray_1";
+import { firstElements } from "../data/viewsToEditSemicolUnivArray_1";
 import { vysotaTilHrebtsivPvh } from "../data/PVH/PVH_notNorma/vysotaTilHrebtsiv";
 
 export function FormFloatingSelect({ id, items, label, onZoneSelect }) {
   const [floatingId] = useState(id);
   const dispatch = useDispatch();
-
 
   const itemGenerator = () => {
     const fixedZone = (item) => {
@@ -106,9 +105,8 @@ export function FormFloatingSelect({ id, items, label, onZoneSelect }) {
     ));
   };
 
- 
-useEffect(() => {
-   // Имитация выбора по умолчанию - сразу dispatch текст c id из селекта
+  useEffect(() => {
+    // Имитация выбора по умолчанию - сразу dispatch текст c id из селекта
 
     // if (cherepViews[0] === items[0]) {
     //   dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone: items[0] }));
@@ -120,25 +118,30 @@ useEffect(() => {
     // }
 
     // Создаем массив из всех первых элементов списков, которые перечисляются через ";"
-    const firstElements = viewsToEditSemicolUnivArray_1.map(viewsArray => viewsArray[0]);
-//dispatch текст c id из селекта
-if (firstElements.includes(items[0])) {
-   dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone: items[0] }));
-}
-}, []);
-const handleZoneSelect = (event) => {
-  const selectedZone = event.target.value;
-  onZoneSelect(selectedZone);
-  
-  if (zones.includes(selectedZone)) {
-    // console.log(selectedZone);
-       dispatch(editZone(selectedZone));
-  }
-  
-  //Нужно сбросить SemicolonUniversalArray_1 для Того чтобы убрать значение по умолчанию пр
-  if (selectedZone === "Не норма") {
-    dispatch(resetUniversalSliceReducer());
-  }
+    // const firstElements = viewsToEditSemicolUnivArray_1.map(viewsArray => viewsArray[0]);
+    //dispatch текст c id из селекта
+    if (firstElements.includes(items[0])) {
+      dispatch(
+        editSemicolonUniversalArray_1({ floatingId, selectedZone: items[0] })
+      );
+    }
+  }, []);
+
+  const handleZoneSelect = (event) => {
+    const selectedZone = event.target.value;
+    onZoneSelect(selectedZone);
+
+    // В случае если пользователь поменяют зону исследования то все Reducerы сбрасываются
+    if (zones.includes(selectedZone)) {
+      dispatch(resetUniversalSliceReducer());
+      dispatch(resetogkSliseReducer());
+      dispatch(editZone(selectedZone));
+    }
+
+    //Нужно сбросить SemicolonUniversalArray_1 для Того чтобы убрать значение по умолчанию пр
+    if (selectedZone === "Не норма") {
+      dispatch(resetUniversalSliceReducer());
+    }
 
     if (zonesWithOnly2Projection.includes(selectedZone)) {
       dispatch(editProaction("В 2-х проєкціях"));
@@ -200,8 +203,6 @@ const handleZoneSelect = (event) => {
     // -----------Череп start---------
     if (cherepViews.includes(selectedZone)) {
       dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
-      
-
     }
     // -----------Череп end---------
 
@@ -218,7 +219,7 @@ const handleZoneSelect = (event) => {
       dispatch(editNorma(selectedZone));
       // console.log(selectedZone);
     }
-   
+
     if (fiziologLordoz.includes(selectedZone)) {
       // dispatch(editLegenRusynokId({ floatingId }));
       dispatch(editCommaUniversalArray_1({ floatingId, selectedZone }));
@@ -261,13 +262,13 @@ const handleZoneSelect = (event) => {
       dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
     }
     // -----------ГВХ end---------
-    
+
     // -----------ПВХ start--------
     if (pvhNormaNenorma.includes(selectedZone)) {
       dispatch(editNorma(selectedZone));
       // console.log(selectedZone);
     }
-    
+
     if (vysotaTilHrebtsivPvh.includes(selectedZone)) {
       dispatch(editSvhVysotaTilHrebtsivArray({ floatingId, selectedZone }));
     }
@@ -331,13 +332,15 @@ const handleZoneSelect = (event) => {
     // -----------Колінний суглоб end---------
 
     // -----------Гомілковостопний суглоб end---------
-    if (homilkovoStopnyiSuhlobViews.includes(selectedZone) || stopaViews.includes(selectedZone) || peredniViddilyStopyViews.includes(selectedZone))  {
+    if (
+      homilkovoStopnyiSuhlobViews.includes(selectedZone) ||
+      stopaViews.includes(selectedZone) ||
+      peredniViddilyStopyViews.includes(selectedZone)
+    ) {
       dispatch(editSemicolonUniversalArray_1({ floatingId, selectedZone }));
     }
     // -----------Гомілковостопний суглоб end---------
   };
-
-
 
   return (
     <FloatingLabel className="mb-2" controlId={floatingId} label={label}>
