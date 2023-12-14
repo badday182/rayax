@@ -181,7 +181,7 @@ export const ZoneInfoPattern = () => {
     }
     if (side === "Справа") {
       radiography += ", справа";
-    } else if (side === "Злiва"){
+    } else if (side === "Зліва"){
       radiography += ", злiва";
     } else {radiography += ", справа та злiва";}
   }
