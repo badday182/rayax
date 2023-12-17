@@ -2,6 +2,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import React, { useState, useRef, useEffect } from "react";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 import { renderToString } from "react-dom/server";
 import { v4 as uuidv4 } from "uuid";
 import { useSelector } from "react-redux/es/hooks/useSelector";
@@ -17,6 +18,7 @@ import { PacientInfoPattern } from "./patternsText/pacientInfoPattern";
 
 import { PacientCard } from "./components/PacientCard.js";
 import { addTextFromEditor } from "./components/redux/slices/documentSliseReducer.js";
+import TooltipWithImage from "./components/TooltipWithImage.js";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -62,6 +64,7 @@ const App = () => {
   const closeBanner = () => {
     setIsBannerVisible(false);
   };
+
   return (
     // <div className=" m-auto conteinerWidht d-flex flex-row p-3 position-relative ">
     <div className=" m-auto conteinerWidht d-flex justify-content-evenly flex-wrap p-3 ">
@@ -73,19 +76,46 @@ const App = () => {
             &times;
           </button>{" "}
           <p>На каву ₴ розробнику</p>
+          {/* <img
+            style={{ backgroundColor: "white" }}
+            src="https://d2z9uwnt8eubh7.cloudfront.net/media/default/0001/19/ac94eecabd0d3d915ab3ba18b6c4de6f22ad7dfe.png"
+            alt="ПриватБанк лого"
+          /> */}
+          {/* <img
+            src="https://asset.brandfetch.io/id-CBRc8NA/idEsOSs4jS.jpeg?updated=1674203441813"
+            alt="Монобанк лого"
+          /> */}
+          {/* <img
+            src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"
+            alt="Телеграм лого"
+          /> */}
+          <div className="logo privat-logo">
           <img
+            style={{ backgroundColor: "white" }}
             src="https://d2z9uwnt8eubh7.cloudfront.net/media/default/0001/19/ac94eecabd0d3d915ab3ba18b6c4de6f22ad7dfe.png"
             alt="ПриватБанк лого"
           />
-          <img
-            src="https://asset.brandfetch.io/id-CBRc8NA/idEsOSs4jS.jpeg?updated=1674203441813"
-            alt="Монобанк лого"
-          />
-          <p>------</p>
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"
-            alt="Телеграм лого"
-          />
+          </div>
+          <div className="logo mono-logo">
+            <img
+              src="https://asset.brandfetch.io/id-CBRc8NA/idEsOSs4jS.jpeg?updated=1674203441813"
+              alt="Монобанк лого"
+              />
+          </div>
+              <p>------</p>
+          <a 
+            className="m-0 logo telegram-logo"
+            href="https://t.me/Raya_X"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img 
+            className="m-0"
+              // dataTooltip="AAAAAAAAAAAA"
+              src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"
+              alt="Телеграм лого"
+            />
+          </a>
         </div>
       </div>
 
