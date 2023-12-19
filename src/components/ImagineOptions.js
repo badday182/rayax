@@ -72,7 +72,7 @@ import {
 import { initialPatientName } from "../data/initialPatientName";
 import { initialPatientBirthYear } from "../data/initialPatientBirthYear";
 import { initialExamNumber } from "../data/initialExamNumber";
-import { AddZoneDescriptionOnlyButton } from "./addZoneDescriptionOnlyButton";
+import AddZoneDescriptionOnlyButton from "./addZoneDescriptionOnlyButton";
 
 export const ImagineOptions = ({ id, editorContent }) => {
   const [selectedZone, setSelectedZone] = useState("ОГК");
