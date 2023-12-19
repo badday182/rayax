@@ -9,41 +9,20 @@ import { ogkViews } from "../data/ogkViews";
 import { plechKulshSuglobViews } from "../data/plechovuyKulshovuySuglobViews";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  editZone,
-  editProaction,
-  editSide,
-  editNorma,
+import { 
   resetZoneInfoSliseReducer,
   applyPatientInfoBlock,
 } from "./redux/slices/zoneInfoSliseReducer";
 import {
-  resetLegenRusynokArray,
-  resetKoreniArray,
-  resetSynusyArray,
-  resetKupalaDiadragmyArray,
-  resetCorArray,
-  resetOgkZakliuchenniaArray,
-  resetogkSliseReducer,
+   resetogkSliseReducer,
 } from "./redux/slices/ogkSliseReducer";
 
 import { resetCherepSliseReducer } from "./redux/slices/cherepSliseReducer";
 import { resetPpnSliseReducer } from "./redux/slices/ppnSliseReducer";
 import { resetUniversalSliceReducer } from "./redux/slices/universalSliceReducer";
-import {
-  resetZone,
-  resetSide,
-  resetProaction,
-  resetNorma,
-} from "./redux/slices/zoneInfoSliseReducer";
 
-import {
-  addDocText,
-  doubleAddPatientAndZoneDocText,
-} from "./redux/slices/documentSliseReducer";
+import { addDocText,doubleAddPatientAndZoneDocText } from "./redux/slices/documentSliseReducer";
 
-import { renderToString } from "react-dom/server";
-import { ZoneInfoPattern } from "../patternsText/zoneInfoPattern";
 
 import { Ogk } from "./Ogk";
 import { Cherep } from "./Cherep";
@@ -64,17 +43,16 @@ import { KolinnyiSuhlob } from "./KolinnyiSuhlob";
 import { HomilkovoStopnyiSuhlob } from "./HomilkovoStopnyiSuhlob";
 import { Stopa } from "./Stopa";
 import { PeredniViddilyStopy } from "./PeredniViddilyStopy";
-import { PacientInfoPattern } from "../patternsText/pacientInfoPattern";
-import {
-  editExamNumber,
-  resetPacientInfoSliseReducer,
-} from "./redux/slices/pacientInfoSliseReducer";
+import { editExamNumber, resetPacientInfoSliseReducer } from "./redux/slices/pacientInfoSliseReducer";
 import { initialPatientName } from "../data/initialPatientName";
 import { initialPatientBirthYear } from "../data/initialPatientBirthYear";
 import { initialExamNumber } from "../data/initialExamNumber";
-import { AddZoneDescriptionOnlyButton } from "./AddZoneDescriptionOnlyButton";
+// import { ZoneInfoPattern } from "../patternsText/zoneInfoPattern";
+import { renderToString } from "react-dom/server";
+import { ZoneInfoPatternDescriptionOnly } from "../patternsText/zoneInfoPatternDescriptionOnly";
 
-export const ImagineOptions = ({ id, editorContent }) => {
+
+export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
   const [selectedZone, setSelectedZone] = useState("ОГК");
 
   const [selectedSide, setSelectedSide] = useState("Справа");
@@ -82,7 +60,7 @@ export const ImagineOptions = ({ id, editorContent }) => {
   const [selectedplechKulshSuglobViews, setSelectedplechKulshSuglobViews] =
     useState("Пряма");
   const [selectednormaNenorma, setSelectednormaNenorma] = useState("Норма");
-  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(false); 
   // Вроде работает
   // useEffect(()=>{
   //   dispatch(editZone("ОГК"));
@@ -91,46 +69,17 @@ export const ImagineOptions = ({ id, editorContent }) => {
   const zoneWithSides = zonesWithSides.includes(selectedZone) ? true : false;
 
   const dispatch = useDispatch();
-  // const state = useSelector((state) => state.creatingDocument.documentText);
+  // Печатаем текст из шаблона
+  const textToDoc = renderToString(ZoneInfoPatternDescriptionOnly());
 
-  const textToDocPacientInfo = renderToString(PacientInfoPattern());
-  const textToDoc = renderToString(ZoneInfoPattern());
-  const existPatientName = useSelector((state) => state.pacientInfo.examName);
-  const existPatientBirthYear = useSelector(
-    (state) => state.pacientInfo.examBirthYear
-  );
-
-  const isPatientInfoExist =
-    (existPatientName !== initialPatientName) &
-    (existPatientBirthYear !== initialPatientBirthYear);
-  const examState = useSelector((state) => state.pacientInfo.examNumber);
 
   const [acceptNotice, setAcceptNotice] = useState(null);
 
+
   const handleApplyZone = () => {
-    editorContent();
-    //Добавляем данные в текстовый редактор
+    editorContent()
 
-    // dispatch(addDocText({ textToDocPacientInfo }));
-    // dispatch(addDocText({ textToDoc }));
-
-    //дублируем функционал из PacientInfo + добавляем зону в эдитор
-    if (isPatientInfoExist !== 0) {
-      dispatch(
-        doubleAddPatientAndZoneDocText({ textToDocPacientInfo, textToDoc })
-      );
-      dispatch(resetPacientInfoSliseReducer());
-      dispatch(applyPatientInfoBlock(true));
-
-      if (examState !== initialExamNumber) {
-        dispatch(editExamNumber(+examState + 1));
-      }
-    } else {
-      dispatch(addDocText({ textToDoc }));
-    }
-
-    // dispatch(doubleAddPatientAndZoneDocText({ textToDocPacientInfo, textToDoc}));
-    //  console.log('isPatientInfoExist', isPatientInfoExist);
+    dispatch(addDocText({ textToDoc }));
 
     // Сбрасываем данные в редюсерах
     dispatch(resetPacientInfoSliseReducer());
@@ -146,8 +95,9 @@ export const ImagineOptions = ({ id, editorContent }) => {
   };
 
   return (
-    // <div className="mb-4 p-3 rounded-3 text-dark border border-light-subtle bg-glass">
-    <div className="mb-4 p-3 rounded-3 text-dark border border-light-subtle bg-2ndglass">
+    // <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary ">
+    <div className="mb-4 p-3 rounded-3 text-dark border border-info border-3 bg-2ndglass">
+      <h5 className="text-white">Description Only</h5>
       <div className="imagineOptions">
         {acceptNotice}
 
@@ -207,33 +157,25 @@ export const ImagineOptions = ({ id, editorContent }) => {
         ) : null}
       </div>
 
-      <div className="d-flex flex-wrap justify-content-between zonesButtons">
-        <div className="allChildrenMarginY">
-          <Button
-            variant="success"
-            className="me-0"
-            onClick={handleApplyZone}
-            disabled={buttonDisabled}
-          >
-            Add into Editor ✅📄
+      <div className="d-flex justify-content-between zonesButtons">
+        <div>
+          {/* <ApplyZonesButton /> */}
+          <Button variant="success" className="me-2" onClick={handleApplyZone}  disabled={buttonDisabled}>
+          Add into Editor ✅📄
           </Button>{" "}
-          <AddZoneButton
-            title="New Protocol"
+
+          {/* <AddZoneButton
+            title="Add Protocol"
             variant="outline-success"
             // onAddOptions={onAddOptions}
-          />
-          <AddZoneDescriptionOnlyButton
-            title="Add Description"
-            variant="outline-info"
-            // onAddOptions={onAddOptions}
-          />
+          /> */}
         </div>
-        <DeleteButton
+        {/* <DeleteButton
           title="Remove Protocol"
           variant="outline-danger"
           // onClick={() => onDelete(id)}
           id={id}
-        />
+        /> */}
       </div>
     </div>
   );

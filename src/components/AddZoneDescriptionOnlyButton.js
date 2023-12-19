@@ -1,9 +1,9 @@
 import Button from "react-bootstrap/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { addImagineOptions, resetDescriptionOnly } from "./redux/slices/newZoneSlise";
+import { addDescriptionOnly } from "./redux/slices/newZoneSlise";
 
-function AddZoneButton ({title, variant, onAddOptions}) {
+export function AddZoneDescriptionOnlyButton ({title, variant}) {
   const dispatch = useDispatch()
   // const state = useSelector((state) => state.creatingZones.zoneCounter);
 
@@ -20,16 +20,13 @@ function AddZoneButton ({title, variant, onAddOptions}) {
       <Button
         className="backgroundWhite"
         variant={variant}
-        // onClick={onAddOptions}
         onClick={
-          // handleAdd
           () => {
           const newZoneid = {
             id: uuidv4(),
           };
         
-          dispatch(addImagineOptions(newZoneid));
-          dispatch(resetDescriptionOnly()); //обнуляет зоны "только описание"
+          dispatch(addDescriptionOnly(newZoneid));
         }
         }      >
         {title}
@@ -38,4 +35,3 @@ function AddZoneButton ({title, variant, onAddOptions}) {
   );
 }
 
-export default AddZoneButton;

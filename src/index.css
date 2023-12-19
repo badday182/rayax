@@ -138,6 +138,12 @@ code {
 
   /* z-index: 1; */
 }
+.bg-2ndglass {
+  background-color: rgb(178 214 247 / 18%);
+  /* backdrop-filter: blur(0.7px); */
+
+  /* z-index: 1; */
+}
 
 /* -------------------------------------------------------- */
 /* .glass-button {
@@ -234,6 +240,9 @@ code {
 
   /* margin-bottom: 1rem; */
 }
+.allChildrenMarginY * {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;}
 
 .banner {
   width: 90px;

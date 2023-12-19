@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
   zoneCounter: [{ id: 0 }],
+  zoneDescriptionOnlyCounter: [],
 };
 
 export const newZoneSlise = createSlice({
@@ -16,20 +17,37 @@ export const newZoneSlise = createSlice({
       state.zoneCounter = [...state.zoneCounter, action.payload];
       // state.zoneCounter.push(action.payload);
     },
+    addDescriptionOnly: (state, action) => {
+      state.zoneDescriptionOnlyCounter = [
+        ...state.zoneDescriptionOnlyCounter,
+        action.payload,
+      ];
+      // state.zoneCounter.push(action.payload);
+    },
     deleteImagineOptions: (state, action) => {
       if (state.zoneCounter.length !== 1) {
         state.zoneCounter = state.zoneCounter.filter(
-          (option) => option.id !== action.payload.id   );
+          (option) => option.id !== action.payload.id
+        );
       }
-
     },
     resetImagineOptions: (state) => {
       state.zoneCounter = [{ id: uuidv4() }];
       // state.zoneCounter.push(action.payload);
     },
+    resetDescriptionOnly: (state) => {
+      state.zoneDescriptionOnlyCounter = [];
+      // state.zoneCounter.push(action.payload);
+    },
   },
 });
 
-export const { addImagineOptions, deleteImagineOptions, resetImagineOptions } = newZoneSlise.actions;
+export const {
+  addImagineOptions,
+  deleteImagineOptions,
+  resetImagineOptions,
+  addDescriptionOnly,
+  resetDescriptionOnly,
+} = newZoneSlise.actions;
 
 export default newZoneSlise.reducer;
