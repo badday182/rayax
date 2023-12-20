@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { addDescriptionOnly } from "./redux/slices/newZoneSlise";
 
-function AddZoneDescriptionOnlyButton ({title, variant}) {
+export function AddZoneDescriptionOnlyButton ({title, variant}) {
   const dispatch = useDispatch()
 
   return (
@@ -26,4 +26,4 @@ function AddZoneDescriptionOnlyButton ({title, variant}) {
   );
 }
 
-export default AddZoneDescriptionOnlyButton;
+// export default AddZoneDescriptionOnlyButton;
