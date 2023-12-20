@@ -1,5 +1,5 @@
 import Button from "react-bootstrap/Button";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deleteImagineOptions } from "./redux/slices/newZoneSlise";
 
 function DeleteButton({ title, variant, onClick, id }) {
