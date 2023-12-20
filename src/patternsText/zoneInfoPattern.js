@@ -30,7 +30,19 @@ import { kulshovyiSuhlobViews } from "../data/KULShOVYISUHLOB/kulshovyiSuhlobVie
 import { kolinnyiSuhlobViews } from "../data/KOLINNYISUHLOB/kolinnyiSuhlobViews";
 import { homilkovoStopnyiSuhlobViews } from "../data/HOMILKOVOSTOPNYISUHLOB/homilkovoStopnyiSuhlobViews";
 import { stopaViews } from "../data/STOPA/stopaViews";
-
+import { legenRysunok } from "../data/OGK_notNorma/legenRysunok";
+import { koreni } from "../data/OGK_notNorma/koreni";
+import { synusy } from "../data/OGK_notNorma/synusy";
+import { kupalaDiadragmy } from "../data/OGK_notNorma/kupalaDiadragmy";
+import { cor } from "../data/OGK_notNorma/cor";
+import { ogkZakliuchennia } from "../data/OGK_notNorma/ogkZakliuchennia";
+import { fiziologLordoz } from "../data/SHVH/SHNH_notNorma/fiziologLordoz";
+import { seredynnaVis } from "../data/SHVH/SHNH_notNorma/seredynnaVis";
+import { vysotaTilHrebtsiv } from "../data/SHVH/SHNH_notNorma/vysotaTilHrebtsiv";
+import { mizhkhrebtseviPromizhky } from "../data/SHVH/SHNH_notNorma/mizhkhrebtseviPromizhky";
+import { zamykaiuchiPlastynkyTilKhrebtsiv } from "../data/SHVH/SHNH_notNorma/zamykaiuchiPlastynkyTilKhrebtsiv";
+import { fasetkoviUnkovertSuhlShchelyny } from "../data/SHVH/SHNH_notNorma/fasetkoviUnkovertSuhlShchelyny";
+import { zakliuchenniaShvh } from "../data/SHVH/SHNH_notNorma/zakliuchenniaShvh";
 export const ZoneInfoPattern = () => {
   const zone = useSelector((state) => state.zoneInfo.zone);
   const proaction = useSelector((state) => state.zoneInfo.proaction);
@@ -41,15 +53,17 @@ export const ZoneInfoPattern = () => {
   //   (state) => state.resetZoneInfoPattern.reseter  );
 
   // -----------ОГК-selectors-start--------------
-  // const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynok)
-  const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynokText);
-  const koreni = useSelector((state) => state.ogkInfo.koreniText);
-  const synusy = useSelector((state) => state.ogkInfo.synusyText);
-  const kupalaDiadragmy = useSelector(
+  // const legenRusynokState = useSelector((state) => state.ogkInfo.legenRusynokState)
+  const legenRusynokState = useSelector(
+    (state) => state.ogkInfo.legenRusynokText
+  );
+  const koreniState = useSelector((state) => state.ogkInfo.koreniText);
+  const synusyState = useSelector((state) => state.ogkInfo.synusyText);
+  const kupalaDiadragmyState = useSelector(
     (state) => state.ogkInfo.kupalaDiadragmyText
   );
-  const cor = useSelector((state) => state.ogkInfo.corText);
-  const ogkZakliuchennia = useSelector(
+  const corState = useSelector((state) => state.ogkInfo.corText);
+  const ogkZakliuchenniaState = useSelector(
     (state) => state.ogkInfo.ogkZakliuchenniaText
   );
   // -----------ОГК-selectors-end--------------
@@ -69,23 +83,23 @@ export const ZoneInfoPattern = () => {
   // -----------ППН-selectors-end--------------
 
   // -----------ШВХ-selectors-start--------------
-  // const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynok)
-  const fiziologLordoz = useSelector(
+  // const legenRusynokState = useSelector((state) => state.ogkInfo.legenRusynokState)
+  const fiziologLordozState = useSelector(
     (state) => state.universalSlice.commaUniversalText_1
   );
-  const seredynnaVis = useSelector(
+  const seredynnaVisState = useSelector(
     (state) => state.universalSlice.commaUniversalText_2
   );
-  const vysotaTilHrebtsiv = useSelector(
+  const vysotaTilHrebtsivState = useSelector(
     (state) => state.universalSlice.svhVysotaTilHrebtsivText
   );
-  const mizhkhrebtseviPromizhky = useSelector(
+  const mizhkhrebtseviPromizhkyState = useSelector(
     (state) => state.universalSlice.commaUniversalText_4
   );
-  const zamykaiuchiPlastynkyTilKhrebtsiv = useSelector(
+  const zamykaiuchiPlastynkyTilKhrebtsivState = useSelector(
     (state) => state.universalSlice.commaUniversalText_5
   );
-  const fasetkoviUnkovertSuhlShchelyny = useSelector(
+  const fasetkoviUnkovertSuhlShchelynyState = useSelector(
     (state) => state.universalSlice.commaUniversalText_6
   );
   // const zakliuchenniaShvh = useSelector(
@@ -97,7 +111,7 @@ export const ZoneInfoPattern = () => {
   // -----------ШВХ-selectors-end--------------
 
   // -----------ГВХ-selectors-start-----из общих универсальных селекторов
-  // const legenRusynok = useSelector((state) => state.ogkInfo.legenRusynok)
+  // const legenRusynokState = useSelector((state) => state.ogkInfo.legenRusynokState)
   const fiziologKifos = useSelector(
     (state) => state.universalSlice.commaUniversalText_1
   );
@@ -181,9 +195,11 @@ export const ZoneInfoPattern = () => {
     }
     if (side === "Справа") {
       radiography += ", справа";
-    } else if (side === "Зліва"){
+    } else if (side === "Зліва") {
       radiography += ", злiва";
-    } else {radiography += ", справа та злiва";}
+    } else {
+      radiography += ", справа та злiва";
+    }
   }
   // --------------------set-R-графiя-end---------------
 
@@ -198,14 +214,60 @@ export const ZoneInfoPattern = () => {
     report = ogkZagalnaNenorma;
   }
   // if (norma === "Не норма") {
-  //   report = `Легеневий рисунок ${legenRusynok}. Корені ${koreni}. Синуси ${synusy}. купола діафрагми ${kupalaDiadragmy}. Cor - ${cor}.<br />Заключення: ${ogkZakliuchennia}.`;
+  //   report = `Легеневий рисунок ${legenRusynokState}. Корені ${koreniState}. Синуси ${synusyState}. купола діафрагми ${kupalaDiadragmyState}. Cor - ${corState}.<br />Заключення: ${ogkZakliuchenniaState}.`;
   // }
   if (zone === "ОГК" && norma === "Не норма") {
     report = (
       <div>
-        Легеневий рисунок {legenRusynok}. Корені {koreni}. Синуси {synusy}.
-        Купола діафрагми {kupalaDiadragmy}. Cor - {cor}. <br />
-        Заключення: {ogkZakliuchennia}.
+        {/* если свой вариант то булет область с ".", если не будет выбора - области не будет */}
+        {legenRusynokState === legenRysunok[legenRysunok.length - 1] && (
+          <>Легеневий рисунок . </>
+        )}
+        {legenRusynokState !== "" &&
+          legenRusynokState !== legenRysunok[legenRysunok.length - 1] && (
+            <>Легеневий рисунок {legenRusynokState}. </>
+          )}
+
+        {koreniState === koreni[koreni.length - 1] && <>Корені . </>}
+        {koreniState !== "" && koreniState !== koreni[koreni.length - 1] && (
+          <>Корені {koreniState}. </>
+        )}
+
+        {synusyState === synusy[synusy.length - 1] && <>Синуси . </>}
+        {synusyState !== "" && synusyState !== synusy[synusy.length - 1] && (
+          <>Синуси {synusyState}. </>
+        )}
+
+        {kupalaDiadragmyState ===
+          kupalaDiadragmy[kupalaDiadragmy.length - 1] && (
+          <>Купола діафрагми . </>
+        )}
+        {kupalaDiadragmyState !== "" &&
+          kupalaDiadragmyState !==
+            kupalaDiadragmy[kupalaDiadragmy.length - 1] && (
+            <>Купола діафрагми {kupalaDiadragmyState}. </>
+          )}
+
+        {corState === cor[cor.length - 1] && <>Cor - . </>}
+        {corState !== "" && corState !== cor[cor.length - 1] && (
+          <>Cor - {corState}. </>
+        )}
+
+        {ogkZakliuchenniaState ===
+          ogkZakliuchennia[ogkZakliuchennia.length - 1] && <>Заключення: . </>}
+        {ogkZakliuchenniaState !== "" &&
+          ogkZakliuchenniaState !==
+            ogkZakliuchennia[ogkZakliuchennia.length - 1] && (
+            <>Заключення: {ogkZakliuchenniaState}. </>
+          )}
+        {/* {koreniState !== "" && <>Корені {koreniState}. </>}
+        {synusyState !== "" && <>Синуси {synusyState}. </>}
+        {kupalaDiadragmyState !== "" && <>Купола діафрагми {kupalaDiadragmyState}. </>}
+        {corState !== "" && <>Cor - {corState}. </>}
+        <br />
+        {ogkZakliuchenniaState !== "" && (
+          <>Заключення: {ogkZakliuchenniaState}.</>
+        )} */}
       </div>
     );
   }
@@ -249,12 +311,96 @@ export const ZoneInfoPattern = () => {
       //"Не норма"
       report = (
         <div>
-          {shvhNenormaItems[0]} {fiziologLordoz}. {shvhNenormaItems[1]}{" "}
-          {seredynnaVis}. {shvhNenormaItems[2]} {vysotaTilHrebtsiv}.{" "}
-          {shvhNenormaItems[3]} {mizhkhrebtseviPromizhky}. {shvhNenormaItems[4]}{" "}
-          {zamykaiuchiPlastynkyTilKhrebtsiv}. {shvhNenormaItems[5]}{" "}
-          {fasetkoviUnkovertSuhlShchelyny}.<br />
-          {shvhNenormaItems[6]} {zakliuchennia}.
+          {fiziologLordozState ===
+            fiziologLordoz[fiziologLordoz.length - 1] && (
+            <>{shvhNenormaItems[0]} . </>
+          )}
+          {fiziologLordozState !== "" &&
+            fiziologLordozState !==
+              fiziologLordoz[fiziologLordoz.length - 1] && (
+              <>
+                {shvhNenormaItems[0]} {fiziologLordozState}.{" "}
+              </>
+            )}
+
+          {seredynnaVisState ===
+            seredynnaVis[seredynnaVis.length - 1] && (
+            <>{shvhNenormaItems[1]} . </>
+          )}
+          {seredynnaVisState !== "" &&
+            seredynnaVisState !==
+            seredynnaVis[seredynnaVis.length - 1] && (
+              <>
+                {shvhNenormaItems[1]} {seredynnaVisState}.{" "}
+              </>
+            )}
+
+          {vysotaTilHrebtsivState ===
+            vysotaTilHrebtsiv[vysotaTilHrebtsiv.length - 1] && (
+            <>{shvhNenormaItems[2]} . </>
+          )}
+          {vysotaTilHrebtsivState !== "" &&
+            vysotaTilHrebtsivState !==
+            vysotaTilHrebtsiv[vysotaTilHrebtsiv.length - 1] && (
+              <>
+                {shvhNenormaItems[2]} {vysotaTilHrebtsivState}.{" "}
+              </>
+            )}
+
+          {mizhkhrebtseviPromizhkyState ===
+            mizhkhrebtseviPromizhky[mizhkhrebtseviPromizhky.length - 1] && (
+            <>{shvhNenormaItems[3]} . </>
+          )}
+          {mizhkhrebtseviPromizhkyState !== "" &&
+            mizhkhrebtseviPromizhkyState !==
+            mizhkhrebtseviPromizhky[mizhkhrebtseviPromizhky.length - 1] && (
+              <>
+                {shvhNenormaItems[3]} {mizhkhrebtseviPromizhkyState}.{" "}
+              </>
+            )}
+
+          {zamykaiuchiPlastynkyTilKhrebtsivState ===
+            zamykaiuchiPlastynkyTilKhrebtsiv[zamykaiuchiPlastynkyTilKhrebtsiv.length - 1] && (
+            <>{shvhNenormaItems[4]} . </>
+          )}
+          {zamykaiuchiPlastynkyTilKhrebtsivState !== "" &&
+            zamykaiuchiPlastynkyTilKhrebtsivState !==
+            zamykaiuchiPlastynkyTilKhrebtsiv[zamykaiuchiPlastynkyTilKhrebtsiv.length - 1] && (
+              <>
+                {shvhNenormaItems[4]} {zamykaiuchiPlastynkyTilKhrebtsivState}.{" "}
+              </>
+            )}
+
+          {fasetkoviUnkovertSuhlShchelynyState ===
+            fasetkoviUnkovertSuhlShchelyny[fasetkoviUnkovertSuhlShchelyny.length - 1] && (
+            <>{shvhNenormaItems[5]} .<br /></>
+          )}
+          {fasetkoviUnkovertSuhlShchelynyState !== "" &&
+            fasetkoviUnkovertSuhlShchelynyState !==
+            fasetkoviUnkovertSuhlShchelyny[fasetkoviUnkovertSuhlShchelyny.length - 1] && (
+              <>
+                {shvhNenormaItems[5]} {fasetkoviUnkovertSuhlShchelynyState}.<br />
+              </>
+            )}
+
+          {zakliuchennia ===
+            zakliuchenniaShvh[zakliuchenniaShvh.length - 1] && (
+            <>{shvhNenormaItems[6]} .<br /></>
+          )}
+          {zakliuchennia !== "" &&
+            zakliuchennia !==
+            zakliuchenniaShvh[zakliuchenniaShvh.length - 1] && (
+              <>
+                {shvhNenormaItems[6]} {zakliuchennia}.<br />
+              </>
+            )}
+
+          {/* {shvhNenormaItems[1]} {seredynnaVisState}.
+          {shvhNenormaItems[2]}{" "}{vysotaTilHrebtsivState}.
+          {shvhNenormaItems[3]} {mizhkhrebtseviPromizhkyState}.{" "}
+          {shvhNenormaItems[4]} {zamykaiuchiPlastynkyTilKhrebtsivState}.{" "}
+          {shvhNenormaItems[5]} {fasetkoviUnkovertSuhlShchelynyState}.<br />
+          {shvhNenormaItems[6]} {zakliuchennia}. */}
         </div>
       );
     }
@@ -275,10 +421,10 @@ export const ZoneInfoPattern = () => {
       report = (
         <div>
           {gvhNenormaItems[0]} {fiziologKifos}. {gvhNenormaItems[1]}{" "}
-          {seredynnaVis}. {gvhNenormaItems[2]} {vysotaTilHrebtsiv}.{" "}
-          {gvhNenormaItems[3]} {mizhkhrebtseviPromizhky}. {gvhNenormaItems[4]}{" "}
-          {zamykaiuchiPlastynkyTilKhrebtsiv}. {gvhNenormaItems[5]}{" "}
-          {fasetkoviUnkovertSuhlShchelyny}.<br />
+          {seredynnaVisState}. {gvhNenormaItems[2]} {vysotaTilHrebtsivState}.{" "}
+          {gvhNenormaItems[3]} {mizhkhrebtseviPromizhkyState}. {gvhNenormaItems[4]}{" "}
+          {zamykaiuchiPlastynkyTilKhrebtsivState}. {gvhNenormaItems[5]}{" "}
+          {fasetkoviUnkovertSuhlShchelynyState}.<br />
           {gvhNenormaItems[6]} {zakliuchennia}.
         </div>
       );
@@ -298,11 +444,11 @@ export const ZoneInfoPattern = () => {
       //"Не норма"
       report = (
         <div>
-          {pvhNenormaItems[0]} {fiziologLordoz}. {pvhNenormaItems[1]}{" "}
-          {seredynnaVis}. {pvhNenormaItems[2]} {vysotaTilHrebtsiv}.{" "}
-          {pvhNenormaItems[3]} {mizhkhrebtseviPromizhky}. {pvhNenormaItems[4]}{" "}
-          {zamykaiuchiPlastynkyTilKhrebtsiv}. {pvhNenormaItems[5]}{" "}
-          {fasetkoviUnkovertSuhlShchelyny}.<br />
+          {pvhNenormaItems[0]} {fiziologLordozState}. {pvhNenormaItems[1]}{" "}
+          {seredynnaVisState}. {pvhNenormaItems[2]} {vysotaTilHrebtsivState}.{" "}
+          {pvhNenormaItems[3]} {mizhkhrebtseviPromizhkyState}. {pvhNenormaItems[4]}{" "}
+          {zamykaiuchiPlastynkyTilKhrebtsivState}. {pvhNenormaItems[5]}{" "}
+          {fasetkoviUnkovertSuhlShchelynyState}.<br />
           {pvhNenormaItems[6]} {zakliuchennia}.
         </div>
       );
@@ -390,7 +536,6 @@ export const ZoneInfoPattern = () => {
           Заключення: R-ознаки двобічного коксартрозу.
         </>
       );
-
     }
   }
   // --------------------Кісток тазу-end---------------
@@ -458,10 +603,10 @@ export const ZoneInfoPattern = () => {
         border="2px solid white"
         id={uuidv4()}
       >
-        <tbody >
-          <tr >
-            <td >R-графiя: {radiography}</td>
-            <td  align="right">ЕЕД: {mSv} мЗв</td>
+        <tbody>
+          <tr>
+            <td>R-графiя: {radiography}</td>
+            <td align="right">ЕЕД: {mSv} мЗв</td>
           </tr>
         </tbody>
       </table>
