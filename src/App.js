@@ -67,7 +67,7 @@ const App = () => {
 
   return (
     // <div className=" m-auto conteinerWidht d-flex flex-row p-3 position-relative ">
-    <div className=" m-auto conteinerWidht d-flex justify-content-evenly flex-wrap p-3 ">
+    <div className="conteinerWidht d-flex justify-content-center flex-wrap p-3">
       {/* <div className=" me-3 p-3 rounded-3 border pacientStore"> */}
 
       <div className={`banner rounded-3 ${isBannerVisible ? "" : "hidden"}`}>
@@ -119,7 +119,7 @@ const App = () => {
         </div>
       </div>
 
-      <div className="pacientBlock mb-4">
+      <div className="pacientBlock mb-4 mx-4">
         {patientState.map((option) => (
           <PacientCard
             editorContent={editorContent}
