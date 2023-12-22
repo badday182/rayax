@@ -36,13 +36,19 @@ import { synusy } from "../data/OGK_notNorma/synusy";
 import { kupalaDiadragmy } from "../data/OGK_notNorma/kupalaDiadragmy";
 import { cor } from "../data/OGK_notNorma/cor";
 import { ogkZakliuchennia } from "../data/OGK_notNorma/ogkZakliuchennia";
-import { fiziologLordoz } from "../data/SHVH/SHNH_notNorma/fiziologLordoz";
-import { seredynnaVis } from "../data/SHVH/SHNH_notNorma/seredynnaVis";
-import { vysotaTilHrebtsiv } from "../data/SHVH/SHNH_notNorma/vysotaTilHrebtsiv";
-import { mizhkhrebtseviPromizhky } from "../data/SHVH/SHNH_notNorma/mizhkhrebtseviPromizhky";
-import { zamykaiuchiPlastynkyTilKhrebtsiv } from "../data/SHVH/SHNH_notNorma/zamykaiuchiPlastynkyTilKhrebtsiv";
-import { fasetkoviUnkovertSuhlShchelyny } from "../data/SHVH/SHNH_notNorma/fasetkoviUnkovertSuhlShchelyny";
+import { fiziologLordoz } from "../data/universal_notNorma/fiziologLordoz";
+import { seredynnaVis } from "../data/universal_notNorma/seredynnaVis";
+import { mizhkhrebtseviPromizhky } from "../data/universal_notNorma/mizhkhrebtseviPromizhky";
+import { zamykaiuchiPlastynkyTilKhrebtsiv } from "../data/universal_notNorma/zamykaiuchiPlastynkyTilKhrebtsiv";
+import { fasetkoviUnkovertSuhlShchelyny } from "../data/universal_notNorma/fasetkoviUnkovertSuhlShchelyny";
 import { zakliuchenniaShvh } from "../data/SHVH/SHNH_notNorma/zakliuchenniaShvh";
+import { fiziologKifos } from "../data/GVH/GVH_notNorma/fiziologKifos";
+import { zakliuchenniaGvh } from "../data/GVH/GVH_notNorma/zakliuchenniaGvh";
+import { vysotaTilHrebtsivShvh } from "../data/SHVH/SHNH_notNorma/vysotaTilHrebtsivShvh";
+import { vysotaTilHrebtsivGvh } from "../data/GVH/GVH_notNorma/vysotaTilHrebtsivGvh";
+import { vysotaTilHrebtsivPvh } from "../data/PVH/PVH_notNorma/vysotaTilHrebtsivPvh";
+import { zakliuchenniaPvh } from "../data/PVH/PVH_notNorma/zakliuchenniaPvh";
+import { kolinnyiSuhlobZahalnaNenorma } from "../data/KOLINNYISUHLOB/kolinnyiSuhlobZahalnaNenorma";
 export const ZoneInfoPattern = () => {
   const zone = useSelector((state) => state.zoneInfo.zone);
   const proaction = useSelector((state) => state.zoneInfo.proaction);
@@ -112,7 +118,7 @@ export const ZoneInfoPattern = () => {
 
   // -----------ГВХ-selectors-start-----из общих универсальных селекторов
   // const legenRusynokState = useSelector((state) => state.ogkInfo.legenRusynokState)
-  const fiziologKifos = useSelector(
+  const fiziologKifosState = useSelector(
     (state) => state.universalSlice.commaUniversalText_1
   );
   // -----------ПВХ-selectors-end--------------
@@ -323,25 +329,23 @@ export const ZoneInfoPattern = () => {
               </>
             )}
 
-          {seredynnaVisState ===
-            seredynnaVis[seredynnaVis.length - 1] && (
+          {seredynnaVisState === seredynnaVis[seredynnaVis.length - 1] && (
             <>{shvhNenormaItems[1]} . </>
           )}
           {seredynnaVisState !== "" &&
-            seredynnaVisState !==
-            seredynnaVis[seredynnaVis.length - 1] && (
+            seredynnaVisState !== seredynnaVis[seredynnaVis.length - 1] && (
               <>
                 {shvhNenormaItems[1]} {seredynnaVisState}.{" "}
               </>
             )}
 
           {vysotaTilHrebtsivState ===
-            vysotaTilHrebtsiv[vysotaTilHrebtsiv.length - 1] && (
+            vysotaTilHrebtsivShvh[vysotaTilHrebtsivShvh.length - 1] && (
             <>{shvhNenormaItems[2]} . </>
           )}
           {vysotaTilHrebtsivState !== "" &&
             vysotaTilHrebtsivState !==
-            vysotaTilHrebtsiv[vysotaTilHrebtsiv.length - 1] && (
+            vysotaTilHrebtsivShvh[vysotaTilHrebtsivShvh.length - 1] && (
               <>
                 {shvhNenormaItems[2]} {vysotaTilHrebtsivState}.{" "}
               </>
@@ -353,43 +357,54 @@ export const ZoneInfoPattern = () => {
           )}
           {mizhkhrebtseviPromizhkyState !== "" &&
             mizhkhrebtseviPromizhkyState !==
-            mizhkhrebtseviPromizhky[mizhkhrebtseviPromizhky.length - 1] && (
+              mizhkhrebtseviPromizhky[mizhkhrebtseviPromizhky.length - 1] && (
               <>
                 {shvhNenormaItems[3]} {mizhkhrebtseviPromizhkyState}.{" "}
               </>
             )}
 
           {zamykaiuchiPlastynkyTilKhrebtsivState ===
-            zamykaiuchiPlastynkyTilKhrebtsiv[zamykaiuchiPlastynkyTilKhrebtsiv.length - 1] && (
-            <>{shvhNenormaItems[4]} . </>
-          )}
+            zamykaiuchiPlastynkyTilKhrebtsiv[
+              zamykaiuchiPlastynkyTilKhrebtsiv.length - 1
+            ] && <>{shvhNenormaItems[4]} . </>}
           {zamykaiuchiPlastynkyTilKhrebtsivState !== "" &&
             zamykaiuchiPlastynkyTilKhrebtsivState !==
-            zamykaiuchiPlastynkyTilKhrebtsiv[zamykaiuchiPlastynkyTilKhrebtsiv.length - 1] && (
+              zamykaiuchiPlastynkyTilKhrebtsiv[
+                zamykaiuchiPlastynkyTilKhrebtsiv.length - 1
+              ] && (
               <>
                 {shvhNenormaItems[4]} {zamykaiuchiPlastynkyTilKhrebtsivState}.{" "}
               </>
             )}
 
           {fasetkoviUnkovertSuhlShchelynyState ===
-            fasetkoviUnkovertSuhlShchelyny[fasetkoviUnkovertSuhlShchelyny.length - 1] && (
-            <>{shvhNenormaItems[5]} .<br /></>
+            fasetkoviUnkovertSuhlShchelyny[
+              fasetkoviUnkovertSuhlShchelyny.length - 1
+            ] && (
+            <>
+              {shvhNenormaItems[5]} .<br />
+            </>
           )}
           {fasetkoviUnkovertSuhlShchelynyState !== "" &&
             fasetkoviUnkovertSuhlShchelynyState !==
-            fasetkoviUnkovertSuhlShchelyny[fasetkoviUnkovertSuhlShchelyny.length - 1] && (
+              fasetkoviUnkovertSuhlShchelyny[
+                fasetkoviUnkovertSuhlShchelyny.length - 1
+              ] && (
               <>
-                {shvhNenormaItems[5]} {fasetkoviUnkovertSuhlShchelynyState}.<br />
+                {shvhNenormaItems[5]} {fasetkoviUnkovertSuhlShchelynyState}.
+                <br />
               </>
             )}
 
           {zakliuchennia ===
             zakliuchenniaShvh[zakliuchenniaShvh.length - 1] && (
-            <>{shvhNenormaItems[6]} .<br /></>
+            <>
+              {shvhNenormaItems[6]} .<br />
+            </>
           )}
           {zakliuchennia !== "" &&
             zakliuchennia !==
-            zakliuchenniaShvh[zakliuchenniaShvh.length - 1] && (
+              zakliuchenniaShvh[zakliuchenniaShvh.length - 1] && (
               <>
                 {shvhNenormaItems[6]} {zakliuchennia}.<br />
               </>
@@ -420,12 +435,99 @@ export const ZoneInfoPattern = () => {
       //"Не норма"
       report = (
         <div>
-          {gvhNenormaItems[0]} {fiziologKifos}. {gvhNenormaItems[1]}{" "}
-          {seredynnaVisState}. {gvhNenormaItems[2]} {vysotaTilHrebtsivState}.{" "}
-          {gvhNenormaItems[3]} {mizhkhrebtseviPromizhkyState}. {gvhNenormaItems[4]}{" "}
-          {zamykaiuchiPlastynkyTilKhrebtsivState}. {gvhNenormaItems[5]}{" "}
-          {fasetkoviUnkovertSuhlShchelynyState}.<br />
-          {gvhNenormaItems[6]} {zakliuchennia}.
+          {fiziologKifosState === fiziologKifos[fiziologKifos.length - 1] && (
+            <>{gvhNenormaItems[0]} . </>
+          )}
+          {fiziologKifosState !== "" &&
+            fiziologKifosState !== fiziologKifos[fiziologKifos.length - 1] && (
+              <>
+                {gvhNenormaItems[0]} {fiziologKifosState}.{" "}
+              </>
+            )}
+
+          {seredynnaVisState === seredynnaVis[seredynnaVis.length - 1] && (
+            <>{gvhNenormaItems[1]} . </>
+          )}
+          {seredynnaVisState !== "" &&
+            seredynnaVisState !== seredynnaVis[seredynnaVis.length - 1] && (
+              <>
+                {gvhNenormaItems[1]} {seredynnaVisState}.{" "}
+              </>
+            )}
+
+          {vysotaTilHrebtsivState ===
+            vysotaTilHrebtsivGvh[vysotaTilHrebtsivGvh.length - 1] && (
+            <>{gvhNenormaItems[2]} . </>
+          )}
+          {vysotaTilHrebtsivState !== "" &&
+            vysotaTilHrebtsivState !==
+              vysotaTilHrebtsivGvh[vysotaTilHrebtsivGvh.length - 1] && (
+              <>
+                {gvhNenormaItems[2]} {vysotaTilHrebtsivState}.{" "}
+              </>
+            )}
+
+          {mizhkhrebtseviPromizhkyState ===
+            mizhkhrebtseviPromizhky[mizhkhrebtseviPromizhky.length - 1] && (
+            <>{gvhNenormaItems[3]} . </>
+          )}
+          {mizhkhrebtseviPromizhkyState !== "" &&
+            mizhkhrebtseviPromizhkyState !==
+              mizhkhrebtseviPromizhky[mizhkhrebtseviPromizhky.length - 1] && (
+              <>
+                {gvhNenormaItems[3]} {mizhkhrebtseviPromizhkyState}.{" "}
+              </>
+            )}
+
+          {zamykaiuchiPlastynkyTilKhrebtsivState ===
+            zamykaiuchiPlastynkyTilKhrebtsiv[
+              zamykaiuchiPlastynkyTilKhrebtsiv.length - 1
+            ] && <>{gvhNenormaItems[4]} . </>}
+          {zamykaiuchiPlastynkyTilKhrebtsivState !== "" &&
+            zamykaiuchiPlastynkyTilKhrebtsivState !==
+              zamykaiuchiPlastynkyTilKhrebtsiv[
+                zamykaiuchiPlastynkyTilKhrebtsiv.length - 1
+              ] && (
+              <>
+                {gvhNenormaItems[4]} {zamykaiuchiPlastynkyTilKhrebtsivState}.{" "}
+              </>
+            )}
+
+          {fasetkoviUnkovertSuhlShchelynyState ===
+            fasetkoviUnkovertSuhlShchelyny[
+              fasetkoviUnkovertSuhlShchelyny.length - 1
+            ] && <>{gvhNenormaItems[5]} . </>}
+          {fasetkoviUnkovertSuhlShchelynyState !== "" &&
+            fasetkoviUnkovertSuhlShchelynyState !==
+              fasetkoviUnkovertSuhlShchelyny[
+                fasetkoviUnkovertSuhlShchelyny.length - 1
+              ] && (
+              <>
+                {gvhNenormaItems[5]} {fasetkoviUnkovertSuhlShchelynyState}.{" "}
+              </>
+            )}
+
+          {zakliuchennia ===
+            zakliuchenniaGvh[zakliuchenniaGvh.length - 1] && (
+            <>
+              {gvhNenormaItems[6]} .<br />
+            </>
+          )}
+          {zakliuchennia !== "" &&
+            zakliuchennia !==
+            zakliuchenniaGvh[zakliuchenniaGvh.length - 1] && (
+              <>
+                {gvhNenormaItems[6]} {zakliuchennia}.<br />
+              </>
+            )}
+
+          {/* {gvhNenormaItems[0]} {fiziologKifosState}. 
+          {gvhNenormaItems[1]}{" "} {seredynnaVisState}. 
+          {gvhNenormaItems[2]} {vysotaTilHrebtsivState}.{" "}
+          {gvhNenormaItems[3]} {mizhkhrebtseviPromizhkyState}.
+          {gvhNenormaItems[4]}{" "}{zamykaiuchiPlastynkyTilKhrebtsivState}.
+          {gvhNenormaItems[5]}{" "} {fasetkoviUnkovertSuhlShchelynyState}.<br />
+          {gvhNenormaItems[6]} {zakliuchennia}. */}
         </div>
       );
     }
@@ -444,12 +546,101 @@ export const ZoneInfoPattern = () => {
       //"Не норма"
       report = (
         <div>
-          {pvhNenormaItems[0]} {fiziologLordozState}. {pvhNenormaItems[1]}{" "}
-          {seredynnaVisState}. {pvhNenormaItems[2]} {vysotaTilHrebtsivState}.{" "}
-          {pvhNenormaItems[3]} {mizhkhrebtseviPromizhkyState}. {pvhNenormaItems[4]}{" "}
-          {zamykaiuchiPlastynkyTilKhrebtsivState}. {pvhNenormaItems[5]}{" "}
-          {fasetkoviUnkovertSuhlShchelynyState}.<br />
-          {pvhNenormaItems[6]} {zakliuchennia}.
+
+{fiziologLordozState === fiziologLordoz[fiziologLordoz.length - 1] && (
+            <>{pvhNenormaItems[0]} . </>
+          )}
+          {fiziologLordozState !== "" &&
+            fiziologLordozState !== fiziologLordoz[fiziologLordoz.length - 1] && (
+              <>
+                {pvhNenormaItems[0]} {fiziologLordozState}.{" "}
+              </>
+            )}
+
+          {seredynnaVisState === seredynnaVis[seredynnaVis.length - 1] && (
+            <>{pvhNenormaItems[1]} . </>
+          )}
+          {seredynnaVisState !== "" &&
+            seredynnaVisState !== seredynnaVis[seredynnaVis.length - 1] && (
+              <>
+                {pvhNenormaItems[1]} {seredynnaVisState}.{" "}
+              </>
+            )}
+
+          {vysotaTilHrebtsivState ===
+            vysotaTilHrebtsivPvh[vysotaTilHrebtsivPvh.length - 1] && (
+            <>{pvhNenormaItems[2]} . </>
+          )}
+          {vysotaTilHrebtsivState !== "" &&
+            vysotaTilHrebtsivState !==
+            vysotaTilHrebtsivPvh[vysotaTilHrebtsivPvh.length - 1] && (
+              <>
+                {pvhNenormaItems[2]} {vysotaTilHrebtsivState}.{" "}
+              </>
+            )}
+
+          {mizhkhrebtseviPromizhkyState ===
+            mizhkhrebtseviPromizhky[mizhkhrebtseviPromizhky.length - 1] && (
+            <>{pvhNenormaItems[3]} . </>
+          )}
+          {mizhkhrebtseviPromizhkyState !== "" &&
+            mizhkhrebtseviPromizhkyState !==
+              mizhkhrebtseviPromizhky[mizhkhrebtseviPromizhky.length - 1] && (
+              <>
+                {pvhNenormaItems[3]} {mizhkhrebtseviPromizhkyState}.{" "}
+              </>
+            )}
+
+          {zamykaiuchiPlastynkyTilKhrebtsivState ===
+            zamykaiuchiPlastynkyTilKhrebtsiv[
+              zamykaiuchiPlastynkyTilKhrebtsiv.length - 1
+            ] && <>{pvhNenormaItems[4]} . </>}
+          {zamykaiuchiPlastynkyTilKhrebtsivState !== "" &&
+            zamykaiuchiPlastynkyTilKhrebtsivState !==
+              zamykaiuchiPlastynkyTilKhrebtsiv[
+                zamykaiuchiPlastynkyTilKhrebtsiv.length - 1
+              ] && (
+              <>
+                {pvhNenormaItems[4]} {zamykaiuchiPlastynkyTilKhrebtsivState}.{" "}
+              </>
+            )}
+
+          {fasetkoviUnkovertSuhlShchelynyState ===
+            fasetkoviUnkovertSuhlShchelyny[
+              fasetkoviUnkovertSuhlShchelyny.length - 1
+            ] && <>{pvhNenormaItems[5]} . </>}
+          {fasetkoviUnkovertSuhlShchelynyState !== "" &&
+            fasetkoviUnkovertSuhlShchelynyState !==
+              fasetkoviUnkovertSuhlShchelyny[
+                fasetkoviUnkovertSuhlShchelyny.length - 1
+              ] && (
+              <>
+                {pvhNenormaItems[5]} {fasetkoviUnkovertSuhlShchelynyState}.{" "}
+              </>
+            )}
+
+          {zakliuchennia ===
+            zakliuchenniaPvh[zakliuchenniaPvh.length - 1] && (
+            <>
+              {pvhNenormaItems[6]} .<br />
+            </>
+          )}
+          {zakliuchennia !== "" &&
+            zakliuchennia !==
+            zakliuchenniaPvh[zakliuchenniaPvh.length - 1] && (
+              <>
+                {gvhNenormaItems[6]} {zakliuchennia}.<br />
+              </>
+            )}
+
+
+          {/* {pvhNenormaItems[0]} {fiziologLordozState}.
+          {pvhNenormaItems[1]}{" "}{seredynnaVisState}.
+          {pvhNenormaItems[2]} {vysotaTilHrebtsivState}.{" "}
+          {pvhNenormaItems[3]} {mizhkhrebtseviPromizhkyState}.{" "}
+          {pvhNenormaItems[4]} {zamykaiuchiPlastynkyTilKhrebtsivState}.{" "}
+          {pvhNenormaItems[5]} {fasetkoviUnkovertSuhlShchelynyState}.<br />
+          {pvhNenormaItems[6]} {zakliuchennia}. */}
         </div>
       );
     }
@@ -553,7 +744,7 @@ export const ZoneInfoPattern = () => {
     if (zakliuchennia === "") {
       report = `${kolinnyiSuhlobViews[0]}.`;
     } else {
-      zakliuchennia === "Загальна не норма"
+      zakliuchennia === kolinnyiSuhlobZahalnaNenorma
         ? (report = (
             <>
               Суглобові щілини нерівномірно звужені. Замикаючі пластинки

@@ -1,4 +1,4 @@
-import { svoiVaryant } from "../../svoiVaryant";
+import { svoiVaryant } from "../../data/svoiVaryant";
 
 export const seredynnaVis = [
   "зміщена праворуч",

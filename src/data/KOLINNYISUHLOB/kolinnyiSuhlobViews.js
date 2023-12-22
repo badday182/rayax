@@ -1,7 +1,9 @@
 import { kistkovaNorma } from "../kistkovaNorma";
+import { kolinnyiSuhlobZahalnaNenorma } from "./kolinnyiSuhlobZahalnaNenorma";
+
 export const kolinnyiSuhlobViews = [
   kistkovaNorma,
-  "Загальна не норма",
+  kolinnyiSuhlobZahalnaNenorma,
   "Перелом плато медіального / латерального виростка в/гомілкової кістки зі зміщенням.",
   "Перелом надколінка зі зміщенням",
   "Надколінковий простір затемнений",

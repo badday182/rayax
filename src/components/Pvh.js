@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { FormFloatingSelect } from "./FloatingLabel";
 import { v4 as uuidv4 } from "uuid";
 
-import { fiziologLordoz } from "../data/PVH/PVH_notNorma/fiziologLordoz";
-import { seredynnaVis } from "../data/PVH/PVH_notNorma/seredynnaVis";
-import { vysotaTilHrebtsivPvh } from "../data/PVH/PVH_notNorma/vysotaTilHrebtsiv";
-import { mizhkhrebtseviPromizhky } from "../data/PVH/PVH_notNorma/mizhkhrebtseviPromizhky";
-import { zamykaiuchiPlastynkyTilKhrebtsiv } from "../data/PVH/PVH_notNorma/zamykaiuchiPlastynkyTilKhrebtsiv";
-import { fasetkoviUnkovertSuhlShchelyny } from "../data/PVH/PVH_notNorma/fasetkoviUnkovertSuhlShchelyny";
+import { fiziologLordoz } from "../data/universal_notNorma/fiziologLordoz";
+import { seredynnaVis } from "../data/universal_notNorma/seredynnaVis";
+import { vysotaTilHrebtsivPvh } from "../data/PVH/PVH_notNorma/vysotaTilHrebtsivPvh";
+import { mizhkhrebtseviPromizhky } from "../data/universal_notNorma/mizhkhrebtseviPromizhky";
+import { zamykaiuchiPlastynkyTilKhrebtsiv } from "../data/universal_notNorma/zamykaiuchiPlastynkyTilKhrebtsiv";
+import { fasetkoviUnkovertSuhlShchelyny } from "../data/universal_notNorma/fasetkoviUnkovertSuhlShchelyny";
 
 import { AddOptionBlock } from "./AddOptionBlock";
 import { pvhNormaNenorma } from "../data/PVH/pvhNormaNenorma";

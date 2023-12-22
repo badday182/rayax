@@ -54,21 +54,21 @@ import { cherepViews } from "../data/Cherep/cherepViews";
 import { ogkNenormaItems } from "../data/OGK_notNorma/ogkNenormaItems";
 import { ppnViews } from "../data/PPN/ppnViews";
 
-import { fiziologLordoz } from "../data/SHVH/SHNH_notNorma/fiziologLordoz";
+import { fiziologLordoz } from "../data/universal_notNorma/fiziologLordoz";
 import { shvhNenormaItems } from "../data/SHVH/shvhNenormaItems";
 import { shvhNormaNenorma } from "../data/SHVH/shvhNormaNenorma";
-import { seredynnaVis } from "../data/SHVH/SHNH_notNorma/seredynnaVis";
-import { vysotaTilHrebtsiv } from "../data/SHVH/SHNH_notNorma/vysotaTilHrebtsiv";
-import { mizhkhrebtseviPromizhky } from "../data/SHVH/SHNH_notNorma/mizhkhrebtseviPromizhky";
-import { zamykaiuchiPlastynkyTilKhrebtsiv } from "../data/SHVH/SHNH_notNorma/zamykaiuchiPlastynkyTilKhrebtsiv";
-import { fasetkoviUnkovertSuhlShchelyny } from "../data/SHVH/SHNH_notNorma/fasetkoviUnkovertSuhlShchelyny";
+import { seredynnaVis } from "../data/universal_notNorma/seredynnaVis";
+import { vysotaTilHrebtsivShvh } from "../data/SHVH/SHNH_notNorma/vysotaTilHrebtsivShvh";
+import { mizhkhrebtseviPromizhky } from "../data/universal_notNorma/mizhkhrebtseviPromizhky";
+import { zamykaiuchiPlastynkyTilKhrebtsiv } from "../data/universal_notNorma/zamykaiuchiPlastynkyTilKhrebtsiv";
+import { fasetkoviUnkovertSuhlShchelyny } from "../data/universal_notNorma/fasetkoviUnkovertSuhlShchelyny";
 import { zakliuchenniaShvh } from "../data/SHVH/SHNH_notNorma/zakliuchenniaShvh";
 
 import { gvhNormaNenorma } from "../data/GVH/gvhNormaNenorma";
 import { fiziologKifos } from "../data/GVH/GVH_notNorma/fiziologKifos";
 import { zakliuchenniaGvh } from "../data/GVH/GVH_notNorma/zakliuchenniaGvh";
 import { gvhNenormaItems } from "../data/GVH/gvhNenormaItems";
-import { vysotaTilHrebtsivGvh } from "../data/GVH/GVH_notNorma/vysotaTilHrebtsiv";
+import { vysotaTilHrebtsivGvh } from "../data/GVH/GVH_notNorma/vysotaTilHrebtsivGvh";
 import { pvhNormaNenorma } from "../data/PVH/pvhNormaNenorma";
 import { zakliuchenniaPvh } from "../data/PVH/PVH_notNorma/zakliuchenniaPvh";
 import { ochpViews } from "../data/OCHP/ochpViews";
@@ -86,7 +86,7 @@ import { stopaViews } from "../data/STOPA/stopaViews";
 
 import { peredniViddilyStopyViews } from "../data/PEREDNIVIDDILYSTOPY/peredniViddilyStopyViews";
 import { firstElements } from "../data/viewsToEditSemicolUnivArray_1";
-import { vysotaTilHrebtsivPvh } from "../data/PVH/PVH_notNorma/vysotaTilHrebtsiv";
+import { vysotaTilHrebtsivPvh } from "../data/PVH/PVH_notNorma/vysotaTilHrebtsivPvh";
 
 export function FormFloatingSelect({ id, items, label, onZoneSelect }) {
   const [floatingId] = useState(id);
@@ -228,7 +228,7 @@ export function FormFloatingSelect({ id, items, label, onZoneSelect }) {
     if (seredynnaVis.includes(selectedZone)) {
       dispatch(editCommaUniversalArray_2({ floatingId, selectedZone }));
     }
-    if (vysotaTilHrebtsiv.includes(selectedZone)) {
+    if (vysotaTilHrebtsivShvh.includes(selectedZone)) {
       dispatch(editSvhVysotaTilHrebtsivArray({ floatingId, selectedZone }));
     }
     if (mizhkhrebtseviPromizhky.includes(selectedZone)) {

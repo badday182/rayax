@@ -4,11 +4,11 @@ import { v4 as uuidv4 } from "uuid";
 import {gvhNormaNenorma} from "../data/GVH/gvhNormaNenorma";
 
 import { fiziologKifos } from "../data/GVH/GVH_notNorma/fiziologKifos";
-import { seredynnaVis } from "../data/GVH/GVH_notNorma/seredynnaVis";
-import { vysotaTilHrebtsivGvh } from "../data/GVH/GVH_notNorma/vysotaTilHrebtsiv";
-import { mizhkhrebtseviPromizhky } from "../data/GVH/GVH_notNorma/mizhkhrebtseviPromizhky";
-import { zamykaiuchiPlastynkyTilKhrebtsiv } from "../data/GVH/GVH_notNorma/zamykaiuchiPlastynkyTilKhrebtsiv";
-import { fasetkoviUnkovertSuhlShchelyny } from "../data/GVH/GVH_notNorma/fasetkoviUnkovertSuhlShchelyny";
+import { seredynnaVis } from "../data/universal_notNorma/seredynnaVis";
+import { vysotaTilHrebtsivGvh } from "../data/GVH/GVH_notNorma/vysotaTilHrebtsivGvh";
+import { mizhkhrebtseviPromizhky } from "../data/universal_notNorma/mizhkhrebtseviPromizhky";
+import { zamykaiuchiPlastynkyTilKhrebtsiv } from "../data/universal_notNorma/zamykaiuchiPlastynkyTilKhrebtsiv";
+import { fasetkoviUnkovertSuhlShchelyny } from "../data/universal_notNorma/fasetkoviUnkovertSuhlShchelyny";
 
 import { AddOptionBlock } from "./AddOptionBlock";
 import { gvhNenormaItems } from "../data/GVH/gvhNenormaItems";

@@ -5,12 +5,12 @@ import { FormFloatingSelect } from "./FloatingLabel";
 import { v4 as uuidv4 } from "uuid";
 import { shvhNormaNenorma } from "../data/SHVH/shvhNormaNenorma";
 
-import { fiziologLordoz } from "../data/SHVH/SHNH_notNorma/fiziologLordoz";
-import { seredynnaVis } from "../data/SHVH/SHNH_notNorma/seredynnaVis";
-import { vysotaTilHrebtsiv } from "../data/SHVH/SHNH_notNorma/vysotaTilHrebtsiv";
-import { mizhkhrebtseviPromizhky } from "../data/SHVH/SHNH_notNorma/mizhkhrebtseviPromizhky";
-import { zamykaiuchiPlastynkyTilKhrebtsiv } from "../data/SHVH/SHNH_notNorma/zamykaiuchiPlastynkyTilKhrebtsiv";
-import { fasetkoviUnkovertSuhlShchelyny } from "../data/SHVH/SHNH_notNorma/fasetkoviUnkovertSuhlShchelyny";
+import { fiziologLordoz } from "../data/universal_notNorma/fiziologLordoz";
+import { seredynnaVis } from "../data/universal_notNorma/seredynnaVis";
+import { vysotaTilHrebtsivShvh } from "../data/SHVH/SHNH_notNorma/vysotaTilHrebtsivShvh";
+import { mizhkhrebtseviPromizhky } from "../data/universal_notNorma/mizhkhrebtseviPromizhky";
+import { zamykaiuchiPlastynkyTilKhrebtsiv } from "../data/universal_notNorma/zamykaiuchiPlastynkyTilKhrebtsiv";
+import { fasetkoviUnkovertSuhlShchelyny } from "../data/universal_notNorma/fasetkoviUnkovertSuhlShchelyny";
 
 import { AddOptionBlock } from "./AddOptionBlock";
 import { shvhNenormaItems } from "../data/SHVH/shvhNenormaItems";
@@ -128,7 +128,7 @@ export const Shvh = () => {
             }
           />
           <AddOptionBlock
-            items={vysotaTilHrebtsiv}
+            items={vysotaTilHrebtsivShvh}
             onZoneSelect={setSelectedShvhViews}
             // label="Висота тіл хребців"
             label={shvhNenormaItems[2]}
