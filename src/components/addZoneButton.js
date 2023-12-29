@@ -1,37 +1,38 @@
 import Button from "react-bootstrap/Button";
-import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { addImagineOptions, resetDescriptionOnly } from "./redux/slices/newZoneSlise";
+import {
+  addImagineOptions,
+  resetDescriptionOnly,
+} from "./redux/slices/newZoneSlise";
 
-function AddZoneButton ({title, variant, onAddOptions}) {
-  const dispatch = useDispatch()
-  // const state = useSelector((state) => state.creatingZones.zoneCounter);
+function AddZoneButton({ title, variant, onAddOptions }) {
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
-//   const handleAdd = () => {
-// dispatch({
-// type: 'ADD_ZONE',
-// payload: {
-// id: uuid(),
-// },
-// })
-// }
+  const dispatch = useDispatch();
+
   return (
     <>
       <Button
-        className="backgroundWhite"
+        // className="backgroundWhite"
         variant={variant}
         // onClick={onAddOptions}
         onClick={
           // handleAdd
           () => {
-          const newZoneid = {
-            id: uuidv4(),
-          };
-        
-          dispatch(addImagineOptions(newZoneid));
-          dispatch(resetDescriptionOnly()); //обнуляет зоны "только описание"
+            const newZoneid = {
+              id: uuidv4(),
+            };
+
+            dispatch(addImagineOptions(newZoneid));
+            dispatch(resetDescriptionOnly()); //обнуляет зоны "только описание"
+            onAddOptions();
+            setButtonDisabled(true);
+          }
         }
-        }      >
+        disabled={buttonDisabled}
+      >
         {title}
       </Button>{" "}
     </>

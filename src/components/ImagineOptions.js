@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState } from "react";
 import { FormFloatingSelect } from "./FloatingLabel";
 import DeleteButton from "./deleteButton";
 import AddZoneButton from "./addZoneButton";
@@ -147,6 +147,11 @@ export const ImagineOptions = ({ id, editorContent }) => {
     setButtonDisabled(true); // Устанавливаем disabled в true после нажатия кнопки
   };
 
+  const handleAddOptions = () => {
+    setButtonDisabled(true); // Устанавливаем disabled в true после нажатия кнопки
+
+  }
+
   return (
     // <div className="mb-4 p-3 rounded-3 text-dark border border-light-subtle bg-glass">
     <div className="mb-4 p-3 rounded-3 text-dark border border-light-subtle bg-2ndglass">
@@ -214,8 +219,8 @@ export const ImagineOptions = ({ id, editorContent }) => {
           </Button>{" "}
           <AddZoneButton
             title="New Protocol"
-            variant="outline-success"
-            // onAddOptions={onAddOptions}
+            variant="success"
+            onAddOptions={handleApplyZone}
           />
           <AddZoneDescriptionOnlyButton
             title="Add Description"
