@@ -23,25 +23,6 @@ import { cor } from "../data/OGK_notNorma/cor";
 import { ogkZakliuchennia } from "../data/OGK_notNorma/ogkZakliuchennia";
 
 import { AddOptionBlock } from "./AddOptionBlock";
-// const AddOptionBlock = ({ items, onZoneSelect, label, counter, onAddClick }) => {
-//   return (
-//     <div className="itemZones addOption">
-//       <div>
-//         {counter.map((option) => (
-//           <FormFloatingSelect
-//             key={option.id}
-//             items={items}
-//             onZoneSelect={onZoneSelect}
-//             label={label}
-//           />
-//         ))}
-//       </div>
-//       <Button variant="primary" className="zoneAddButton" onClick={onAddClick}>
-//         Add
-//       </Button>{" "}
-//     </div>
-//   );
-// };
 
 export const Ogk = () => {
   const [selectedZone, setSelectedZone] = useState("ОГК");
@@ -101,7 +82,7 @@ const handleDeleteOption = (deleteId, resetCounter) => {
     <div className="">
       <FormFloatingSelect items={ogkViews} onZoneSelect={setSelectedOgkViews} label="Проєкія" />
       <FormFloatingSelect items={ogkNormaNenorma} onZoneSelect={setSelectednormaNenorma} label="Норма/Не норма" />
-      {/* {selectedZone === "ОГК" && selectednormaNenorma === "Не норма" ? ( */}
+      
       {selectednormaNenorma === "Не норма" ? (
         <div className=" ">
           <AddOptionBlock

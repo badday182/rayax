@@ -87,6 +87,7 @@ import { stopaViews } from "../data/STOPA/stopaViews";
 import { peredniViddilyStopyViews } from "../data/PEREDNIVIDDILYSTOPY/peredniViddilyStopyViews";
 import { firstElements } from "../data/viewsToEditSemicolUnivArray_1";
 import { vysotaTilHrebtsivPvh } from "../data/PVH/PVH_notNorma/vysotaTilHrebtsivPvh";
+import { editDescriptionOnly } from "./redux/slices/descriptionOnlyReducer";
 
 export function FormFloatingSelect({ id, items, label, onZoneSelect }) {
   const [floatingId] = useState(id);
@@ -131,8 +132,14 @@ export function FormFloatingSelect({ id, items, label, onZoneSelect }) {
     const selectedZone = event.target.value;
     onZoneSelect(selectedZone);
 
+
+
     // В случае если пользователь поменяют зону исследования то все Reducerы сбрасываются
     if (zones.includes(selectedZone)) {
+      // console.log('selectedZone', selectedZone);
+      dispatch(editDescriptionOnly(selectedZone));
+
+
       dispatch(resetUniversalSliceReducer());
       dispatch(resetogkSliseReducer());
       dispatch(editZone(selectedZone));

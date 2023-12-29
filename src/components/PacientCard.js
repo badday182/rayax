@@ -66,6 +66,7 @@ export const PacientCard = ({ id, editorContent }) => {
             dispatch(resetImagineOptions());
             dispatch(resetDescriptionOnly());
             dispatch(resetApplyPatientInfoBlock());
+            dispatch(resetDescriptionOnly()); // сброс стейта для описания без шапки
             // dispatch(addPatient(newPatient));
           }}
         >

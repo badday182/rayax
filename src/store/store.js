@@ -8,6 +8,7 @@ import cherepSliseReducer from "../components/redux/slices/cherepSliseReducer";
 import ppnSliseReducer from "../components/redux/slices/ppnSliseReducer"
 import universalSliceReducer from "../components/redux/slices/universalSliceReducer";
 import newPatientSliseReducer from "../components/redux/slices/newPatientSliseReducer";
+import descriptionOnlyReducer from "../components/redux/slices/descriptionOnlyReducer";
 
 const store = configureStore({
     reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
         cherepInfo: cherepSliseReducer,
         ppnInfo: ppnSliseReducer,
         universalSlice: universalSliceReducer,
+        descriptionOnly: descriptionOnlyReducer,
     }
 })
 

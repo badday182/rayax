@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { ogkZagalnaNenorma } from "../data/OGK_notNorma/ogkZagalnaNenorma";
 import { zonesWithSides } from "../data/zonesWithSides";
@@ -406,7 +405,7 @@ export const ZoneInfoPattern = () => {
             zakliuchennia !==
               zakliuchenniaShvh[zakliuchenniaShvh.length - 1] && (
               <>
-                {shvhNenormaItems[6]} {zakliuchennia}.<br />
+                {shvhNenormaItems[6]} {zakliuchennia}.
               </>
             )}
 
@@ -517,7 +516,7 @@ export const ZoneInfoPattern = () => {
             zakliuchennia !==
             zakliuchenniaGvh[zakliuchenniaGvh.length - 1] && (
               <>
-                {gvhNenormaItems[6]} {zakliuchennia}.<br />
+                {gvhNenormaItems[6]} {zakliuchennia}.
               </>
             )}
 
@@ -629,7 +628,7 @@ export const ZoneInfoPattern = () => {
             zakliuchennia !==
             zakliuchenniaPvh[zakliuchenniaPvh.length - 1] && (
               <>
-                {gvhNenormaItems[6]} {zakliuchennia}.<br />
+                {gvhNenormaItems[6]} {zakliuchennia}.
               </>
             )}
 

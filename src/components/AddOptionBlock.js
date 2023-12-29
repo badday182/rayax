@@ -1,8 +1,5 @@
-import { useEffect } from "react";
 import { FormFloatingSelect } from "./FloatingLabel";
 import { Button } from "react-bootstrap";
-import { cherepViews } from "../data/Cherep/cherepViews";
-import { editSemicolonUniversalArray_1 } from "./redux/slices/universalSliceReducer";
 
 export const AddOptionBlock = ({
   items,

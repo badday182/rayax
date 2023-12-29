@@ -50,10 +50,15 @@ import { initialExamNumber } from "../data/initialExamNumber";
 // import { ZoneInfoPattern } from "../patternsText/zoneInfoPattern";
 import { renderToString } from "react-dom/server";
 import { ZoneInfoPatternDescriptionOnly } from "../patternsText/zoneInfoPatternDescriptionOnly";
+import { ZoneInfoPattern } from "../patternsText/zoneInfoPattern";
 
 
 export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
-  const [selectedZone, setSelectedZone] = useState("ОГК");
+  const zoneState = useSelector(
+    (state) => state.descriptionOnly.descriptionState
+  );
+  // const [selectedZone, setSelectedZone] = useState("ОГК");
+  const selectedZone = zoneState
 
   const [selectedSide, setSelectedSide] = useState("Справа");
   const [selectedOgkViews, setSelectedOgkViews] = useState("Оглядова");
@@ -101,27 +106,20 @@ export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
       <div className="imagineOptions">
         {acceptNotice}
 
-        <FormFloatingSelect
+        {/* <FormFloatingSelect
           id="zone"
           items={zones}
           onZoneSelect={setSelectedZone}
           label="Зона дослідження"
-        />
-        {zoneWithSides ? (
+        /> */}
+        {/* {zoneWithSides ? (
           <FormFloatingSelect
             items={sides}
             onZoneSelect={setSelectedSide}
             label="Сторона"
           />
-        ) : null}
-        {selectedZone === "ОГК" ? (
-          <Ogk />
-        ) : // <FormFloatingSelect
-        //   items={ogkViews}
-        //   onZoneSelect={setSelectedOgkViews}
-        //   label="Проєкія"
-        // />
-        null}
+        ) : null} */}
+        {selectedZone === "ОГК" ? <Ogk /> : null}
         {selectedZone === "Череп" ? <Cherep /> : null}
         {selectedZone === "ППН" ? <Ppn /> : null}
         {selectedZone === "ШВХ" ? <Shvh /> : null}

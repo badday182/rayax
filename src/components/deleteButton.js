@@ -1,6 +1,7 @@
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
 import { deleteImagineOptions } from "./redux/slices/newZoneSlise";
+import { resetDescriptionOnly } from "./redux/slices/descriptionOnlyReducer";
 
 function DeleteButton({ title, variant, onClick, id }) {
   const dispatch = useDispatch()
@@ -16,6 +17,8 @@ function DeleteButton({ title, variant, onClick, id }) {
         onClick={
           () => {
             dispatch(deleteImagineOptions({id}));
+            dispatch(resetDescriptionOnly()); // сброс стейта для описания без шапки
+            
           }
         }
       >

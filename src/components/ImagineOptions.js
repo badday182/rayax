@@ -16,6 +16,7 @@ import {
   editNorma,
   resetZoneInfoSliseReducer,
   applyPatientInfoBlock,
+  resetZoneInfoSliseReducerExceptZone,
 } from "./redux/slices/zoneInfoSliseReducer";
 import {
   resetLegenRusynokArray,
@@ -72,7 +73,7 @@ import {
 import { initialPatientName } from "../data/initialPatientName";
 import { initialPatientBirthYear } from "../data/initialPatientBirthYear";
 import { initialExamNumber } from "../data/initialExamNumber";
-import {AddZoneDescriptionOnlyButton} from "./AddZoneDescriptionOnlyButton";
+import { AddZoneDescriptionOnlyButton } from "./AddZoneDescriptionOnlyButton";
 
 export const ImagineOptions = ({ id, editorContent }) => {
   const [selectedZone, setSelectedZone] = useState("ОГК");
@@ -133,8 +134,9 @@ export const ImagineOptions = ({ id, editorContent }) => {
     //  console.log('isPatientInfoExist', isPatientInfoExist);
 
     // Сбрасываем данные в редюсерах
-    dispatch(resetPacientInfoSliseReducer());
-    dispatch(resetZoneInfoSliseReducer());
+    dispatch(resetPacientInfoSliseReducer()); 
+    // dispatch(resetZoneInfoSliseReducer()); //сброс всех параметров
+    dispatch(resetZoneInfoSliseReducerExceptZone()); //сброс всех параметров кроме zone
     dispatch(resetogkSliseReducer());
 
     dispatch(resetCherepSliseReducer());
@@ -164,14 +166,7 @@ export const ImagineOptions = ({ id, editorContent }) => {
             label="Сторона"
           />
         ) : null}
-        {selectedZone === "ОГК" ? (
-          <Ogk />
-        ) : // <FormFloatingSelect
-        //   items={ogkViews}
-        //   onZoneSelect={setSelectedOgkViews}
-        //   label="Проєкія"
-        // />
-        null}
+        {selectedZone === "ОГК" ? <Ogk /> : null}
         {selectedZone === "Череп" ? <Cherep /> : null}
         {selectedZone === "ППН" ? <Ppn /> : null}
         {selectedZone === "ШВХ" ? <Shvh /> : null}
