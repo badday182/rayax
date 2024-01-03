@@ -164,7 +164,7 @@ export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
           {/* <ApplyZonesButton /> */}
           <Button
             variant="success"
-            className="me-2"
+            className="me-2 mb-2"
             // onClick={handleApplyZone}
             onClick={() => {
               setDescriptionOnlyButtonDisabled(false);
