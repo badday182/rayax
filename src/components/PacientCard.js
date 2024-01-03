@@ -66,13 +66,13 @@ export const PacientCard = ({ id, editorContent }) => {
             dispatch(resetPatient()); // сброс и создание нового пацика
             dispatch(resetImagineOptions()); // сброс и создание новой зоны
             dispatch(resetApplyPatientInfoBlock()); //Сброс данных о заполнении инфо пациента
-            dispatch(resetDescriptionOnly()); // сброс стейта для описания без шапки
+            // dispatch(resetDescriptionOnly()); // сброс стейта для описания без шапки
             // dispatch(addPatient(newPatient));
 
             // Сброс редюсеров
             dispatch(resetogkSliseReducer()); // сброс ОГК
             dispatch(resetUniversalSliceReducer()); // сброс универсвльного редюсера
-            dispatch(resetDescriptionOnly()); // сброс редюсера только описания (без шапки)
+            // dispatch(resetDescriptionOnly()); // сброс редюсера только описания (без шапки)
           }}
         >
           🚹 New Patient
