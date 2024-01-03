@@ -116,6 +116,13 @@ code {
 .pacientStore > :not(:last-child) {
   margin-bottom: 16px;
 }
+.form-select {
+  font-weight: 400;
+  font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI",
+  "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+  "Helvetica Neue", sans-serif;
+  font-size: 17px;
+}
 .imagineOptions {
   position: relative;
 }

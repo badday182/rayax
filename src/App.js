@@ -70,7 +70,7 @@ const App = () => {
     <div className="conteinerWidht d-flex justify-content-center flex-wrap p-3">
       {/* <div className=" me-3 p-3 rounded-3 border pacientStore"> */}
 
-      {/* <div className={`banner rounded-3 ${isBannerVisible ? "" : "hidden"}`}>
+      <div className={`banner rounded-3 ${isBannerVisible ? "" : "hidden"}`}>
         <div className="content">
           <button id="closeBanner" onClick={closeBanner}>
             &times;
@@ -104,7 +104,7 @@ const App = () => {
             />
           </a>
         </div>
-      </div> */}
+      </div>
 
       <div className="pacientBlock mb-4 mx-4">
         {patientState.map((option) => (
@@ -158,7 +158,6 @@ const App = () => {
               "insertdatetime",
               "media",
               "table",
-              "code",
               // "help",
             ],
             toolbar:

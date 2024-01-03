@@ -147,7 +147,7 @@ import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
         <Form className=" mb-3   ">
           <Row className="mb-2">
             <Form.Group as={Col} controlId="date">
-              <Form.Label>Дата дослідження</Form.Label>
+              <Form.Label>Дата дос-ня</Form.Label>
               <Form.Control className="numeric"
                 // placeholder="Дата дослідження"
                 type="date"
