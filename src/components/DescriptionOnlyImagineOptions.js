@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState } from "react";
 import { FormFloatingSelect } from "./FloatingLabel";
 import DeleteButton from "./deleteButton";
 import AddZoneButton from "./addZoneButton";
@@ -9,21 +9,21 @@ import { ogkViews } from "../data/ogkViews";
 import { plechKulshSuglobViews } from "../data/plechovuyKulshovuySuglobViews";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { 
+import {
   resetZoneInfoSliseReducer,
   applyPatientInfoBlock,
   resetZoneInfoSliseReducerExceptZone,
 } from "./redux/slices/zoneInfoSliseReducer";
-import {
-   resetogkSliseReducer,
-} from "./redux/slices/ogkSliseReducer";
+import { resetogkSliseReducer } from "./redux/slices/ogkSliseReducer";
 
 import { resetCherepSliseReducer } from "./redux/slices/cherepSliseReducer";
 import { resetPpnSliseReducer } from "./redux/slices/ppnSliseReducer";
 import { resetUniversalSliceReducer } from "./redux/slices/universalSliceReducer";
 
-import { addDocText,doubleAddPatientAndZoneDocText } from "./redux/slices/documentSliseReducer";
-
+import {
+  addDocText,
+  doubleAddPatientAndZoneDocText,
+} from "./redux/slices/documentSliseReducer";
 
 import { Ogk } from "./Ogk";
 import { Cherep } from "./Cherep";
@@ -44,7 +44,10 @@ import { KolinnyiSuhlob } from "./KolinnyiSuhlob";
 import { HomilkovoStopnyiSuhlob } from "./HomilkovoStopnyiSuhlob";
 import { Stopa } from "./Stopa";
 import { PeredniViddilyStopy } from "./PeredniViddilyStopy";
-import { editExamNumber, resetPacientInfoSliseReducer } from "./redux/slices/pacientInfoSliseReducer";
+import {
+  editExamNumber,
+  resetPacientInfoSliseReducer,
+} from "./redux/slices/pacientInfoSliseReducer";
 import { initialPatientName } from "../data/initialPatientName";
 import { initialPatientBirthYear } from "../data/initialPatientBirthYear";
 import { initialExamNumber } from "../data/initialExamNumber";
@@ -54,20 +57,19 @@ import { ZoneInfoPatternDescriptionOnly } from "../patternsText/zoneInfoPatternD
 import { ZoneInfoPattern } from "../patternsText/zoneInfoPattern";
 import { AddZoneDescriptionOnlyButton } from "./AddZoneDescriptionOnlyButton";
 
-
 export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
   const zoneState = useSelector(
     (state) => state.descriptionOnly.descriptionState
   );
   // const [selectedZone, setSelectedZone] = useState("ОГК");
-  const selectedZone = zoneState
+  const selectedZone = zoneState;
 
   const [selectedSide, setSelectedSide] = useState("Справа");
   const [selectedOgkViews, setSelectedOgkViews] = useState("Оглядова");
   const [selectedplechKulshSuglobViews, setSelectedplechKulshSuglobViews] =
     useState("Пряма");
   const [selectednormaNenorma, setSelectednormaNenorma] = useState("Норма");
-  const [buttonDisabled, setButtonDisabled] = useState(false); 
+  const [buttonDisabled, setButtonDisabled] = useState(false);
   // Вроде работает
   // useEffect(()=>{
   //   dispatch(editZone("ОГК"));
@@ -79,12 +81,10 @@ export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
   // Печатаем текст из шаблона
   const textToDoc = renderToString(ZoneInfoPatternDescriptionOnly());
 
-
   const [acceptNotice, setAcceptNotice] = useState(null);
 
-
   const handleApplyZone = () => {
-    editorContent()
+    editorContent();
 
     dispatch(addDocText({ textToDoc }));
 
@@ -100,6 +100,8 @@ export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
     setAcceptNotice(<div className="overlay"></div>);
     setButtonDisabled(true); // Устанавливаем disabled в true после нажатия кнопки
   };
+  const [descriptionOnlyButtonDisabled, setDescriptionOnlyButtonDisabled] =
+    useState(true);
 
   return (
     // <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary ">
@@ -160,13 +162,22 @@ export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
       <div className="d-flex justify-content-between zonesButtons">
         <div>
           {/* <ApplyZonesButton /> */}
-          <Button variant="success" className="me-2" onClick={handleApplyZone}  disabled={buttonDisabled}>
-          Add into Editor ✅📄
+          <Button
+            variant="success"
+            className="me-2"
+            // onClick={handleApplyZone}
+            onClick={() => {
+              setDescriptionOnlyButtonDisabled(false);
+              handleApplyZone();
+            }}
+            disabled={buttonDisabled}
+          >
+            Add into Editor ✅📄
           </Button>{" "}
-
           <AddZoneDescriptionOnlyButton
             title="Add Description"
             variant="outline-info"
+            descriptionOnlyButtonDisabled={descriptionOnlyButtonDisabled}
             // onAddOptions={onAddOptions}
           />
           {/* <AddZoneButton
