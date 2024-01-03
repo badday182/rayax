@@ -19,6 +19,8 @@ import { resetDescriptionOnly, resetImagineOptions } from "./redux/slices/newZon
 import { addTextFromEditor } from "./redux/slices/documentSliseReducer";
 import { resetApplyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
 import { DescriptionOnlyImagineOptions } from "./DescriptionOnlyImagineOptions";
+import { resetogkSliseReducer } from "./redux/slices/ogkSliseReducer";
+import { resetUniversalSliceReducer } from "./redux/slices/universalSliceReducer";
 
 export const PacientCard = ({ id, editorContent }) => {
   const dispatch = useDispatch();
@@ -56,18 +58,21 @@ export const PacientCard = ({ id, editorContent }) => {
           // variant="success"
           className="w-100 p-2 glass-button"
           onClick={() => {
-            // console.log(editorContent());
             editorContent();
             const newPatient = {
               id: uuidv4(),
             };
             // dispatch(addTextFromEditor(editorContent()));
-            dispatch(resetPatient());
-            dispatch(resetImagineOptions());
-            dispatch(resetDescriptionOnly());
-            dispatch(resetApplyPatientInfoBlock());
+            dispatch(resetPatient()); // сброс и создание нового пацика
+            dispatch(resetImagineOptions()); // сброс и создание новой зоны
+            dispatch(resetApplyPatientInfoBlock()); //Сброс данных о заполнении инфо пациента
             dispatch(resetDescriptionOnly()); // сброс стейта для описания без шапки
             // dispatch(addPatient(newPatient));
+
+            // Сброс редюсеров
+            dispatch(resetogkSliseReducer()); // сброс ОГК
+            dispatch(resetUniversalSliceReducer()); // сброс универсвльного редюсера
+            dispatch(resetDescriptionOnly()); // сброс редюсера только описания (без шапки)
           }}
         >
           🚹 New Patient

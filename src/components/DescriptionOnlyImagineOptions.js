@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { 
   resetZoneInfoSliseReducer,
   applyPatientInfoBlock,
+  resetZoneInfoSliseReducerExceptZone,
 } from "./redux/slices/zoneInfoSliseReducer";
 import {
    resetogkSliseReducer,
@@ -51,6 +52,7 @@ import { initialExamNumber } from "../data/initialExamNumber";
 import { renderToString } from "react-dom/server";
 import { ZoneInfoPatternDescriptionOnly } from "../patternsText/zoneInfoPatternDescriptionOnly";
 import { ZoneInfoPattern } from "../patternsText/zoneInfoPattern";
+import { AddZoneDescriptionOnlyButton } from "./AddZoneDescriptionOnlyButton";
 
 
 export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
@@ -88,9 +90,9 @@ export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
 
     // Сбрасываем данные в редюсерах
     dispatch(resetPacientInfoSliseReducer());
-    dispatch(resetZoneInfoSliseReducer());
+    // dispatch(resetZoneInfoSliseReducer());
+    dispatch(resetZoneInfoSliseReducerExceptZone()); //сброс всех параметров кроме zone
     dispatch(resetogkSliseReducer());
-
     dispatch(resetCherepSliseReducer());
     dispatch(resetPpnSliseReducer());
     dispatch(resetUniversalSliceReducer());
@@ -162,6 +164,11 @@ export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
           Add into Editor ✅📄
           </Button>{" "}
 
+          <AddZoneDescriptionOnlyButton
+            title="Add Description"
+            variant="outline-info"
+            // onAddOptions={onAddOptions}
+          />
           {/* <AddZoneButton
             title="Add Protocol"
             variant="outline-success"

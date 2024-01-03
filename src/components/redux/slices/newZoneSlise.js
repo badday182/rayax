@@ -33,11 +33,9 @@ export const newZoneSlise = createSlice({
     },
     resetImagineOptions: (state) => {
       state.zoneCounter = [{ id: uuidv4() }];
-      // state.zoneCounter.push(action.payload);
     },
     resetDescriptionOnly: (state) => {
       state.zoneDescriptionOnlyCounter = [];
-      // state.zoneCounter.push(action.payload);
     },
   },
 });

@@ -7,9 +7,14 @@ import {
   resetDescriptionOnly,
 } from "./redux/slices/newZoneSlise";
 
-function AddZoneButton({ title, variant, onAddOptions }) {
-  const [buttonDisabled, setButtonDisabled] = useState(false);
-
+function AddZoneButton({
+  title,
+  variant,
+  onAddOptions,
+  addintoEditorButtonDisabled,
+  setDescriptionOnlyButtonTrue,
+}) {
+  const [addZoneButtonDisabled, setAddZoneButtonDisabled] = useState(false);
   const dispatch = useDispatch();
 
   return (
@@ -24,14 +29,17 @@ function AddZoneButton({ title, variant, onAddOptions }) {
             const newZoneid = {
               id: uuidv4(),
             };
-
             dispatch(addImagineOptions(newZoneid));
             dispatch(resetDescriptionOnly()); //обнуляет зоны "только описание"
-            onAddOptions();
-            setButtonDisabled(true);
+           
+            // Не выполнять добавлять зону в редактор если она уже была добавленна
+            !addintoEditorButtonDisabled && onAddOptions();
+            setDescriptionOnlyButtonTrue()
+            // onAddOptions();
+            setAddZoneButtonDisabled(true);
           }
         }
-        disabled={buttonDisabled}
+        disabled={addZoneButtonDisabled}
       >
         {title}
       </Button>{" "}

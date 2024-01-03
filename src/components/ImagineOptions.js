@@ -83,7 +83,11 @@ export const ImagineOptions = ({ id, editorContent }) => {
   const [selectedplechKulshSuglobViews, setSelectedplechKulshSuglobViews] =
     useState("Пряма");
   const [selectednormaNenorma, setSelectednormaNenorma] = useState("Норма");
-  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [addintoEditorButtonDisabled, setAddintoEditorButtonDisabled] =
+    useState(false);
+  const [descriptionOnlyButtonDisabled, setDescriptionOnlyButtonDisabled] =
+    useState(true);
+
   // Вроде работает
   // useEffect(()=>{
   //   dispatch(editZone("ОГК"));
@@ -108,7 +112,7 @@ export const ImagineOptions = ({ id, editorContent }) => {
 
   const [acceptNotice, setAcceptNotice] = useState(null);
 
-  const handleApplyZone = () => {
+  const handleApplyZone = (disabled) => {
     editorContent();
     //Добавляем данные в текстовый редактор
 
@@ -134,7 +138,7 @@ export const ImagineOptions = ({ id, editorContent }) => {
     //  console.log('isPatientInfoExist', isPatientInfoExist);
 
     // Сбрасываем данные в редюсерах
-    dispatch(resetPacientInfoSliseReducer()); 
+    dispatch(resetPacientInfoSliseReducer());
     // dispatch(resetZoneInfoSliseReducer()); //сброс всех параметров
     dispatch(resetZoneInfoSliseReducerExceptZone()); //сброс всех параметров кроме zone
     dispatch(resetogkSliseReducer());
@@ -144,13 +148,9 @@ export const ImagineOptions = ({ id, editorContent }) => {
     dispatch(resetUniversalSliceReducer());
 
     setAcceptNotice(<div className="overlay"></div>);
-    setButtonDisabled(true); // Устанавливаем disabled в true после нажатия кнопки
+    setAddintoEditorButtonDisabled(true);
+    // setDescriptionOnlyButtonDisabled(disabled)
   };
-
-  const handleAddOptions = () => {
-    setButtonDisabled(true); // Устанавливаем disabled в true после нажатия кнопки
-
-  }
 
   return (
     // <div className="mb-4 p-3 rounded-3 text-dark border border-light-subtle bg-glass">
@@ -212,19 +212,32 @@ export const ImagineOptions = ({ id, editorContent }) => {
           <Button
             variant="success"
             className="me-0"
-            onClick={handleApplyZone}
-            disabled={buttonDisabled}
+            onClick={() => {
+              setDescriptionOnlyButtonDisabled(false);
+              handleApplyZone();
+            }}
+            disabled={addintoEditorButtonDisabled}
           >
             Add into Editor ✅📄
           </Button>{" "}
           <AddZoneButton
             title="New Protocol"
             variant="success"
-            onAddOptions={handleApplyZone}
+            onAddOptions={() => {
+              // setDescriptionOnlyButtonDisabled(true);
+              handleApplyZone();
+              dispatch(resetZoneInfoSliseReducer());
+            }}
+            setDescriptionOnlyButtonTrue={()=>{
+              setDescriptionOnlyButtonDisabled(true);
+            }}
+            addintoEditorButtonDisabled={addintoEditorButtonDisabled}
           />
           <AddZoneDescriptionOnlyButton
             title="Add Description"
             variant="outline-info"
+            descriptionOnlyButtonDisabled={descriptionOnlyButtonDisabled}
+            // descriptionOnlyButtonDisabled2={descriptionOnlyButtonDisabled2}
             // onAddOptions={onAddOptions}
           />
         </div>

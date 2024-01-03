@@ -59,7 +59,7 @@ export const zoneInfoSliseReducer = createSlice({
 
       state.applyPatienInfo = action.payload;
 
-      console.log(state.applyPatienInfo);
+      // console.log(state.applyPatienInfo);
       // console.log(action)
     },
     resetApplyPatientInfoBlock: (state) => {
