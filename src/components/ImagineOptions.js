@@ -74,8 +74,10 @@ import { initialPatientName } from "../data/initialPatientName";
 import { initialPatientBirthYear } from "../data/initialPatientBirthYear";
 import { initialExamNumber } from "../data/initialExamNumber";
 import { AddZoneDescriptionOnlyButton } from "./AddZoneDescriptionOnlyButton";
+import { resetDescriptionOnly } from "./redux/slices/newZoneSlise";
 
 export const ImagineOptions = ({ id, editorContent }) => {
+
   const [selectedZone, setSelectedZone] = useState("ОГК");
 
   const [selectedSide, setSelectedSide] = useState("Справа");
@@ -151,6 +153,10 @@ export const ImagineOptions = ({ id, editorContent }) => {
     setAddintoEditorButtonDisabled(true);
     // setDescriptionOnlyButtonDisabled(disabled)
   };
+  const resetZoneInfo_DescriptionOnly = () =>{
+    dispatch(resetZoneInfoSliseReducer());
+              dispatch(resetDescriptionOnly()); 
+  }
 
   return (
     // <div className="mb-4 p-3 rounded-3 text-dark border border-light-subtle bg-glass">
@@ -227,9 +233,14 @@ export const ImagineOptions = ({ id, editorContent }) => {
               // setDescriptionOnlyButtonDisabled(true);
               handleApplyZone();
               dispatch(resetZoneInfoSliseReducer());
+              dispatch(resetDescriptionOnly()); 
+              // resetZoneInfo_DescriptionOnly();
             }}
             setDescriptionOnlyButtonTrue={()=>{
               setDescriptionOnlyButtonDisabled(true);
+              dispatch(resetZoneInfoSliseReducer());
+              dispatch(resetDescriptionOnly());
+              // resetZoneInfo_DescriptionOnly();
             }}
             addintoEditorButtonDisabled={addintoEditorButtonDisabled}
           />

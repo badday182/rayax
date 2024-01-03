@@ -59,7 +59,9 @@ import { AddZoneDescriptionOnlyButton } from "./AddZoneDescriptionOnlyButton";
 
 export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
   const zoneState = useSelector(
-    (state) => state.descriptionOnly.descriptionState
+    // (state) => state.descriptionOnly.descriptionState
+    (state) => state.zoneInfo.zone
+
   );
   // const [selectedZone, setSelectedZone] = useState("ОГК");
   const selectedZone = zoneState;

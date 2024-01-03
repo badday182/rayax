@@ -174,7 +174,7 @@ export const ZoneInfoPattern = () => {
   } else if (zone === "Кульшовий суглоб" && proaction === "Пряма") {
     mSv = "0,8";
   } else {
-    mSv = zoneMappings[zone] || "____";
+    mSv = zoneMappings[zone] || "0,25"; // Значение по умолчанию
   }
   // --------------------set-mSv-end---------------
 
