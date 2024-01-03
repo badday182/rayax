@@ -316,7 +316,7 @@ img {
   transition: opacity 0.5s ease 0s;
 }
 .telegram-logo::after {
-  background-image: url(/src/img/telegram_qr.jpg);
+  background-image: url(/src/img/telegram_qr2.jpg);
 }
 .mono-logo::after {
   background-image: url(/src/img/mono_qr.jpg);
