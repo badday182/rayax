@@ -59,7 +59,8 @@ code {
 }
 .conteinerWidht > div:last-child {
   /* max-width: 600px; */
-  min-width: 500px;
+  /* min-width: 500px; */
+  min-width: 360px;
 }
 
 .backgroundWhite {
@@ -77,7 +78,9 @@ code {
 } */
 .pacientBlock {
   max-width: 550px;
-  min-width: 500px;
+  min-width: 360px;
+  /* max-width: 550px;
+  min-width: 500px; */
 }
 
 /* .pacientCard {

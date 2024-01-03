@@ -158,7 +158,7 @@ import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
             </Form.Group>
 
             <Form.Group as={Col} controlId="imagine">
-              <Form.Label>№ дослідження</Form.Label>
+              <Form.Label>№ дос-ня</Form.Label>
               <Form.Control className="numeric"
               // {initialExamDefaultValue != '' ? {}}
                 // placeholder="№ дослідження"
