@@ -160,11 +160,11 @@ export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
       </div>
 
       <div className="d-flex justify-content-between zonesButtons">
-        <div>
+        <div className="allChildrenMarginY">
           {/* <ApplyZonesButton /> */}
           <Button
             variant="success"
-            className="me-2 mb-2"
+            className="me-2"
             // onClick={handleApplyZone}
             onClick={() => {
               setDescriptionOnlyButtonDisabled(false);
