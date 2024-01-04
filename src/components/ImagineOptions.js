@@ -114,7 +114,7 @@ export const ImagineOptions = ({ id, editorContent }) => {
 
   const [acceptNotice, setAcceptNotice] = useState(null);
 
-  const handleApplyZone = (disabled) => {
+  const handleApplyZone = () => {
     editorContent();
     //Добавляем данные в текстовый редактор
 

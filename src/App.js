@@ -42,7 +42,7 @@ const App = () => {
   const editorContent = () => {
     // const text = renderToString(editorRef.current.getContent());
     const content = editorRef.current.getContent();
-    // console.log({text});
+    // console.log('content', content);
     // console.log(text);
     dispatch(addTextFromEditor(content));
   };
@@ -115,62 +115,74 @@ const App = () => {
           />
         ))}
       </div>
-      <>
-        <Editor
-          apiKey="62kbbg7407jjlea01hu71w9axyixiyxitsr8wtho4lnck72p"
-          onInit={(evt, editor) => (editorRef.current = editor)}
-          // initialValue=""
-          // initialValue={pacientInfo}
+      <div className="mh-100 d-flex flex-column align-items-end">
+        <div className="mb-2">
+          <Editor
+            apiKey="62kbbg7407jjlea01hu71w9axyixiyxitsr8wtho4lnck72p"
+            onInit={(evt, editor) => (editorRef.current = editor)}
+            // initialValue=""
+            // initialValue={pacientInfo}
 
-          initialValue={docTex}
-          init={{
-            selector: "#myTextarea",
-            // height: 600,
-            width: 700,
-            content_css: "/src/tineContent.css",
+            initialValue={docTex}
+            init={{
+              selector: "#myTextarea",
+              height: 650,
+              width: 700,
+              content_css: "/src/tineContent.css",
 
-            setup: function (editor) {
-              editor.on("init", function () {
-                editor.getBody().scrollTo(0, editor.getBody().scrollHeight);
-              });
-              editor.on("change", function () {
-                editor.getBody().scrollTo(0, editor.getBody().scrollHeight);
-              });
-              editor.on("keyup", function () {
-                editor.getBody().scrollTo(0, editor.getBody().scrollHeight);
-              });
-            },
-            menubar: false,
-            plugins: [
-              "advlist",
-              "autolink",
-              "lists",
-              "link",
-              "image",
-              "charmap",
-              "pagebreak",
-              "preview",
-              "anchor",
-              "searchreplace",
-              "visualblocks",
-              "code",
-              "fullscreen",
-              "insertdatetime",
-              "media",
-              "table",
-              // "help",
-            ],
-            toolbar:
-              "print | pagebreak | " +
-              " undo redo | blocks | " +
-              "bold italic forecolor | ",
-            content_style:
-              "body { font-family: Helvetica, Arial, sans-serif; font-size: 14px; padding: 1rem;}  table { width: 100%; border-collapse: collapse; border: 2px solid white; border-color: white; } tbody, th, tr, td { border: 2px solid white; border-color: white; border-style: solid; } td {padding: 0.4rem;} h1,h2,h3,h4,h5,h6 {margin: 5px 5px;} ",
+              setup: function (editor) {
+                editor.on("init", function () {
+                  editor.getBody().scrollTo(0, editor.getBody().scrollHeight);
+                });
+                editor.on("change", function () {
+                  editor.getBody().scrollTo(0, editor.getBody().scrollHeight);
+                });
+                editor.on("keyup", function () {
+                  editor.getBody().scrollTo(0, editor.getBody().scrollHeight);
+                });
+              },
+              menubar: false,
+              plugins: [
+                "advlist",
+                "autolink",
+                "lists",
+                "link",
+                "image",
+                "charmap",
+                "pagebreak",
+                "preview",
+                "anchor",
+                "searchreplace",
+                "visualblocks",
+                "code",
+                "fullscreen",
+                "insertdatetime",
+                "media",
+                "table",
+              ],
+              toolbar:
+                "print | pagebreak | " +
+                " undo redo | blocks | " +
+                "bold italic forecolor | ",
+              content_style:
+                "body { font-family: Helvetica, Arial, sans-serif; font-size: 14px; padding: 1rem;}  table { width: 100%; border-collapse: collapse; border: 2px solid white; border-color: white; } tbody, th, tr, td { border: 2px solid white; border-color: white; border-style: solid; } td {padding: 0.4rem;} h1,h2,h3,h4,h5,h6 {margin: 5px 5px;} ",
+            }}
+          />
+        </div>
+              <button
+          type="button"
+          class="btn btn-outline-warning"
+          onClick={() => {
+            const content = editorRef.current.getContent();
+            const parser = new DOMParser();
+            const decodedHTML = parser.parseFromString(content, "text/html")
+              .body.textContent;
+            dispatch(addTextFromEditor(decodedHTML));
           }}
-        />
-        {/* <button onClick={() => {}}>skroll</button> */}
-      </>
-      {/* <button onClick={editorContent}>Log editor content</button> */}
+        >
+          Convert
+        </button>
+      </div>
     </div>
   );
 };
