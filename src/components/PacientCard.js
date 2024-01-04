@@ -40,7 +40,7 @@ export const PacientCard = ({ id, editorContent }) => {
   );
 
   return (
-    <div className=" rounded-3 border p-3 pacientCard">
+    <div className=" rounded-3 border p-3 pacientCard mb-3">
       <PatientInfo editorContent={editorContent} />
       {zoneState.map((option) => (
         <ImagineOptions
