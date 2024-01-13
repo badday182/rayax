@@ -20,7 +20,7 @@ import {
   resetImagineOptions,
 } from "./redux/slices/newZoneSlise";
 import { addTextFromEditor } from "./redux/slices/documentSliseReducer";
-import { resetApplyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
+import { resetApplyPatientInfoBlock, resetZoneInfoSliseReducer } from "./redux/slices/zoneInfoSliseReducer";
 import { DescriptionOnlyImagineOptions } from "./DescriptionOnlyImagineOptions";
 import { resetogkSliseReducer } from "./redux/slices/ogkSliseReducer";
 import { resetUniversalSliceReducer } from "./redux/slices/universalSliceReducer";
@@ -79,6 +79,7 @@ export const PacientCard = ({ id, editorContent }) => {
 
             // Сброс редюсеров
             dispatch(resetogkSliseReducer()); // сброс ОГК
+            dispatch(resetZoneInfoSliseReducer()); // сброс зоны исл-ия
             dispatch(resetUniversalSliceReducer()); // сброс универсвльного редюсера
             // dispatch(resetDescriptionOnly()); // сброс редюсера только описания (без шапки)
 
