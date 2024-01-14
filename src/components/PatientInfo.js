@@ -144,7 +144,7 @@ import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
     <div className="p-3 form-container mb-4 rounded-3 text-dark border border-light-subtle bg-glass">
         {acceptNotice}
       <div>
-        <Form className=" mb-3   ">
+        <Form className=" mb-3  text-light fw400">
           <Row className="mb-2">
             <Form.Group as={Col} controlId="date">
               <Form.Label>Дата дос-ня</Form.Label>
