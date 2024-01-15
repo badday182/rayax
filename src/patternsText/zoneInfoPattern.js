@@ -179,32 +179,56 @@ export const ZoneInfoPattern = () => {
   // --------------------set-mSv-end---------------
 
   // --------------------set-R-графiя-start---------------
+
   if (
-    zonesWithOnly2Projection.includes(zone) &&
-    proaction === "В 2-х проєкціях"
+    zonesWithOnly2Projection.includes(zone)  //зоны только в 2-х проєкціях 
+    // && proaction === "В 2-х проєкціях"
   ) {
     radiography = `${zone} в 2-х проєкціях`;
-  } else if (
-    zonesWithOnlyDirectProjection.includes(zone) &&
-    proaction === "Пряма"
+  } 
+
+  if (
+    zonesWithOnlyDirectProjection.includes(zone) //зоны только в пряма проєкція 
+    // && proaction === "Пряма"
   ) {
     radiography = `${zone} в прямій проєкції`;
   }
 
+  // if (zonesWithSides.includes(zone)) {
+  //   // console.log('zone', zone);
+  //   if (proaction === "Пряма") {
+  //     radiography = `${zone} в прямій проєкції`;
+  //   } else {
+  //     radiography = `${zone} в 2-х проєкціях`;
+  //   }
+  //   if (side === "Справа") {
+  //     radiography += ", справа";
+  //   } else if (side === "Зліва") {
+  //     radiography += ", злiва";
+  //   } else {
+  //     radiography += ", справа та злiва";
+  //   }
+  // }
+
   if (zonesWithSides.includes(zone)) {
     // console.log('zone', zone);
-    if (proaction === "Пряма") {
-      radiography = `${zone} в прямій проєкції`;
-    } else {
-      radiography = `${zone} в 2-х проєкціях`;
-    }
     if (side === "Справа") {
-      radiography += ", справа";
+      // radiography += ", справа";
+      radiography += `${zone} справа`;
     } else if (side === "Зліва") {
-      radiography += ", злiва";
+      // radiography += ", злiва";
+      radiography += `${zone} злiва`;
     } else {
-      radiography += ", справа та злiва";
+      // radiography += ", справа та злiва";
+      radiography += `${zone} справа та злiва`;
     }
+
+    if (proaction === "Пряма") {
+      // radiography = `${zone} в прямій проєкції`;
+      radiography += ", в прямій проєкції";
+    } else {
+      // radiography = `${zone} в 2-х проєкціях`;
+      radiography += ", в 2-х проєкціях";    }
   }
   // --------------------set-R-графiя-end---------------
 
