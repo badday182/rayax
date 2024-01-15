@@ -48,6 +48,7 @@ import { vysotaTilHrebtsivGvh } from "../data/GVH/GVH_notNorma/vysotaTilHrebtsiv
 import { vysotaTilHrebtsivPvh } from "../data/PVH/PVH_notNorma/vysotaTilHrebtsivPvh";
 import { zakliuchenniaPvh } from "../data/PVH/PVH_notNorma/zakliuchenniaPvh";
 import { kolinnyiSuhlobZahalnaNenorma } from "../data/KOLINNYISUHLOB/kolinnyiSuhlobZahalnaNenorma";
+import { ogkNormaNenorma } from "../data/OGK_notNorma/ogkNormaNenorma";
 export const ZoneInfoPattern = () => {
   const zone = useSelector((state) => state.zoneInfo.zone);
   const proaction = useSelector((state) => state.zoneInfo.proaction);
@@ -215,7 +216,8 @@ export const ZoneInfoPattern = () => {
   if (norma === "Легені та серце у межах вікових змін") {
     report = norma;
   }
-  if (norma === "Загальна ОГК не норма") {
+  // if (norma === "Загальна ОГК не норма") {
+  if (norma === ogkNormaNenorma[3]) {
     report = ogkZagalnaNenorma;
   }
   // if (norma === "Не норма") {
