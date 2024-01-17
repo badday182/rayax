@@ -155,6 +155,56 @@ export const ZoneInfoPattern = () => {
     "Кісток тазу": "0,9",
     Ребра: "0,5",
   };
+
+// --------------------set-R-графiя-start---------------
+
+// if (zonesWithSides.includes(zone)) {
+//   // console.log('zone', zone);
+//   if (side === "Справа") {
+//     // console.log('side', side);
+//     // radiography += ", справа";
+//     radiography += `${zone} справа`;
+//     // console.log('radiography', radiography);
+//   } else if (side === "Зліва") {
+//     // radiography += ", злiва";
+//     radiography += `${zone} злiва`;
+//   } else {
+//     // radiography += ", справа та злiва";
+//     radiography += `${zone} справа та злiва`;
+//   }
+// }
+
+//зоны только в 2-х проєкціях
+if (
+    zonesWithOnly2Projection.includes(zone)
+) {
+  if (zonesWithSides.includes(zone)) {
+    radiography = `${zone} ${side.toLowerCase()}, в 2-х проєкціях`;
+  } else {
+    radiography = `${zone}, в 2-х проєкціях`;
+  }
+} else
+//зоны только в пряма проєкція
+if (
+  zonesWithOnlyDirectProjection.includes(zone)
+)
+  {if (zonesWithSides.includes(zone)) {
+    radiography = `${zone} ${side.toLowerCase()}, в прямій проєкції`;
+  } else {
+    radiography = `${zone}, в прямій проєкції`;
+  }} else {
+
+//зоны с выбором проекции
+if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, в прямій проєкції`;
+} else {radiography = `${zone} ${side.toLowerCase()}, в 2-х проєкціях`}
+
+  }
+
+
+
+// }
+// --------------------set-R-графiя-end---------------
+
   // --------------------set-mSv-start---------------
   if (zone === "ОГК" && proaction === "Оглядова") {
     mSv = "0,25";
@@ -178,62 +228,10 @@ export const ZoneInfoPattern = () => {
   }
   // --------------------set-mSv-end---------------
 
-  // --------------------set-R-графiя-start---------------
-
-  if (
-    zonesWithOnly2Projection.includes(zone)  //зоны только в 2-х проєкціях 
-    // && proaction === "В 2-х проєкціях"
-  ) {
-    radiography = `${zone} в 2-х проєкціях`;
-  } 
-
-  if (
-    zonesWithOnlyDirectProjection.includes(zone) //зоны только в пряма проєкція 
-    // && proaction === "Пряма"
-  ) {
-    radiography = `${zone} в прямій проєкції`;
-  }
-
-  // if (zonesWithSides.includes(zone)) {
-  //   // console.log('zone', zone);
-  //   if (proaction === "Пряма") {
-  //     radiography = `${zone} в прямій проєкції`;
-  //   } else {
-  //     radiography = `${zone} в 2-х проєкціях`;
-  //   }
-  //   if (side === "Справа") {
-  //     radiography += ", справа";
-  //   } else if (side === "Зліва") {
-  //     radiography += ", злiва";
-  //   } else {
-  //     radiography += ", справа та злiва";
-  //   }
-  // }
-
-  if (zonesWithSides.includes(zone)) {
-    // console.log('zone', zone);
-    if (side === "Справа") {
-      // radiography += ", справа";
-      radiography += `${zone} справа`;
-    } else if (side === "Зліва") {
-      // radiography += ", злiва";
-      radiography += `${zone} злiва`;
-    } else {
-      // radiography += ", справа та злiва";
-      radiography += `${zone} справа та злiва`;
-    }
-
-    if (proaction === "Пряма") {
-      // radiography = `${zone} в прямій проєкції`;
-      radiography += ", в прямій проєкції";
-    } else {
-      // radiography = `${zone} в 2-х проєкціях`;
-      radiography += ", в 2-х проєкціях";    }
-  }
-  // --------------------set-R-графiя-end---------------
+  
 
   // --------------------ОГК-start---------------
-  else if (zone === "ОГК" && norma === "") {
+  if (zone === "ОГК" && norma === "") {
     report = "Легені та серце без змін";
   }
   if (norma === "Легені та серце у межах вікових змін") {
@@ -368,7 +366,7 @@ export const ZoneInfoPattern = () => {
           )}
           {vysotaTilHrebtsivState !== "" &&
             vysotaTilHrebtsivState !==
-            vysotaTilHrebtsivShvh[vysotaTilHrebtsivShvh.length - 1] && (
+              vysotaTilHrebtsivShvh[vysotaTilHrebtsivShvh.length - 1] && (
               <>
                 {shvhNenormaItems[2]} {vysotaTilHrebtsivState}.{" "}
               </>
@@ -530,15 +528,13 @@ export const ZoneInfoPattern = () => {
               </>
             )}
 
-          {zakliuchennia ===
-            zakliuchenniaGvh[zakliuchenniaGvh.length - 1] && (
+          {zakliuchennia === zakliuchenniaGvh[zakliuchenniaGvh.length - 1] && (
             <>
               {gvhNenormaItems[6]} .<br />
             </>
           )}
           {zakliuchennia !== "" &&
-            zakliuchennia !==
-            zakliuchenniaGvh[zakliuchenniaGvh.length - 1] && (
+            zakliuchennia !== zakliuchenniaGvh[zakliuchenniaGvh.length - 1] && (
               <>
                 {gvhNenormaItems[6]} {zakliuchennia}.
               </>
@@ -569,12 +565,13 @@ export const ZoneInfoPattern = () => {
       //"Не норма"
       report = (
         <div>
-
-{fiziologLordozState === fiziologLordoz[fiziologLordoz.length - 1] && (
+          {fiziologLordozState ===
+            fiziologLordoz[fiziologLordoz.length - 1] && (
             <>{pvhNenormaItems[0]} . </>
           )}
           {fiziologLordozState !== "" &&
-            fiziologLordozState !== fiziologLordoz[fiziologLordoz.length - 1] && (
+            fiziologLordozState !==
+              fiziologLordoz[fiziologLordoz.length - 1] && (
               <>
                 {pvhNenormaItems[0]} {fiziologLordozState}.{" "}
               </>
@@ -596,7 +593,7 @@ export const ZoneInfoPattern = () => {
           )}
           {vysotaTilHrebtsivState !== "" &&
             vysotaTilHrebtsivState !==
-            vysotaTilHrebtsivPvh[vysotaTilHrebtsivPvh.length - 1] && (
+              vysotaTilHrebtsivPvh[vysotaTilHrebtsivPvh.length - 1] && (
               <>
                 {pvhNenormaItems[2]} {vysotaTilHrebtsivState}.{" "}
               </>
@@ -642,20 +639,17 @@ export const ZoneInfoPattern = () => {
               </>
             )}
 
-          {zakliuchennia ===
-            zakliuchenniaPvh[zakliuchenniaPvh.length - 1] && (
+          {zakliuchennia === zakliuchenniaPvh[zakliuchenniaPvh.length - 1] && (
             <>
               {pvhNenormaItems[6]} .<br />
             </>
           )}
           {zakliuchennia !== "" &&
-            zakliuchennia !==
-            zakliuchenniaPvh[zakliuchenniaPvh.length - 1] && (
+            zakliuchennia !== zakliuchenniaPvh[zakliuchenniaPvh.length - 1] && (
               <>
                 {gvhNenormaItems[6]} {zakliuchennia}.
               </>
             )}
-
 
           {/* {pvhNenormaItems[0]} {fiziologLordozState}.
           {pvhNenormaItems[1]}{" "}{seredynnaVisState}.
