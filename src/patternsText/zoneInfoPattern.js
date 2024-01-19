@@ -698,6 +698,7 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
 
   // --------------------Ребра-start---------------
   if (zone === "Ребра") {
+    radiography = `${zone} ${side.toLowerCase()}, в косій проєкції`;
     if (zakliuchennia === "") {
       report = `${rebraViews[0]}.`;
     } else {
