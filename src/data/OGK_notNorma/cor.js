@@ -6,5 +6,5 @@ export const cor = [
   "розширено у поперечнику",
   "у межах вікових змін",
   "; склероз дуги аорти",
-  `${svoiVaryant} Cor-`,
+  `${svoiVaryant.toLowerCase()} Cor-`,
 ];

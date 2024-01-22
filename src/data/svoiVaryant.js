@@ -1,1 +1,1 @@
-export const svoiVaryant = "свій варіант"
+export const svoiVaryant = "Свій варіант"

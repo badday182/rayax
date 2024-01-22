@@ -4,6 +4,6 @@ export const fiziologLordoz = [
   "підкреслений",
   "згладжений",
   "збережений",
-  `${svoiVaryant} фізіологічного лордозу`,
+  `${svoiVaryant.toLowerCase()} фізіологічного лордозу`,
 
  ];

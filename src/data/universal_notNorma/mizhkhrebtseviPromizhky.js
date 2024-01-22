@@ -3,5 +3,5 @@ import { svoiVaryant } from "../../data/svoiVaryant";
 export const mizhkhrebtseviPromizhky = [
   "нерівномірно звужені",
   "збереженої висоти",
-  `${svoiVaryant} проміжків`,
+  `${svoiVaryant.toLowerCase()} проміжків`,
 ];

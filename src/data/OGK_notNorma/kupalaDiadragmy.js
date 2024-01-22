@@ -4,5 +4,5 @@ export const kupalaDiadragmy = [
   "чіткі",
   "рівні",
   "підтягнуті",
-  `${svoiVaryant} куполів діафрагми`,
+  `${svoiVaryant.toLowerCase()} куполів діафрагми`,
 ];

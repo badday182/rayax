@@ -4,6 +4,6 @@ export const fiziologKifos = [
   "підкреслений",
   "згладжений",
   "збережений",
-  `${svoiVaryant} кіфозу`,
+  `${svoiVaryant.toLowerCase()} кіфозу`,
 
  ];

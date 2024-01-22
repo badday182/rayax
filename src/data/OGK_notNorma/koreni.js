@@ -6,5 +6,5 @@ export const koreni = [
   "малоструктурні",
   "безструктурні",
   "розширенні",
-  `${svoiVaryant} коренів`,
+  `${svoiVaryant.toLowerCase()} коренів`,
 ];

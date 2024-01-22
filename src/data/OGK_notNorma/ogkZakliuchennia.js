@@ -4,5 +4,5 @@ export const ogkZakliuchennia = [
   "R-ознаки застійних явищ у МКК",
   "Двобічна полісегментарна пневмонія",
   "Двобічний гідроторакс",
-  `${svoiVaryant} заключення`,
+  `${svoiVaryant.toLowerCase()} заключення`,
   ];
