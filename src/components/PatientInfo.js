@@ -163,9 +163,10 @@ import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
               // {initialExamDefaultValue != '' ? {}}
                 // placeholder="№ дослідження"
                 placeholder={initialExamDefaultValue}
-                type="text"
+                type="number"
                 // defaultValue={naprav}
                 onChange={handleNapravChange}
+                value={initialExamDefaultValue}
               />
             </Form.Group>
           </Row>
