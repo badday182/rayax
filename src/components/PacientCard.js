@@ -81,6 +81,7 @@ export const PacientCard = ({ id, editorContent }) => {
             dispatch(resetZoneInfoSliseReducer()); // сброс зоны исл-ия
             dispatch(resetUniversalSliceReducer()); // сброс универсвльного редюсера
             dispatch(resetogkSliseReducer()); // сброс ОГК
+            dispatch(resetDescriptionOnly()); // сброс ТОЛЬКО_ОПИСАНИЯ
             // dispatch(resetDescriptionOnly()); // сброс редюсера только описания (без шапки)
 
             copy(textFromEditor)
