@@ -1,4 +1,5 @@
 import { kistkovaNorma } from "../kistkovaNorma";
+import { svoiVaryant } from "../svoiVaryant";
 import { kolinnyiSuhlobZahalnaNenorma } from "./kolinnyiSuhlobZahalnaNenorma";
 
 export const kolinnyiSuhlobViews = [
@@ -9,5 +10,5 @@ export const kolinnyiSuhlobViews = [
   "Надколінковий простір затемнений",
   "Не можна виключити імпресійний перелом виростка стегнової кістки",
   "Не можна виключити імпресійний перелом медіального / латерального плато в/гомілкової кістки",
-  "При клініці рекомендована КТ колінного суглоба",
+  "При клініці рекомендована КТ колінного суглоба", svoiVaryant
 ];
