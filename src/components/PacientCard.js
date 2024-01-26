@@ -91,7 +91,7 @@ export const PacientCard = ({ id, editorContent }) => {
             dispatch(resetDescriptionOnly()); // сброс ТОЛЬКО_ОПИСАНИЯ
             // dispatch(resetDescriptionOnly()); // сброс редюсера только описания (без шапки)
 
-            // copy(textFromEditor);
+            // copy(textFromEditor); // копирование в буфер обмена
 
             // .then(() => {
             //   console.log("Данные скопированы в буфер обмена");

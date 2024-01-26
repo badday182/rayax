@@ -159,54 +159,50 @@ export const ZoneInfoPattern = () => {
     Ребра: "0,5",
   };
 
-// --------------------set-R-графiя-start---------------
+  // --------------------set-R-графiя-start---------------
 
-// if (zonesWithSides.includes(zone)) {
-//   // console.log('zone', zone);
-//   if (side === "Справа") {
-//     // console.log('side', side);
-//     // radiography += ", справа";
-//     radiography += `${zone} справа`;
-//     // console.log('radiography', radiography);
-//   } else if (side === "Зліва") {
-//     // radiography += ", злiва";
-//     radiography += `${zone} злiва`;
-//   } else {
-//     // radiography += ", справа та злiва";
-//     radiography += `${zone} справа та злiва`;
-//   }
-// }
+  // if (zonesWithSides.includes(zone)) {
+  //   // console.log('zone', zone);
+  //   if (side === "Справа") {
+  //     // console.log('side', side);
+  //     // radiography += ", справа";
+  //     radiography += `${zone} справа`;
+  //     // console.log('radiography', radiography);
+  //   } else if (side === "Зліва") {
+  //     // radiography += ", злiва";
+  //     radiography += `${zone} злiва`;
+  //   } else {
+  //     // radiography += ", справа та злiва";
+  //     radiography += `${zone} справа та злiва`;
+  //   }
+  // }
 
-//зоны только в 2-х проєкціях
-if (
-    zonesWithOnly2Projection.includes(zone)
-) {
-  if (zonesWithSides.includes(zone)) {
-    radiography = `${zone} ${side.toLowerCase()}, в 2-х проєкціях`;
-  } else {
-    radiography = `${zone}, в 2-х проєкціях`;
+  //зоны только в 2-х проєкціях
+  if (zonesWithOnly2Projection.includes(zone)) {
+    if (zonesWithSides.includes(zone)) {
+      radiography = `${zone} ${side.toLowerCase()}, в 2-х проєкціях`;
+    } else {
+      radiography = `${zone}, в 2-х проєкціях`;
+    }
   }
-} else
-//зоны только в пряма проєкція
-if (
-  zonesWithOnlyDirectProjection.includes(zone)
-)
-  {if (zonesWithSides.includes(zone)) {
-    radiography = `${zone} ${side.toLowerCase()}, в прямій проєкції`;
+  //зоны только в пряма проєкція
+  else if (zonesWithOnlyDirectProjection.includes(zone)) {
+    if (zonesWithSides.includes(zone)) {
+      radiography = `${zone} ${side.toLowerCase()}, в прямій проєкції`;
+    } else {
+      radiography = `${zone}, в прямій проєкції`;
+    }
   } else {
-    radiography = `${zone}, в прямій проєкції`;
-  }} else {
-
-//зоны с выбором проекции
-if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, в прямій проєкції`;
-} else {radiography = `${zone} ${side.toLowerCase()}, в 2-х проєкціях`}
-
+    //зоны с выбором проекции
+    if (proaction === "Пряма") {
+      radiography = `${zone} ${side.toLowerCase()}, в прямій проєкції`;
+    } else {
+      radiography = `${zone} ${side.toLowerCase()}, в 2-х проєкціях`;
+    }
   }
 
-
-
-// }
-// --------------------set-R-графiя-end---------------
+  // }
+  // --------------------set-R-графiя-end---------------
 
   // --------------------set-mSv-start---------------
   if (zone === "ОГК" && proaction === "Оглядова") {
@@ -231,8 +227,6 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   }
   // --------------------set-mSv-end---------------
 
-  
-
   // --------------------ОГК-start---------------
   if (zone === "ОГК" && (norma === "" || norma === ogkNormaNenorma[0])) {
     report = "Легені та серце без змін";
@@ -248,7 +242,7 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   // if (norma === svoiVaryant) {
   //   report = '';
   // }
-  
+
   if (zone === "ОГК" && norma === "Не норма") {
     report = (
       <div>
@@ -314,8 +308,7 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   if (zone === "Череп") {
     if (zakliuchennia === svoiVaryant) {
       report = ``;
-    } else
-    if (zakliuchennia === "") {
+    } else if (zakliuchennia === "") {
       report = `${cherepViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -327,9 +320,8 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   if (zone === "ППН") {
     radiography = "ППН";
     if (zakliuchennia === svoiVaryant) {
-      report = '';
-    } else
-    if (zakliuchennia === "") {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${ppnViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -458,7 +450,7 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   // --------------------ГВХ-start---------------
   if (zone === "ГВХ") {
     if (norma === svoiVaryant) {
-      report = '';
+      report = "";
     }
     if (norma === "" || norma === gvhNormaNenorma[0]) {
       report = gvhNormaNenorma[0]; //Груб кістк-травм змін не визначаються
@@ -570,7 +562,7 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   // --------------------ПВХ-start---------------
   if (zone === "ПВХ") {
     if (norma === svoiVaryant) {
-      report = '';
+      report = "";
     }
     if (norma === "" || norma === pvhNormaNenorma[0]) {
       report = pvhNormaNenorma[0]; //Груб кістк-травм змін не визначаються
@@ -685,9 +677,8 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   // --------------------ОЧП-start---------------
   if (zone === "ОЧП") {
     if (zakliuchennia === svoiVaryant) {
-      report = '';
-    } else
-    if (zakliuchennia === "") {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${ochpViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -698,9 +689,8 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   // --------------------Плечовий суглоб-start---------------
   if (zone === "Плечовий суглоб") {
     if (zakliuchennia === svoiVaryant) {
-      report = '';
-    } else
-    if (zakliuchennia === "") {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${plechovyiSuhlobViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -711,9 +701,8 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   // --------------------Ключиця-start---------------
   if (zone === "Ключиця") {
     if (zakliuchennia === svoiVaryant) {
-      report = '';
-    } else
-    if (zakliuchennia === "") {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${kliuchytsiaViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -725,7 +714,7 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   if (zone === "Ребра") {
     radiography = `${zone} ${side.toLowerCase()}, в косій проєкції`;
     if (zakliuchennia === svoiVaryant) {
-      report = '';
+      report = "";
     } else if (zakliuchennia === "") {
       report = `${rebraViews[0]}.`;
     } else {
@@ -736,9 +725,8 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   // --------------------Ліктьовий суглоб-start---------------
   if (zone === "Ліктьовий суглоб") {
     if (zakliuchennia === svoiVaryant) {
-      report = '';
-    } else
-    if (zakliuchennia === "") {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${liktovyiSuhlobViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -748,9 +736,8 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   // --------------------Променево-зап'ястковий суглоб-start---------------
   if (zone === "Променево-зап'ястковий суглоб") {
     if (zakliuchennia === svoiVaryant) {
-      report = '';
-    } else
-    if (zakliuchennia === "") {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${promenevoZapIastkovyiSuhlobViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -760,9 +747,8 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   // --------------------Кисть-start---------------
   if (zone === "Кисть") {
     if (zakliuchennia === svoiVaryant) {
-      report = '';
-    } else
-    if (zakliuchennia === "") {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${kystViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -772,9 +758,8 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   // --------------------Кісток тазу-start---------------
   if (zone === "Кісток тазу") {
     if (zakliuchennia === svoiVaryant) {
-      report = '';
-    } else
-    if (zakliuchennia === kistokTazuViews[0]) {
+      report = "";
+    } else if (zakliuchennia === kistokTazuViews[0]) {
       report = `${kistokTazuViews[0]}.`;
     } else {
       report = (
@@ -792,9 +777,8 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   // --------------------Кульшовий суглоб-start---------------
   if (zone === "Кульшовий суглоб") {
     if (zakliuchennia === svoiVaryant) {
-      report = '';
-    } else
-    if (zakliuchennia === "") {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${kulshovyiSuhlobViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -804,9 +788,8 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   // --------------------Колінний суглоб-start---------------
   if (zone === "Колінний суглоб") {
     if (zakliuchennia === svoiVaryant) {
-      report = '';
-    } else
-    if (zakliuchennia === "") {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${kolinnyiSuhlobViews[0]}.`;
     } else {
       zakliuchennia === kolinnyiSuhlobZahalnaNenorma
@@ -826,9 +809,8 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   // --------------------Гомілковостопний суглоб-start---------------
   if (zone === "Гомілковостопний суглоб") {
     if (zakliuchennia === svoiVaryant) {
-      report = '';
-    } else
-    if (zakliuchennia === "") {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${homilkovoStopnyiSuhlobViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -838,9 +820,8 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   // --------------------Стопа-start---------------
   if (zone === "Стопа") {
     if (zakliuchennia === svoiVaryant) {
-      report = '';
-    } else
-    if (zakliuchennia === "") {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${stopaViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -850,16 +831,15 @@ if (proaction === 'Пряма') {radiography = `${zone} ${side.toLowerCase()}, �
   // --------------------Передні відділи стопи-start---------------
   if (zone === "Передні відділи стопи") {
     if (zakliuchennia === svoiVaryant) {
-      report = '';
-    } else
-    if (zakliuchennia === "") {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${peredniViddilyStopyViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
     }
   }
   // --------------------Передні відділи стопи-end---------------
-  
+
   return (
     <div>
       <table

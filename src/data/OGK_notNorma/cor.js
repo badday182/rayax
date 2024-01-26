@@ -1,7 +1,7 @@
 import { svoiVaryant } from "../svoiVaryant";
 
 export const cor = [
-  "Б/O",
+  "б/о",
   "розширено вліво",
   "розширено у поперечнику",
   "у межах вікових змін",
