@@ -2,8 +2,8 @@ import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
 import { deleteImagineOptions } from "./redux/slices/newZoneSlise";
 import { resetDescriptionOnly } from "./redux/slices/descriptionOnlyReducer";
-
-function DeleteButton({ title, variant, onClick, id }) {
+import { AiTwotoneDelete } from "react-icons/ai";
+function DeleteButton({ variant, onClick, id }) {
   const dispatch = useDispatch();
   // const state = useSelector((state) => state.creatingZones.zoneCounter);
 
@@ -19,7 +19,7 @@ function DeleteButton({ title, variant, onClick, id }) {
           dispatch(resetDescriptionOnly()); // сброс стейта для описания без шапки
         }}
       >
-        {title}
+        Видалити протокол <AiTwotoneDelete size={18} />
       </Button>{" "}
     </>
   );

@@ -28,6 +28,9 @@ import { DescriptionOnlyImagineOptions } from "./DescriptionOnlyImagineOptions";
 import { resetogkSliseReducer } from "./redux/slices/ogkSliseReducer";
 import { resetUniversalSliceReducer } from "./redux/slices/universalSliceReducer";
 import copy from "clipboard-copy";
+import { LiaUserPlusSolid } from "react-icons/lia";
+import { PiUserPlusLight } from "react-icons/pi";
+import { RiPlayListAddLine } from "react-icons/ri";
 
 export const PacientCard = ({ id, editorContent }) => {
   const dispatch = useDispatch();
@@ -104,7 +107,7 @@ export const PacientCard = ({ id, editorContent }) => {
             // });
           }}
         >
-          +🚹 Новий пацієнт
+ Новий пацієнт <PiUserPlusLight size={30}/>
         </Button>
         {/* <Button
           onClick={() => {

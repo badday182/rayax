@@ -56,6 +56,7 @@ import { renderToString } from "react-dom/server";
 import { ZoneInfoPatternDescriptionOnly } from "../patternsText/zoneInfoPatternDescriptionOnly";
 import { ZoneInfoPattern } from "../patternsText/zoneInfoPattern";
 import { AddZoneDescriptionOnlyButton } from "./AddZoneDescriptionOnlyButton";
+import { RiPlayListAddLine } from "react-icons/ri";
 
 export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
   const zoneState = useSelector(
@@ -165,7 +166,8 @@ export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
       </div>
 
       <div className="d-flex justify-content-between zonesButtons">
-        <div className="allChildrenMarginY">
+        {/* <div className="allChildrenMarginY"> */}
+        <div className="">
           {/* <ApplyZonesButton /> */}
           <Button
             title="Надіслати інформацію до Редактора"
@@ -180,7 +182,7 @@ export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
             }}
             disabled={buttonDisabled}
           >
-            Додати ✅📄
+            Додати <RiPlayListAddLine size={18}/>
           </Button>{" "}
           <AddZoneDescriptionOnlyButton
             title="Add Description"

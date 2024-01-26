@@ -3,9 +3,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { addDescriptionOnly } from "./redux/slices/newZoneSlise";
-
+import { TbPencilPlus } from "react-icons/tb";
 export function AddZoneDescriptionOnlyButton({
-  title,
   variant,
   descriptionOnlyButtonDisabled,
   // descriptionOnlyButtonDisabled2,
@@ -27,12 +26,12 @@ export function AddZoneDescriptionOnlyButton({
     <>
       <Button
         title="Додати тільки опис, без шапки"
-        className="backgroundWhite"
+        className="backgroundWhite me-0 mt-2 mb-2"
         variant={variant}
         onClick={handleClick}
         disabled={descriptionOnlyButtonDisabled || disabled}
       >
-        {title}
+        Додати опис <TbPencilPlus size={18}/>
       </Button>{" "}
     </>
   );

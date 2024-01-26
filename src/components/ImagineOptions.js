@@ -75,6 +75,8 @@ import { initialPatientBirthYear } from "../data/initialPatientBirthYear";
 import { initialExamNumber } from "../data/initialExamNumber";
 import { AddZoneDescriptionOnlyButton } from "./AddZoneDescriptionOnlyButton";
 import { resetDescriptionOnly } from "./redux/slices/newZoneSlise";
+import { RiPlayListAddLine } from "react-icons/ri";
+import { BsClipboardPlus } from "react-icons/bs";
 
 export const ImagineOptions = ({ id, editorContent }) => {
   const [selectedZone, setSelectedZone] = useState("ОГК");
@@ -216,21 +218,23 @@ export const ImagineOptions = ({ id, editorContent }) => {
       </div>
 
       <div className="d-flex flex-wrap justify-content-between zonesButtons">
-        <div className="allChildrenMarginY">
+        {/* <div className="allChildrenMarginY"> */}
+        <div className="">
           <Button
             title="Надіслати інформацію до Редактора"
             variant="success"
-            className="me-0"
+            className="me-0 mt-2 mb-2"
             onClick={() => {
               setDescriptionOnlyButtonDisabled(false);
               handleApplyZone();
             }}
             disabled={addintoEditorButtonDisabled}
           >
-            Додати ✅📄
+            {/* Додати ✅📄 */}
+            Додати <RiPlayListAddLine size={18} />
           </Button>{" "}
           <AddZoneButton
-            title="Новий протокол"
+            className="me-0 mt-2 mb-2"
             variant="success"
             onAddOptions={() => {
               // setDescriptionOnlyButtonDisabled(true);
@@ -244,7 +248,6 @@ export const ImagineOptions = ({ id, editorContent }) => {
             addintoEditorButtonDisabled={addintoEditorButtonDisabled}
           />
           <AddZoneDescriptionOnlyButton
-            title="Додати опис"
             variant="outline-info"
             descriptionOnlyButtonDisabled={descriptionOnlyButtonDisabled}
             // descriptionOnlyButtonDisabled2={descriptionOnlyButtonDisabled2}
@@ -252,7 +255,7 @@ export const ImagineOptions = ({ id, editorContent }) => {
           />
         </div>
         <DeleteButton
-          title="Видалити протокол"
+          className="me-0 mt-2 mb-2"
           variant="outline-danger"
           // onClick={() => onDelete(id)}
           id={id}

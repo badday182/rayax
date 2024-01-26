@@ -19,7 +19,7 @@ import { PacientInfoPattern } from "./patternsText/pacientInfoPattern";
 import { PacientCard } from "./components/PacientCard.js";
 import { addTextFromEditor } from "./components/redux/slices/documentSliseReducer.js";
 import TooltipWithImage from "./components/TooltipWithImage.js";
-
+import { VscClearAll } from "react-icons/vsc";
 const App = () => {
   const dispatch = useDispatch();
 
@@ -141,7 +141,7 @@ const App = () => {
             }
           }}
         >
-          Очистити редактор
+          Очистити редактор <VscClearAll size={18}/>
         </button>
       </div>
       <>

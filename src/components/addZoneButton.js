@@ -6,6 +6,8 @@ import {
   addImagineOptions,
   resetDescriptionOnly,
 } from "./redux/slices/newZoneSlise";
+import { BsClipboardPlus } from "react-icons/bs";
+
 
 function AddZoneButton({
   title,
@@ -20,6 +22,7 @@ function AddZoneButton({
   return (
     <>
       <Button
+      className="align-self-center"
         title="Створити ще один протокол дослідження пацієнта"
         // className="backgroundWhite"
         variant={variant}
@@ -42,7 +45,7 @@ function AddZoneButton({
         }
         disabled={addZoneButtonDisabled}
       >
-        {title}
+        Новий протокол <BsClipboardPlus size={18}/>
       </Button>{" "}
     </>
   );
