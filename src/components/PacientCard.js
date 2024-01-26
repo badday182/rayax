@@ -20,7 +20,10 @@ import {
   resetImagineOptions,
 } from "./redux/slices/newZoneSlise";
 import { addTextFromEditor } from "./redux/slices/documentSliseReducer";
-import { resetApplyPatientInfoBlock, resetZoneInfoSliseReducer } from "./redux/slices/zoneInfoSliseReducer";
+import {
+  resetApplyPatientInfoBlock,
+  resetZoneInfoSliseReducer,
+} from "./redux/slices/zoneInfoSliseReducer";
 import { DescriptionOnlyImagineOptions } from "./DescriptionOnlyImagineOptions";
 import { resetogkSliseReducer } from "./redux/slices/ogkSliseReducer";
 import { resetUniversalSliceReducer } from "./redux/slices/universalSliceReducer";
@@ -63,6 +66,7 @@ export const PacientCard = ({ id, editorContent }) => {
       /> */}
       <div className="d-flex justify-content-between zonesButtons">
         <Button
+          title="Створити нову анкету для опису протоколу дослідження нового пацієнта"
           // variant="success"
           className="w-100 p-2 glass-button"
           onClick={() => {
@@ -70,6 +74,9 @@ export const PacientCard = ({ id, editorContent }) => {
             const newPatient = {
               id: uuidv4(),
             };
+            // Копируем текст с редактора с новым текстом в буфер обмена
+            localStorage.setItem("textToDoc", textFromEditor);
+
             // dispatch(addTextFromEditor(editorContent()));
             dispatch(resetPatient()); // сброс и создание нового пацика
             dispatch(resetImagineOptions()); // сброс и создание новой зоны
@@ -84,19 +91,19 @@ export const PacientCard = ({ id, editorContent }) => {
             dispatch(resetDescriptionOnly()); // сброс ТОЛЬКО_ОПИСАНИЯ
             // dispatch(resetDescriptionOnly()); // сброс редюсера только описания (без шапки)
 
-            copy(textFromEditor)
-              .then(() => {
-                console.log("Данные скопированы в буфер обмена");
-              })
-              .catch((err) => {
-                console.error(
-                  "Не удалось скопировать данные в буфер обмена",
-                  err
-                );
-              });
+            copy(textFromEditor);
+            // .then(() => {
+            //   console.log("Данные скопированы в буфер обмена");
+            // })
+            // .catch((err) => {
+            //   console.error(
+            //     "Не удалось скопировать данные в буфер обмена",
+            //     err
+            //   );
+            // });
           }}
         >
-          🚹 New Patient
+          +🚹 Новий пацієнт
         </Button>
         {/* <Button
           onClick={() => {

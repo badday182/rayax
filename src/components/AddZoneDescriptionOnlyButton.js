@@ -15,7 +15,8 @@ export function AddZoneDescriptionOnlyButton({
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    if (!disabled) { // Добавлена проверка, чтобы избежать множественных кликов
+    if (!disabled) {
+      // Добавлена проверка, чтобы избежать множественных кликов
       const newZoneid = { id: uuidv4() };
       dispatch(addDescriptionOnly(newZoneid));
       setDisabled(true); // Устанавливаем disabled в true после нажатия кнопки
@@ -25,6 +26,7 @@ export function AddZoneDescriptionOnlyButton({
   return (
     <>
       <Button
+        title="Додати тільки опис, без шапки"
         className="backgroundWhite"
         variant={variant}
         onClick={handleClick}

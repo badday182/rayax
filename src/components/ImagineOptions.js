@@ -77,7 +77,6 @@ import { AddZoneDescriptionOnlyButton } from "./AddZoneDescriptionOnlyButton";
 import { resetDescriptionOnly } from "./redux/slices/newZoneSlise";
 
 export const ImagineOptions = ({ id, editorContent }) => {
-
   const [selectedZone, setSelectedZone] = useState("ОГК");
 
   const [selectedSide, setSelectedSide] = useState("Справа");
@@ -99,6 +98,10 @@ export const ImagineOptions = ({ id, editorContent }) => {
 
   const dispatch = useDispatch();
   // const state = useSelector((state) => state.creatingDocument.documentText);
+  // Текст с эдитора
+  const textFromEditor = useSelector(
+    (state) => state.creatingDocument.documentText
+  );
 
   const textToDocPacientInfo = renderToString(PacientInfoPattern());
   const textToDoc = renderToString(ZoneInfoPattern());
@@ -152,6 +155,9 @@ export const ImagineOptions = ({ id, editorContent }) => {
     setAcceptNotice(<div className="overlay"></div>);
     setAddintoEditorButtonDisabled(true);
     // setDescriptionOnlyButtonDisabled(disabled)
+
+    // Копируем текст с редактора с новым текстом в буфер обмена
+    localStorage.setItem("textToDoc", textFromEditor + textToDoc);
   };
 
   return (
@@ -212,6 +218,7 @@ export const ImagineOptions = ({ id, editorContent }) => {
       <div className="d-flex flex-wrap justify-content-between zonesButtons">
         <div className="allChildrenMarginY">
           <Button
+            title="Надіслати інформацію до Редактора"
             variant="success"
             className="me-0"
             onClick={() => {
@@ -220,24 +227,24 @@ export const ImagineOptions = ({ id, editorContent }) => {
             }}
             disabled={addintoEditorButtonDisabled}
           >
-            Add into Editor ✅📄
+            Додати ✅📄
           </Button>{" "}
           <AddZoneButton
-            title="New Protocol"
+            title="Новий протокол"
             variant="success"
             onAddOptions={() => {
               // setDescriptionOnlyButtonDisabled(true);
               handleApplyZone();
               dispatch(resetZoneInfoSliseReducer());
             }}
-            setDescriptionOnlyButtonTrue={()=>{
+            setDescriptionOnlyButtonTrue={() => {
               setDescriptionOnlyButtonDisabled(true);
               dispatch(resetZoneInfoSliseReducer());
             }}
             addintoEditorButtonDisabled={addintoEditorButtonDisabled}
           />
           <AddZoneDescriptionOnlyButton
-            title="Add Description"
+            title="Додати опис"
             variant="outline-info"
             descriptionOnlyButtonDisabled={descriptionOnlyButtonDisabled}
             // descriptionOnlyButtonDisabled2={descriptionOnlyButtonDisabled2}
@@ -245,7 +252,7 @@ export const ImagineOptions = ({ id, editorContent }) => {
           />
         </div>
         <DeleteButton
-          title="Remove Protocol"
+          title="Видалити протокол"
           variant="outline-danger"
           // onClick={() => onDelete(id)}
           id={id}

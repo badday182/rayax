@@ -20,6 +20,7 @@ function AddZoneButton({
   return (
     <>
       <Button
+        title="Створити ще один протокол дослідження пацієнта"
         // className="backgroundWhite"
         variant={variant}
         // onClick={onAddOptions}
@@ -31,10 +32,10 @@ function AddZoneButton({
             };
             dispatch(addImagineOptions(newZoneid));
             dispatch(resetDescriptionOnly()); //обнуляет зоны "только описание"
-           
+
             // Не выполнять добавлять зону в редактор если она уже была добавленна
             !addintoEditorButtonDisabled && onAddOptions();
-            setDescriptionOnlyButtonTrue()
+            setDescriptionOnlyButtonTrue();
             // onAddOptions();
             setAddZoneButtonDisabled(true);
           }

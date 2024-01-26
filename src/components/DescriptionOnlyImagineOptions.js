@@ -61,7 +61,6 @@ export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
   const zoneState = useSelector(
     // (state) => state.descriptionOnly.descriptionState
     (state) => state.zoneInfo.zone
-
   );
   // const [selectedZone, setSelectedZone] = useState("ОГК");
   const selectedZone = zoneState;
@@ -104,6 +103,10 @@ export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
   };
   const [descriptionOnlyButtonDisabled, setDescriptionOnlyButtonDisabled] =
     useState(true);
+
+  const textFromEditor = useSelector(
+    (state) => state.creatingDocument.documentText
+  );
 
   return (
     // <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary ">
@@ -165,16 +168,19 @@ export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
         <div className="allChildrenMarginY">
           {/* <ApplyZonesButton /> */}
           <Button
+            title="Надіслати інформацію до Редактора"
             variant="success"
             className="me-2"
             // onClick={handleApplyZone}
             onClick={() => {
               setDescriptionOnlyButtonDisabled(false);
               handleApplyZone();
+              // Копируем текст с редактора с новым текстом в буфер обмена
+              localStorage.setItem("textToDoc", textFromEditor + textToDoc);
             }}
             disabled={buttonDisabled}
           >
-            Add into Editor ✅📄
+            Додати ✅📄
           </Button>{" "}
           <AddZoneDescriptionOnlyButton
             title="Add Description"

@@ -41,9 +41,7 @@ const App = () => {
   // EditorContent = editorRef.current.getContent()
   const editorContent = () => {
     // const text = renderToString(editorRef.current.getContent());
-    const content = editorRef.current.getContent();
-    // console.log('content', content);
-    // console.log(text);
+    const content = editorRef.current.getContent(); //берет текст с эдитора
     dispatch(addTextFromEditor(content));
   };
   const scrollToBottom = () => {
@@ -114,7 +112,7 @@ const App = () => {
             id={option.id}
           />
         ))}
-        <button
+        {/* <button
           type="button"
           className="btn btn-outline-warning"
           onClick={() => {
@@ -129,6 +127,21 @@ const App = () => {
           }}
         >
           Convert
+        </button> */}
+        <button
+          type="button"
+          className="btn btn-danger btn-sm"
+          onClick={() => {
+            const isConfirmed = window.confirm(
+              "Ви впевнені, що хочете очистити редактор? Всі ваші описи НАЗАВЖДИ видаляться, вороття не буде"
+            );
+            if (isConfirmed) {
+              dispatch(addTextFromEditor("")); // Обнуляет текстовый редактор
+              localStorage.setItem("textToDoc", ""); // Обнуляет localStorage
+            }
+          }}
+        >
+          Очистити редактор
         </button>
       </div>
       <>

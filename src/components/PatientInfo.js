@@ -23,7 +23,7 @@ import { initialExamNumber } from "../data/initialExamNumber";
 import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
 
 // function PacientInfo() {
- const PatientInfo = ({ editorContent } ) => {
+const PatientInfo = ({ editorContent }) => {
   const textToDoc = renderToString(PacientInfoPattern());
 
   const [acceptNotice, setAcceptNotice] = useState(null);
@@ -36,19 +36,23 @@ import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
 
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
-  const applyPatienInfo = useSelector((state) => state.zoneInfo.applyPatienInfo);
+  const applyPatienInfo = useSelector(
+    (state) => state.zoneInfo.applyPatienInfo
+  );
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (applyPatienInfo) {
-      setAcceptNotice(
-        <div className="overlay">
-        </div>
-      );
-    } 
+      setAcceptNotice(<div className="overlay"></div>);
+    }
   }, [applyPatienInfo]);
+  const textFromEditor = useSelector(
+    (state) => state.creatingDocument.documentText
+  );
 
   const handleApplyPatientButtonClick = () => {
     editorContent();
+    // console.log('textFromEditor',textFromEditor);
     dispatch(addDocText({ textToDoc }));
 
     setAcceptNotice(
@@ -60,13 +64,12 @@ import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
     setButtonDisabled(true); // Устанавливаем disabled в true после нажатия кнопки
 
     //предыдущий раз вводили число? задаем автоматику для номера следующего исследования
-    if (examState !== initialExamNumber){
+    if (examState !== initialExamNumber) {
       dispatch(editExamNumber(+examState + 1));
     }
-   
+    // Копируем текст с редактора с новым текстом в буфер обмена
+    localStorage.setItem("textToDoc", textFromEditor + textToDoc);
   };
- 
-  
 
   // Значение по умолчанию - сегодняшняя дата
   const [selectedDate, setSelectedDate] = useState(
@@ -80,14 +83,13 @@ import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
     const formattedDate = inputValue.split("-").reverse().join(".");
     dispatch(editExamDate(formattedDate));
 
-
     return selectedDate;
   };
-  let initialExamDefaultValue ='№ дослідження'
+  let initialExamDefaultValue = "№ дослідження";
   const examState = useSelector((state) => state.pacientInfo.examNumber);
-  if (examState !== initialExamNumber){
-    initialExamDefaultValue = +examState
-      }
+  if (examState !== initialExamNumber) {
+    initialExamDefaultValue = +examState;
+  }
 
   const [naprav, setNaprav] = useState(null);
   // const napravState = useSelector((state) => state.pacientInfo.examNumber);
@@ -109,7 +111,7 @@ import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
   const [name, setName] = useState();
   const handleNameChange = (e) => {
     const inputValue = e.target.value;
-    
+
     // Регулярное выражение для разрешенных символов (украинские буквы и символы)
     const pattern = /^[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ'\s,\.]+$/u;
     if (!pattern.test(inputValue)) {
@@ -142,13 +144,14 @@ import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
   return (
     // <div className="p-3 form-container mb-4 bg-light bg-gradient rounded-3 text-dark border border-secondary">
     <div className="p-3 form-container mb-4 rounded-3 text-dark border border-light-subtle bg-glass">
-        {acceptNotice}
+      {acceptNotice}
       <div>
         <Form className=" mb-3  text-light fw400">
           <Row className="mb-2">
             <Form.Group as={Col} controlId="date">
               <Form.Label>Дата дос-ня</Form.Label>
-              <Form.Control className="numeric"
+              <Form.Control
+                className="numeric"
                 // placeholder="Дата дослідження"
                 type="date"
                 defaultValue={selectedDate}
@@ -159,8 +162,9 @@ import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
 
             <Form.Group as={Col} controlId="imagine">
               <Form.Label>№ дос-ня</Form.Label>
-              <Form.Control className="numeric"
-              // {initialExamDefaultValue != '' ? {}}
+              <Form.Control
+                className="numeric"
+                // {initialExamDefaultValue != '' ? {}}
                 // placeholder="№ дослідження"
                 placeholder={initialExamDefaultValue}
                 type="number"
@@ -182,7 +186,8 @@ import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
 
             <Form.Group as={Col} controlId="birthYear">
               <Form.Label>Рік народження</Form.Label>
-              <Form.Control className="numeric"
+              <Form.Control
+                className="numeric"
                 placeholder="Рік народження"
                 type="number"
                 onChange={handleBirthYearChange}
@@ -194,12 +199,13 @@ import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
         </Form>
       </div>
       <Button
+        title="Надіслати інформацію до Редактора"
         variant="success"
         className="me-2"
         onClick={handleApplyPatientButtonClick}
         disabled={buttonDisabled}
       >
-        Add into Editor ✅📄
+        Додати ✅📄
       </Button>{" "}
     </div>
   );

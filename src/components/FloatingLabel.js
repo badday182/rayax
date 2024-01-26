@@ -354,17 +354,17 @@ export function FormFloatingSelect({ id, items, label, onZoneSelect }) {
       <Form.Select id={floatingId} onChange={handleZoneSelect}>
         {/* ---------------если выбрано что-то из ненормы ОГК-------------- */}
         {ogkNenormaItems.includes(label) ? (
-          <option value="">--select an option--</option>
+          <option value="">--виберіть опцію--</option>
         ) : null}
 
         {/* --если выбран Череп или ППН (все пришедшие айтемы = айтемам черепа/ппн)--- */}
         {/* {items === ppnViews  ? (
-          <option value="">--select an option--</option>
+          <option value="">--виберіть опцію--</option>
         ) : null} */}
         {/* --если выбрано что-то из ненормы ШВХ --- */}
         {/* ---------------если выбрано что-то из ненормы ОГК-------------- */}
         {shvhNenormaItems.includes(label) || gvhNenormaItems.includes(label) ? (
-          <option value="">--select an option--</option>
+          <option value="">--виберіть опцію--</option>
         ) : null}
 
         {itemGenerator()}

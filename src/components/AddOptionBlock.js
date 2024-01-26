@@ -9,7 +9,6 @@ export const AddOptionBlock = ({
   onAddClick,
   onDeleteClick,
 }) => {
-
   // useEffect(() => {
   //   if (cherepViews.includes(items[0])) {
   //     dispatch(editSemicolonUniversalArray_1({ floatingId: counter[0].id, selectedZone: items[0] }));
@@ -28,13 +27,22 @@ export const AddOptionBlock = ({
               onZoneSelect={onZoneSelect}
               label={label}
             />
-            <button type="button" className="btn btn-outline-danger mb-2 zoneAddButton" onClick={() => onDeleteClick(option.id)}>
+            <button
+              type="button"
+              className="btn btn-outline-danger mb-2 zoneAddButton"
+              title="Видалити опцію"
+              onClick={() => onDeleteClick(option.id)}
+            >
               ✖
             </button>
           </div>
         ))}
       </div>
-      <Button variant="btn btn-primary w-75 mb-1" className="" onClick={onAddClick}>
+      <Button
+        variant="btn btn-primary w-75 mb-1"
+        className=""
+        onClick={onAddClick}
+      >
         Додати {label.toLowerCase()}
       </Button>{" "}
     </div>

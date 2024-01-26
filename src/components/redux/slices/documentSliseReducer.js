@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   textFromEditor: null,
-  documentText: '',
+  // documentText: '',
+  documentText: localStorage.getItem('textToDoc'),
 };
 
 export const documentSliseReducer = createSlice({
