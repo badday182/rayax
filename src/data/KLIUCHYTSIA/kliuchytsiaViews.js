@@ -2,6 +2,6 @@ import { kistkovaNorma } from "../kistkovaNorma";
 import { svoiVaryant } from "../svoiVaryant";
 export const kliuchytsiaViews = [
   kistkovaNorma,
-  "Перелом хірургічної шийки плечової кістки з кутовим зміщенням",
-  "Перелом великого горбика плечової кістки зі зміщенням", svoiVaryant
+  "Перелом акроміального кінця ключиці зі зміщенням",
+  "Перелом середньої третини діафізу ключиці зі зміщенням", svoiVaryant
 ];
