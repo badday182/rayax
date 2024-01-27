@@ -7,8 +7,8 @@ import {
   deleteIdKupalaDiadragmyArray,
   deleteIdCorArray,
   deleteIdOgkZakliuchenniaArray,
-  
-} from "./redux/slices/ogkSliseReducer";
+
+} from "../store/slices/ogkSliseReducer";
 
 import { FormFloatingSelect } from "./FloatingLabel";
 import { v4 as uuidv4 } from "uuid";
@@ -39,13 +39,13 @@ export const Ogk = () => {
   const handleAddOption = (setter, counter, setCounter) => {
     setter([...counter, { id: uuidv4() }]);
   };
-  
+
   const dispatch = useDispatch();
 
 // const handleDeleteOption = (deleteId) => {
 //   // Фильтруем массив, оставляя только те элементы, у которых id не равен deleteId
 //   const updatedLegenRysunokCounter = legenRysunokCounter.filter((item) => item.id !== deleteId);
-  
+
 //   // Устанавливаем обновленное значение состояния
 //   setlegenRysunokCounter(updatedLegenRysunokCounter);
 
@@ -65,15 +65,15 @@ const handleDeleteOption = (deleteId, resetCounter) => {
   // Удаление айтема из редюсера
 // -----------ОГК start---------
 
-    
-      dispatch(deleteIdLegenRusynokArray({ floatingId: deleteId }));     
+
+      dispatch(deleteIdLegenRusynokArray({ floatingId: deleteId }));
       dispatch(deleteIdKoreniArray({ floatingId: deleteId }));
       dispatch(deleteIdSynusyArray({ floatingId: deleteId }));
       dispatch(deleteIdKupalaDiadragmyArray({ floatingId: deleteId }));
       dispatch(deleteIdCorArray({ floatingId: deleteId }));
       dispatch(deleteIdOgkZakliuchenniaArray({ floatingId: deleteId }));
-  
-      
+
+
     // -----------ОГК end---------
 
 }
@@ -82,7 +82,7 @@ const handleDeleteOption = (deleteId, resetCounter) => {
     <div className="">
       <FormFloatingSelect items={ogkViews} onZoneSelect={setSelectedOgkViews} label="Проєкія" />
       <FormFloatingSelect items={ogkNormaNenorma} onZoneSelect={setSelectednormaNenorma} label="Норма/Не норма" />
-      
+
       {selectednormaNenorma === "Не норма" ? (
         <div className=" ">
           <AddOptionBlock

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { initialExamNumber } from "../../../data/initialExamNumber";
-import { initialPatientName } from "../../../data/initialPatientName";
-import { initialPatientBirthYear } from "../../../data/initialPatientBirthYear";
+import { initialExamNumber } from "../../data/initialExamNumber";
+import { initialPatientName } from "../../data/initialPatientName";
+import { initialPatientBirthYear } from "../../data/initialPatientBirthYear";
 
 const initialState = {
   examNumber: initialExamNumber,

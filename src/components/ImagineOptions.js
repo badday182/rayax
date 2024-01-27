@@ -17,7 +17,7 @@ import {
   resetZoneInfoSliseReducer,
   applyPatientInfoBlock,
   resetZoneInfoSliseReducerExceptZone,
-} from "./redux/slices/zoneInfoSliseReducer";
+} from "../store/slices/zoneInfoSliseReducer";
 import {
   resetLegenRusynokArray,
   resetKoreniArray,
@@ -26,22 +26,22 @@ import {
   resetCorArray,
   resetOgkZakliuchenniaArray,
   resetogkSliseReducer,
-} from "./redux/slices/ogkSliseReducer";
+} from "../store/slices/ogkSliseReducer";
 
-import { resetCherepSliseReducer } from "./redux/slices/cherepSliseReducer";
-import { resetPpnSliseReducer } from "./redux/slices/ppnSliseReducer";
-import { resetUniversalSliceReducer } from "./redux/slices/universalSliceReducer";
+import { resetCherepSliseReducer } from "../store/slices/cherepSliseReducer";
+import { resetPpnSliseReducer } from "../store/slices/ppnSliseReducer";
+import { resetUniversalSliceReducer } from "../store/slices/universalSliceReducer";
 import {
   resetZone,
   resetSide,
   resetProaction,
   resetNorma,
-} from "./redux/slices/zoneInfoSliseReducer";
+} from "../store/slices/zoneInfoSliseReducer";
 
 import {
   addDocText,
   doubleAddPatientAndZoneDocText,
-} from "./redux/slices/documentSliseReducer";
+} from "../store/slices/documentSliseReducer";
 
 import { renderToString } from "react-dom/server";
 import { ZoneInfoPattern } from "../patternsText/zoneInfoPattern";
@@ -69,12 +69,12 @@ import { PacientInfoPattern } from "../patternsText/pacientInfoPattern";
 import {
   editExamNumber,
   resetPacientInfoSliseReducer,
-} from "./redux/slices/pacientInfoSliseReducer";
+} from "../store/slices/pacientInfoSliseReducer";
 import { initialPatientName } from "../data/initialPatientName";
 import { initialPatientBirthYear } from "../data/initialPatientBirthYear";
 import { initialExamNumber } from "../data/initialExamNumber";
 import { AddZoneDescriptionOnlyButton } from "./AddZoneDescriptionOnlyButton";
-import { resetDescriptionOnly } from "./redux/slices/newZoneSlise";
+import { resetDescriptionOnly } from "../store/slices/newZoneSlise";
 import { RiPlayListAddLine } from "react-icons/ri";
 import { BsClipboardPlus } from "react-icons/bs";
 

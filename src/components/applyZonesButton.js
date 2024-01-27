@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import { useSelector, useDispatch } from "react-redux";
-import { addDocText } from "./redux/slices/documentSliseReducer";
+import { addDocText } from "../store/slices/documentSliseReducer";
 
 function ApplyZonesButton() {
   const dispatch = useDispatch();

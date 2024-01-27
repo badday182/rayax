@@ -17,7 +17,7 @@ import { Editor, tinymce } from "@tinymce/tinymce-react";
 import { PacientInfoPattern } from "./patternsText/pacientInfoPattern";
 
 import { PacientCard } from "./components/PacientCard.js";
-import { addTextFromEditor } from "./components/redux/slices/documentSliseReducer.js";
+import { addTextFromEditor } from "./store/slices/documentSliseReducer.js";
 import TooltipWithImage from "./components/TooltipWithImage.js";
 import { VscClearAll } from "react-icons/vsc";
 const App = () => {

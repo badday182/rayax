@@ -7,7 +7,7 @@ import { cherepViews } from "../data/Cherep/cherepViews";
 import { AddOptionBlock } from "./AddOptionBlock";
 
 import { useDispatch } from "react-redux";
-import { deleteIdSemicolonUniversalArray_1 } from "./redux/slices/universalSliceReducer";
+import { deleteIdSemicolonUniversalArray_1 } from "../store/slices/universalSliceReducer";
 
 export const Cherep = () => {
 
@@ -26,11 +26,11 @@ export const Cherep = () => {
     if (resetCounter[0].length !== 1) {
      // Фильтруем массив, оставляя только те элементы, у которых id не равен deleteId
      const updatedCounter = resetCounter[0].filter((item) => item.id !== deleteId);
-   
+
      // Устанавливаем обновленное значение состояния
      resetCounter[1](updatedCounter);
-     // Удаление айтема из редюсера       
-         dispatch(deleteIdSemicolonUniversalArray_1({ floatingId: deleteId }));   
+     // Удаление айтема из редюсера
+         dispatch(deleteIdSemicolonUniversalArray_1({ floatingId: deleteId }));
       }
    }
 

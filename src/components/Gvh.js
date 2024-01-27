@@ -23,7 +23,7 @@ import {
   deleteIdCommaUniversalArray_5,
   deleteIdCommaUniversalArray_6,
   deleteIdSvhVysotaTilHrebtsivArray,
-} from "./redux/slices/universalSliceReducer";
+} from "../store/slices/universalSliceReducer";
 
 export const Gvh = () => {
   const [selectedGvhViews, setSelectedGvhViews] = useState("");
@@ -57,7 +57,7 @@ export const Gvh = () => {
   const handleAddOption = (setter, counter, setCounter) => {
     setter([...counter, { id: uuidv4() }]);
   };
-  
+
   const dispatch = useDispatch();
   const handleDeleteOption = (deleteId, resetCounter) => {
     // Проверяем длину массива, выполняем удаление только если длина не равна 1

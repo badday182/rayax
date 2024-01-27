@@ -8,7 +8,7 @@ import {
   editProaction,
   editSide,
   editNorma,
-} from "./redux/slices/zoneInfoSliseReducer";
+} from "../store/slices/zoneInfoSliseReducer";
 
 import {
   editLegenRusynokArray,
@@ -18,7 +18,7 @@ import {
   editCorArray,
   editOgkZakliuchenniaArray,
   resetogkSliseReducer,
-} from "./redux/slices/ogkSliseReducer";
+} from "../store/slices/ogkSliseReducer";
 
 import {
   editCommaUniversalArray_1,
@@ -30,9 +30,9 @@ import {
   editSemicolonUniversalArray_1,
   editSvhVysotaTilHrebtsivArray,
   resetUniversalSliceReducer,
-} from "./redux/slices/universalSliceReducer";
+} from "../store/slices/universalSliceReducer";
 
-import { editCherepNormaNenormaArray } from "./redux/slices/cherepSliseReducer";
+import { editCherepNormaNenormaArray } from "../store/slices/cherepSliseReducer";
 
 import { zones } from "../data/zones";
 import { zonesWithOnly2Projection } from "../data/zonesWithOnly2Projection";
@@ -87,7 +87,7 @@ import { stopaViews } from "../data/STOPA/stopaViews";
 import { peredniViddilyStopyViews } from "../data/PEREDNIVIDDILYSTOPY/peredniViddilyStopyViews";
 import { firstElements } from "../data/viewsToEditSemicolUnivArray_1";
 import { vysotaTilHrebtsivPvh } from "../data/PVH/PVH_notNorma/vysotaTilHrebtsivPvh";
-import { editDescriptionOnly } from "./redux/slices/descriptionOnlyReducer";
+import { editDescriptionOnly } from "../store/slices/descriptionOnlyReducer";
 
 export function FormFloatingSelect({ id, items, label, onZoneSelect }) {
   const [floatingId] = useState(id);

@@ -23,7 +23,7 @@ import {
   deleteIdCommaUniversalArray_5,
   deleteIdCommaUniversalArray_6,
   deleteIdSvhVysotaTilHrebtsivArray,
-} from "./redux/slices/universalSliceReducer";
+} from "../store/slices/universalSliceReducer";
 
 export const Shvh = () => {
   // const [selectedZone, setSelectedZone] = useState("ОГК");

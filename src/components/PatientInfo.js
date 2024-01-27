@@ -14,13 +14,13 @@ import {
   editExamName,
   editExamBirthYear,
   resetPacientInfoSliseReducer,
-} from "./redux/slices/pacientInfoSliseReducer";
+} from "../store/slices/pacientInfoSliseReducer";
 
 import { PacientInfoPattern } from "../patternsText/pacientInfoPattern";
 
-import { addDocText } from "./redux/slices/documentSliseReducer";
+import { addDocText } from "../store/slices/documentSliseReducer";
 import { initialExamNumber } from "../data/initialExamNumber";
-import { applyPatientInfoBlock } from "./redux/slices/zoneInfoSliseReducer";
+import { applyPatientInfoBlock } from "../store/slices/zoneInfoSliseReducer";
 import { RiPlayListAddLine } from "react-icons/ri";
 
 // function PacientInfo() {

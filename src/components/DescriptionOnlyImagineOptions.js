@@ -13,17 +13,17 @@ import {
   resetZoneInfoSliseReducer,
   applyPatientInfoBlock,
   resetZoneInfoSliseReducerExceptZone,
-} from "./redux/slices/zoneInfoSliseReducer";
-import { resetogkSliseReducer } from "./redux/slices/ogkSliseReducer";
+} from "../store/slices/zoneInfoSliseReducer";
+import { resetogkSliseReducer } from "../store/slices/ogkSliseReducer";
 
-import { resetCherepSliseReducer } from "./redux/slices/cherepSliseReducer";
-import { resetPpnSliseReducer } from "./redux/slices/ppnSliseReducer";
-import { resetUniversalSliceReducer } from "./redux/slices/universalSliceReducer";
+import { resetCherepSliseReducer } from "../store/slices/cherepSliseReducer";
+import { resetPpnSliseReducer } from "../store/slices/ppnSliseReducer";
+import { resetUniversalSliceReducer } from "../store/slices/universalSliceReducer";
 
 import {
   addDocText,
   doubleAddPatientAndZoneDocText,
-} from "./redux/slices/documentSliseReducer";
+} from "../store/slices/documentSliseReducer";
 
 import { Ogk } from "./Ogk";
 import { Cherep } from "./Cherep";
@@ -47,7 +47,7 @@ import { PeredniViddilyStopy } from "./PeredniViddilyStopy";
 import {
   editExamNumber,
   resetPacientInfoSliseReducer,
-} from "./redux/slices/pacientInfoSliseReducer";
+} from "../store/slices/pacientInfoSliseReducer";
 import { initialPatientName } from "../data/initialPatientName";
 import { initialPatientBirthYear } from "../data/initialPatientBirthYear";
 import { initialExamNumber } from "../data/initialExamNumber";

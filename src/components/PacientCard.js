@@ -13,20 +13,20 @@ import { PacientInfoPattern } from "../patternsText/pacientInfoPattern";
 import {
   addPatient,
   resetPatient,
-} from "./redux/slices/newPatientSliseReducer";
-import { deletePatient } from "./redux/slices/newPatientSliseReducer";
+} from "../store/slices/newPatientSliseReducer";
+import { deletePatient } from "../store/slices/newPatientSliseReducer";
 import {
   resetDescriptionOnly,
   resetImagineOptions,
-} from "./redux/slices/newZoneSlise";
-import { addTextFromEditor } from "./redux/slices/documentSliseReducer";
+} from "../store/slices/newZoneSlise";
+import { addTextFromEditor } from "../store/slices/documentSliseReducer";
 import {
   resetApplyPatientInfoBlock,
   resetZoneInfoSliseReducer,
-} from "./redux/slices/zoneInfoSliseReducer";
+} from "../store/slices/zoneInfoSliseReducer";
 import { DescriptionOnlyImagineOptions } from "./DescriptionOnlyImagineOptions";
-import { resetogkSliseReducer } from "./redux/slices/ogkSliseReducer";
-import { resetUniversalSliceReducer } from "./redux/slices/universalSliceReducer";
+import { resetogkSliseReducer } from "../store/slices/ogkSliseReducer";
+import { resetUniversalSliceReducer } from "../store/slices/universalSliceReducer";
 import copy from "clipboard-copy";
 import { LiaUserPlusSolid } from "react-icons/lia";
 import { PiUserPlusLight } from "react-icons/pi";
