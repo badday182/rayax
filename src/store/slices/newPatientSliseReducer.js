@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 const initialState = {
-  patientCounter: [{ id: 0o0 }],
+  patientCounter: [{ id: 0o0 }, /*{id: 1}*/],
 };
 
 export const newPatientSlise = createSlice({
@@ -17,13 +17,13 @@ export const newPatientSlise = createSlice({
         state.patientCounter = state.patientCounter.filter(
           (option) => option.id !== action.payload.id   );
         }
-        
+
       },
       resetPatient: (state) => {
         state.patientCounter = [{ id: uuidv4() }];
         // state.zoneCounter.push(action.payload);
       },
-      
+
   },
 });
 

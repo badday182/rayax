@@ -19,10 +19,13 @@ export const documentSliseReducer = createSlice({
       state.documentText += `${textToDoc}`
 
       // state.documentText = state.textFromEditor + textToDoc
-      
+
 
 
       // console.log(action.payload.naprav)
+    },
+    clearTextEditor: (state) => {
+      state.documentText = null
     },
     addTextFromEditor: (state, action) => {
       // const { textFromEditor } = action.payload;
@@ -44,7 +47,7 @@ export const documentSliseReducer = createSlice({
       state.documentText += textToDocPacientInfo + textToDoc
 
       // state.documentText = state.textFromEditor + textToDoc
-      
+
 
 
       // console.log(action.payload.naprav)
@@ -52,6 +55,11 @@ export const documentSliseReducer = createSlice({
   },
 });
 
-export const { addDocText, addTextFromEditor, doubleAddPatientAndZoneDocText } = documentSliseReducer.actions;
+export const {
+  addDocText,
+  addTextFromEditor,
+  doubleAddPatientAndZoneDocText,
+  clearTextEditor,
+} = documentSliseReducer.actions;
 
 export default documentSliseReducer.reducer;
