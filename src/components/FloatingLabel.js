@@ -91,6 +91,16 @@ import { editDescriptionOnly } from "./redux/slices/descriptionOnlyReducer";
 
 export function FormFloatingSelect({ id, items, label, onZoneSelect }) {
   const [floatingId] = useState(id);
+  const [selectedValue, setSelectedValue] = useState('');
+  const [placeholderVisible, setPlaceholderVisible] = useState(true);
+
+  useEffect(() => {
+    // Если значение выбрано, скрываем плейсхолдер
+    if (selectedValue !== '') {
+      setPlaceholderVisible(false);
+    }
+  }, [selectedValue]);
+
   const dispatch = useDispatch();
 
   const itemGenerator = () => {
@@ -130,6 +140,7 @@ export function FormFloatingSelect({ id, items, label, onZoneSelect }) {
 
   const handleZoneSelect = (event) => {
     const selectedZone = event.target.value;
+    setSelectedValue(selectedZone); // Если значение выбрано, потом меняем setPlaceholderVisible на false
     onZoneSelect(selectedZone);
 
 
@@ -348,13 +359,13 @@ export function FormFloatingSelect({ id, items, label, onZoneSelect }) {
     }
     // -----------Гомілковостопний суглоб end---------
   };
-
   return (
     <FloatingLabel className="mb-2" controlId={floatingId} label={label}>
       <Form.Select id={floatingId} onChange={handleZoneSelect}>
         {/* ---------------если выбрано что-то из ненормы ОГК-------------- */}
         {ogkNenormaItems.includes(label) ? (
-          <option value="">--виберіть опцію--</option>
+          // <option value="">--виберіть опцію--</option>
+          placeholderVisible && <option value="">--виберіть опцію--</option>
         ) : null}
 
         {/* --если выбран Череп или ППН (все пришедшие айтемы = айтемам черепа/ппн)--- */}
@@ -364,7 +375,8 @@ export function FormFloatingSelect({ id, items, label, onZoneSelect }) {
         {/* --если выбрано что-то из ненормы ШВХ --- */}
         {/* ---------------если выбрано что-то из ненормы ОГК-------------- */}
         {shvhNenormaItems.includes(label) || gvhNenormaItems.includes(label) ? (
-          <option value="">--виберіть опцію--</option>
+          // <option value="">--виберіть опцію--</option>
+          placeholderVisible && <option value="">--виберіть опцію--</option>
         ) : null}
 
         {itemGenerator()}
