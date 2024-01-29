@@ -6,7 +6,7 @@ import store from './store/store';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css';
-import { Analytics } from '@vercel/analytics/react';
+// import { Analytics } from '@vercel/analytics/react';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,7 +14,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
     <App className="svg"/>
-    <Analytics/>
+    {/* <Analytics/> */}
     </Provider>
   </React.StrictMode>
 );
