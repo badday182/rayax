@@ -20,6 +20,7 @@ import { PacientCard } from "./components/PacientCard.js";
 import { addTextFromEditor } from "./components/redux/slices/documentSliseReducer.js";
 import TooltipWithImage from "./components/TooltipWithImage.js";
 import { VscClearAll } from "react-icons/vsc";
+import { Analytics } from '@vercel/analytics/react';
 const App = () => {
   const dispatch = useDispatch();
 
@@ -197,6 +198,8 @@ const App = () => {
           }}
         />
       </>
+      <Analytics/>
+
     </div>
   );
 };
