@@ -229,10 +229,10 @@ export const ZoneInfoPattern = () => {
 
   // --------------------ОГК-start---------------
   if (zone === "ОГК" && (norma === "" || norma === ogkNormaNenorma[0])) {
-    report = "Легені та серце без змін";
+    report = "Легені та серце без змін.";
   }
   if (norma === "Легені та серце у межах вікових змін") {
-    report = norma;
+    report = norma + '.';
   }
   // if (norma === "Загальна ОГК не норма") {
   if (norma === ogkNormaNenorma[3]) {
