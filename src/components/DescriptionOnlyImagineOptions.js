@@ -112,7 +112,7 @@ export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
   return (
     // <div className="mb-4 p-3 bg-light bg-gradient rounded-3 text-dark border border-secondary ">
     <div className="mb-4 p-3 rounded-3 text-dark border border-info border-3 bg-2ndglass">
-      <h5 className="text-white">Description Only</h5>
+      <h5 className="text-white">Тільки опис</h5>
       <div className="imagineOptions">
         {acceptNotice}
 

@@ -47,6 +47,8 @@ import { vysotaTilHrebtsivGvh } from "../data/GVH/GVH_notNorma/vysotaTilHrebtsiv
 import { vysotaTilHrebtsivPvh } from "../data/PVH/PVH_notNorma/vysotaTilHrebtsivPvh";
 import { zakliuchenniaPvh } from "../data/PVH/PVH_notNorma/zakliuchenniaPvh";
 import { kolinnyiSuhlobZahalnaNenorma } from "../data/KOLINNYISUHLOB/kolinnyiSuhlobZahalnaNenorma";
+import { svoiVaryant } from "../data/svoiVaryant";
+import { peredniViddilyStopyViews } from "../data/PEREDNIVIDDILYSTOPY/peredniViddilyStopyViews";
 
 export const ZoneInfoPatternDescriptionOnly = () => {
   const zone = useSelector((state) => state.zoneInfo.zone);
@@ -204,7 +206,9 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   //   report = "Грубих кістково-травматичних змін не визначаються";
   // }
   if (zone === "Череп") {
-    if (zakliuchennia === "") {
+    if (zakliuchennia === svoiVaryant) {
+      report = ``;
+    } else if (zakliuchennia === "") {
       report = `${cherepViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -214,7 +218,9 @@ export const ZoneInfoPatternDescriptionOnly = () => {
 
   // --------------------ППН-start---------------
   if (zone === "ППН") {
-    if (zakliuchennia === "") {
+    if (zakliuchennia === svoiVaryant) {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${ppnViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -567,7 +573,9 @@ export const ZoneInfoPatternDescriptionOnly = () => {
 
   // --------------------ОЧП-start---------------
   if (zone === "ОЧП") {
-    if (zakliuchennia === "") {
+    if (zakliuchennia === svoiVaryant) {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${ochpViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -577,7 +585,9 @@ export const ZoneInfoPatternDescriptionOnly = () => {
 
   // --------------------Плечовий суглоб-start---------------
   if (zone === "Плечовий суглоб") {
-    if (zakliuchennia === "") {
+    if (zakliuchennia === svoiVaryant) {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${plechovyiSuhlobViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -587,7 +597,9 @@ export const ZoneInfoPatternDescriptionOnly = () => {
 
   // --------------------Ключиця-start---------------
   if (zone === "Ключиця") {
-    if (zakliuchennia === "") {
+    if (zakliuchennia === svoiVaryant) {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${kliuchytsiaViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -597,7 +609,9 @@ export const ZoneInfoPatternDescriptionOnly = () => {
 
   // --------------------Ребра-start---------------
   if (zone === "Ребра") {
-    if (zakliuchennia === "") {
+    if (zakliuchennia === svoiVaryant) {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${rebraViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -606,7 +620,9 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   // --------------------Ребра-end---------------
   // --------------------Ліктьовий суглоб-start---------------
   if (zone === "Ліктьовий суглоб") {
-    if (zakliuchennia === "") {
+    if (zakliuchennia === svoiVaryant) {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${liktovyiSuhlobViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -615,7 +631,9 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   // --------------------Ліктьовий суглоб-end---------------
   // --------------------Променево-зап'ястковий суглоб-start---------------
   if (zone === "Променево-зап'ястковий суглоб") {
-    if (zakliuchennia === "") {
+    if (zakliuchennia === svoiVaryant) {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${promenevoZapIastkovyiSuhlobViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -624,7 +642,9 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   // --------------------Променево-зап'ястковий суглоб-end---------------
   // --------------------Кисть-start---------------
   if (zone === "Кисть") {
-    if (zakliuchennia === "") {
+    if (zakliuchennia === svoiVaryant) {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${kystViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -633,7 +653,9 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   // --------------------Кисть-end---------------
   // --------------------Кісток тазу-start---------------
   if (zone === "Кісток тазу") {
-    if (zakliuchennia === kistokTazuViews[0]) {
+    if (zakliuchennia === svoiVaryant) {
+      report = "";
+    } else if (zakliuchennia === kistokTazuViews[0]) {
       report = `${kistokTazuViews[0]}.`;
     } else {
       report = (
@@ -650,7 +672,9 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   // --------------------Кісток тазу-end---------------
   // --------------------Кульшовий суглоб-start---------------
   if (zone === "Кульшовий суглоб") {
-    if (zakliuchennia === "") {
+    if (zakliuchennia === svoiVaryant) {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${kulshovyiSuhlobViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -659,10 +683,12 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   // --------------------Кульшовий суглоб-end---------------
   // --------------------Колінний суглоб-start---------------
   if (zone === "Колінний суглоб") {
-    if (zakliuchennia === "") {
+    if (zakliuchennia === svoiVaryant) {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${kolinnyiSuhlobViews[0]}.`;
     } else {
-      zakliuchennia === "Загальна не норма"
+      zakliuchennia === kolinnyiSuhlobZahalnaNenorma
         ? (report = (
             <>
               Суглобові щілини нерівномірно звужені. Замикаючі пластинки
@@ -678,7 +704,9 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   // --------------------Колінний суглоб-end---------------
   // --------------------Гомілковостопний суглоб-start---------------
   if (zone === "Гомілковостопний суглоб") {
-    if (zakliuchennia === "") {
+    if (zakliuchennia === svoiVaryant) {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${homilkovoStopnyiSuhlobViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -687,7 +715,9 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   // --------------------Гомілковостопний суглоб-end---------------
   // --------------------Стопа-start---------------
   if (zone === "Стопа") {
-    if (zakliuchennia === "") {
+    if (zakliuchennia === svoiVaryant) {
+      report = "";
+    } else if (zakliuchennia === "") {
       report = `${stopaViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
@@ -696,8 +726,10 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   // --------------------Стопа-end---------------
   // --------------------Передні відділи стопи-start---------------
   if (zone === "Передні відділи стопи") {
-    if (zakliuchennia === "") {
-      report = `${stopaViews[0]}.`;
+    if (zakliuchennia === svoiVaryant) {
+      report = "";
+    } else if (zakliuchennia === "") {
+      report = `${peredniViddilyStopyViews[0]}.`;
     } else {
       report = `${zakliuchennia}.`;
     }
