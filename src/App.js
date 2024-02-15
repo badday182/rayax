@@ -142,7 +142,7 @@ const App = () => {
             }
           }}
         >
-          Очистити редактор <VscClearAll size={18}/>
+          Очистити редактор <VscClearAll size={18} />
         </button>
       </div>
       <>
@@ -155,6 +155,10 @@ const App = () => {
           initialValue={docTex}
           init={{
             selector: "#myTextarea",
+            browser_spellcheck: true,
+            spellchecker_language: 'ru',
+            contextmenu: true,
+            language: 'uk',
             height: 650,
             width: 700,
             content_css: "/src/tineContent.css",
@@ -198,7 +202,7 @@ const App = () => {
           }}
         />
       </>
-      <Analytics/>
+      <Analytics />
 
     </div>
   );

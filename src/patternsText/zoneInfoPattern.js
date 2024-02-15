@@ -177,27 +177,27 @@ export const ZoneInfoPattern = () => {
   //   }
   // }
 
-  //зоны только в 2-х проєкціях
+  //зоны только в 2-х проекціях
   if (zonesWithOnly2Projection.includes(zone)) {
     if (zonesWithSides.includes(zone)) {
-      radiography = `${zone} ${side.toLowerCase()}, в 2-х проєкціях`;
+      radiography = `${zone} ${side.toLowerCase()}, в 2-х проекціях`;
     } else {
-      radiography = `${zone}, в 2-х проєкціях`;
+      radiography = `${zone}, в 2-х проекціях`;
     }
   }
-  //зоны только в пряма проєкція
+  //зоны только в пряма проекція
   else if (zonesWithOnlyDirectProjection.includes(zone)) {
     if (zonesWithSides.includes(zone)) {
-      radiography = `${zone} ${side.toLowerCase()}, в прямій проєкції`;
+      radiography = `${zone} ${side.toLowerCase()}, в прямій проекції`;
     } else {
-      radiography = `${zone}, в прямій проєкції`;
+      radiography = `${zone}, в прямій проекції`;
     }
   } else {
     //зоны с выбором проекции
     if (proaction === "Пряма") {
-      radiography = `${zone} ${side.toLowerCase()}, в прямій проєкції`;
+      radiography = `${zone} ${side.toLowerCase()}, в прямій проекції`;
     } else {
-      radiography = `${zone} ${side.toLowerCase()}, в 2-х проєкціях`;
+      radiography = `${zone} ${side.toLowerCase()}, в 2-х проекціях`;
     }
   }
 
@@ -214,11 +214,11 @@ export const ZoneInfoPattern = () => {
   } else if (zone === "ОГК" && proaction === "Пряма + ліва бічна") {
     mSv = "0,5";
     radiography = `${zone} у прямій та лівій бічній проекціях`;
-  } else if (zone === "Плечовий суглоб" && proaction === "В 2-х проєкціях") {
+  } else if (zone === "Плечовий суглоб" && proaction === "В 2-х проекціях") {
     mSv = "0,6";
   } else if (zone === "Плечовий суглоб" && proaction === "Пряма") {
     mSv = "0,3";
-  } else if (zone === "Кульшовий суглоб" && proaction === "В 2-х проєкціях") {
+  } else if (zone === "Кульшовий суглоб" && proaction === "В 2-х проекціях") {
     mSv = "1,6";
   } else if (zone === "Кульшовий суглоб" && proaction === "Пряма") {
     mSv = "0,8";
@@ -712,7 +712,7 @@ export const ZoneInfoPattern = () => {
 
   // --------------------Ребра-start---------------
   if (zone === "Ребра") {
-    radiography = `${zone} ${side.toLowerCase()}, в косій проєкції`;
+    radiography = `${zone} ${side.toLowerCase()}, в косій проекції`;
     if (zakliuchennia === svoiVaryant) {
       report = "";
     } else if (zakliuchennia === "") {

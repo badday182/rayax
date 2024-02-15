@@ -1,1 +1,1 @@
-export const plechKulshSuglobViews = ['Пряма', 'В 2-х проєкціях']
+export const plechKulshSuglobViews = ['Пряма', 'В 2-х проекціях']

@@ -162,7 +162,7 @@ export function FormFloatingSelect({ id, items, label, onZoneSelect }) {
     }
 
     if (zonesWithOnly2Projection.includes(selectedZone)) {
-      dispatch(editProaction("В 2-х проєкціях"));
+      dispatch(editProaction("В 2-х проекціях"));
     }
     if (zonesWithOnlyDirectProjection.includes(selectedZone)) {
       dispatch(editProaction("Пряма"));
