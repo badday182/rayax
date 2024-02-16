@@ -3,5 +3,6 @@ import { svoiVaryant } from "../svoiVaryant";
 import { kistokTazuViewsZahalnaNenorma } from "./kistokTazuViewsZahalnaNenorma";
 export const kistokTazuViews = [
   kistkovaNorma,
-  kistokTazuViewsZahalnaNenorma, svoiVaryant
+  kistokTazuViewsZahalnaNenorma,
+  "Ч/з гіпсову пов'язку: стояння уламків задовільне", svoiVaryant
 ];
