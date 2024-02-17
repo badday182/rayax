@@ -80,7 +80,7 @@ const handleDeleteOption = (deleteId, resetCounter) => {
 }
   return (
     <div className="">
-      <FormFloatingSelect items={ogkViews} onZoneSelect={setSelectedOgkViews} label="Проєкія" />
+      <FormFloatingSelect items={ogkViews} onZoneSelect={setSelectedOgkViews} label="Проекція" />
       <FormFloatingSelect items={ogkNormaNenorma} onZoneSelect={setSelectednormaNenorma} label="Норма/Не норма" />
       
       {selectednormaNenorma === "Не норма" ? (

@@ -69,7 +69,7 @@ export const Ogk = () => {
       <FormFloatingSelect
         items={ogkViews}
         onZoneSelect={setSelectedOgkViews}
-        label="Проєкія"
+        label="Проекція"
       />
       <FormFloatingSelect
         items={ogkNormaNenorma}

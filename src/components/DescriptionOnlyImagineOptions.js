@@ -160,7 +160,7 @@ export const DescriptionOnlyImagineOptions = ({ id, editorContent }) => {
           <FormFloatingSelect
             items={plechKulshSuglobViews}
             onZoneSelect={setSelectedplechKulshSuglobViews}
-            label="Проєкія"
+            label="Проекція"
           />
         ) : null}
       </div>
