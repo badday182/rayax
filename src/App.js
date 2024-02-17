@@ -88,7 +88,25 @@ const App = () => {
               alt="Монобанк лого"
             />
           </div>
-          <p>------</p>
+          {/* <div className="logo youtube">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/a/a0/YouTube_social_red_circle_%282017%29.svg"
+              alt="Ютуб лого"
+            />
+          </div> */}
+            <p>------</p>
+          <a
+            className="mb-2 logo"
+            href="https://www.youtube.com/@RayaX.project"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              className="m-0"
+              src="https://upload.wikimedia.org/wikipedia/commons/a/a0/YouTube_social_red_circle_%282017%29.svg"
+              alt="Ютуб лого"
+            />
+          </a>
           <a
             className="m-0 logo telegram-logo"
             href="https://t.me/Raya_X"
