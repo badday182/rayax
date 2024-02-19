@@ -235,8 +235,11 @@ export const ZoneInfoPattern = () => {
     report = norma + '.';
   }
   // if (norma === "Загальна ОГК не норма") {
-  if (norma === ogkNormaNenorma[3]) {
+  if (norma === ogkNormaNenorma[3]) {  // "Загальна ОГК не норма"
     report = ogkZagalnaNenorma;
+  }
+  if (norma === ogkNormaNenorma[4]) {
+    report = ogkNormaNenorma[4] + '.';
   }
   // выбран свой вариант
   // if (norma === svoiVaryant) {

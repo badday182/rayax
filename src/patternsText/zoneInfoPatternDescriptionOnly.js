@@ -49,6 +49,7 @@ import { zakliuchenniaPvh } from "../data/PVH/PVH_notNorma/zakliuchenniaPvh";
 import { kolinnyiSuhlobZahalnaNenorma } from "../data/KOLINNYISUHLOB/kolinnyiSuhlobZahalnaNenorma";
 import { svoiVaryant } from "../data/svoiVaryant";
 import { peredniViddilyStopyViews } from "../data/PEREDNIVIDDILYSTOPY/peredniViddilyStopyViews";
+import { ogkNormaNenorma } from "../data/OGK_notNorma/ogkNormaNenorma";
 
 export const ZoneInfoPatternDescriptionOnly = () => {
   const zone = useSelector((state) => state.zoneInfo.zone);
@@ -137,10 +138,14 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   if (norma === "Легені та серце у межах вікових змін") {
     report = norma;
   }
-  if (norma === "Загальна ОГК не норма") {
-    report = ogkZagalnaNenorma;
-  }
-  // if (norma === "Не норма") {
+  // if (norma === "Загальна ОГК не норма") {
+    if (norma === ogkNormaNenorma[3]) {  // "Загальна ОГК не норма"
+      report = ogkZagalnaNenorma;
+    }
+    if (norma === ogkNormaNenorma[4]) {
+      report = ogkNormaNenorma[4] + '.';
+    }
+    // if (norma === "Не норма") {
   //   report = `Легеневий рисунок ${legenRusynok}. Корені ${koreni}. Синуси ${synusy}. купола діафрагми ${kupalaDiadragmy}. Cor - ${cor}.<br />Заключення: ${ogkZakliuchennia}.`;
   // }
   if (zone === "ОГК" && norma === "Не норма") {
