@@ -203,7 +203,7 @@ export const ZoneInfoPatternDescriptionOnly = () => {
 
   // --------------------Череп-start---------------
   // if (zone === "Череп" && cherepNormaNenorma === "") {
-  //   report = "Грубих кістково-травматичних змін не визначаються";
+  //   report = "Грубих кістково-травматичних змін не визначається";
   // }
   if (zone === "Череп") {
     if (zakliuchennia === svoiVaryant) {
@@ -231,7 +231,7 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   // --------------------ШВХ-start---------------
   if (zone === "ШВХ") {
     if (norma === "") {
-      report = shvhNormaNenorma[0]; //Груб кістк-травм змін не визначаються
+      report = shvhNormaNenorma[0]; //Груб кістк-травм змін не визначається
     }
     if (norma === shvhNormaNenorma[2]) {
       // "Загальна не норма ШВХ"
@@ -349,7 +349,7 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   // --------------------ГВХ-start---------------
   if (zone === "ГВХ") {
     if (norma === "") {
-      report = gvhNormaNenorma[0]; //Груб кістк-травм змін не визначаються
+      report = gvhNormaNenorma[0]; //Груб кістк-травм змін не визначається
     }
     if (norma === gvhNormaNenorma[2]) {
       // "Загальна не норма ГВХ"
@@ -460,7 +460,7 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   // --------------------ПВХ-start---------------
   if (zone === "ПВХ") {
     if (norma === "") {
-      report = pvhNormaNenorma[0]; //Груб кістк-травм змін не визначаються
+      report = pvhNormaNenorma[0]; //Груб кістк-травм змін не визначається
     }
     if (norma === pvhNormaNenorma[2]) {
       // "Загальна не норма ПВХ"
