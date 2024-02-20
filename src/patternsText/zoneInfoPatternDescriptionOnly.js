@@ -49,6 +49,7 @@ import { zakliuchenniaPvh } from "../data/PVH/PVH_notNorma/zakliuchenniaPvh";
 import { kolinnyiSuhlobZahalnaNenorma } from "../data/KOLINNYISUHLOB/kolinnyiSuhlobZahalnaNenorma";
 import { svoiVaryant } from "../data/svoiVaryant";
 import { peredniViddilyStopyViews } from "../data/PEREDNIVIDDILYSTOPY/peredniViddilyStopyViews";
+import { ogkNormaNenorma } from "../data/OGK_notNorma/ogkNormaNenorma";
 
 export const ZoneInfoPatternDescriptionOnly = () => {
   const zone = useSelector((state) => state.zoneInfo.zone);
@@ -137,10 +138,14 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   if (norma === "Легені та серце у межах вікових змін") {
     report = norma;
   }
-  if (norma === "Загальна ОГК не норма") {
-    report = ogkZagalnaNenorma;
-  }
-  // if (norma === "Не норма") {
+  // if (norma === "Загальна ОГК не норма") {
+    if (norma === ogkNormaNenorma[3]) {  // "Загальна ОГК не норма"
+      report = ogkZagalnaNenorma;
+    }
+    if (norma === ogkNormaNenorma[4]) {
+      report = ogkNormaNenorma[4] + '.';
+    }
+    // if (norma === "Не норма") {
   //   report = `Легеневий рисунок ${legenRusynok}. Корені ${koreni}. Синуси ${synusy}. купола діафрагми ${kupalaDiadragmy}. Cor - ${cor}.<br />Заключення: ${ogkZakliuchennia}.`;
   // }
   if (zone === "ОГК" && norma === "Не норма") {
@@ -203,7 +208,7 @@ export const ZoneInfoPatternDescriptionOnly = () => {
 
   // --------------------Череп-start---------------
   // if (zone === "Череп" && cherepNormaNenorma === "") {
-  //   report = "Грубих кістково-травматичних змін не визначаються";
+  //   report = "Грубих кістково-травматичних змін не визначається";
   // }
   if (zone === "Череп") {
     if (zakliuchennia === svoiVaryant) {
@@ -231,7 +236,7 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   // --------------------ШВХ-start---------------
   if (zone === "ШВХ") {
     if (norma === "") {
-      report = shvhNormaNenorma[0]; //Груб кістк-травм змін не визначаються
+      report = shvhNormaNenorma[0]; //Груб кістк-травм змін не визначається
     }
     if (norma === shvhNormaNenorma[2]) {
       // "Загальна не норма ШВХ"
@@ -349,7 +354,7 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   // --------------------ГВХ-start---------------
   if (zone === "ГВХ") {
     if (norma === "") {
-      report = gvhNormaNenorma[0]; //Груб кістк-травм змін не визначаються
+      report = gvhNormaNenorma[0]; //Груб кістк-травм змін не визначається
     }
     if (norma === gvhNormaNenorma[2]) {
       // "Загальна не норма ГВХ"
@@ -460,7 +465,7 @@ export const ZoneInfoPatternDescriptionOnly = () => {
   // --------------------ПВХ-start---------------
   if (zone === "ПВХ") {
     if (norma === "") {
-      report = pvhNormaNenorma[0]; //Груб кістк-травм змін не визначаються
+      report = pvhNormaNenorma[0]; //Груб кістк-травм змін не визначається
     }
     if (norma === pvhNormaNenorma[2]) {
       // "Загальна не норма ПВХ"
