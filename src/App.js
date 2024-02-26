@@ -174,7 +174,7 @@ const App = () => {
           init={{
             selector: "#myTextarea",
             browser_spellcheck: true,
-            spellchecker_language: 'ru',
+            spellchecker_language: 'uk',
             contextmenu: true,
             language: 'uk',
             height: 650,
