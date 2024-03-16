@@ -34,6 +34,7 @@ export const documentSliseReducer = createSlice({
       state.documentText = action.payload
 
     },
+    
     doubleAddPatientAndZoneDocText: (state, action) => {
       // const { formattedDate, naprav, name, birthYear } = action.payload;
       const { textToDocPacientInfo, textToDoc } = action.payload;
