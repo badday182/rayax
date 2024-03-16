@@ -22,13 +22,12 @@ const App = () => {
 
   const docTex = useSelector((state) => state.creatingDocument.documentText);
 
-//   const editorRef = useRef();
 const [editorRef, setEditorRef] = useState(null);
 
   const pacientInfo = renderToString(PacientInfoPattern());
 
   const editorContent = () => {
-    const content = editorRef.current.getContent(); //берет текст с эдитора
+    const content = editorRef.current.getContent(); //takes text from editor
     dispatch(addTextFromEditor(content));
   };
  
@@ -47,58 +46,7 @@ const [editorRef, setEditorRef] = useState(null);
         <ButtonEditorCleaner title="Очистити редактор" />
       </div>
       <>
-        {/* <Editor
-          apiKey="62kbbg7407jjlea01hu71w9axyixiyxitsr8wtho4lnck72p"
-          onInit={(evt, editor) => (editorRef.current = editor)}
-          initialValue={docTex}
-          init={{
-            selector: "#myTextarea",
-            browser_spellcheck: true,
-            spellchecker_language: "uk",
-            contextmenu: true,
-            language: "uk",
-            height: 650,
-            width: 700,
-            content_css: "/src/tineContent.css",
 
-            setup: function (editor) {
-              editor.on("init", function () {
-                editor.getBody().scrollTo(0, editor.getBody().scrollHeight);
-              });
-              editor.on("change", function () {
-                editor.getBody().scrollTo(0, editor.getBody().scrollHeight);
-              });
-              editor.on("keyup", function () {
-                editor.getBody().scrollTo(0, editor.getBody().scrollHeight);
-              });
-            },
-            menubar: false,
-            plugins: [
-              "advlist",
-              "autolink",
-              "lists",
-              "link",
-              "image",
-              "charmap",
-              "pagebreak",
-              "preview",
-              "anchor",
-              "searchreplace",
-              "visualblocks",
-              "code",
-              "fullscreen",
-              "insertdatetime",
-              "media",
-              "table",
-            ],
-            toolbar:
-              "print | pagebreak | " +
-              " undo redo | blocks | " +
-              "bold italic forecolor | ",
-            content_style:
-              "body { font-family: Helvetica, Arial, sans-serif; font-size: 14px; padding: 1rem;}  table { width: 100%; border-collapse: collapse; border: 2px solid white; border-color: white; } tbody, th, tr, td { border: 2px solid white; border-color: white; border-style: solid; } td {padding: 0.4rem;} h1,h2,h3,h4,h5,h6 {margin: 5px 5px;} ",
-          }}
-        /> */}
         <TextEditor docTex={docTex} setEditorRef={setEditorRef}/>
       </>
       <Analytics />

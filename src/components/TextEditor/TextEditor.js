@@ -3,10 +3,18 @@ import { Editor } from "@tinymce/tinymce-react";
 
 const TextEditor = ({ docTex, setEditorRef }) => {
     const editorRef = useRef();
+    
+    {/*This code means that the callback function in useEffect 
+    will be called only once after the component is mounted
+    (or on the initial rendering), because the dependency array is empty `[]`.
+After that, the value of `editorRef` will be set and will not change
+within this effect anymore.
+*/}
 
-    useEffect(() => {
-        setEditorRef(editorRef);
-    }, [setEditorRef]);
+
+useEffect(() => {
+    setEditorRef(editorRef);
+}, []);
 
     return (
         <Editor
