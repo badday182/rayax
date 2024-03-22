@@ -4,6 +4,6 @@ import { svoiVaryant } from "../svoiVaryant";
 export const shvhNormaNenorma = [
   kistkovaNorma,
   "Не норма",
-  "Загальна не норма ШВХ",
-  svoiVaryant
+  "Фіз.лорд. підкр.Сер. вісь не зміщ.Вис. тіл хр. збер.Міжхр. пром. нерівн. звуж.Зам. пласт. тіл хр. склер, загос.Фасет. та унков. сугл. щіл. звуж, зам. пласт. склер, загос",
+  svoiVaryant,
 ];
