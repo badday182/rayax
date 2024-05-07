@@ -51,7 +51,7 @@ import { kolinnyiSuhlobZahalnaNenorma } from "../data/KOLINNYISUHLOB/kolinnyiSuh
 import { ogkNormaNenorma } from "../data/OGK_notNorma/ogkNormaNenorma";
 import { svoiVaryant } from "../data/svoiVaryant";
 import { peredniViddilyStopyViews } from "../data/PEREDNIVIDDILYSTOPY/peredniViddilyStopyViews";
-export const ZoneInfoPattern = () => {
+export const ZoneInfoPattern = (descriptionOnly) => {
   const zone = useSelector((state) => state.zoneInfo.zone);
   const proaction = useSelector((state) => state.zoneInfo.proaction);
   const side = useSelector((state) => state.zoneInfo.side);
@@ -845,6 +845,7 @@ export const ZoneInfoPattern = () => {
 
   return (
     <div>
+      {!descriptionOnly && (
       <table
         width="100%"
         border-collapse="collapse"
@@ -858,16 +859,10 @@ export const ZoneInfoPattern = () => {
           </tr>
         </tbody>
       </table>
-      {/* <br /> */}
-      {/* <p>{report}</p> */}
-      {report}
-      {/* <br /> */}
+      )}
+      {report}      
       <br />
-      <br />
-      {/* <div display="flex" flex-direction="row" justify-content="space-between" >
-        <div>R-графiя: {radiography}</div>
-        <div>ЕЕД: {mSv} мЗв</div>
-      </div> */}
+      <br />    
     </div>
   );
 };

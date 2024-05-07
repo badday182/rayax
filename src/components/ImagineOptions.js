@@ -59,7 +59,7 @@ import { AddZoneDescriptionOnlyButton } from "./AddZoneDescriptionOnlyButton";
 import { RiPlayListAddLine } from "react-icons/ri";
 import { ZoneInfoPatternDescriptionOnly } from "../patternsText/zoneInfoPatternDescriptionOnly";
 
-export const ImagineOptions = ({ id, editorContent, descriptionOnly }) => {
+export const ImagineOptions = ({ id, editorContent, descriptionOnly = false }) => {
   const zoneState = useSelector((state) => state.zoneInfo.zone); //"ОГК" Defoult
 
   // const [selectedZone, setSelectedZone] = useState("ОГК");
@@ -91,11 +91,12 @@ export const ImagineOptions = ({ id, editorContent, descriptionOnly }) => {
   // );
 
   const textToDocPacientInfo = renderToString(PacientInfoPattern());
-  let textToDoc = renderToString(ZoneInfoPattern());
+  let textToDoc = renderToString(ZoneInfoPattern(descriptionOnly));
 
-  if (descriptionOnly) {
-    textToDoc = renderToString(ZoneInfoPatternDescriptionOnly());
-  }
+  // if (descriptionOnly) {
+  //   // textToDoc = renderToString(ZoneInfoPatternDescriptionOnly());
+  //   textToDoc = renderToString(ZoneInfoPattern(descriptionOnly));
+  // }
   const existPatientName = useSelector((state) => state.pacientInfo.examName);
   const existPatientBirthYear = useSelector(
     (state) => state.pacientInfo.examBirthYear
