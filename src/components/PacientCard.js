@@ -24,7 +24,6 @@ import {
   resetApplyPatientInfoBlock,
   resetZoneInfoSliseReducer,
 } from "./redux/slices/zoneInfoSliseReducer";
-import { DescriptionOnlyImagineOptions } from "./DescriptionOnlyImagineOptions";
 import { resetogkSliseReducer } from "./redux/slices/ogkSliseReducer";
 import { resetUniversalSliceReducer } from "./redux/slices/universalSliceReducer";
 import copy from "clipboard-copy";
@@ -56,17 +55,15 @@ export const PacientCard = ({ id, editorContent }) => {
         />
       ))}
       {descriptionOnlyState.map((option) => (
-        <DescriptionOnlyImagineOptions
+        <ImagineOptions
           editorContent={editorContent}
           key={option.id}
           id={option.id}
+          descriptionOnly={true}
         />
+    
       ))}
-      {/* <DescriptionOnlyImagineOptions
-        editorContent={editorContent}
-        key={DescriptionId}
-        id={DescriptionId}
-      /> */}
+   
       <div className="d-flex justify-content-between zonesButtons">
         <Button
           title="Створити нову анкету для опису протоколу дослідження нового пацієнта"
@@ -94,17 +91,6 @@ export const PacientCard = ({ id, editorContent }) => {
             dispatch(resetDescriptionOnly()); // сброс ТОЛЬКО_ОПИСАНИЯ
             // dispatch(resetDescriptionOnly()); // сброс редюсера только описания (без шапки)
 
-            // copy(textFromEditor); // копирование в буфер обмена
-
-            // .then(() => {
-            //   console.log("Данные скопированы в буфер обмена");
-            // })
-            // .catch((err) => {
-            //   console.error(
-            //     "Не удалось скопировать данные в буфер обмена",
-            //     err
-            //   );
-            // });
           }}
         >
  Новий пацієнт <PiUserPlusLight size={30}/>

@@ -5,39 +5,21 @@ import AddZoneButton from "./addZoneButton";
 import { zones } from "../data/zones";
 import { zonesWithSides } from "../data/zonesWithSides";
 import { sides } from "../data/sides";
-import { ogkViews } from "../data/ogkViews";
 import { plechKulshSuglobViews } from "../data/plechovuyKulshovuySuglobViews";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  editZone,
-  editProaction,
-  editSide,
-  editNorma,
   resetZoneInfoSliseReducer,
   applyPatientInfoBlock,
   resetZoneInfoSliseReducerExceptZone,
 } from "./redux/slices/zoneInfoSliseReducer";
 import {
-  resetLegenRusynokArray,
-  resetKoreniArray,
-  resetSynusyArray,
-  resetKupalaDiadragmyArray,
-  resetCorArray,
-  resetOgkZakliuchenniaArray,
   resetogkSliseReducer,
 } from "./redux/slices/ogkSliseReducer";
 
 import { resetCherepSliseReducer } from "./redux/slices/cherepSliseReducer";
 import { resetPpnSliseReducer } from "./redux/slices/ppnSliseReducer";
 import { resetUniversalSliceReducer } from "./redux/slices/universalSliceReducer";
-import {
-  resetZone,
-  resetSide,
-  resetProaction,
-  resetNorma,
-} from "./redux/slices/zoneInfoSliseReducer";
-
 import {
   addDocText,
   doubleAddPatientAndZoneDocText,
@@ -74,39 +56,46 @@ import { initialPatientName } from "../data/initialPatientName";
 import { initialPatientBirthYear } from "../data/initialPatientBirthYear";
 import { initialExamNumber } from "../data/initialExamNumber";
 import { AddZoneDescriptionOnlyButton } from "./AddZoneDescriptionOnlyButton";
-import { resetDescriptionOnly } from "./redux/slices/newZoneSlise";
 import { RiPlayListAddLine } from "react-icons/ri";
-import { BsClipboardPlus } from "react-icons/bs";
+import { ZoneInfoPatternDescriptionOnly } from "../patternsText/zoneInfoPatternDescriptionOnly";
 
-export const ImagineOptions = ({ id, editorContent }) => {
-  const [selectedZone, setSelectedZone] = useState("ОГК");
+export const ImagineOptions = ({ id, editorContent, descriptionOnly }) => {
+  const zoneState = useSelector((state) => state.zoneInfo.zone); //"ОГК" Defoult
 
-  const [selectedSide, setSelectedSide] = useState("Справа");
+  // const [selectedZone, setSelectedZone] = useState("ОГК");
+  const [selectedZone, setSelectedZone] = useState(zoneState);
+
+
+   const [selectedSide, setSelectedSide] = useState("Справа");
   const [selectedOgkViews, setSelectedOgkViews] = useState("Оглядова");
   const [selectedplechKulshSuglobViews, setSelectedplechKulshSuglobViews] =
     useState("Пряма");
   const [selectednormaNenorma, setSelectednormaNenorma] = useState("Норма");
   const [addintoEditorButtonDisabled, setAddintoEditorButtonDisabled] =
     useState(false);
+
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+
   const [descriptionOnlyButtonDisabled, setDescriptionOnlyButtonDisabled] =
     useState(true);
 
-  // Вроде работает
-  // useEffect(()=>{
-  //   dispatch(editZone("ОГК"));
-  // }, [])
 
   const zoneWithSides = zonesWithSides.includes(selectedZone) ? true : false;
 
   const dispatch = useDispatch();
-  // const state = useSelector((state) => state.creatingDocument.documentText);
-  // Текст с эдитора
-  const textFromEditor = useSelector(
-    (state) => state.creatingDocument.documentText
-  );
+
+
+  // // Текст с эдитора
+  // const textFromEditor = useSelector(
+  //   (state) => state.creatingDocument.documentText
+  // );
 
   const textToDocPacientInfo = renderToString(PacientInfoPattern());
-  const textToDoc = renderToString(ZoneInfoPattern());
+  let textToDoc = renderToString(ZoneInfoPattern());
+
+  if (descriptionOnly) {
+    textToDoc = renderToString(ZoneInfoPatternDescriptionOnly());
+  }
   const existPatientName = useSelector((state) => state.pacientInfo.examName);
   const existPatientBirthYear = useSelector(
     (state) => state.pacientInfo.examBirthYear
@@ -121,66 +110,74 @@ export const ImagineOptions = ({ id, editorContent }) => {
 
   const handleApplyZone = () => {
     editorContent();
-    //Добавляем данные в текстовый редактор
 
-    // dispatch(addDocText({ textToDocPacientInfo }));
-    // dispatch(addDocText({ textToDoc }));
-
-    //дублируем функционал из PacientInfo + добавляем зону в эдитор
-    if (isPatientInfoExist !== 0) {
-      dispatch(
-        doubleAddPatientAndZoneDocText({ textToDocPacientInfo, textToDoc })
-      );
-      dispatch(resetPacientInfoSliseReducer());
-      dispatch(applyPatientInfoBlock(true));
-
-      if (examState !== initialExamNumber) {
-        dispatch(editExamNumber(+examState + 1));
-      }
-    } else {
+    if (descriptionOnly) {
       dispatch(addDocText({ textToDoc }));
-    }
+      setButtonDisabled(true); // Устанавливаем disabled в true после нажатия кнопки
+    } else {
+      //дублируем функционал из PacientInfo + добавляем зону в эдитор
+      if (isPatientInfoExist !== 0) {
+        dispatch(
+          doubleAddPatientAndZoneDocText({ textToDocPacientInfo, textToDoc })
+        );
+        dispatch(resetPacientInfoSliseReducer());
+        dispatch(applyPatientInfoBlock(true));
 
-    // dispatch(doubleAddPatientAndZoneDocText({ textToDocPacientInfo, textToDoc}));
-    //  console.log('isPatientInfoExist', isPatientInfoExist);
+        if (examState !== initialExamNumber) {
+          dispatch(editExamNumber(+examState + 1));
+        }
+      } else {
+        dispatch(addDocText({ textToDoc }));
+      }
+
+      setAddintoEditorButtonDisabled(true);
+      // setDescriptionOnlyButtonDisabled(disabled)
+
+      // Копируем текст с редактора с новым текстом в буфер обмена
+      localStorage.setItem("textToDoc", textFromEditor + textToDoc);
+    }
 
     // Сбрасываем данные в редюсерах
     dispatch(resetPacientInfoSliseReducer());
-    // dispatch(resetZoneInfoSliseReducer()); //сброс всех параметров
     dispatch(resetZoneInfoSliseReducerExceptZone()); //сброс всех параметров кроме zone
     dispatch(resetogkSliseReducer());
-
     dispatch(resetCherepSliseReducer());
     dispatch(resetPpnSliseReducer());
     dispatch(resetUniversalSliceReducer());
-
     setAcceptNotice(<div className="overlay"></div>);
-    setAddintoEditorButtonDisabled(true);
-    // setDescriptionOnlyButtonDisabled(disabled)
-
-    // Копируем текст с редактора с новым текстом в буфер обмена
-    localStorage.setItem("textToDoc", textFromEditor + textToDoc);
   };
 
+  // Текст с эдитора
+  const textFromEditor = useSelector(
+    (state) => state.creatingDocument.documentText
+  );
+
   return (
-    // <div className="mb-4 p-3 rounded-3 text-dark border border-light-subtle bg-glass">
-    <div className="mb-4 p-3 rounded-3 text-dark border border-light-subtle bg-2ndglass">
+    <div
+      className={`mb-4 p-3 rounded-3 text-dark border ${
+        descriptionOnly ? "border-info border-3" : "border-light-subtle"
+      } bg-2ndglass`}
+    >
+      {descriptionOnly && <h5 className="text-white">Тільки опис</h5>}
       <div className="imagineOptions">
         {acceptNotice}
 
-        <FormFloatingSelect
-          id="zone"
-          items={zones}
-          onZoneSelect={setSelectedZone}
-          label="Зона дослідження"
-        />
-        {zoneWithSides ? (
+        {!descriptionOnly && (
+          <FormFloatingSelect
+            id="zone"
+            items={zones}
+            onZoneSelect={setSelectedZone}
+            label="Зона дослідження"
+          />
+        )}
+        {zoneWithSides && !descriptionOnly && (
           <FormFloatingSelect
             items={sides}
             onZoneSelect={setSelectedSide}
             label="Сторона"
           />
-        ) : null}
+        )}
+
         {selectedZone === "ОГК" ? <Ogk /> : null}
         {selectedZone === "Череп" ? <Cherep /> : null}
         {selectedZone === "ППН" ? <Ppn /> : null}
@@ -217,49 +214,65 @@ export const ImagineOptions = ({ id, editorContent }) => {
         ) : null}
       </div>
 
-      <div className="d-flex flex-wrap justify-content-between zonesButtons">
-        {/* <div className="allChildrenMarginY"> */}
-        <div className="">
+      <div
+        className={`d-flex justify-content-between zonesButtons flex-wrap ${
+          descriptionOnly && "flex-wrap"
+        }`}
+      >
+        <div>
           <Button
             title="Надіслати інформацію до Редактора"
             variant="success"
-            className="me-0 mt-2 mb-2"
+            // className="me-0 mt-2 mb-2"
+            className={`${descriptionOnly ? "me-2" : "me-0 mt-2 mb-2"}`}
             onClick={() => {
               setDescriptionOnlyButtonDisabled(false);
               handleApplyZone();
+              if (descriptionOnly) {
+                // Копируем текст с редактора с новым текстом в буфер обмена
+                localStorage.setItem("textToDoc", textFromEditor + textToDoc);
+              }
             }}
-            disabled={addintoEditorButtonDisabled}
+            disabled={
+              descriptionOnly ? buttonDisabled : addintoEditorButtonDisabled
+            }
           >
-            {/* Додати ✅📄 */}
             Додати <RiPlayListAddLine size={18} />
           </Button>{" "}
-          <AddZoneButton
-            className="me-0 mt-2 mb-2"
-            variant="success"
-            onAddOptions={() => {
-              // setDescriptionOnlyButtonDisabled(true);
-              handleApplyZone();
-              dispatch(resetZoneInfoSliseReducer());
-            }}
-            setDescriptionOnlyButtonTrue={() => {
-              setDescriptionOnlyButtonDisabled(true);
-              dispatch(resetZoneInfoSliseReducer());
-            }}
-            addintoEditorButtonDisabled={addintoEditorButtonDisabled}
-          />
+          {!descriptionOnly ? (
+            <>
+            <AddZoneButton
+              className="me-0 mt-2 mb-2"
+              variant="success"
+              onAddOptions={() => {
+                handleApplyZone();
+                dispatch(resetZoneInfoSliseReducer());
+              }}
+              setDescriptionOnlyButtonTrue={() => {
+                setDescriptionOnlyButtonDisabled(true);
+                dispatch(resetZoneInfoSliseReducer());
+              }}
+              addintoEditorButtonDisabled={addintoEditorButtonDisabled}
+            />            
           <AddZoneDescriptionOnlyButton
             variant="outline-info"
             descriptionOnlyButtonDisabled={descriptionOnlyButtonDisabled}
-            // descriptionOnlyButtonDisabled2={descriptionOnlyButtonDisabled2}
+          />
+            </>
+          ) : (
+            <AddZoneDescriptionOnlyButton
+            title="Add Description"
+            variant="outline-info"
+            descriptionOnlyButtonDisabled={descriptionOnlyButtonDisabled}
             // onAddOptions={onAddOptions}
           />
+          )}
         </div>
-        <DeleteButton
+        {!descriptionOnly && <DeleteButton
           className="me-0 mt-2 mb-2"
           variant="outline-danger"
-          // onClick={() => onDelete(id)}
           id={id}
-        />
+        />}        
       </div>
     </div>
   );
