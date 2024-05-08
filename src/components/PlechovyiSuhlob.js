@@ -31,7 +31,7 @@ export const PlechovyiSuhlob = () => {
    }
 
   return (
-    <div className="">
+    <div>
       <AddOptionBlock
         items={plechovyiSuhlobViews}
         onZoneSelect={setSelectedPlechovyiSuhlobViews}

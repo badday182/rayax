@@ -158,7 +158,7 @@ export const ImagineOptions = ({ id, editorContent, descriptionOnly = false }) =
         descriptionOnly ? "border-info border-3" : "border-light-subtle"
       } bg-2ndglass`}
     >
-      {descriptionOnly && <h5 className="text-white">Тільки опис</h5>}
+      {descriptionOnly && <h5 className="text-white fst-italic fw-light fs-5">Тільки опис зони "{selectedZone}"</h5>}
       <div className="imagineOptions">
         {acceptNotice}
 
@@ -178,7 +178,7 @@ export const ImagineOptions = ({ id, editorContent, descriptionOnly = false }) =
           />
         )}
 
-        {selectedZone === "ОГК" ? <Ogk /> : null}
+        {selectedZone === "ОГК" ? <Ogk descriptionOnly={descriptionOnly}/> : null}
         {selectedZone === "Череп" ? <Cherep /> : null}
         {selectedZone === "ППН" ? <Ppn /> : null}
         {selectedZone === "ШВХ" ? <Shvh /> : null}
@@ -204,14 +204,14 @@ export const ImagineOptions = ({ id, editorContent, descriptionOnly = false }) =
           <PeredniViddilyStopy />
         ) : null}
 
-        {selectedZone === "Кульшовий суглоб" ||
-        selectedZone === "Плечовий суглоб" ? (
+        {selectedZone === "Кульшовий суглоб" && !descriptionOnly ||
+        selectedZone === "Плечовий суглоб" && !descriptionOnly ? (
           <FormFloatingSelect
             items={plechKulshSuglobViews}
             onZoneSelect={setSelectedplechKulshSuglobViews}
             label="Проекція"
           />
-        ) : null}
+               ) : null}
       </div>
 
       <div
