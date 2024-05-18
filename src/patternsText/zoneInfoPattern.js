@@ -232,14 +232,15 @@ export const ZoneInfoPattern = (descriptionOnly) => {
     report = "Легені та серце без змін.";
   }
   if (norma === "Легені та серце у межах вікових змін") {
-    report = norma + '.';
+    report = norma + ".";
   }
   // if (norma === "Загальна ОГК не норма") {
-  if (norma === ogkNormaNenorma[3]) {  // "Загальна ОГК не норма"
+  if (norma === ogkNormaNenorma[3]) {
+    // "Загальна ОГК не норма"
     report = ogkZagalnaNenorma;
   }
   if (norma === ogkNormaNenorma[4]) {
-    report = ogkNormaNenorma[4] + '.';
+    report = ogkNormaNenorma[4] + ".";
   }
   // выбран свой вариант
   // if (norma === svoiVaryant) {
@@ -794,20 +795,30 @@ export const ZoneInfoPattern = (descriptionOnly) => {
       report = "";
     } else if (zakliuchennia === "") {
       report = `${kolinnyiSuhlobViews[0]}.`;
+    } else if (zakliuchennia === kolinnyiSuhlobZahalnaNenorma) {
+      report = (
+        <>
+          Суглобові щілини нерівномірно звужені. Замикаючі пластинки
+          склерозовані, із крайовими остеофітами та субхондральними кістами.
+          Міжвиросткові підвищення та полюса надколінка загострені.
+          <br />
+          Заключення: R-ознаки гонартрозу.
+        </>
+      );
     } else {
-      zakliuchennia === kolinnyiSuhlobZahalnaNenorma
-        ? (report = (
-            <>
-              Суглобові щілини нерівномірно звужені. Замикаючі пластинки
-              склерозовані, із крайовими остеофітами та субхондральними кістами.
-              Міжвиросткові підвищення та полюса надколінка загострені.
-              <br />
-              Заключення: R-ознаки гонартрозу.
-            </>
-          ))
-        : (report = `${zakliuchennia}.`);
+      if (zakliuchennia.includes(kolinnyiSuhlobZahalnaNenorma)) {
+        let kolinnyiSuhlobZahalnaNenormaReplace =
+          "Суглобові щілини нерівномірно звужені. Замикаючі пластинки склерозовані, із крайовими остеофітами та субхондральними кістами. Міжвиросткові підвищення та полюса надколінка загострені. Заключення: R-ознаки гонартрозу.";
+        report = zakliuchennia.replace(
+          kolinnyiSuhlobZahalnaNenorma,
+          kolinnyiSuhlobZahalnaNenormaReplace
+        );
+      } else {
+        report = `${zakliuchennia}.`;
+      }
     }
   }
+
   // --------------------Колінний суглоб-end---------------
   // --------------------Гомілковостопний суглоб-start---------------
   if (zone === "Гомілковостопний суглоб") {
@@ -846,23 +857,23 @@ export const ZoneInfoPattern = (descriptionOnly) => {
   return (
     <div>
       {!descriptionOnly && (
-      <table
-        width="100%"
-        border-collapse="collapse"
-        border="2px solid white"
-        id={uuidv4()}
-      >
-        <tbody>
-          <tr>
-            <td>R-графiя: {radiography}</td>
-            <td align="right">ЕЕД: {mSv} мЗв</td>
-          </tr>
-        </tbody>
-      </table>
+        <table
+          width="100%"
+          border-collapse="collapse"
+          border="2px solid white"
+          id={uuidv4()}
+        >
+          <tbody>
+            <tr>
+              <td>R-графiя: {radiography}</td>
+              <td align="right">ЕЕД: {mSv} мЗв</td>
+            </tr>
+          </tbody>
+        </table>
       )}
-      {report}      
+      {report}
       <br />
-      <br />    
+      <br />
     </div>
   );
 };
